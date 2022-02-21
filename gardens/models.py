@@ -10,11 +10,10 @@ from wagtail.images.blocks import ImageChooserBlock
 
 
 class Garden(Page):
-    title = models.CharField(max_length=150)
     sub_title = models.CharField(max_length=250, blank=True)
 
     short_description = models.CharField(max_length=150, blank=True)
-    description = StreamField(
+    body = StreamField(
         [
             ("heading", blocks.CharBlock(form_classname="full title")),
             ("paragraph", blocks.RichTextBlock()),
