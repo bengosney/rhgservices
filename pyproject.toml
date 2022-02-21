@@ -1,0 +1,21 @@
+[project]
+name = "R H Garden Services"
+version = "4.0.0"
+description = "Corporate website for R H Garden Services"
+authors = [
+    "Ben Gosney <bengosney@googlemail.com>"
+]
+python = "^3.8"
+homepage = "https://www.rhgservices.co.uk/"
+repository = "https://github.com/bengosney/rhgservices/"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 128
+target-version = ['py38']
+
+[tool.pycln]
+all = true
