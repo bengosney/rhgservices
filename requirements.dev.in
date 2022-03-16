@@ -1,5 +1,14 @@
+-c requirements.txt
 black
+commitizen
+django-stubs
 icecream
+mypy
+packaging
+pip-chill
 pip-tools
 pre-commit
 pytest
+pytest-clarity
+pytest-django
+pytest-picked
