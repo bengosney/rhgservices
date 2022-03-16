@@ -1,61 +1,79 @@
-.PHONY: help clean test install all init dev
-.DEFAULT_GOAL := dev
+.PHONY := install, help, init, pre-init
+.DEFAULT_GOAL := install
 
 HOOKS=$(.git/hooks/pre-commit)
 INS=$(wildcard requirements.*.in)
 REQS=$(subst in,txt,$(INS))
 
+SCSS_PARTIALS=$(wildcard scss/_*.scss)
+SCSS=$(filter-out scss/_%.scss,$(wildcard scss/*.scss))
+CSS=$(subst scss,css,$(SCSS))
+
+HEROKU_APP_NAME=rhgs
+DB_USER=rhgs
+DB_PASS=rhgs
+DB_NAME=rhgs
+DB_CONTAINER_NAME=rhgs-postgres
+
 help: ## Display this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.gitignore:
-	curl -q "https://www.toptal.com/developers/gitignore/api/visualstudiocode,python" > $@
+css/%.css: scss/%.scss $(SCSS_PARTIALS)
+	sass $< $@
 
-.git: .gitignore
-	git init
+css: $(CSS)
+	@echo Compiled $(CSS)
 
-requirements.dev.in:
-	@echo "pre-commit" >> $@
-	@echo "pip-tools" >> $@
-	@echo "pytest" >> $@
-	@echo "icecream" >> $@
+watch-css:
+	inotifywait -m -r -e modify,create,delete ./scss/ | while read NEWFILE; do $(MAKE) css; done
 
-requirements.in:
-	@touch $@
+.envrc: runtime.txt
+	@echo layout python $(shell cat $^ | tr -d "-" | egrep -o "python[0-9]\.[0-9]+") >> $@
+	@echo export DATABASE_URL="postgres://$(DB_USER):$(DB_PASS)@localhost:5432/$(DB_NAME)" >> $@
+	@echo "Created .envrc, run make again"
+	direnv exec . make init
+	@false
 
-requirements.%.txt: requirements.%.in
+requirements.%.txt: requirements.%.in requirements.txt
 	@echo "Builing $@"
-	@pip-compile --generate-hashes -q -o $@ $^
+	@pip-compile --generate-hashes -q -o $@ $<
+	@touch $@
 
 requirements.txt: requirements.in
 	@echo "Builing $@"
 	@pip-compile --generate-hashes -q $^
 
-.direnv: .envrc
-	pip install --upgrade pip
-	pip install wheel pip-tools
-	@touch $@ $^
-
-.git/hooks/pre-commit:
-	pre-commit install
-
-.envrc:
-	@echo "Setting up .envrc then stopping"
-	@echo "layout python python3.10" > $@
-	@touch -d '+1 minute' $@
-	@false
-
-init: .direnv .git .git/hooks/pre-commit requirements.dev.in ## Initalise a enviroment
-
-clean: ## Remove all build files
-	find . -name '*.pyc' -delete
-	find . -type d -name '__pycache__' -delete
-	rm -rf .pytest_cache
-	rm -f .testmondata
-
-install: requirements.txt $(REQS) ## Install development requirements (default)
+install: requirements.txt $(REQS) ## Install development requirements
 	@echo "Installing $^"
 	@pip-sync $^
 
-dev: init install ## Start work
-	code .
+$(HOOKS):
+	pre-commit install
+
+pre-init:
+	pip install wheel pip-tools
+
+init: .envrc pre-init install $(HOOKS) ## Initalise a dev enviroment
+	@which direnv > /dev/null || echo "direnv not found but recommended"
+	@echo "Read to dev"
+
+postgres-down:
+	@echo "Stopping any excisting postgres containers"
+	@docker stop $(DB_CONTAINER_NAME) || true
+	@docker rm $(DB_CONTAINER_NAME) || true
+
+postgres: postgres-down
+	docker run --name $(DB_CONTAINER_NAME) -p 5432:5432 -e POSTGRES_PASSWORD=$(DB_PASS) -e POSTGRES_USER=$(DB_USER) -d postgres
+
+latest.dump:
+	@echo "Dumping database"
+	heroku pg:backups:capture --app $(HEROKU_APP_NAME)
+	heroku pg:backups:download --app $(HEROKU_APP_NAME)
+
+restoredb: latest.dump
+	@echo "Restoring database"
+	docker exec -i $(DB_CONTAINER_NAME) /bin/bash -c "pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $(DB_USER) -d $(DB_NAME)" < $?
+
+clean:
+	rm -f latest.dump
+	rm -rf css/*
