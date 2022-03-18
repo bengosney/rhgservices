@@ -18,6 +18,10 @@ DB_CONTAINER_NAME=rhgs-postgres
 help: ## Display this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+node_modules: package-lock.json ## Install node modules
+	npm install
+	touch $@
+
 css/%.css: scss/%.scss $(SCSS_PARTIALS)
 	sass $< $@
 
