@@ -1,0 +1,29 @@
+
+<form method="post" action="{{ action }}" id="{{ id }}">
+  {% csrf_token %}
+
+  <div class="row 50%">
+    {{ form.non_field_errors }}
+    {% for field in form %}
+    <div class="fieldWrapper {{ field.id_for_label }} 12u">
+      {{ field.errors }}
+      {% if field.field.widget.input_type == 'checkbox' %}
+      {{ field }}
+      {{ field.label_tag }}
+      {% else %}
+      {{ field }}
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    <div class="12u">
+	This form collects your data so we are able to respond to your enquiry. We only keep the data long enough to reply to your enquiry.
+    </div>
+
+    <div class="12u">
+      <ul class="actions">
+	<li><input type="submit" class="button alt" value="Send Message" /></li>
+      </ul>
+    </div>
+  </div>
+</form>

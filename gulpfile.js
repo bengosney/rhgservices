@@ -1,7 +1,7 @@
 const gulp = require("gulp");
 const debug = require('gulp-debug');
 
-gulp.task("scss", () => {
+gulp.task("css", () => {
   const dartSass = require("sass");
   const gulpSass = require("gulp-sass");
   const postcss = require("gulp-postcss");
@@ -16,10 +16,10 @@ gulp.task("scss", () => {
   const sass = gulpSass(dartSass);
 
   return gulp
-    .src("scss/*.scss")
+    .src("./scss/*.scss")
     .pipe(sourcemaps.init())
     .pipe(sass.sync())
-    .pipe(purify(["**/!(vendor|node_modules)/*.{html,js}"]))
+    //.pipe(purify(["**/!(vendor|node_modules)/*.{html,js}"]))
     .pipe(
       postcss([
         postcssPresetEnv({ stage: 0 }),
@@ -28,8 +28,8 @@ gulp.task("scss", () => {
       ])
     )
     .pipe(postcss([cssnano()]))
-    .pipe(sourcemaps.write("./css/"))
-    .pipe(gulp.dest("./css/"));
+    .pipe(sourcemaps.write("/"))
+    .pipe(gulp.dest("rhgs/static/css/"));
 });
 
 gulp.task("img", () => {
@@ -42,5 +42,8 @@ gulp.task("img", () => {
       speed: 0,
       quality: 60,
     }))
-    .pipe(gulp.dest("./img/"));
+    .pipe(gulp.dest("./static/img/"));
 });
+
+gulp.task("default", () => gulp.watch("scss/**/*.scss", gulp.series("css")));
+gulp.task("build", () => gulp.parallel("css", "img"));

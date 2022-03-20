@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+<div class="box highlight">
+    <picture style="background: green" class="icon">
+        {% image value.image max-64x64 format-webp as image_webp %}
+        <source srcset="{{ image_webp.url }}" type="image/webp">
+
+        {% image value.image max-64x64 format-png as image_png %}
+        <source srcset="{{ image_png.url }}" type="image/png">
+
+        {% image value.image max-64x64 format-png %}
+    </picture>
+    <h3>{{ value.title }}</h3>
+    <p>{{ value.paragraph }}</p>
+</div>

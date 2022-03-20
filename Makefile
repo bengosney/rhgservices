@@ -1,4 +1,4 @@
-.PHONY := install, help, init, pre-init
+.PHONY := install, help, init, pre-init, css
 .DEFAULT_GOAL := install
 
 HOOKS=$(.git/hooks/pre-commit)
@@ -22,19 +22,21 @@ node_modules: package-lock.json ## Install node modules
 	npm install
 	touch $@
 
-css/%.css: scss/%.scss $(SCSS_PARTIALS)
+static/css/%.css: scss/%.scss $(SCSS_PARTIALS)
 	sass $< $@
 
-css: $(CSS)
-	@echo Compiled $(CSS)
+css: ##$(CSS)
+	npx gulp css
 
 watch-css:
 	inotifywait -m -r -e modify,create,delete ./scss/ | while read NEWFILE; do $(MAKE) css; done
 
 .envrc: runtime.txt
-	@echo layout python $(shell cat $^ | tr -d "-" | egrep -o "python[0-9]\.[0-9]+") >> $@
+	@echo layout python $(shell cat $^ | tr -d "-" | egrep -o "python[0-9]\.[0-9]+") > $@
 	@echo export DATABASE_URL="postgres://$(DB_USER):$(DB_PASS)@localhost:5432/$(DB_NAME)" >> $@
 	@echo "Created .envrc, run make again"
+	@touch requirements.in
+	@touch $(INS)
 	direnv exec . make init
 	@false
 
@@ -55,6 +57,7 @@ $(HOOKS):
 	pre-commit install
 
 pre-init:
+	pip install --upgrade pip
 	pip install wheel pip-tools
 
 init: .envrc pre-init install $(HOOKS) ## Initalise a dev enviroment
