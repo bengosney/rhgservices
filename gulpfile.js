@@ -10,8 +10,10 @@ gulp.task("css", () => {
   const cssnano = require("cssnano");
   const combine_media_query = require("postcss-combine-media-query");
   const postcssPresetEnv = require("postcss-preset-env");
+  const inlineimage = require('gulp-inline-image');
 
-  var purify = require("gulp-purifycss");
+  const purify = require("gulp-purifycss");
+
 
   const sass = gulpSass(dartSass);
 
@@ -19,6 +21,7 @@ gulp.task("css", () => {
     .src("./scss/*.scss")
     .pipe(sourcemaps.init())
     .pipe(sass.sync())
+    .pipe(inlineimage())
     //.pipe(purify(["**/!(vendor|node_modules)/*.{html,js}"]))
     .pipe(
       postcss([

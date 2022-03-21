@@ -1,8 +1,8 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 
-<div class="box highlight">
-    <picture style="background: green" class="icon">
+<div class="infopod">
+    <picture class="icon">
         {% image value.image max-64x64 format-webp as image_webp %}
         <source srcset="{{ image_webp.url }}" type="image/webp">
 

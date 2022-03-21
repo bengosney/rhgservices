@@ -1,0 +1,7 @@
+.block-Callout {
+    background-color: #fff;
+    background-image: inline-image("images/bg02.png"), inline-image("images/bg03.png"), inline-image("images/bg01.png");
+    background-position: top left, bottom left, top left;
+    background-size: 100% 6em, 100% 6em, auto;
+    background-repeat: no-repeat, no-repeat, repeat;
+}

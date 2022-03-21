@@ -1,0 +1,42 @@
+@use "sass:math";
+
+.block-InfoPod {
+    $icon-size: 64px;
+    @extend .container;
+
+    .flex_block {
+        justify-content: space-around;
+    }
+
+    .infopod {
+        max-width: 25%;
+
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 math.div($icon-size, 2);
+    }
+
+    .icon {
+        background: palette('accent-bg');
+        height: $icon-size;
+        width: $icon-size;
+        padding: math.div($icon-size, 5);
+        display: block;
+        border-radius: 50%;
+        box-shadow: 0 0 0 7px #fff, 0 0 0 8px #e0e0e0;
+    }
+
+    ul {
+        display: flex;
+        padding: 0;
+        margin: 0;
+
+        li {
+            flex: 1;
+        }
+    }
+}
