@@ -1,5 +1,4 @@
-# Third Party
-from icecream import ic
+# Wagtail
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -16,13 +15,6 @@ class InfoPodBlock(blocks.StructBlock):
 
     class Meta:
         template = "pages/blocks/infopod.html"
-
-    def get_form_context(self, value, prefix="", errors=None):
-        context = super().get_form_context(value, prefix=prefix, errors=errors)
-        ic(context)
-        print(context)
-        print("-----")
-        return context
 
 
 class CallOutBlock(blocks.StructBlock):

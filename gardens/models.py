@@ -1,7 +1,7 @@
 # Django
 from django.db import models
 
-# Third Party
+# Wagtail
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField
