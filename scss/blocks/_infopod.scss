@@ -20,14 +20,16 @@
         padding: 0 math.div($icon-size, 2);
     }
 
-    .icon {
-        background: palette('accent-bg');
-        height: $icon-size;
+    img {
+        box-sizing: border-box;
+        background: palette('accent', 'bg');
+        height: auto;
         width: $icon-size;
-        padding: math.div($icon-size, 5);
+        max-width: 100%;
+        padding: 0.5em;
         display: block;
         border-radius: 50%;
-        box-shadow: 0 0 0 7px #fff, 0 0 0 8px #e0e0e0;
+        box-shadow: 0 0 0 0.4em #fff, 0 0 0 0.5em #e0e0e0;
     }
 
     ul {

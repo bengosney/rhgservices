@@ -1,5 +1,17 @@
 @use "sass:map";
 
-@function palette($color) {
-  @return map.get($palette, $color);
+@function val($map, $keys...) {
+  @if nth($keys, 1) == null {
+    $keys: remove-nth($keys, 1);
+  }
+
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+@function palette($color...) {
+  @return val($palette, $color...);
 }

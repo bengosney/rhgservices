@@ -5,7 +5,7 @@ description = "Corporate website for R H Garden Services"
 authors = [
     "Ben Gosney <bengosney@googlemail.com>"
 ]
-python = "^3.8"
+python = "^3.10"
 homepage = "https://www.rhgservices.co.uk/"
 repository = "https://github.com/bengosney/rhgservices/"
 
@@ -15,7 +15,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.black]
 line-length = 128
-target-version = ['py38']
+target-version = ['py310']
 
 [tool.pycln]
 all = true

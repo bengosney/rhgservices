@@ -3,10 +3,10 @@
 
 <div class="infopod">
     <picture class="icon">
-        {% image value.image max-64x64 format-webp as image_webp %}
-        <source srcset="{{ image_webp.url }}" type="image/webp">
-
         {% image value.image max-64x64 format-png as image_png %}
+        {% image value.image max-64x64 format-webp as image_webp %}
+
+        <source srcset="{{ image_webp.url }}" type="image/webp">
         <source srcset="{{ image_png.url }}" type="image/png">
 
         {% image value.image max-64x64 format-png %}
