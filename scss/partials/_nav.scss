@@ -1,0 +1,23 @@
+nav {
+    &.main {
+        background: palette(accent, bg);
+        a {
+            color: palette(accent, fg);
+        }
+
+        ul {
+            @extend .container;
+
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            li {
+                display: block;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+        }
+    }
+}

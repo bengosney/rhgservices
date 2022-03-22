@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailuserbar %}
+{% load static wagtailcore_tags wagtailuserbar navigation_tags %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -28,6 +28,9 @@
         {% wagtailuserbar %}
 
         <img src="{% static 'img/logo.png' %}" alt="RH Garden Services" class="logo" />
+
+        {% include "header.html" %}
+
         {% block content %}{% endblock %}
 
         {# Global javascript #}
