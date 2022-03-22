@@ -27,7 +27,9 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
-        <img src="{% static 'img/logo.png' %}" alt="RH Garden Services" class="logo" />
+        <header class="container">
+            <img src="{% static 'img/logo.png' %}" alt="RH Garden Services" class="logo" />
+        </header>
 
         {% include "header.html" %}
 

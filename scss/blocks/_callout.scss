@@ -1,7 +1,15 @@
 .block-Callout {
-    background-color: #fff;
-    background-image: inline-image("images/bg02.png"), inline-image("images/bg03.png"), inline-image("images/bg01.png");
-    background-position: top left, bottom left, top left;
-    background-size: 100% 6em, 100% 6em, auto;
-    background-repeat: no-repeat, no-repeat, repeat;
+    box-shadow: inset 0 0 10vw #000;
+    padding: 3rem 0;
+    text-align: center;
+
+    h2, p {
+        padding: 0;
+        margin: 0;
+    }
+
+    hr {
+        border-top: 1px dotted palette('accent', 'bg');
+        margin: 1em 0;
+    }
 }
