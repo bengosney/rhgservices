@@ -8,7 +8,7 @@
   }
 
   summary {
-      font-weight: bold;
+    font-weight: bold;
   }
 
   position: relative;
@@ -34,10 +34,10 @@
     float: right;
     position: relative;
     overflow: hidden;
-    transition: transform .5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 
     &:hover {
-        transform: rotate(180deg);
+      transform: rotate(180deg);
     }
 
     &::before,

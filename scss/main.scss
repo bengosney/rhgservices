@@ -113,10 +113,7 @@ textarea {
 }
 
 a {
-  @include vendor(
-    "transition",
-    "color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out"
-  );
+  @include vendor("transition", "color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out");
   color: _palette(accent, bg);
   text-decoration: none;
   border-bottom: dotted 1px;
@@ -521,10 +518,7 @@ table {
       background-color: #555555;
       @include vendor(
         "background-image",
-        (
-          "linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15))",
-          'url("images/bg01.png")'
-        )
+        ("linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15))", 'url("images/bg01.png")')
       );
       color: #fff;
     }
@@ -550,10 +544,7 @@ input[type="button"],
   );
   @include vendor(
     "background-image",
-    (
-      "linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15))",
-      'url("images/bg01.png")'
-    )
+    ("linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15))", 'url("images/bg01.png")')
   );
   background-color: _palette(accent, bg);
   border-radius: _size(radius);
@@ -669,8 +660,7 @@ input[type="button"],
   text-align: center;
   padding: 3em 0 0 0;
   background-color: #fff;
-  background-image: inline-image("images/bg02.png"),
-    inline-image("images/bg02.png"), inline-image("images/bg01.png");
+  background-image: inline-image("images/bg02.png"), inline-image("images/bg02.png"), inline-image("images/bg01.png");
   background-position: top left, top left, top left;
   background-size: 100% 6em, 100% 6em, auto;
   background-repeat: no-repeat, no-repeat, repeat;
@@ -699,10 +689,7 @@ input[type="button"],
   background-color: #333;
   @include vendor(
     "background-image",
-    (
-      "linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3))",
-      'url("images/bg01.png")'
-    )
+    ("linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3))", 'url("images/bg01.png")')
   );
   padding: 0;
 
@@ -788,10 +775,7 @@ input[type="button"],
   background-color: #333;
   @include vendor(
     "background-image",
-    (
-      "linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0))",
-      'url("images/bg01.png")'
-    )
+    ("linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0))", 'url("images/bg01.png")')
   );
   border-radius: _size(radius);
   color: #fff;
@@ -886,8 +870,7 @@ input[type="button"],
 
   &.style2 {
     background-color: #fff;
-    background-image: inline-image("images/bg02.png"),
-      inline-image("images/bg03.png"), inline-image("images/bg01.png");
+    background-image: inline-image("images/bg02.png"), inline-image("images/bg03.png"), inline-image("images/bg01.png");
     background-position: top left, bottom left, top left;
     background-size: 100% 6em, 100% 6em, auto;
     background-repeat: no-repeat, no-repeat, repeat;
@@ -897,10 +880,7 @@ input[type="button"],
     background-color: _palette(accent, bg);
     @include vendor(
       "background-image",
-      (
-        "linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15))",
-        'url("images/bg01.png")'
-      )
+      ("linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15))", 'url("images/bg01.png")')
     );
     color: _palette(accent, fg);
 
@@ -1233,10 +1213,7 @@ input[type="button"],
     background-color: #333;
     @include vendor(
       "background-image",
-      (
-        "linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3))",
-        'url("images/bg01.png")'
-      )
+      ("linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3))", 'url("images/bg01.png")')
     );
     height: 44px;
     line-height: 44px;
@@ -1289,10 +1266,7 @@ input[type="button"],
     box-shadow: inset -1px 0 3px 0 rgba(0, 0, 0, 0.5);
     @include vendor(
       "background-image",
-      (
-        "linear-gradient(left, rgba(0,0,0,0) 75%, rgba(0,0,0,0.15))",
-        'url("images/bg01.png")'
-      )
+      ("linear-gradient(left, rgba(0,0,0,0) 75%, rgba(0,0,0,0.15))", 'url("images/bg01.png")')
     );
     @include vendor("backface-visibility", "hidden");
     @include vendor("transform", "translateX(#{_size(navPanel) * -1})");

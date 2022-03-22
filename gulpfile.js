@@ -23,13 +23,7 @@ gulp.task("css", () => {
       .pipe(sass.sync())
       .pipe(inlineimage())
       //.pipe(purify(["**/!(vendor|node_modules)/*.{html,js}"]))
-      .pipe(
-        postcss([
-          postcssPresetEnv({ stage: 0 }),
-          autoprefixer(),
-          combine_media_query(),
-        ])
-      )
+      .pipe(postcss([postcssPresetEnv({ stage: 0 }), autoprefixer(), combine_media_query()]))
       .pipe(postcss([cssnano()]))
       .pipe(sourcemaps.write("/"))
       .pipe(gulp.dest("rhgs/static/css/"))
@@ -52,14 +46,14 @@ gulp.task("img", () => {
 });
 
 gulp.task("default", () => {
-  const browserSync = require('browser-sync').create();
+  const browserSync = require("browser-sync").create();
 
   browserSync.init({
     proxy: "localhost:8000",
   });
 
   gulp.watch("scss/**/*.scss", gulp.series("css"));
-  gulp.watch("rhgs/static/css/**/*.css").on('change', browserSync.reload);
-  gulp.watch("**/templates/**/*.html").on('change', browserSync.reload);
+  gulp.watch("rhgs/static/css/**/*.css").on("change", browserSync.reload);
+  gulp.watch("**/templates/**/*.html").on("change", browserSync.reload);
 });
 gulp.task("build", () => gulp.parallel("css", "img"));

@@ -1,52 +1,52 @@
 @use "sass:math";
 
 .block-InfoPod {
-    padding: 2em 0;
-    $icon-size: 64px;
-    @extend .container;
+  padding: 2em 0;
+  $icon-size: 64px;
+  @extend .container;
 
-    .flex_block {
-        justify-content: space-around;
+  .flex_block {
+    justify-content: space-around;
+  }
+
+  .infopod {
+    max-width: 30%;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 math.div($icon-size, 2);
+  }
+
+  p {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  img {
+    box-sizing: border-box;
+    background: palette("accent", "bg");
+    height: auto;
+    width: calc($icon-size + 1em);
+    max-width: 100%;
+    padding: 0.5em;
+    display: block;
+    border-radius: 50%;
+    //box-shadow: 0 0 0 0.4em #fff, 0 0 0 0.5em #e0e0e0;
+    border: solid 3px palette("accent", "fg");
+  }
+
+  ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+
+    li {
+      flex: 1;
     }
-
-    .infopod {
-        max-width: 30%;
-
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0 math.div($icon-size, 2);
-    }
-
-    p {
-        text-align: center;
-        padding: 0;
-        margin: 0;
-    }
-
-    img {
-        box-sizing: border-box;
-        background: palette('accent', 'bg');
-        height: auto;
-        width: calc($icon-size + 1em);
-        max-width: 100%;
-        padding: 0.5em;
-        display: block;
-        border-radius: 50%;
-        //box-shadow: 0 0 0 0.4em #fff, 0 0 0 0.5em #e0e0e0;
-        border: solid 3px palette('accent', 'fg');
-    }
-
-    ul {
-        display: flex;
-        padding: 0;
-        margin: 0;
-
-        li {
-            flex: 1;
-        }
-    }
+  }
 }
