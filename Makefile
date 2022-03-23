@@ -1,4 +1,4 @@
-.PHONY := install, help, init, pre-init, css
+.PHONY := install, help, init, pre-init, css, pip
 .DEFAULT_GOAL := install
 
 HOOKS=$(.git/hooks/pre-commit)
@@ -49,9 +49,11 @@ requirements.txt: requirements.in
 	@echo "Builing $@"
 	@pip-compile --generate-hashes -q $^
 
-install: requirements.txt $(REQS) ## Install development requirements
+pip: requirements.txt $(REQS) ## Install development requirements
 	@echo "Installing $^"
 	@pip-sync $^
+
+install: pip node_modules
 
 $(HOOKS):
 	pre-commit install
