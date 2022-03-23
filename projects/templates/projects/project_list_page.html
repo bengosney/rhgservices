@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-project{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ page.title }}</h1>
+        <div class="intro">{{ page.body|richtext }}</div>
+    </div>
+    <div class="project-pods container">
+    {% for project in page.get_children %}
+        {% with project=project.specific %}
+        <div class="pod">
+            <div class="pod-img">
+                {% image project.banner_image fill-200x200 format-jpeg %}
+            </div>
+            <div class="pod-details">
+                <h2>
+                    {{ project.title }}
+                </h2>
+                <p>
+                {% if project.short_description|length > 0 %}
+                    {{ project.short_description }}
+                {% else %}
+                    {{ project.body | striptags | truncatechars:150 }}
+                {% endif %}
+                </p>
+                <div>
+                    <a href="{% pageurl project %}">Read more</a>
+                </div>
+            </div>
+        </div>
+        {% endwith %}
+    {% endfor %}
+    </div>
+{% endblock content %}

@@ -2,9 +2,8 @@
 from django.db import models
 
 # Wagtail
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
-from wagtail.core import blocks
-from wagtail.core.fields import StreamField
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
@@ -12,6 +11,20 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
+
+
+class ProjectListPage(Page):
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("body"),
+    ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        projectpages = self.get_children().live().order_by("-first_published_at")
+        context["projectpages"] = projectpages
+        return context
 
 
 class ProjectTag(TaggedItemBase):
@@ -35,16 +48,11 @@ class ProjectImage(Orderable):
 class Project(Page):
     sub_title = models.CharField(max_length=250, blank=True)
     tags = ClusterTaggableManager(through=ProjectTag, blank=True)
-    body = StreamField(
-        [
-            ("paragraph", blocks.RichTextBlock()),
-        ]
-    )
+    short_description = models.CharField(max_length=150, blank=True)
+    body = RichTextField(blank=True)
 
     def banner_image(self):
         return img.image if (img := self.images.first()) else None
-
-    print(Page.content_panels)
 
     content_panels = [
         MultiFieldPanel(
@@ -56,5 +64,6 @@ class Project(Page):
             heading="Project Information",
         ),
         InlinePanel("images", label="Images"),
-        StreamFieldPanel("body"),
+        FieldPanel("short_description"),
+        FieldPanel("body"),
     ]

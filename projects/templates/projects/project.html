@@ -31,18 +31,18 @@
 <div class="container">
     {% for image in page.images.all %}
     <picture>
-        {% image image.image width-640 format-jpeg as image_jpg %}
-        {% image image.image width-640 format-webp as image_webp %}
+        {% image image.image fill-640x360 format-jpeg as image_jpg %}
+        {% image image.image fill-640x360 format-webp as image_webp %}
 
-        <source srcset="{{ image_webp.url }}" type="image/webp">
         <source srcset="{{ image_jpg.url }}" type="image/jpeg">
+        <source srcset="{{ image_webp.url }}" type="image/webp">
 
-        {% image page.banner_image width-640 format-jpeg as image_base %}
+        {% image page.banner_image fill-640x360 format-jpeg as image_base %}
         <img src="{{ image_base.url }}" alt="{{ image_base.alt }}" />
     </picture>
     {% endfor %}
 </div>
 <div class="container">
-    {% include_block page.body %}
+    {{ page.body|richtext }}
 </div>
 {% endblock %}

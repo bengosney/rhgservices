@@ -8,6 +8,7 @@
 @import "partials/nav";
 @import "partials/banner_image";
 @import "partials/footer";
+@import "partials/project_pods";
 
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
 @import url("https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC");
@@ -139,6 +140,10 @@ h6 {
     font-style: normal;
     font-weight: 300;
   }
+}
+
+h1 {
+  text-decoration: underline palette(accent, bg);
 }
 
 h2 {

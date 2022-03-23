@@ -1,0 +1,45 @@
+.project-pods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  padding-bottom: 2em;
+
+  .pod {
+    box-sizing: border-box;
+    padding: 0;
+    display: flex;
+
+    .pod-img {
+    }
+
+    .pod-details {
+      padding-left: 1em;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      h2 {
+        padding: 0 0 0.75em 0;
+        margin: 0;
+        line-height: 1em;
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 1em;
+        line-height: 1.5em;
+        padding: 0;
+        margin: 0;
+        flex: 1;
+      }
+
+      div {
+        text-align: right;
+        a {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
