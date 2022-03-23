@@ -11,12 +11,18 @@
         {% image page.banner_image fill-800x400 format-webp as image_webp %}
         {% image page.banner_image fill-1600x484 format-jpeg as image_jpg_lg %}
         {% image page.banner_image fill-1600x484 format-webp as image_webp_lg %}
+        {% image page.banner_image fill-1920x500 format-jpeg as image_jpg_xl %}
+        {% image page.banner_image fill-1920x500 format-webp as image_webp_xl %}
 
         <source srcset="{{ image_webp.url }}" type="image/webp" media="(max-width: 800px)">
         <source srcset="{{ image_jpg.url }}" type="image/jpeg" media="(max-width: 800px)">
 
-        <source srcset="{{ image_webp_lg.url }}" type="image/webp">
-        <source srcset="{{ image_jpg_lg.url }}" type="image/jpeg">
+        <source srcset="{{ image_webp_lg.url }}" type="image/webp" media="(max-width: 1600px)">
+        <source srcset="{{ image_jpg_lg.url }}" type="image/jpeg" media="(max-width: 1600px)">
+
+        <source srcset="{{ image_webp_xl.url }}" type="image/webp">
+        <source srcset="{{ image_jpg_xl.url }}" type="image/jpeg">
+
 
         {% image page.banner_image fill-1600x484 format-jpeg as image_base %}
         <img src="{{ image_base.url }}" alt="{{ image_base.alt }}" />
