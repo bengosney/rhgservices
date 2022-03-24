@@ -10,7 +10,7 @@
         <div class="intro">{{ page.body|richtext }}</div>
     </div>
     <div class="project-pods container">
-    {% for project in page.get_children %}
+    {% for project in projectpages %}
         {% with project=project.specific %}
         <div class="pod">
             <div class="pod-img">
