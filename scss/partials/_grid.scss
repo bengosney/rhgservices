@@ -1,0 +1,17 @@
+@use "sass:math";
+
+$gutter: 2rem;
+$_margin: math.div($gutter, 2);
+.row {
+  display: flex;
+  margin-left: $_margin;
+  margin-right: $_margin;
+
+  .col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    padding-left: $_margin;
+    padding-right: $_margin;
+  }
+}

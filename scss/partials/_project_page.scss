@@ -1,0 +1,23 @@
+.template-project {
+  .slider {
+    width: 100%;
+    height: auto;
+    max-width: 640px;
+    max-height: 360px;
+
+    .inner {
+      width: 100%;
+      padding-top: 56.25%;
+    }
+  }
+
+  .main-body {
+    padding-top: 1em;
+  }
+
+  .header {
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+}

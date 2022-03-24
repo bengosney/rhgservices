@@ -5,9 +5,9 @@
     display: block;
     transition: 0.2s all linear;
     opacity: 0;
-    width: auto;
-    max-height: 0;
-    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   input {
@@ -16,12 +16,32 @@
 
   input:checked + .slide {
     opacity: 1;
-    max-height: 100vw;
+  }
+
+  .slide-nav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+
+    label {
+      line-height: 1em;
+      display: inline-block;
+      color: palette(accent, fg);
+      font-size: 4rem;
+      text-shadow: 0px 0px 1rem black;
+      cursor: pointer;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 
   @for $i from 1 through 20 {
     input#slide-#{$i}:checked ~ .slide-nav .slide-label-#{$i} {
-      color: red;
+      color: palette(accent, bg);
     }
   }
 }
