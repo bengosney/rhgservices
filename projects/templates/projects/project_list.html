@@ -1,0 +1,28 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="project-pods container">
+{% for project in projects %}
+    {% with project=project.specific %}
+    <div class="pod">
+        <div class="pod-img">
+            {% image project.banner_image fill-200x200 format-jpeg %}
+        </div>
+        <div class="pod-details">
+            <h2>
+                <a href="{% pageurl project %}">{{ project.title }}</a>
+            </h2>
+            <p>
+            {% if project.short_description|length > 0 %}
+                {{ project.short_description }}
+            {% else %}
+                {{ project.body | striptags | truncatechars:150 }}
+            {% endif %}
+            </p>
+            <div>
+                <a href="{% pageurl project %}">Read more</a>
+            </div>
+        </div>
+    </div>
+    {% endwith %}
+{% endfor %}
+</div>

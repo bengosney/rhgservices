@@ -8,6 +8,9 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+# First Party
+from projects.models import Project
+
 # Locals
 from .blocks import CallOutBlock, FlexBlock, InfoPodBlock
 
@@ -26,6 +29,13 @@ class HomePage(Page):
         ImageChooserPanel("banner_image"),
         StreamFieldPanel("body"),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+
+        context["projects"] = Page.objects.live().type(Project)[:4]
+
+        return context
 
 
 class InfoPage(Page):
