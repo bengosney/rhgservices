@@ -27,17 +27,16 @@
         {% image page.banner_image fill-1600x484 format-jpeg as image_base %}
         <img src="{{ image_base.url }}" alt="{{ image_base.alt }}" />
     </picture>
+
+    <div class="header">
+        <div class="container">
+            <h1>{{ page.title }}</h1>
+            <p>{{ page.sub_title }}</p>
+        </div>
+    </div>
 </div>
 <div class="main-body">
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="header">
-                    <h1>{{ page.title }}</h1>
-                    <p>{{ page.sub_title }}</p>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col">
                 <div class="slider">
