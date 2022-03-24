@@ -1,0 +1,27 @@
+.slider {
+  position: relative;
+
+  .slide {
+    display: block;
+    transition: 0.2s all linear;
+    opacity: 0;
+    width: auto;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked + .slide {
+    opacity: 1;
+    max-height: 100vw;
+  }
+
+  @for $i from 1 through 20 {
+    input#slide-#{$i}:checked ~ .slide-nav .slide-label-#{$i} {
+      color: red;
+    }
+  }
+}
