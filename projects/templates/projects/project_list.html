@@ -3,13 +3,13 @@
 <div class="project-pods container">
 {% for project in projects %}
     {% with project=project.specific %}
-    <div class="pod">
+    <a href="{% pageurl project %}" class="pod">
         <div class="pod-img">
             {% image project.banner_image fill-200x200 format-jpeg %}
         </div>
         <div class="pod-details">
             <h2>
-                <a href="{% pageurl project %}">{{ project.title }}</a>
+                {{ project.title }}
             </h2>
             <p>
             {% if project.short_description|length > 0 %}
@@ -19,10 +19,10 @@
             {% endif %}
             </p>
             <div>
-                <a href="{% pageurl project %}">Read more</a>
+                <span href="{% pageurl project %}">Read more</span>
             </div>
         </div>
-    </div>
+    </a>
     {% endwith %}
 {% endfor %}
 </div>
