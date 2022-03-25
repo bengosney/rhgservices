@@ -1,30 +1,37 @@
 @use "sass:math";
 
 .block-InfoPod {
-  padding: 2em 0;
   $icon-size: 64px;
   @extend .container;
 
   .flex_block {
     justify-content: space-around;
+    flex-wrap: wrap;
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
   }
 
   .infopod {
     max-width: 30%;
-
+    @media screen and (max-width: 992px) {
+      max-width: 100%;
+    }
     display: flex;
     flex-direction: column;
     flex: 1;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 0 math.div($icon-size, 2);
+    padding: 2em math.div($icon-size, 2);
   }
 
   p {
     text-align: center;
     padding: 0;
     margin: 0;
+    font-size: 0.9em;
+    line-height: 1.5em;
   }
 
   img {

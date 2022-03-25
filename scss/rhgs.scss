@@ -21,11 +21,13 @@
 
 :root {
   --max-width: 100%;
+  --container-padding: 1em;
 }
 
 @media screen and (min-width: 576px) {
   :root {
     --max-width: 540px;
+    --container-padding: 0;
   }
 }
 @media screen and (min-width: 768px) {
@@ -50,12 +52,25 @@
 }
 
 ::selection {
-  background: palette(accent, bg); /* WebKit/Blink Browsers */
+  background: palette(accent, bg);
+  color: palette(accent, fg);
 }
 
 .container {
   max-width: var(--max-width);
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
   margin: 0 auto;
+
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .logo {
