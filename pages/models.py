@@ -32,8 +32,8 @@ class HomePage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-
-        context["projects"] = Page.objects.live().type(Project)[:4]
+        garden_tag = Project.tags.get(name__in=["garden", "homepage"])
+        context["projects"] = Project.objects.live().filter(tags__in=[garden_tag])[:4]
 
         return context
 

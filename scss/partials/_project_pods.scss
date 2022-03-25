@@ -1,16 +1,9 @@
-:root {
-  --project-pods-grid: 1fr 1fr;
-}
-
-@media screen and (max-width: 992px) {
-  :root {
-    --project-pods-grid: 1fr;
-  }
-}
-
 .project-pods {
   display: grid;
-  grid-template-columns: var(--project-pods-grid);
+  grid-template-columns: 1fr 1fr;
+  @media screen and (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
   gap: 2em;
   padding-bottom: 2em;
 
@@ -59,7 +52,9 @@
     }
 
     .pod-details {
-      min-width: 75vw;
+      @media screen and (max-width: 992px) {
+        min-width: 75%;
+      }
       padding-left: 1em;
       font-size: 1rem;
       display: flex;
