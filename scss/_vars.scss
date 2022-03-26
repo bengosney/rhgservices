@@ -11,5 +11,7 @@ $palette: (
   accent: (
     bg: #8dca31,
     fg: #fff,
+    darker: darken(#8dca31, 10%),
+    lighter: lighten(#8dca31, 10%),
   ),
 );

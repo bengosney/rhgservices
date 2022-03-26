@@ -53,7 +53,7 @@ nav {
             display: inline;
             content: " ";
             position: absolute;
-            right: 0; //-1.5em;
+            right: 0;
             top: calc(50% - 0.25em);
             width: 0;
             height: 0;
@@ -132,6 +132,69 @@ nav {
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      &::before {
+        z-index: 9999;
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      & > ul {
+        box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+        background: palette(bg);
+        position: fixed;
+        overflow-y: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 275px;
+        z-index: 10003;
+        height: 100%;
+
+        li {
+          padding: 0.5em 1em;
+
+          &.active {
+            a {
+              &::before {
+                content: none;
+              }
+            }
+          }
+
+          &.has-submenu {
+            ul {
+              display: flex;
+              position: static;
+
+              padding: 0;
+              margin: 0;
+            }
+          }
+        }
+
+        &.nav {
+          &::before {
+            content: "Menu";
+            background: palette(accent, bg);
+            padding: 0.5em 1em;
+            font-weight: bold;
           }
         }
       }
