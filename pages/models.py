@@ -8,11 +8,8 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-# First Party
-from projects.models import Project
-
 # Locals
-from .blocks import CallOutBlock, FlexBlock, InfoPodBlock
+from .blocks import CallOutBlock, FlexBlock, InfoPodBlock, ProjectsBlock
 
 
 class HomePage(Page):
@@ -21,7 +18,8 @@ class HomePage(Page):
         [
             ("Callout", CallOutBlock()),
             ("InfoPod", FlexBlock(InfoPodBlock())),
-            ("paragraph", blocks.RichTextBlock()),
+            ("Paragraph", blocks.RichTextBlock()),
+            ("Projects", ProjectsBlock()),
         ]
     )
 
@@ -30,20 +28,13 @@ class HomePage(Page):
         StreamFieldPanel("body"),
     ]
 
-    def get_context(self, request, *args, **kwargs):
-        context = super().get_context(request, *args, **kwargs)
-        garden_tag = Project.tags.get(name__in=["garden", "homepage"])
-        context["projects"] = Project.objects.live().filter(tags__in=[garden_tag])[:4]
-
-        return context
-
 
 class InfoPage(Page):
     body = StreamField(
         [
             ("Callout", CallOutBlock()),
             ("InfoPod", blocks.ListBlock(InfoPodBlock())),
-            ("paragraph", blocks.RichTextBlock()),
+            ("Paragraph", blocks.RichTextBlock()),
         ]
     )
 

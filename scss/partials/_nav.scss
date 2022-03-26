@@ -2,6 +2,8 @@
 
 nav {
   &.main {
+    $border-size: 1px;
+
     border-bottom: 0.5em solid palette(accent, bg);
     a {
       position: relative;
@@ -12,7 +14,7 @@ nav {
     }
 
     .active {
-      a {
+      > a {
         font-weight: 600;
         color: palette(fg);
         &::before {
@@ -41,6 +43,83 @@ nav {
         padding: 0;
         margin: 0;
         list-style: none;
+      }
+    }
+
+    ul {
+      li {
+        position: relative;
+        &:hover {
+          > ul {
+            display: block;
+          }
+        }
+
+        ul {
+          font-size: 1rem;
+          display: none;
+          position: absolute;
+          z-index: 9999;
+          background: palette(bg);
+          border: $border-size solid palette(accent, bg);
+          padding: 0;
+          margin: 0;
+          box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+
+          ul {
+            left: calc(100% - $border-size);
+            top: -1px;
+          }
+
+          .active {
+            > a {
+              background: palette(accent, bg);
+              &::before {
+                content: none;
+              }
+            }
+          }
+
+          li {
+            padding: 0;
+            margin: 0;
+
+            &.has-submenu {
+              &::after {
+                display: inline;
+                content: " ";
+                position: absolute;
+                right: 0.5em;
+                top: calc(50% - 0.5em);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0.5em 0 0.5em 0.5em;
+                border-color: transparent transparent transparent palette(accent, bg);
+              }
+
+              &.active {
+                &::after {
+                  border-color: transparent transparent transparent palette(bg);
+                }
+              }
+            }
+
+            &:hover {
+              background: palette(accent, bg);
+            }
+
+            a {
+              padding: 0.35em 1.1em;
+              display: block;
+              white-space: nowrap;
+
+              &::before {
+                position: relative;
+              }
+            }
+          }
+        }
       }
     }
   }

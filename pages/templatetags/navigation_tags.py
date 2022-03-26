@@ -41,7 +41,7 @@ def top_menu(context, parent, calling_page=None):
     menuitems = list(parent.get_children().live().in_menu())
 
     for menuitem in menuitems:
-        menuitem.show_dropdown = False  # has_menu_children(menuitem)
+        menuitem.show_dropdown = has_menu_children(menuitem)
         menuitem.active = calling_page.url_path.startswith(menuitem.url_path) if calling_page else False
 
     menuitems.insert(0, parent)
@@ -61,7 +61,7 @@ def top_menu_children(context, parent, calling_page=None):
     menuitems_children = parent.get_children()
     menuitems_children = menuitems_children.live().in_menu()
     for menuitem in menuitems_children:
-        menuitem.has_dropdown = has_menu_children(menuitem)
+        menuitem.show_dropdown = has_menu_children(menuitem)
         # We don't directly check if calling_page is None since the template
         # engine can pass an empty string to calling_page
         # if the variable passed as calling_page does not exist.
@@ -69,6 +69,7 @@ def top_menu_children(context, parent, calling_page=None):
         menuitem.children = menuitem.get_children().live().in_menu()
     return {
         "parent": parent,
+        "calling_page": calling_page,
         "menuitems_children": menuitems_children,
         # required by the pageurl tag that we want to use within this template
         "request": context["request"],

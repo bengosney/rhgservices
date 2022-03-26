@@ -1,0 +1,10 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+<div class="container">
+    <h2>{{ value.title }}</h2>
+    {% if value.body %}
+        <p>{{ value.body }}</p>
+    {% endif %}
+    {% include "projects/project_list.html" with projects=value.projects %}
+</div>

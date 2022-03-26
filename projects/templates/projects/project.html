@@ -4,7 +4,7 @@
 
 {% block body_class %}template-project{% endblock %}
 
-{% block content %}
+{% block header %}
 <div class="banner_image">
     <picture>
         {% image page.banner_image fill-800x400 format-jpeg as image_jpg %}
@@ -35,9 +35,10 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block content %}
 <div class="main-body">
     <div class="container">
-        {% include "breadcrumbs.html" %}
         <div class="row">
             <div class="col">
                 <div class="slider">
