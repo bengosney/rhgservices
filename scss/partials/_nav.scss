@@ -260,14 +260,13 @@ nav {
               text-decoration: underline;
             }
           }
-
-          &.nav {
-            &::before {
-              content: "Menu";
-              background: palette(accent, bg);
-              padding: 0.5em 1em;
-              font-weight: bold;
-            }
+        }
+        &.nav {
+          &::before {
+            content: "Menu";
+            background: palette(accent, bg);
+            padding: 0.5em 1em;
+            font-weight: bold;
           }
         }
       }
