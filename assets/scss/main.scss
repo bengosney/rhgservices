@@ -91,7 +91,7 @@
 /* Basic */
 
 body {
-  background: _palette(bg) url("images/bg01.png");
+  background: _palette(bg, base) url("images/bg01.png");
 
   &.is-loading {
     * {

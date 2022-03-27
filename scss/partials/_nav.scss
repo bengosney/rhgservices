@@ -2,133 +2,148 @@
 
 nav {
   &.main {
-    $border-size: 1px;
-
-    border-bottom: 0.5em solid palette(accent, bg);
-    a {
-      position: relative;
-      text-decoration: none;
-      border: none;
-      color: palette(accent, fg);
-      font-weight: 300;
-    }
-
-    .active {
-      > a {
-        font-weight: 600;
-        color: palette(fg);
-        &::before {
-          position: absolute;
-          bottom: -0.9em;
-          left: calc(50% - 0.5em);
-          content: " ";
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 0 0.5em 0.5em 0.5em;
-          border-color: transparent transparent palette(accent, bg) transparent;
-        }
-      }
-    }
-
     ul {
       &.nav {
         @extend .container;
       }
+    }
 
-      padding: 0 0 0.5em 0;
-      margin: 0;
-      display: flex;
-      justify-content: space-between;
-      li {
-        display: block;
-        padding: 0;
-        margin: 0;
-        list-style: none;
+    input {
+      display: none;
+    }
+
+    $swap_point: 768px;
+
+    @media screen and (min-width: ($swap_point - 1px)) {
+      $border-size: 1px;
+
+      border-bottom: 0.5em solid palette(accent, bg);
+
+      label {
+        display: none;
+      }
+
+      a {
         position: relative;
+        text-decoration: none;
+        border: none;
+        color: palette(accent, fg);
+        font-weight: 300;
+      }
 
-        &.has-submenu {
-          padding-right: 1.5em;
-          &::after {
-            display: inline;
-            content: " ";
+      .active {
+        > a {
+          font-weight: 600;
+          color: palette(fg);
+          &::before {
             position: absolute;
-            right: 0;
-            top: calc(50% - 0.25em);
+            bottom: -0.9em;
+            left: calc(50% - 0.5em);
+            content: " ";
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: 0.5em 0.5em 0 0.5em;
-            border-color: palette(accent, bg) transparent transparent transparent;
+            border-width: 0 0.5em 0.5em 0.5em;
+            border-color: transparent transparent palette(accent, bg) transparent;
           }
+        }
+      }
 
-          &:hover {
-            > ul {
-              display: block;
+      ul {
+        padding: 0 0 0.5em 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        li {
+          display: block;
+          padding: 0;
+          margin: 0;
+          list-style: none;
+          position: relative;
+
+          &.has-submenu {
+            padding-right: 1.5em;
+            &::after {
+              display: inline;
+              content: " ";
+              position: absolute;
+              right: 0;
+              top: calc(50% - 0.25em);
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 0.5em 0.5em 0 0.5em;
+              border-color: palette(accent, bg) transparent transparent transparent;
             }
-          }
 
-          ul {
-            font-size: 1rem;
-            display: none;
-            position: absolute;
-            z-index: 9999;
-            background: palette(bg);
-            border: $border-size solid palette(accent, bg);
-            padding: 0;
-            margin: 0;
-            box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-
-            ul {
-              left: calc(100% - $border-size);
-              top: -1px;
-            }
-
-            .active {
-              > a {
-                background: palette(accent, bg);
-                &::before {
-                  content: none;
-                }
+            &:hover {
+              > ul {
+                display: block;
               }
             }
 
-            li {
+            ul {
+              font-size: 1rem;
+              display: none;
+              position: absolute;
+              z-index: 9999;
+              background: palette(bg, base);
+              border: $border-size solid palette(accent, bg);
               padding: 0;
               margin: 0;
+              box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
 
-              &.has-submenu {
-                &::after {
-                  display: inline;
-                  content: " ";
-                  position: absolute;
-                  right: 0.5em;
-                  top: calc(50% - 0.5em);
-                  width: 0;
-                  height: 0;
-                  border-style: solid;
-                  border-width: 0.5em 0 0.5em 0.5em;
-                  border-color: transparent transparent transparent palette(accent, bg);
-                }
+              ul {
+                left: calc(100% - $border-size);
+                top: -1px;
+              }
 
-                &.active {
-                  &::after {
-                    border-color: transparent transparent transparent palette(bg);
+              .active {
+                > div > a {
+                  background: palette(accent, bg);
+                  &::before {
+                    content: none;
                   }
                 }
               }
 
-              &:hover {
-                background: palette(accent, bg);
-              }
+              li {
+                padding: 0;
+                margin: 0;
 
-              a {
-                padding: 0.35em 1.1em;
-                display: block;
-                white-space: nowrap;
+                &.has-submenu {
+                  &::after {
+                    display: inline;
+                    content: " ";
+                    position: absolute;
+                    right: 0.5em;
+                    top: calc(50% - 0.5em);
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0.5em 0 0.5em 0.5em;
+                    border-color: transparent transparent transparent palette(accent, bg);
+                  }
 
-                &::before {
-                  position: relative;
+                  &.active {
+                    &::after {
+                      border-color: transparent transparent transparent palette(bg, base);
+                    }
+                  }
+                }
+
+                &:hover {
+                  background: palette(accent, bg);
+                }
+
+                a {
+                  padding: 0.35em 1.1em;
+                  display: block;
+                  white-space: nowrap;
+
+                  &::before {
+                    position: relative;
+                  }
                 }
               }
             }
@@ -136,8 +151,7 @@ nav {
         }
       }
     }
-
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: $swap_point) {
       &::before {
         z-index: 9999;
         content: " ";
@@ -149,15 +163,54 @@ nav {
         background: rgba(0, 0, 0, 0.5);
       }
 
+      a {
+        text-decoration: none;
+        border-bottom: none;
+      }
+
+      label {
+        position: relative;
+        font-size: 0.75rem;
+        $size: 1em;
+        $width: $size * 4;
+        width: $width;
+        &::before {
+          position: absolute;
+          content: " ";
+          width: 0;
+          height: 0;
+          left: math.div($width - ($size * 2), 2);
+          top: calc(50% - 0.5em);
+          border-style: solid;
+          border-width: $size $size 0 $size;
+          border-color: palette(accent, bg) transparent transparent transparent;
+        }
+
+        span {
+          display: none;
+        }
+      }
+
       ul {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        position: static;
+        padding: 0;
+        margin: 0;
+
+        ul {
+          display: none;
+        }
+
+        input:checked + ul {
+          display: flex;
+        }
       }
 
       & > ul {
         box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-        background: palette(bg);
+        background: palette(bg, base);
         position: fixed;
         overflow-y: auto;
         top: 0;
@@ -167,34 +220,54 @@ nav {
         z-index: 10003;
         height: 100%;
 
-        li {
-          padding: 0.5em 1em;
-
-          &.active {
-            a {
-              &::before {
-                content: none;
-              }
-            }
-          }
-
-          &.has-submenu {
+        ul {
+          background: lighten(palette(bg, base), 10%);
+          ul {
+            background: lighten(palette(bg, base), 20%);
             ul {
-              display: flex;
-              position: static;
-
-              padding: 0;
-              margin: 0;
+              background: lighten(palette(bg, base), 30%);
+              ul {
+                background: lighten(palette(bg, base), 40%);
+                ul {
+                  background: lighten(palette(bg, base), 50%);
+                }
+              }
             }
           }
         }
 
-        &.nav {
-          &::before {
-            content: "Menu";
-            background: palette(accent, bg);
-            padding: 0.5em 1em;
-            font-weight: bold;
+        li {
+          padding: 0;
+
+          div {
+            border-bottom: 1px solid palette(accent, bg);
+            display: flex;
+          }
+
+          a {
+            flex: 1;
+            padding: 0.35em 1.1em;
+            display: block;
+            white-space: nowrap;
+            color: palette(fg);
+
+            font-size: 1rem;
+          }
+
+          &.active {
+            > div > a {
+              font-weight: 600;
+              text-decoration: underline;
+            }
+          }
+
+          &.nav {
+            &::before {
+              content: "Menu";
+              background: palette(accent, bg);
+              padding: 0.5em 1em;
+              font-weight: bold;
+            }
           }
         }
       }

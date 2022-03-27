@@ -82,7 +82,7 @@ img {
 body {
   padding: 0;
   margin: 0;
-  background: palette(bg);
+  background: palette(bg, base);
   overflow-y: scroll;
 
   &.is-loading {

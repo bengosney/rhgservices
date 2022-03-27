@@ -3,8 +3,14 @@
 
 {% for menuitem in menuitems %}
     <li class="item {{ menuitem.title|lower|cut:" " }}{% if menuitem.active %} active{% endif %}{% if menuitem.show_dropdown %} has-submenu{% endif %}">
-        <a href="{% pageurl menuitem %}" class="top-level">{{ menuitem.title }}</a>
+        <div>
+            <a href="{% pageurl menuitem %}" class="top-level">{{ menuitem.title }}</a>
+            {% if menuitem.show_dropdown %}
+                <label for="nav-{{ menuitem.title|lower|cut:" " }}"><span>open</span></label>
+            {% endif %}
+        </div>
         {% if menuitem.show_dropdown %}
+            <input type="checkbox" name="nav-{{ menuitem.title|lower|cut:" " }}" id="nav-{{ menuitem.title|lower|cut:" " }}" />
             {% top_menu_children parent=menuitem calling_page=calling_page %}
         {% endif %}
     </li>

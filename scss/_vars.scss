@@ -2,16 +2,23 @@ $font_base: -apple-system, blinkmacsystemfont, segoe ui, helvetica, arial, sans-
   segoe ui symbol;
 $font_heading: "Poppins", sans-serif;
 
+$accent: #8dca31;
+$bg: #374244;
+
 $palette: (
-  bg: #374244,
+  bg: (
+    base: $bg,
+    darker: darken($bg, 10%),
+    lighter: lighten($bg, 10%),
+  ),
   fg: #f7f7f7,
   fg-bold: #fff,
   fg-light: #f7f7f7,
   border: #e0e0e0,
   accent: (
-    bg: #8dca31,
+    bg: $accent,
     fg: #fff,
-    darker: darken(#8dca31, 10%),
-    lighter: lighten(#8dca31, 10%),
+    darker: darken($accent, 10%),
+    lighter: lighten($accent, 10%),
   ),
 );
