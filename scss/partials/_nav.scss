@@ -5,8 +5,9 @@ $mobile_width: 275px;
 
 .nav-wrapper {
   .nav-button {
+    font-size: min(3vw, 1rem);
     $icon_color: palette(accent, bg);
-    $icon_size: 1rem;
+    $icon_size: 1em;
     $icon_gap: math.div($icon_size, 2);
     $button_height: ($icon_size * 3) + ($icon_gap * 5);
     $button_width: $icon_size * 3;

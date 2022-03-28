@@ -15,3 +15,59 @@ $_margin: math.div($gutter, 2);
     padding-right: $_margin;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .row {
+    &.xs {
+      flex-direction: column;
+
+      .col {
+        margin-top: $_margin;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    &.sm {
+      flex-direction: column;
+
+      .col {
+        margin-top: $_margin;
+      }
+    }
+  }
+}
+@media screen and (max-width: 992px) {
+  .row {
+    &.md {
+      flex-direction: column;
+
+      .col {
+        margin-top: $_margin;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .row {
+    &.lg {
+      flex-direction: column;
+
+      .col {
+        margin-top: $_margin;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1400px) {
+  .row {
+    &.xl {
+      flex-direction: column;
+
+      .col {
+        margin-top: $_margin;
+      }
+    }
+  }
+}

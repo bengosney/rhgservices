@@ -1,5 +1,5 @@
 header {
-  padding: 1.5em 0;
+  padding: 2vw 0;
   display: flex;
   width: 100%;
 
@@ -7,5 +7,6 @@ header {
     display: block;
     padding: 1rem;
     margin: auto;
+    box-sizing: border-box;
   }
 }

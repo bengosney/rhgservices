@@ -1,4 +1,10 @@
 .breadcrumbs {
+  @media screen and (max-width: 768px) {
+    & {
+      display: none;
+    }
+  }
+
   ul {
     li {
       margin: 0;
