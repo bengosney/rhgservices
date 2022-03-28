@@ -1,15 +1,16 @@
 @use "sass:math";
 
+.nav-wrapper {
+  input {
+    display: none;
+  }
+}
 nav {
   &.main {
     ul {
       &.nav {
         @extend .container;
       }
-    }
-
-    input {
-      display: none;
     }
 
     $swap_point: 768px;
@@ -152,6 +153,12 @@ nav {
       }
     }
     @media screen and (max-width: $swap_point) {
+      display: none;
+
+      input:checked + & {
+        display: block;
+      }
+
       &::before {
         z-index: 9999;
         content: " ";
@@ -262,11 +269,51 @@ nav {
           }
         }
         &.nav {
-          &::before {
-            content: "Menu";
+          .mobile-title {
             background: palette(accent, bg);
             padding: 0.5em 1em;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            span {
+              flex: 1;
+              display: inline;
+              line-height: 1em;
+              padding: 0;
+              margin: 0;
+            }
+
+            label {
+              overflow: hidden;
+              position: relative;
+              border: none;
+              padding: 0;
+              width: 2em;
+              height: 2em;
+              background: transparent;
+              color: palette(accent, fg);
+              font: inherit;
+              text-indent: 100%;
+              cursor: pointer;
+              display: block;
+
+              &:before,
+              &:after {
+                border: none;
+                position: absolute;
+                top: 15%;
+                left: calc(50% - 0.0625em);
+                width: 0.125em;
+                height: 70%;
+                transform: rotate(45deg);
+                background: currentColor;
+                content: "";
+              }
+
+              &:after {
+                transform: rotate(-45deg);
+              }
+            }
           }
         }
       }
