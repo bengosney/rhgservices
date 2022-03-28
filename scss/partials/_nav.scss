@@ -1,28 +1,89 @@
 @use "sass:math";
 
+$swap_point: 768px;
+$mobile_width: 275px;
+
 .nav-wrapper {
+  .nav-button {
+    $icon_color: palette(accent, bg);
+    $icon_size: 1rem;
+    $icon_gap: math.div($icon_size, 2);
+    $button_height: ($icon_size * 3) + ($icon_gap * 5);
+    $button_width: $icon_size * 3;
+    width: $button_width;
+    height: $button_height;
+    padding: 0;
+    border: none;
+    background: none;
+
+    position: absolute;
+    top: 1em;
+    right: 1em;
+
+    &:focus {
+      background: none;
+    }
+
+    .nav-icon {
+      display: inline-block;
+    }
+
+    .nav-icon {
+      text-indent: -99999px;
+      position: relative;
+      width: $icon_size;
+      height: $icon_size;
+      background-color: $icon_color;
+      border-radius: 50%;
+      top: ($icon_size + $icon_gap) + ($icon_gap * 1.5);
+      left: math.div($button_width - $icon_size, 2);
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        background-color: inherit;
+        border-radius: inherit;
+      }
+
+      &:before {
+        top: -($icon_size + $icon_gap);
+      }
+
+      &:after {
+        top: ($icon_size + $icon_gap);
+      }
+    }
+  }
+
   input {
     display: none;
   }
+  @media screen and (min-width: ($swap_point - 1px)) {
+    label,
+    .mobile-title {
+      display: none;
+    }
+  }
 }
+
 nav {
   &.main {
     ul {
       &.nav {
         @extend .container;
       }
+      li {
+        list-style: none;
+      }
     }
-
-    $swap_point: 768px;
 
     @media screen and (min-width: ($swap_point - 1px)) {
       $border-size: 1px;
-
       border-bottom: 0.5em solid palette(accent, bg);
-
-      label {
-        display: none;
-      }
 
       a {
         position: relative;
@@ -153,21 +214,33 @@ nav {
       }
     }
     @media screen and (max-width: $swap_point) {
-      display: none;
-
-      input:checked + & {
-        display: block;
+      ul.nav {
+        transform: translateX($mobile_width);
+        transition: all 0.5s ease;
+        padding: 0;
+        margin: 0;
       }
 
       &::before {
+        opacity: 0;
         z-index: 9999;
         content: " ";
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
-        left: 0;
+        left: 100%;
         background: rgba(0, 0, 0, 0.5);
+      }
+
+      input:checked + & {
+        &::before {
+          animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        ul.nav {
+          transform: translateX(0px);
+        }
       }
 
       a {
@@ -223,7 +296,7 @@ nav {
         top: 0;
         right: 0;
         bottom: 0;
-        width: 275px;
+        width: $mobile_width;
         z-index: 10003;
         height: 100%;
 
@@ -299,11 +372,12 @@ nav {
 
               &:before,
               &:after {
+                $width: 0.25em;
                 border: none;
                 position: absolute;
                 top: 15%;
-                left: calc(50% - 0.0625em);
-                width: 0.125em;
+                left: calc(50% - math.div($width, 2));
+                width: $width;
                 height: 70%;
                 transform: rotate(45deg);
                 background: currentColor;
@@ -318,5 +392,20 @@ nav {
         }
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    left: 100%;
+    opacity: 0;
+  }
+  1% {
+    left: 0;
+    opacity: 0;
+  }
+  100% {
+    left: 0%;
+    opacity: 1;
   }
 }
