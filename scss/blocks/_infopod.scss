@@ -19,6 +19,18 @@ $width: 992px;
     max-width: 30%;
     display: flex;
     flex-direction: column;
+    padding: 2em math.div($icon-size, 2);
+
+    & > div {
+      text-align: center;
+    }
+
+    a {
+      font-size: 1.1rem;
+      line-height: 1.25em;
+      margin-top: 0.5em;
+    }
+
     @media screen and (max-width: $width) {
       max-width: 100%;
       flex-direction: row;
@@ -28,8 +40,10 @@ $width: 992px;
       h3 {
         margin-top: 0;
       }
+      div {
+        text-align: left;
+      }
     }
-    padding: 2em math.div($icon-size, 2);
   }
 
   picture {
@@ -71,6 +85,7 @@ $width: 992px;
     display: block;
     border-radius: 50%;
     border: solid 3px palette("accent", "fg");
+    box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
   }
 
   ul {
@@ -81,5 +96,10 @@ $width: 992px;
     li {
       flex: 1;
     }
+  }
+
+  a {
+    display: inline-block;
+    margin: 0 auto;
   }
 }

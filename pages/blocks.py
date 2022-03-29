@@ -24,6 +24,7 @@ class InfoPodBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     title = blocks.CharBlock()
     paragraph = blocks.CharBlock(required=False, help_text="Optional")
+    page = blocks.PageChooserBlock(required=False)
 
     class Meta:
         template = "pages/blocks/infopod.html"
