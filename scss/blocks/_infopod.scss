@@ -23,12 +23,17 @@ $width: 992px;
 
     & > div {
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      & + div {
+        flex: 1;
+      }
     }
 
     a {
       font-size: 1.1rem;
       line-height: 1.25em;
-      margin-top: 0.5em;
+      margin-top: 1em;
     }
 
     @media screen and (max-width: $width) {
@@ -47,7 +52,7 @@ $width: 992px;
   }
 
   picture {
-    flex: 1;
+    //flex: 1;
     display: block;
     margin: auto;
 
@@ -58,6 +63,7 @@ $width: 992px;
   }
 
   p {
+    flex: 1;
     text-align: center;
     padding: 0;
     margin: 0;

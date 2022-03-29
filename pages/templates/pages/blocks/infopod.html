@@ -17,7 +17,9 @@
         <h3>{{ value.title }}</h3>
         <p>{{ value.paragraph }}</p>
         {% if value.page %}
+        <div>
             <a href="{{ value.page.url }}">Find out more</a>
+        </div>
         {% endif %}
     </div>
 </div>
