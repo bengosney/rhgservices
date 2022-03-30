@@ -84,8 +84,17 @@ django==4.0.2 \
     --hash=sha256:996495c58bff749232426c88726d8cd38d24c94d7c1d80835aafffa9bc52985a
     # via
     #   -c requirements.txt
+    #   django-debug-toolbar
     #   django-stubs
     #   django-stubs-ext
+django-debug-toolbar==3.2.4 \
+    --hash=sha256:644bbd5c428d3283aa9115722471769cac1bec189edf3a0c855fd8ff870375a9 \
+    --hash=sha256:6b633b6cfee24f232d73569870f19aa86c819d750e7f3e833f2344a9eb4b4409
+    # via -r requirements.dev.in
+django-debugtools==2.0 \
+    --hash=sha256:085f7bc62a3a5c81c7a0d8643dbc7dfd991cfdffabe7a6d6fbecad0e346608ff \
+    --hash=sha256:e9b3de4ee0aa1b2b9290bf8a09e1cd52baacfc7a8214abe15e8bfb80f2c2f497
+    # via -r requirements.dev.in
 django-stubs==1.9.0 \
     --hash=sha256:59c9f81af64d214b1954eaf90f037778c8d2b9c2de946a3cda177fefcf588fbd \
     --hash=sha256:664843091636a917faf5256d028476559dc360fdef9050b6df87ab61b21607bf
@@ -333,6 +342,7 @@ sqlparse==0.4.2 \
     # via
     #   -c requirements.txt
     #   django
+    #   django-debug-toolbar
 termcolor==1.1.0 \
     --hash=sha256:1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b
     # via commitizen

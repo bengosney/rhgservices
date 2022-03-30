@@ -1,6 +1,8 @@
 -c requirements.txt
 black
 commitizen
+django-debug-toolbar
+django-debugtools
 django-stubs
 icecream
 mypy
