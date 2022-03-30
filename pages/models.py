@@ -58,6 +58,7 @@ class FormPage(AbstractEmailForm):
             ("Callout", CallOutBlock()),
             ("InfoPod", blocks.ListBlock(InfoPodBlock())),
             ("Paragraph", blocks.RichTextBlock()),
+            ("Form", blocks.StaticBlock(admin_text="The form", template="pages/blocks/form.html")),
         ],
         blank=True,
     )
