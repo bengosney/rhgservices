@@ -1,5 +1,8 @@
 @import "vars";
 @import "mixins";
+
+@import "partials/container";
+
 @import "blocks/flex_block";
 @import "blocks/infopod";
 @import "blocks/callout";
@@ -56,20 +59,6 @@
 ::selection {
   background: palette(accent, bg);
   color: palette(accent, fg);
-}
-
-.container,
-.block-Paragraph {
-  max-width: var(--max-width);
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
-  margin: 0 auto;
-  box-sizing: border-box;
-
-  .container {
-    padding-left: 0;
-    padding-right: 0;
-  }
 }
 
 img {

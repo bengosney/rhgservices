@@ -1,0 +1,13 @@
+.container,
+.block-Paragraph {
+  max-width: var(--max-width);
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

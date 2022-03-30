@@ -1,7 +1,9 @@
 {% load wagtailcore_tags %}
 
-<div class="flex_stream">
-    {% for child in value %}
-        {% include_block child %}
-    {% endfor %}
+<div class="container">
+    <div class="flex_stream">
+        {% for child in value %}
+            {% include_block child %}
+        {% endfor %}
+    </div>
 </div>
