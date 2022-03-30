@@ -1,3 +1,10 @@
 .flex_block {
   display: flex;
+
+  .container {
+    flex: 1;
+    box-sizing: border-box;
+    max-width: auto;
+    padding: 2em;
+  }
 }

@@ -14,7 +14,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from modelcluster.fields import ParentalKey
 
 # Locals
-from .blocks import CallOutBlock, FlexBlock, InfoPodBlock, ProjectsBlock
+from .blocks import CallOutBlock, FlexBlock, FlexStreamBlock, InfoPodBlock, MapBlock, ProjectsBlock
 
 
 class HomePage(Page):
@@ -59,6 +59,16 @@ class FormPage(AbstractEmailForm):
             ("InfoPod", blocks.ListBlock(InfoPodBlock())),
             ("Paragraph", blocks.RichTextBlock()),
             ("Form", blocks.StaticBlock(admin_text="The form", template="pages/blocks/form.html", icon="form")),
+            ("Map", MapBlock()),
+            (
+                "Row",
+                FlexStreamBlock(
+                    [
+                        ("Form", blocks.StaticBlock(admin_text="The form", template="pages/blocks/form.html", icon="form")),
+                        ("Map", MapBlock()),
+                    ]
+                ),
+            ),
         ],
         blank=True,
     )

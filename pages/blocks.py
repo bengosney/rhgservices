@@ -1,9 +1,17 @@
+# Standard Library
+from hashlib import md5
+
 # Wagtail
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
 # First Party
 from projects.models import Project
+
+
+class FlexStreamBlock(blocks.StreamBlock):
+    class Meta:
+        template = "pages/blocks/flex_stream.html"
 
 
 class FlexBlock(blocks.ListBlock):
@@ -36,3 +44,19 @@ class CallOutBlock(blocks.StructBlock):
 
     class Meta:
         template = "pages/blocks/callout.html"
+
+
+class MapBlock(blocks.StructBlock):
+    latitude = blocks.FloatBlock()
+    longitude = blocks.FloatBlock()
+
+    class Meta:
+        template = "pages/blocks/map.html"
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context)
+        context["self"]["hash"] = md5(
+            "-".join([f"{c}:{context['self'][c]}" for c in context["self"]]).encode("utf-8")
+        ).hexdigest()
+
+        return context
