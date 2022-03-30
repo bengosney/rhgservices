@@ -1,10 +1,18 @@
-.flex_block {
+.flex_block,
+.flex_stream {
   display: flex;
 
   .container {
     flex: 1;
     box-sizing: border-box;
-    max-width: auto;
+    max-width: none;
     padding: 2em;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .flex_stream {
+    flex-direction: column;
   }
 }

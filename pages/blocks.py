@@ -46,7 +46,16 @@ class CallOutBlock(blocks.StructBlock):
         template = "pages/blocks/callout.html"
 
 
+class FormBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+
+    class Meta:
+        template = "pages/blocks/form.html"
+        icon = "form"
+
+
 class MapBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
     latitude = blocks.FloatBlock()
     longitude = blocks.FloatBlock()
 
@@ -55,8 +64,7 @@ class MapBlock(blocks.StructBlock):
 
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context)
-        context["self"]["hash"] = md5(
-            "-".join([f"{c}:{context['self'][c]}" for c in context["self"]]).encode("utf-8")
-        ).hexdigest()
+        context_string = "-".join([f"{c}:{context['self'][c]}" for c in context["self"]])
+        context["self"]["hash"] = md5(context_string.encode("utf-8")).hexdigest()
 
         return context

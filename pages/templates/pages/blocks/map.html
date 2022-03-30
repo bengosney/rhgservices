@@ -1,5 +1,12 @@
 <div class="container">
-    <div id="map-{{ self.hash }}" class="map"></div>
+    {% if value.title %}
+        <h2>{{ value.title }}</h2>
+    {% endif %}
+    <div class="map-container">
+        <div class="map-inner">
+            <div id="map-{{ self.hash }}" class="map"></div>
+        </div>
+    </div>
 </div>
 <script>
     function initMap{{ self.hash }}(){var d={lat:{{ self.latitude }},lng:{{ self.longitude }}};var f=new google.maps.Map(document.getElementById("map-{{ self.hash }}"),{center:d,scrollwheel:false,zoom:11});};

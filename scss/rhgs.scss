@@ -58,7 +58,8 @@
   color: palette(accent, fg);
 }
 
-.container {
+.container,
+.block-Paragraph {
   max-width: var(--max-width);
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
