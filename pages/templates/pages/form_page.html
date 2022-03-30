@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-info-page{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ page.title }}</h1>
+    </div>
+    <div class="container">
+        {{ page.intro|richtext }}
+    </div>
+    <div class="container">
+        <div class="form_builder">
+            <form action="{% pageurl page %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+.form_builder {
+  form {
+    p {
+      label {
+        display: block;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+      }
+
+      margin: 0 0 1rem;
+      padding: 0;
+    }
+
+    input,
+    textarea,
+    select {
+      background: none;
+      border: 1px solid palette(accent, bg);
+      padding: 0.25em 0.5em;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button,
+    input[type="button"],
+    input[type="submit"] {
+      background: palette(accent, bg);
+      color: palette(accent, fg);
+      font-weight: bold;
+    }
+  }
+
+  padding-bottom: 2rem;
+}
