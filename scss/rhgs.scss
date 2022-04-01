@@ -120,6 +120,10 @@ a {
   }
 }
 
+body.text-3d {
+  text-shadow: 0 1px cyan, 3px 0 1px red;
+}
+
 strong,
 b {
   font-weight: 600;
