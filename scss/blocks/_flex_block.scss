@@ -25,5 +25,9 @@
 @media screen and (max-width: 767px) {
   .flex_stream {
     flex-direction: column;
+    & > .container {
+      margin: 0;
+      width: 100%;
+    }
   }
 }
