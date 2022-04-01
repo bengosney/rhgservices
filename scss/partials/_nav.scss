@@ -86,6 +86,12 @@ nav {
       $border-size: 1px;
       border-bottom: 0.5em solid palette(accent, bg);
 
+      .socials {
+        svg {
+          fill: palette(fg);
+        }
+      }
+
       a {
         position: relative;
         text-decoration: none;

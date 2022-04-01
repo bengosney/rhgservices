@@ -1,0 +1,22 @@
+.socials {
+  display: flex;
+
+  a {
+    border: none;
+    svg {
+      width: auto;
+      height: 1em;
+      fill: palette(accent, bg);
+    }
+
+    &:hover {
+      svg {
+        fill: palette(accent, fg);
+      }
+    }
+
+    & + a {
+      margin-left: 0.5em;
+    }
+  }
+}

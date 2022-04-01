@@ -5,6 +5,7 @@ from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
@@ -15,6 +16,13 @@ from modelcluster.fields import ParentalKey
 
 # Locals
 from .blocks import CallOutBlock, FlexBlock, FlexStreamBlock, FormBlock, InfoPodBlock, MapBlock, ProjectsBlock
+
+
+@register_setting
+class ContactSettings(BaseSetting):
+    phone_number = models.CharField(max_length=255, help_text="Phone number to show in the footer", default="")
+    facebook = models.URLField(help_text="Your Facebook page URL", default="")
+    instagram = models.CharField(max_length=255, help_text="Your Instagram username, without the @", default="")
 
 
 class HomePage(Page):
