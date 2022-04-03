@@ -1,4 +1,7 @@
 Django
+django-toolbelt
 opencv-python
+psycopg2
 rustface
 wagtail
+whitenoise
