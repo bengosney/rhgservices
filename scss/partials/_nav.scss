@@ -87,6 +87,10 @@ nav {
       border-bottom: 0.5em solid palette(accent, bg);
 
       .socials {
+        div {
+          text-align: right;
+          white-space: nowrap;
+        }
         svg {
           fill: palette(fg);
         }
@@ -98,6 +102,7 @@ nav {
         border: none;
         color: palette(accent, fg);
         font-weight: 300;
+        display: inline-block;
       }
 
       .active {
@@ -126,23 +131,35 @@ nav {
         li {
           display: block;
           padding: 0;
-          margin: 0;
           list-style: none;
           position: relative;
+          $line-height: 1.5em;
+          line-height: $line-height;
+
+          margin: 0 1em;
+          &:nth-child(2) {
+            margin-left: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
 
           &.has-submenu {
-            padding-right: 1.5em;
-            &::after {
-              display: inline;
-              content: " ";
-              position: absolute;
-              right: 0;
-              top: calc(50% - 0.25em);
-              width: 0;
-              height: 0;
-              border-style: solid;
-              border-width: 0.5em 0.5em 0 0.5em;
-              border-color: palette(accent, bg) transparent transparent transparent;
+            & > div {
+              padding-right: 1.5em;
+              &::after {
+                display: inline;
+                content: " ";
+                position: absolute;
+                right: 0;
+                $arrow-size: 0.5em;
+                top: math.div($line-height - $arrow-size, 2);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: $arrow-size $arrow-size 0 $arrow-size;
+                border-color: palette(accent, bg) transparent transparent transparent;
+              }
             }
 
             &:hover {
@@ -169,7 +186,7 @@ nav {
 
               .active {
                 > div > a {
-                  background: palette(accent, bg);
+                  @include accent_colour();
                   &::before {
                     content: none;
                   }
@@ -194,7 +211,14 @@ nav {
                     border-color: transparent transparent transparent palette(accent, bg);
                   }
 
+                  > div {
+                    &::after {
+                      content: none;
+                    }
+                  }
+
                   &.active {
+                    background: palette(accent, bg);
                     &::after {
                       border-color: transparent transparent transparent palette(bg, base);
                     }
@@ -238,6 +262,23 @@ nav {
         bottom: 0;
         left: 100%;
         background: rgba(0, 0, 0, 0.5);
+      }
+
+      li.socials {
+        display: block;
+        width: 100%;
+        $font_size: 1.25em;
+        $total_height: 2.75em;
+        a {
+          padding: math.div($total_height - $font_size, 2) 0;
+          font-size: $font_size;
+          line-height: 1em;
+          text-align: center;
+        }
+
+        svg {
+          fill: palette(fg);
+        }
       }
 
       input:checked + & {
@@ -350,7 +391,7 @@ nav {
         }
         &.nav {
           .mobile-title {
-            background: palette(accent, bg);
+            @include accent_colour();
             padding: 0.5em 1em;
             font-weight: bold;
             display: flex;
