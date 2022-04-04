@@ -36,6 +36,8 @@ class HomePage(Page):
         ]
     )
 
+    parent_page_types = ["wagtailcore.Page"]
+
     content_panels = Page.content_panels + [
         ImageChooserPanel("banner_image"),
         StreamFieldPanel("body"),
