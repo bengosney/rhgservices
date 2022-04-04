@@ -1,6 +1,8 @@
 Django
-django-toolbelt
+dj-database-url
+gunicorn
 opencv-python
+psycopg2
 psycopg2
 rustface
 wagtail
