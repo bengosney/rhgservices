@@ -37,6 +37,12 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 AWS_QUERYSTRING_AUTH = False
 
+HONEYBADGER = {"API_KEY": env["HONEYBADGER_API_KEY"]}
+
+MIDDLEWARE += [  # noqa
+    "honeybadger.contrib.DjangoHoneybadgerMiddleware",
+]
+
 try:
     # Locals
     from .local import *  # noqa
