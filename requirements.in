@@ -1,5 +1,7 @@
 Django
+boto3
 dj-database-url
+django-storages
 gunicorn
 opencv-python
 psycopg2
@@ -7,3 +9,4 @@ psycopg2
 rustface
 wagtail
 whitenoise
+whitenoise[brotli]
