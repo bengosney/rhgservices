@@ -25,6 +25,8 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
+
 try:
     # Locals
     from .local import *  # noqa
