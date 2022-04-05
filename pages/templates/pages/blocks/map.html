@@ -10,5 +10,5 @@
     <script>
         function initMap{{ self.hash }}(){var d={lat:{{ self.latitude }},lng:{{ self.longitude }}};var f=new google.maps.Map(document.getElementById("map-{{ self.hash }}"),{center:d,scrollwheel:false,zoom:11});};
     </script>
-    <script async defer src="//maps.google.com/maps/api/js?callback=initMap{{ self.hash }}&key={{ apikey }}"></script>
+    <script async defer src="//maps.google.com/maps/api/js?callback=initMap{{ self.hash }}&key={{ settings.pages.SiteSettings.google_maps_api_key }}"></script>
 </div>

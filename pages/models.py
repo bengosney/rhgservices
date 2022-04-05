@@ -19,10 +19,11 @@ from .blocks import CallOutBlock, FlexBlock, FlexStreamBlock, FormBlock, InfoPod
 
 
 @register_setting
-class ContactSettings(BaseSetting):
+class SiteSettings(BaseSetting):
     phone_number = models.CharField(max_length=255, help_text="Phone number to show in the footer", default="")
     facebook = models.URLField(help_text="Your Facebook page URL", default="")
     instagram = models.CharField(max_length=255, help_text="Your Instagram username, without the @", default="")
+    google_maps_api_key = models.CharField(max_length=255, help_text="Google Maps API key", default="")
 
 
 class HomePage(Page):
