@@ -43,6 +43,8 @@ MIDDLEWARE += [  # noqa
     "honeybadger.contrib.DjangoHoneybadgerMiddleware",
 ]
 
+WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
+
 try:
     # Locals
     from .local import *  # noqa

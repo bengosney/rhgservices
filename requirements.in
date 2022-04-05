@@ -9,5 +9,6 @@ psycopg2
 psycopg2
 rustface
 wagtail
+wheel
 whitenoise
 whitenoise[brotli]
