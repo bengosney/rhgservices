@@ -34,7 +34,7 @@ jobs:
 
     - run: |
        python -m pip install --upgrade pipenv wheel
-       pipenv install requirements.txt 
+       pipenv install
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
