@@ -4,8 +4,9 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [ main ]
+    paths:
+      - '**/*.py'
   schedule:
     - cron: '36 23 * * 1'
 
@@ -38,3 +39,5 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+      with:
+        setup-python-dependencies: false
