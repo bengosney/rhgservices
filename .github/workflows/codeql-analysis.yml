@@ -2,13 +2,13 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - '**/*.py'
+      - "**/*.py"
   schedule:
-    - cron: '36 23 * * 1'
+    - cron: "36 23 * * 1"
 
 jobs:
   analyze-python:
@@ -22,22 +22,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'python' ]
+        language: ["python"]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: ${{ matrix.language }}
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
 
-    - run: |
-       python -m pip install --upgrade pipenv wheel
-       pipenv install
+      - run: |
+          python -m pip install --upgrade pipenv wheel
+          pipenv install
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
-      with:
-        setup-python-dependencies: false
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          setup-python-dependencies: false
