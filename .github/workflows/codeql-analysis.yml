@@ -11,8 +11,8 @@ on:
     - cron: '36 23 * * 1'
 
 jobs:
-  analyze:
-    name: Analyze
+  analyze-python:
+    name: Analyze Python
     runs-on: ubuntu-latest
     permissions:
       actions: read

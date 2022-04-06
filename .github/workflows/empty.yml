@@ -5,11 +5,12 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-    paths:
-      - '!**/*.py'
+    paths-ignore:
+      - '**/*.py'
 
 jobs:
-  empty-action:
+  analyze-nothing:
+    name: Analyze Nothing
     runs-on: ubuntu-latest
     steps:
-      - run: echo "nothing"
+      - run: echo "Nothing to analyze"
