@@ -95,13 +95,13 @@ django-debugtools==2.0 \
     --hash=sha256:085f7bc62a3a5c81c7a0d8643dbc7dfd991cfdffabe7a6d6fbecad0e346608ff \
     --hash=sha256:e9b3de4ee0aa1b2b9290bf8a09e1cd52baacfc7a8214abe15e8bfb80f2c2f497
     # via -r requirements.dev.in
-django-stubs==1.9.0 \
-    --hash=sha256:59c9f81af64d214b1954eaf90f037778c8d2b9c2de946a3cda177fefcf588fbd \
-    --hash=sha256:664843091636a917faf5256d028476559dc360fdef9050b6df87ab61b21607bf
+django-stubs==1.10.1 \
+    --hash=sha256:2ec21fc14dba392156e0ec8438e1863c86ddb295f1c8d88eecd7e0e04977c843 \
+    --hash=sha256:dfffa933e3c7f5cae92c860fbd6cf4ae58c4f78eed93843612f863207c9e0e1a
     # via -r requirements.dev.in
-django-stubs-ext==0.3.1 \
-    --hash=sha256:783c198d7e39a41be0b90fd843fa2770243a642922af679be4b19e03b82c8c28 \
-    --hash=sha256:a51a3e9e844d4e1cacaaedbb33bf3def78a3956eed5d9575a640bd97ccd99cec
+django-stubs-ext==0.4.0 \
+    --hash=sha256:3104c4748c34bd741c310a3e6af90dffba46e41bccbe243896e38a708262876b \
+    --hash=sha256:901fc77b6338ea29fa381300ff598dd57d461a4882b756404e2aa7724f76fd7d
     # via django-stubs
 executing==0.8.2 \
     --hash=sha256:32fc6077b103bd19e6494a72682d66d5763cf20a106d5aa7c5ccbea4e47b0df7 \
@@ -349,14 +349,13 @@ termcolor==1.1.0 \
 toml==0.10.2 \
     --hash=sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b \
     --hash=sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
-    # via
-    #   django-stubs
-    #   pre-commit
+    # via pre-commit
 tomli==2.0.1 \
     --hash=sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc \
     --hash=sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
     # via
     #   black
+    #   django-stubs
     #   mypy
     #   pep517
     #   pytest
