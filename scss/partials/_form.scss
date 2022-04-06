@@ -9,7 +9,13 @@
       textarea,
       select {
         width: 100%;
+        color: palette(fg);
+        font-family: $font_base;
+        font-size: $font_size;
+        font-weight: 300;
+        line-height: 1.65em;
       }
+
       select {
         option {
           background: palette(bg, base);

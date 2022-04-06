@@ -90,13 +90,6 @@ body {
   }
 }
 
-body,
-input,
-select,
-textarea {
-  color: palette(fg);
-}
-
 a {
   transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
   color: palette(accent, bg);
