@@ -45,6 +45,13 @@ MIDDLEWARE += [  # noqa
 
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.environ.get("SMTP_HOST")
+EMAIL_HOST_USER = os.environ.get("SMTP_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("SMTP_PASS")
+EMAIL_PORT = os.environ.get("SMTP_PORT")
+EMAIL_USE_TLS = True
+
 try:
     # Locals
     from .local import *  # noqa
