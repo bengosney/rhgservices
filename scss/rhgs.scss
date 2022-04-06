@@ -3,6 +3,8 @@
 
 @import "partials/container";
 
+@import "partials/fonts";
+
 @import "blocks/flex_block";
 @import "blocks/infopod";
 @import "blocks/callout";
@@ -88,17 +90,6 @@ body {
   }
 }
 
-body,
-input,
-select,
-textarea {
-  color: palette(fg);
-  font-family: $font_base;
-  font-size: 16pt;
-  font-weight: 300;
-  line-height: 1.65em;
-}
-
 a {
   transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
   color: palette(accent, bg);
@@ -153,9 +144,6 @@ h4,
 h5,
 h6 {
   color: inherit;
-  font-family: $font_heading;
-  line-height: 1.75em;
-  margin-bottom: 1em;
 
   a {
     color: inherit;
@@ -170,16 +158,6 @@ h6 {
 
 h1 {
   text-decoration: underline palette(accent, bg);
-}
-
-h2 {
-  font-size: 1.75em;
-  letter-spacing: -0.025em;
-}
-
-h3 {
-  font-size: 1.2em;
-  letter-spacing: -0.025em;
 }
 
 sub {
