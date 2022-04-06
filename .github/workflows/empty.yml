@@ -2,11 +2,11 @@ name: Empty action
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths-ignore:
-      - '**/*.py'
+      - "**/*.py"
 
 jobs:
   analyze-nothing:
