@@ -1,0 +1,44 @@
+.lightbox {
+  input {
+    display: none;
+  }
+  label {
+    display: none;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(black, 75%);
+    transition: opacity 0.5s;
+
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: calc(100vw - 2.5rem);
+      max-height: calc(100vh - 2.5rem);
+      height: auto;
+      width: auto;
+      display: block;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  input:checked + label {
+    display: flex;
+    animation-name: fade-in;
+    animation-duration: 0.2s;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
