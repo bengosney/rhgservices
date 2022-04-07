@@ -41,21 +41,52 @@
     <div class="container">
         <div class="row sm">
             <div class="col">
+                {% for image in page.images.all %}
+                    <div class="lightbox">
+                        <input type="checkbox" id="light-box-{{ image.id }}" />
+                        <label for="light-box-{{ image.id }}">
+                            <picture>
+                                {% image image.image max-640x480 format-jpeg as image_jpg_sm %}
+                                {% image image.image max-640x480 format-webp as image_webp_sm %}
+                                {% image image.image max-800x600 format-jpeg as image_jpg_md %}
+                                {% image image.image max-800x600 format-webp as image_webp_md %}
+                                {% image image.image max-1024x768 format-jpeg as image_jpg_lg %}
+                                {% image image.image max-1024x768 format-webp as image_webp_lg %}
+                                {% image image.image max-1980x1080 format-jpeg as image_jpg_xl %}
+                                {% image image.image max-1980x1080 format-webp as image_webp_xl %}
+
+                                <source srcset="{{ image_webp_sm.url }}" type="image/webp" media="(max-width: 640px)">
+                                <source srcset="{{ image_jpg_sm.url }}" type="image/jpeg" media="(max-width: 640px)">
+                                <source srcset="{{ image_webp_md.url }}" type="image/webp" media="(max-width: 800px)">
+                                <source srcset="{{ image_jpg_md.url }}" type="image/jpeg" media="(max-width: 800px)">
+                                <source srcset="{{ image_webp_lg.url }}" type="image/webp" media="(max-width: 1024px)">
+                                <source srcset="{{ image_jpg_lg.url }}" type="image/jpeg" media="(max-width: 1024px)">
+                                <source srcset="{{ image_webp_xl.url }}" type="image/webp">
+                                <source srcset="{{ image_jpg_xl.url }}" type="image/jpeg">
+
+                                {% image page.banner_image max-1980x1080 format-jpeg as image_base %}
+                                <img src="{{ image_base.url }}" alt="{{ image_base.alt }}" />
+                            </picture>
+                        </label>
+                    </div>
+                {% endfor %}
                 <div class="slider">
                     <div class="inner">
                         {% for image in page.images.all %}
                             <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
                             <div class="slide slide-{{ forloop.counter }}">
-                                <picture>
-                                    {% image image.image fill-640x427 format-jpeg as image_jpg %}
-                                    {% image image.image fill-640x427 format-webp as image_webp %}
+                                <label for="light-box-{{ image.id }}">
+                                    <picture>
+                                        {% image image.image fill-640x427 format-jpeg as image_jpg %}
+                                        {% image image.image fill-640x427 format-webp as image_webp %}
 
-                                    <source srcset="{{ image_webp.url }}" type="image/webp">
-                                    <source srcset="{{ image_jpg.url }}" type="image/jpeg">
+                                        <source srcset="{{ image_webp.url }}" type="image/webp">
+                                        <source srcset="{{ image_jpg.url }}" type="image/jpeg">
 
-                                    {% image page.banner_image fill-640x427 format-jpeg as image_base %}
-                                    <img src="{{ image_base.url }}" alt="{{ image_base.alt }}" />
-                                </picture>
+                                        {% image page.banner_image fill-640x427 format-jpeg as image_base %}
+                                        <img src="{{ image_base.url }}" alt="{{ image_base.alt }}" />
+                                    </picture>
+                                </label>
                             </div>
                         {% endfor %}
                         <div class="slide-nav">
