@@ -12,22 +12,17 @@ gulp.task("css", () => {
   const postcssPresetEnv = require("postcss-preset-env");
   const inlineimage = require("gulp-inline-image");
 
-  const purify = require("gulp-purifycss");
-
   const sass = gulpSass(dartSass);
 
-  return (
-    gulp
-      .src("./scss/*.scss")
-      .pipe(sourcemaps.init())
-      .pipe(sass.sync())
-      .pipe(inlineimage())
-      //.pipe(purify(["**/!(vendor|node_modules)/*.{html,js}"]))
-      .pipe(postcss([postcssPresetEnv({ stage: 0 }), autoprefixer(), combine_media_query()]))
-      .pipe(postcss([cssnano()]))
-      .pipe(sourcemaps.write("/"))
-      .pipe(gulp.dest("rhgs/static/css/"))
-  );
+  return gulp
+    .src("./scss/*.scss")
+    .pipe(sourcemaps.init())
+    .pipe(sass.sync())
+    .pipe(inlineimage())
+    .pipe(postcss([postcssPresetEnv({ stage: 0 }), autoprefixer(), combine_media_query()]))
+    .pipe(postcss([cssnano()]))
+    .pipe(sourcemaps.write("/"))
+    .pipe(gulp.dest("rhgs/static/css/"));
 });
 
 gulp.task("img", () => {
