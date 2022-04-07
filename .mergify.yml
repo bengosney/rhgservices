@@ -1,9 +1,13 @@
 pull_request_rules:
   - name: Merge Mine
     conditions:
-      - author~=^bengosney$
-      - check-success=workflow
-      - check-success=Sourcery
+      - and:
+        - author~=^bengosney$
+        - check-success=workflow
+        - check-success=Sourcery
+        - or:
+            - check-success~=^LGTM analysis
+            - check-neutral~=^LGTM analysis
     actions:
       merge:
         method: merge
