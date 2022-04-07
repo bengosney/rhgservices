@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          setup-python-dependencies: false
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
@@ -39,5 +41,3 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
-        with:
-          setup-python-dependencies: false
