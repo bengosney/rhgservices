@@ -1,5 +1,8 @@
 .slider {
   position: relative;
+  $zindex_base: 1;
+  $zindex_active: $zindex_base + 1;
+  $zindex_nav: $zindex_active + 1;
 
   .slide {
     display: block;
@@ -11,6 +14,11 @@
     right: 0;
     bottom: 0;
     overflow: hidden;
+    z-index: $zindex_base;
+
+    label {
+      cursor: zoom-in;
+    }
   }
 
   input {
@@ -19,6 +27,7 @@
 
   input:checked + .slide {
     opacity: 1;
+    z-index: $zindex_active;
   }
 
   .slide-nav {
@@ -26,8 +35,11 @@
     bottom: 0;
     width: 100%;
     text-align: center;
+    letter-spacing: 0.25rem;
 
     label {
+      position: relative;
+      z-index: $zindex_nav;
       line-height: 1em;
       display: inline-block;
       color: palette(accent, fg);
