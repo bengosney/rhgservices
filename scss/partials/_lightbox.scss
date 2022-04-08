@@ -16,9 +16,27 @@
     align-items: center;
     justify-content: center;
 
+    & > * {
+      position: relative;
+      &::after {
+        content: "\2715";
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: palette(fg);
+        line-height: 1em;
+        font-size: 2rem;
+        text-shadow: 0px 0px 0.2em black;
+        cursor: pointer;
+      }
+    }
+
     img {
+      box-shadow: 0px 0px 2rem 0.33rem rgba(black, 100%);
       max-width: calc(100vw - 2.5rem);
       max-height: calc(100vh - 2.5rem);
+      min-width: 10rem;
+      min-height: 10rem;
       height: auto;
       width: auto;
       display: block;
