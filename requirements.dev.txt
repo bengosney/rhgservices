@@ -63,9 +63,9 @@ colorama==0.4.4 \
     # via
     #   commitizen
     #   icecream
-commitizen==2.23.0 \
-    --hash=sha256:11497f3733f30f7a5408a9118e031bd53344c996d656550289a83fa3b6d511cc \
-    --hash=sha256:5685d44ac235e3da0a02592e11c92aeebcf4864e059a6f5a59382207264fb671
+commitizen==2.24.0 \
+    --hash=sha256:08901b176eac6a224761d613b58fb8b19bc7d00a49282a4d4bc39e3bdb3afb50 \
+    --hash=sha256:c867c26a394b255a93a8a225dae793dd361b25160be39015d2aa75d730728295
     # via -r requirements.dev.in
 commonmark==0.9.1 \
     --hash=sha256:452f9dc859be7f06631ddcb328b6919c67984aca654e5fefb3914d54691aed60 \
