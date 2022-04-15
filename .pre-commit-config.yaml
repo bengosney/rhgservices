@@ -3,12 +3,12 @@
 exclude: 'migrations/.*\.py|Procfile|[aw]sgi\.py|node_modules|.git|\.polar'
 repos:
   - repo: https://github.com/adamchainz/django-upgrade
-    rev: 1.4.0
+    rev: 1.5.0
     hooks:
       - id: django-upgrade
-        args: [--target-version, "3.2"]
+        args: [--target-version, "4.0"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.2.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -24,7 +24,7 @@ repos:
       - id: mixed-line-ending
         args: [--fix, lf]
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.31.1
+    rev: v2.32.0
     hooks:
       - id: pyupgrade
         args: [--py310-plus]
@@ -62,3 +62,7 @@ repos:
     rev: v2.6.2
     hooks:
       - id: prettier
+  - repo: https://github.com/shssoichiro/oxipng
+    rev: 7ffbe1fb7865a8e97512e63cef06bebc245059a1
+    hooks:
+      - id: oxipng
