@@ -22,6 +22,8 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+
+        {% include "favicon.html" %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
