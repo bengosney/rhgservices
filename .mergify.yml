@@ -5,12 +5,6 @@ pull_request_rules:
           - author~=^bengosney$
           - check-success=workflow
           - check-success=Sourcery
-          - or:
-              - check-success~=^LGTM analysis.*Python
-              - check-neutral~=^LGTM analysis.*Python
-          - or:
-              - check-success~=^LGTM analysis.*JavaScript
-              - check-neutral~=^LGTM analysis.*JavaScript
     actions:
       merge:
         method: merge
