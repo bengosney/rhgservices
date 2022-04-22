@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags picture_tags %}
 
 {% block content %}
+<div>
+    {% picture page.banner_image %}
+</div>
 <div class="banner_image">
     <picture>
         {% image page.banner_image fill-800x400 format-jpeg as image_jpg %}
