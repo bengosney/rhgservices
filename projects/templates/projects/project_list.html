@@ -1,19 +1,11 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags picture_tags %}
 
 <div class="project-pods container">
 {% for project in projects %}
     {% with project=project.specific %}
     <a href="{% pageurl project %}" class="pod">
         <div class="pod-img">
-            <picture>
-                {% image project.banner_image fill-200x200 format-jpeg as image_jpg %}
-                {% image project.banner_image fill-200x200 format-webp as image_webp %}
-
-                <source srcset="{{ image_webp.url }}" type="image/webp">
-                <source srcset="{{ image_jpg.url }}" type="image/jpeg">
-
-                {% image project.banner_image fill-200x200 format-jpeg %}
-            </picture>
+            {% picture project.banner_image fill-200x200 %}
         </div>
         <div class="pod-details">
             <h2>

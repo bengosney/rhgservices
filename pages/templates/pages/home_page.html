@@ -3,31 +3,8 @@
 {% load wagtailcore_tags wagtailimages_tags picture_tags %}
 
 {% block content %}
-<div>
-    {% picture page.banner_image %}
-</div>
 <div class="banner_image">
-    <picture>
-        {% image page.banner_image fill-800x400 format-jpeg as image_jpg %}
-        {% image page.banner_image fill-800x400 format-webp as image_webp %}
-        {% image page.banner_image fill-1600x484 format-jpeg as image_jpg_lg %}
-        {% image page.banner_image fill-1600x484 format-webp as image_webp_lg %}
-        {% image page.banner_image fill-1920x500 format-jpeg as image_jpg_xl %}
-        {% image page.banner_image fill-1920x500 format-webp as image_webp_xl %}
-
-        <source srcset="{{ image_webp.url }}" type="image/webp" media="(max-width: 800px)">
-        <source srcset="{{ image_jpg.url }}" type="image/jpeg" media="(max-width: 800px)">
-
-        <source srcset="{{ image_webp_lg.url }}" type="image/webp" media="(max-width: 1600px)">
-        <source srcset="{{ image_jpg_lg.url }}" type="image/jpeg" media="(max-width: 1600px)">
-
-        <source srcset="{{ image_webp_xl.url }}" type="image/webp">
-        <source srcset="{{ image_jpg_xl.url }}" type="image/jpeg">
-
-
-        {% image page.banner_image fill-1600x484 format-jpeg as image_base %}
-        <img src="{{ image_base.url }}" alt="{{ image_base.alt }}" />
-    </picture>
+    {% picture page.banner_image fill-1920x500 fill-1600x484 fill-800x400 %}
 </div>
 {% include_block page.body %}
 {% endblock %}
