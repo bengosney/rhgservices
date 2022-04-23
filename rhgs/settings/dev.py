@@ -27,6 +27,16 @@ INTERNAL_IPS = [
 
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "incremental": True,
+    "root": {
+        "level": "DEBUG",
+    },
+}
+
+
 try:
     # Locals
     from .local import *  # noqa
