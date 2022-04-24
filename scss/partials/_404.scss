@@ -1,0 +1,11 @@
+.template-404 {
+    h1, h2 {
+        @extend .container;
+    }
+    h1 {
+        padding-top: 1em;
+    }
+    h2 {
+        padding-bottom: 1em;
+    }
+}
