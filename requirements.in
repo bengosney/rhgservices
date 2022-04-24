@@ -1,6 +1,7 @@
 Django
 boto3
 dj-database-url
+django-csp
 django-storages
 gunicorn
 honeybadger
