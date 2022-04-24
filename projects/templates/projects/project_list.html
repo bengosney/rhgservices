@@ -3,7 +3,7 @@
 <div class="project-pods container">
 {% for project in projects %}
     {% with project=project.specific %}
-    <a href="{% pageurl project %}" class="pod">
+    <a aria-label="{{ project.title }} details" href="{% pageurl project %}" class="pod">
         <div class="pod-img">
             {% picture project.banner_image fill-200x200 %}
         </div>
@@ -19,7 +19,7 @@
             {% endif %}
             </p>
             <div>
-                <span href="{% pageurl project %}">Read more</span>
+                <span>Read more</span>
             </div>
         </div>
     </a>

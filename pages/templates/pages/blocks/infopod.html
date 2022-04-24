@@ -10,7 +10,7 @@
         <p>{{ value.paragraph }}</p>
         {% if value.page %}
         <div>
-            <a href="{{ value.page.url }}">Find out more</a>
+            <a aria-label="Find out more about {{ value.title }}" href="{{ value.page.url }}">Find out more</a>
         </div>
         {% endif %}
     </div>

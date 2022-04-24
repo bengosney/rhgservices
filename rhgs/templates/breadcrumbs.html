@@ -5,7 +5,7 @@
     <ul >
         {% for page in self.get_ancestors %}
             {% if page.is_root == False %}
-                <li><a href="{% pageurl page %}"">{{ page.title }}</a></li>
+                <li><a aria-label="{{ page.title }}" href="{% pageurl page %}"">{{ page.title }}</a></li>
             {% endif %}
         {% endfor %}
 
