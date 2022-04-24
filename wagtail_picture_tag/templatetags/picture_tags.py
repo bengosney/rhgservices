@@ -25,8 +25,7 @@ register = template.Library()
 def get_media_query(spec, image):
     mediaquery = ""
     r = re.compile(r"^(?P<op>\w+)((-(?P<size>\d+))(x(\d+))?)?$")
-    match = r.match(spec)
-    if match:
+    if match := r.match(spec):
         groups = match.groupdict()
         if groups["op"] in ["fill", "width"]:
             mediaquery = f'max-width: {groups["size"]}px'
@@ -56,7 +55,7 @@ def get_avif_rendition(image, imageRendition, filter_spec):
             input_filename_without_extension, _ = os.path.splitext(image.filename)
             output_extension = avifSpec.replace("|", ".") + ".avif"
             output_filename_without_extension = input_filename_without_extension[: (59 - len(output_extension))]
-            output_filename = output_filename_without_extension + "." + output_extension
+            output_filename = f"{output_filename_without_extension}.{output_extension}"
 
             avifRendition, _ = image.renditions.get_or_create(
                 filter_spec=avifSpec, focal_point_key=cache_key, defaults={"file": File(avifImage.f, name=output_filename)}
