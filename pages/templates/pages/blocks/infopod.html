@@ -1,17 +1,9 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags picture_tags %}
 
 
 <div class="infopod">
-    <div>
-        <picture class="icon">
-            {% image value.image max-64x64 format-png as image_png %}
-            {% image value.image max-64x64 format-webp as image_webp %}
-
-            <source srcset="{{ image_webp.url }}" type="image/webp">
-            <source srcset="{{ image_png.url }}" type="image/png">
-
-            {% image value.image max-64x64 format-png %}
-        </picture>
+    <div class="icon">
+        {% picture value.image max-64x64 %}
     </div>
     <div>
         <h3>{{ value.title }}</h3>
