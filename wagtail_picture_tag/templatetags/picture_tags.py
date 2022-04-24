@@ -1,4 +1,5 @@
 # Standard Library
+import contextlib
 import os
 import re
 from io import BytesIO
@@ -12,27 +13,33 @@ from django.utils.safestring import mark_safe
 from wagtail.images.exceptions import InvalidFilterSpecError
 from wagtail.images.models import Filter, Rendition
 
-try:
+with contextlib.suppress(ImportError):
     # Third Party
     import willowavif  # noqa
-except ImportError:
-    pass
-
-
 register = template.Library()
+
+spec_regex = re.compile(r"^(?P<op>\w+)((-(?P<size>\d+))(x(\d+))?)?$")
+
+
+def parse_spec(spec):
+    """Parse a filter specification."""
+    if not (match := spec_regex.match(spec)):
+        return None, None
+    groups = match.groupdict()
+
+    return groups["op"], groups["size"] or None
 
 
 def get_media_query(spec, image):
     mediaquery = ""
-    r = re.compile(r"^(?P<op>\w+)((-(?P<size>\d+))(x(\d+))?)?$")
-    if match := r.match(spec):
-        groups = match.groupdict()
-        if groups["op"] in ["fill", "width"]:
-            mediaquery = f'max-width: {groups["size"]}px'
-        elif groups["op"] in ["max", "height", "scale", "original"]:
-            mediaquery = f"max-width: {image.width}px"
-        elif groups["op"] in ["min"]:
-            mediaquery = f'min-width: {groups["size"]}px'
+    op, size = parse_spec(spec)
+
+    if op in ["fill", "width"]:
+        mediaquery = f"max-width: {size}px"
+    elif op in ["max", "height", "scale", "original"]:
+        mediaquery = f"max-width: {image.width}px"
+    elif op in ["min"]:
+        mediaquery = f"min-width: {size}px"
 
     return mediaquery
 
@@ -83,10 +90,8 @@ def get_renditions(image, filter_spec):
         pngRendition,
     ]
 
-    try:
+    with contextlib.suppress(AttributeError):
         renditions.append(get_avif_rendition(image, webpRendition, filter_spec))
-    except AttributeError:
-        pass
 
     renditions.sort(key=lambda r: r.file.size)
 
@@ -123,6 +128,7 @@ class PictureNode(template.Node):
             _type = "jpeg" if ext == "jpg" else ext.replace(".", "")
             return f"image/{_type}"
 
+        sizedSpecs.sort(key=lambda spec: parse_spec(spec)[1], reverse=True)
         for spec in sizedSpecs:
             renditions = get_renditions(image, spec)
             for rendition in renditions:
