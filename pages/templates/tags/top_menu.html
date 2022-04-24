@@ -4,7 +4,7 @@
 {% for menuitem in menuitems %}
     <li class="item {{ menuitem.title|lower|cut:" " }}{% if menuitem.active %} active{% endif %}{% if menuitem.show_dropdown %} has-submenu{% endif %}">
         <div>
-            <a href="{% pageurl menuitem %}" class="top-level">{{ menuitem.title }}</a>
+            <a href="{% pageurl menuitem %}" class="top-level" aria-label="{{ menuitem.title }}">{{ menuitem.title }}</a>
             {% if menuitem.show_dropdown %}
                 <label for="nav-{{ menuitem.title|lower|cut:" " }}"><span>open</span></label>
             {% endif %}

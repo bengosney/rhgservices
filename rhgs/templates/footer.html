@@ -2,17 +2,17 @@
     <div class="slogan">
         <div class="container">
             Are you ready to take your garden to the next level?<br />
-            Call us on <a href="tel:{{ settings.pages.SiteSettings.phone_number }}">{{ settings.pages.SiteSettings.phone_number }}</a>
+            Call us on <a aria-label="Phone number" href="tel:{{ settings.pages.SiteSettings.phone_number }}">{{ settings.pages.SiteSettings.phone_number }}</a>
         </div>
     </div>
 
     <div class="container">
         <div class="footer">
             <div class="socials">
-                <a href="{{ settings.pages.SiteSettings.facebook }}" rel="noopener noreferrer" target="_blank">
+                <a aria-label="Facebook" href="{{ settings.pages.SiteSettings.facebook }}" rel="noopener noreferrer" target="_blank">
                     {% include "icons/facebook.svg" %}
                 </a>
-                <a href="{{ settings.pages.SiteSettings.instagram }}"  rel="noopener noreferrer" target="_blank">
+                <a aria-label="Instagram" href="{{ settings.pages.SiteSettings.instagram }}"  rel="noopener noreferrer" target="_blank">
                     {% include "icons/instagram.svg" %}
                 </a>
             </div>
