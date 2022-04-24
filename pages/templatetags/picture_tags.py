@@ -1,5 +1,6 @@
 # Standard Library
 import os
+import re
 from io import BytesIO
 
 # Django
@@ -17,7 +18,24 @@ try:
 except ImportError:
     pass
 
+
 register = template.Library()
+
+
+def get_media_query(spec, image):
+    mediaquery = ""
+    r = re.compile(r"^(?P<op>\w+)((-(?P<size>\d+))(x(\d+))?)?$")
+    match = r.match(spec)
+    if match:
+        groups = match.groupdict()
+        if groups["op"] in ["fill", "width"]:
+            mediaquery = f'max-width: {groups["size"]}px'
+        elif groups["op"] in ["max", "height", "scale", "original"]:
+            mediaquery = f"max-width: {image.width}px"
+        elif groups["op"] in ["min"]:
+            mediaquery = f'min-width: {groups["size"]}px'
+
+    return mediaquery
 
 
 def get_avif_rendition(image, imageRendition, filter_spec):
