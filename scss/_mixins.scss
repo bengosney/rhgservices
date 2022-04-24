@@ -17,7 +17,10 @@
 }
 
 @mixin accent_colour() {
-  text-shadow: 0 0 0.5rem rgb(0 0 0 / 25%);
   color: palette(accent, fg);
   background-color: palette(accent, bg);
+
+  a {
+    color: palette(accent, fg);
+  }
 }

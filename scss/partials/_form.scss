@@ -64,8 +64,7 @@
     button,
     input[type="button"],
     input[type="submit"] {
-      background: palette(accent, bg);
-      color: palette(accent, fg);
+      @include accent_colour();
       font-weight: bold;
     }
   }
