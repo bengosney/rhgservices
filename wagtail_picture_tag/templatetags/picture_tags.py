@@ -13,13 +13,9 @@ from django.utils.safestring import mark_safe
 from wagtail.images.exceptions import InvalidFilterSpecError
 from wagtail.images.models import Filter, Rendition
 
-try:
+with contextlib.suppress(ImportError):
     # Third Party
     import willowavif  # noqa
-except ImportError:
-    pass
-
-
 register = template.Library()
 
 spec_regex = re.compile(r"^(?P<op>\w+)((-(?P<size>\d+))(x(\d+))?)?$")
