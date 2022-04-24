@@ -82,7 +82,7 @@ $width: 992px;
   }
 
   img {
-    box-sizing: border-box;
+    box-sizing: content-box;
     background: palette("accent", "bg");
     height: auto;
     width: calc($icon-size + 1em);
