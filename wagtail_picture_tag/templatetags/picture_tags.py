@@ -119,7 +119,7 @@ class PictureNode(template.Node):
 
         srcsets = []
 
-        def getType(ext):
+        def get_type(ext):
             _type = "jpeg" if ext == "jpg" else ext.replace(".", "")
             return f"image/{_type}"
 
@@ -129,8 +129,8 @@ class PictureNode(template.Node):
                 _, extention = os.path.splitext(rendition.file.name)
                 attrs = [
                     f'srcset="{rendition.url}"',
-                    f'media="(max-width: {rendition.width}px)"',
-                    f'type="{getType(extention)}"',
+                    f'media="({get_media_query(spec, rendition)})"',
+                    f'type="{get_type(extention)}"',
                 ]
                 srcsets.append(f'<source {" ".join(attrs)} />')
 
@@ -139,7 +139,7 @@ class PictureNode(template.Node):
             _, extention = os.path.splitext(rendition.file.name)
             attrs = [
                 f'srcset="{rendition.url}"',
-                f'type="{getType(extention)}"',
+                f'type="{get_type(extention)}"',
             ]
             srcsets.append(f'<source {" ".join(attrs)} />')
             if base is None and extention in [".jpg", ".png"]:

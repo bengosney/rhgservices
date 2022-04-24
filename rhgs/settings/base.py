@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "pages",
     "projects",
     "search",
+    "wagtail_picture_tag",
     "wagtail.contrib.settings",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
