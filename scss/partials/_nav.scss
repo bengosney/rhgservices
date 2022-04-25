@@ -226,8 +226,12 @@ nav {
                   }
                 }
 
+                transition: background 0.2s ease-in-out;
                 &:hover {
                   background: palette(accent, bg);
+                  > div > a {
+                    color: palette(accent, fg);
+                  }
                 }
 
                 a {
