@@ -30,19 +30,23 @@
                     </div>
                 {% endfor %}
                 <div class="slider">
-                    <div class="inner">
-                        {% for image in page.images.all %}
-                            <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
-                            <div class="slide slide-{{ forloop.counter }}">
-                                <label for="light-box-{{ image.id }}">
-                                    {% picture image.image fill-640x427 %}
-                                </label>
-                            </div>
-                        {% endfor %}
-                        <div class="slide-nav">
+                    <div class="slider-inner">
+                        <div class="sizer">
                             {% for image in page.images.all %}
-                                <label class="slide-label slide-label-{{ forloop.counter }}" for="slide-{{ forloop.counter }}">&#8226;</label>
+                                <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
+                                <div class="slide slide-{{ forloop.counter }}">
+                                    <label for="light-box-{{ image.id }}">
+                                        {% picture image.image fill-640x427 %}
+                                    </label>
+                                </div>
                             {% endfor %}
+                            {% if page.images.all|length > 1 %}
+                                <div class="slide-nav">
+                                    {% for image in page.images.all %}
+                                        <label class="slide-label slide-label-{{ forloop.counter }}" for="slide-{{ forloop.counter }}">&#8226;</label>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

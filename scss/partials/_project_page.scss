@@ -27,15 +27,18 @@
     height: auto;
     max-width: $slider-width;
     max-height: $slider-height;
-    margin-bottom: 2rem;
 
-    .inner {
+    .sizer {
       width: 100%;
       padding-top: math.div($slider-height, $slider-width) * 100%;
 
       img {
         width: 640px;
       }
+    }
+
+    .slide-nav {
+      margin-bottom: -1em;
     }
   }
 

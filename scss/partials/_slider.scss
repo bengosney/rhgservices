@@ -31,8 +31,6 @@
   }
 
   .slide-nav {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     text-align: center;
     letter-spacing: 0.25rem;
@@ -42,7 +40,7 @@
       z-index: $zindex_nav;
       line-height: 1em;
       display: inline-block;
-      color: palette(accent, fg);
+      color: palette(fg);
       font-size: min(4rem, max(3vw, 2.5rem));
       text-shadow: 0px 0px 1rem black;
       cursor: pointer;
