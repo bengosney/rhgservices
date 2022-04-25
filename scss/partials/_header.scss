@@ -12,7 +12,7 @@ header {
 }
 
 @media screen and (max-width: $mobile_point) {
-  .header {
+  .header-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
