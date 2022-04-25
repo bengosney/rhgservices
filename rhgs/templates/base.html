@@ -29,11 +29,12 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
-        <header class="container">
-            <img src="{% static 'img/logo.png' %}" alt="RH Garden Services" class="logo" />
-        </header>
-
-        {% include "header.html" %}
+        <div class="header">
+            <header class="container">
+                <img src="{% static 'img/logo.png' %}" alt="RH Garden Services" class="logo" />
+            </header>
+            {% include "header.html" %}
+        </div>
         {% block header %}{% endblock %}
         {% block breadcrumbs %}{% include "breadcrumbs.html" %}{% endblock %}
         {% block content %}{% endblock %}

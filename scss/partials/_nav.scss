@@ -1,25 +1,32 @@
 @use "sass:math";
 
-$swap_point: 768px;
 $mobile_width: 275px;
 
 .nav-wrapper {
   .nav-button {
+
+    @media screen and (min-width: $mobile_point+1px) {
+      display: none;
+    }
+
     font-size: min(3vw, 1rem);
     $icon_color: palette(accent, bg);
     $icon_size: 1em;
     $icon_gap: math.div($icon_size, 2);
-    $button_height: ($icon_size * 3) + ($icon_gap * 5);
-    $button_width: $icon_size * 3;
+    $button_height: ($icon_size * 3) + ($icon_gap * 3);
+    $button_width: 10vw;
+    background: none;
     width: $button_width;
     height: $button_height;
     padding: 0;
     border: none;
-    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    position: absolute;
-    top: 1em;
-    right: 1em;
+    position: relative;
+    top: 0em;
+    left: 0em;
 
     &:focus {
       background: none;
@@ -36,8 +43,6 @@ $mobile_width: 275px;
       height: $icon_size;
       background-color: $icon_color;
       border-radius: 50%;
-      top: ($icon_size + $icon_gap) + ($icon_gap * 1.5);
-      left: math.div($button_width - $icon_size, 2);
 
       &:before,
       &:after {
@@ -63,7 +68,7 @@ $mobile_width: 275px;
   input {
     display: none;
   }
-  @media screen and (min-width: ($swap_point - 1px)) {
+  @media screen and (min-width: ($mobile_point - 1px)) {
     label,
     .mobile-title {
       display: none;
@@ -82,7 +87,7 @@ nav {
       }
     }
 
-    @media screen and (min-width: ($swap_point - 1px)) {
+    @media screen and (min-width: ($mobile_point - 1px)) {
       $border-size: 1px;
       border-bottom: 0.5em solid palette(accent, bg);
 
@@ -249,7 +254,7 @@ nav {
         }
       }
     }
-    @media screen and (max-width: $swap_point) {
+    @media screen and (max-width: $mobile_point) {
       ul.nav {
         transform: translateX($mobile_width);
         transition: all 0.5s ease;

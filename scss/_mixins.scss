@@ -16,6 +16,10 @@
   @return val($palette, $color...);
 }
 
+@function nav($vars...) {
+  @return val($nav, $vars...);
+}
+
 @mixin accent_colour() {
   color: palette(accent, fg);
   background-color: palette(accent, bg);
