@@ -6,7 +6,7 @@
 
 {% block header %}
 <div class="banner_image">
-    {% picture page.banner_image fill-1920x500 fill-1600x484 fill-800x400 %}
+    {% picture page.banner_image photo fill-1920x500 fill-1600x484 fill-800x400 %}
 
     <div class="header">
         <div class="container">
@@ -25,7 +25,7 @@
                     <div class="lightbox">
                         <input type="checkbox" id="light-box-{{ image.id }}" />
                         <label for="light-box-{{ image.id }}">
-                            {% picture image.image max-1980x1080 max-1024x768 max-800x600 max-640x480 %}
+                            {% picture image.image print("AVIF cache miss") max-1980x1080 max-1024x768 max-800x600 %}
                         </label>
                     </div>
                 {% endfor %}
@@ -36,7 +36,7 @@
                                 <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
                                 <div class="slide slide-{{ forloop.counter }}">
                                     <label for="light-box-{{ image.id }}">
-                                        {% picture image.image fill-640x427 %}
+                                        {% picture image.image photo fill-640x427 %}
                                     </label>
                                 </div>
                             {% endfor %}
