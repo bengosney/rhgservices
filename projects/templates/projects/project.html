@@ -25,7 +25,7 @@
                     <div class="lightbox">
                         <input type="checkbox" id="light-box-{{ image.id }}" />
                         <label for="light-box-{{ image.id }}">
-                            {% picture image.image print("AVIF cache miss") max-1980x1080 max-1024x768 max-800x600 %}
+                            {% picture image.image photo max-1980x1080 max-1024x768 max-800x600 %}
                         </label>
                     </div>
                 {% endfor %}
