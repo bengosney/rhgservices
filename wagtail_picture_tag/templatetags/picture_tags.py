@@ -47,11 +47,13 @@ def get_media_query(spec, image):
 
 
 def get_avif_rendition(image, imageRendition, filter_spec):
+    filterSpec = Filter(spec=filter_spec)
+    cache_key = filterSpec.get_cache_key(image)
     avifSpec = "|".join([filter_spec, "format-avif"])
+
     try:
         avifRendition = image.get_rendition(avifSpec)
     except InvalidFilterSpecError:
-        cache_key = ""
         try:
             avifRendition = image.renditions.get(
                 filter_spec=avifSpec,
@@ -63,6 +65,8 @@ def get_avif_rendition(image, imageRendition, filter_spec):
 
             input_filename_without_extension, _ = os.path.splitext(image.filename)
             output_extension = avifSpec.replace("|", ".") + ".avif"
+            if cache_key:
+                output_extension = f"{cache_key}.{output_extension}"
             output_filename_without_extension = input_filename_without_extension[: (59 - len(output_extension))]
             output_filename = f"{output_filename_without_extension}.{output_extension}"
 
