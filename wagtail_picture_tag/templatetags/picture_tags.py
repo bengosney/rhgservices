@@ -16,6 +16,8 @@ from wagtail.images.models import Filter, Rendition
 with contextlib.suppress(ImportError):
     # Third Party
     import willowavif  # noqa
+
+
 register = template.Library()
 
 spec_regex = re.compile(r"^(?P<op>\w+)((-(?P<size>\d+))(x(\d+))?)?$")
@@ -70,7 +72,7 @@ def get_avif_rendition(image, imageRendition, filter_spec):
     return avifRendition
 
 
-def get_renditions(image, filter_spec):
+def get_renditions(image, filter_spec, formats):
     """Get a list of renditions that match the filter specification."""
     if not filter_spec:
         return []
@@ -80,18 +82,12 @@ def get_renditions(image, filter_spec):
     except InvalidFilterSpecError:
         return []
 
-    webpRendition = image.get_rendition("|".join([filter_spec, "format-webp"]))
-    jpegRendition = image.get_rendition("|".join([filter_spec, "format-jpeg"]))
-    pngRendition = image.get_rendition("|".join([filter_spec, "format-png"]))
+    formats.sort(reverse=True)
+    renditions = [image.get_rendition("|".join([filter_spec, f"format-{f}"])) for f in formats if f != "avif"]
 
-    renditions = [
-        webpRendition,
-        jpegRendition,
-        pngRendition,
-    ]
-
-    with contextlib.suppress(AttributeError):
-        renditions.append(get_avif_rendition(image, webpRendition, filter_spec))
+    if "avif" in formats:
+        with contextlib.suppress(AttributeError):
+            renditions.append(get_avif_rendition(image, renditions[0], filter_spec))
 
     renditions.sort(key=lambda r: r.file.size)
 
@@ -102,15 +98,28 @@ def get_renditions(image, filter_spec):
 def picture(parser, token):
     bits = token.split_contents()[1:]
     image_expr = parser.compile_filter(bits[0])
-    filter_specs = bits[1:]
 
-    return PictureNode(image_expr, filter_specs)
+    filter_specs = []
+    formats = []
+    for spec in bits[1:]:
+        if spec == "transparent":
+            formats += ["png", "webp", "avif"]
+        elif spec.startswith("format-"):
+            formats.append(spec.split("-")[1])
+        else:
+            filter_specs.append(spec)
+
+    if not formats:
+        formats = ["webp", "jpeg", "png", "avif"]
+
+    return PictureNode(image_expr, filter_specs, list(set(formats)))
 
 
 class PictureNode(template.Node):
-    def __init__(self, image, specs):
+    def __init__(self, image, specs, formats):
         self.image = image
         self.specs = specs
+        self.formats = formats
         super().__init__()
 
     def render(self, context):
@@ -130,7 +139,7 @@ class PictureNode(template.Node):
 
         sizedSpecs.sort(key=lambda spec: parse_spec(spec)[1], reverse=True)
         for spec in sizedSpecs:
-            renditions = get_renditions(image, spec)
+            renditions = get_renditions(image, spec, self.formats)
             for rendition in renditions:
                 _, extention = os.path.splitext(rendition.file.name)
                 attrs = [
@@ -140,7 +149,7 @@ class PictureNode(template.Node):
                 ]
                 srcsets.append(f'<source {" ".join(attrs)} />')
 
-        renditions = get_renditions(image, baseSpec)
+        renditions = get_renditions(image, baseSpec, self.formats)
         for rendition in renditions:
             _, extention = os.path.splitext(rendition.file.name)
             attrs = [
