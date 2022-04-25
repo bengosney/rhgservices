@@ -36,6 +36,10 @@ LOGGING = {
     },
 }
 
+CSP_DEFAULT_SRC = None
+CSP_STYLE_SRC = None
+CSP_FONT_SRC = None
+CSP_IMG_SRC = None
 
 try:
     # Locals

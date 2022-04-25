@@ -10,3 +10,28 @@ header {
     box-sizing: border-box;
   }
 }
+
+@media screen and (max-width: $mobile_point) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 1em 0;
+    box-sizing: border-box;
+
+    .nav-wrapper {
+      min-width: 5vw;
+    }
+
+    img,
+    .container {
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      max-width: 80vw;
+    }
+  }
+}
