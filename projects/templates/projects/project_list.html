@@ -5,7 +5,7 @@
     {% with project=project.specific %}
     <a aria-label="{{ project.title }} details" href="{% pageurl project %}" class="pod">
         <div class="pod-img">
-            {% picture project.banner_image fill-200x200 %}
+            {% picture project.banner_image photo fill-200x200 %}
         </div>
         <div class="pod-details">
             <h2>

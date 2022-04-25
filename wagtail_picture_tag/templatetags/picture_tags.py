@@ -108,6 +108,8 @@ def picture(parser, token):
     for spec in bits[1:]:
         if spec == "transparent":
             formats += ["png", "webp", "avif"]
+        if spec == "photo":
+            formats += ["jpg", "webp", "avif"]
         elif spec.startswith("format-"):
             formats.append(spec.split("-")[1])
         else:
