@@ -26,19 +26,21 @@
     width: 100%;
     height: auto;
     max-width: $slider-width;
-    max-height: $slider-height;
 
     .sizer {
       width: 100%;
       padding-top: math.div($slider-height, $slider-width) * 100%;
 
       img {
-        width: 640px;
+        width: $slider-width;
+        max-height: $slider-height;
       }
     }
 
     .slide-nav {
-      margin-bottom: -1em;
+      @media screen and (max-width: $mobile_point) {
+        margin-bottom: -1em;
+      }
     }
   }
 
