@@ -107,6 +107,7 @@ def picture(parser, token):
 
     filter_specs = []
     formats = []
+    loading = "eager"
     for spec in bits[1:]:
         if spec == "transparent":
             formats += ["png", "webp", "avif"]
@@ -114,20 +115,24 @@ def picture(parser, token):
             formats += ["jpeg", "webp", "avif"]
         elif spec.startswith("format-"):
             formats.append(spec.split("-")[1])
+        elif spec == "lazy":
+            loading = "lazy"
         else:
             filter_specs.append(spec)
 
     if not formats:
         formats = ["webp", "jpeg", "png", "avif"]
 
-    return PictureNode(image_expr, filter_specs, list(set(formats)))
+    return PictureNode(image_expr, filter_specs, list(set(formats)), loading)
 
 
 class PictureNode(template.Node):
-    def __init__(self, image, specs, formats):
+    def __init__(self, image, specs, formats, loading):
         self.image = image
         self.specs = specs
         self.formats = formats
+        self.loading = loading
+
         super().__init__()
 
     def render(self, context):
@@ -175,6 +180,9 @@ class PictureNode(template.Node):
                     f'width="{rendition.width}"',
                     f'height="{rendition.height}"',
                 ]
+                if self.loading != "eager":
+                    attrs.append(f'loading="{self.loading}"')
+
                 srcsets.append(f'<source {" ".join(attrs)} />')
 
         renditions = get_renditions(image, baseSpec, self.formats)
@@ -186,6 +194,9 @@ class PictureNode(template.Node):
                 f'width="{rendition.width}"',
                 f'height="{rendition.height}"',
             ]
+            if self.loading != "eager":
+                attrs.append(f'loading="{self.loading}"')
+
             srcsets.append(f'<source {" ".join(attrs)} />')
             if base is None and extention in [".jpg", ".png"]:
                 base = rendition
@@ -193,11 +204,20 @@ class PictureNode(template.Node):
         if base is None:
             base = renditions.pop()
 
+        attrs = [
+            f'src="{base.url}"',
+            f'width="{base.width}"',
+            f'height="{base.height}"',
+            f'alt="{base.alt}"',
+        ]
+
+        if self.loading != "eager":
+            attrs.append(f'loading="{self.loading}"')
+
         picture = f"""<picture>
     {"".join(srcsets)}
-
-    <img src="{base.url}" width="{base.width}" height="{base.height}" alt="{base.alt}" />
-    </picture>"""
+    <img {" ".join(attrs)} />
+</picture>"""
 
         if cache_key and cache:
             cache.set(cache_key, picture)
