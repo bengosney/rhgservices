@@ -91,6 +91,8 @@ nav {
       $border-size: 1px;
       border-bottom: 0.5em solid palette(accent, bg);
 
+      overflow-x: auto;
+
       .socials {
         div {
           text-align: right;
