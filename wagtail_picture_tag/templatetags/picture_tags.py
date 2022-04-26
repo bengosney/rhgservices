@@ -172,6 +172,8 @@ class PictureNode(template.Node):
                     f'srcset="{rendition.url}"',
                     f'media="({get_media_query(spec, rendition)})"',
                     f'type="{get_type(extention)}"',
+                    f'width="{rendition.width}"',
+                    f'height="{rendition.height}"',
                 ]
                 srcsets.append(f'<source {" ".join(attrs)} />')
 
@@ -181,6 +183,8 @@ class PictureNode(template.Node):
             attrs = [
                 f'srcset="{rendition.url}"',
                 f'type="{get_type(extention)}"',
+                f'width="{rendition.width}"',
+                f'height="{rendition.height}"',
             ]
             srcsets.append(f'<source {" ".join(attrs)} />')
             if base is None and extention in [".jpg", ".png"]:
@@ -192,7 +196,7 @@ class PictureNode(template.Node):
         picture = f"""<picture>
     {"".join(srcsets)}
 
-    <img src="{base.url}" alt="{base.alt}" />
+    <img src="{base.url}" width="{base.width}" height="{base.height}" alt="{base.alt}" />
     </picture>"""
 
         if cache_key and cache:
