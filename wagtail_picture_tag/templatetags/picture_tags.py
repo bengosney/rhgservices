@@ -1,11 +1,13 @@
 # Standard Library
 import contextlib
+import hashlib
 import os
 import re
 from io import BytesIO
 
 # Django
 from django import template
+from django.core.cache import InvalidCacheBackendError, caches
 from django.core.files import File
 from django.utils.safestring import mark_safe
 
@@ -133,6 +135,24 @@ class PictureNode(template.Node):
         if image is None:
             return ""
 
+        try:
+            cache_keys = []
+            for spec in self.specs:
+                f = Filter(spec=spec)
+                cache_keys.append(f.get_cache_key(image))
+                cache_keys.append(spec)
+
+            cache_keys.append(image.file_hash)
+
+            cache_key = hashlib.sha1("|".join(set(cache_keys)).encode("utf-8")).hexdigest()
+
+            cache = caches["renditions"]
+            if cached_picture := cache.get(cache_key):
+                return mark_safe(cached_picture)
+        except InvalidCacheBackendError:
+            cache_key = None
+            cache = None
+
         baseSpec = self.specs[0]
         sizedSpecs = self.specs[1:]
         base = None
@@ -174,5 +194,8 @@ class PictureNode(template.Node):
 
     <img src="{base.url}" alt="{base.alt}" />
     </picture>"""
+
+        if cache_key and cache:
+            cache.set(cache_key, picture)
 
         return mark_safe(picture)
