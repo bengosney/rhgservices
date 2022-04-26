@@ -25,7 +25,7 @@
                     <div class="lightbox">
                         <input type="checkbox" id="light-box-{{ image.id }}" />
                         <label for="light-box-{{ image.id }}">
-                            {% picture image.image photo max-1980x1080 max-1024x768 max-800x600 %}
+                            {% picture image.image photo lazy max-1980x1080 max-1024x768 max-800x600 %}
                         </label>
                     </div>
                 {% endfor %}
@@ -36,7 +36,11 @@
                                 <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
                                 <div class="slide slide-{{ forloop.counter }}">
                                     <label for="light-box-{{ image.id }}">
-                                        {% picture image.image photo fill-640x427 %}
+                                        {% if forloop.first %}
+                                            {% picture image.image photo fill-640x427 %}
+                                        {% else %}
+                                            {% picture image.image photo fill-640x427 lazy %}
+                                        {% endif %}
                                     </label>
                                 </div>
                             {% endfor %}
