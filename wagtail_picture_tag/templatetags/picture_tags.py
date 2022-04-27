@@ -139,7 +139,6 @@ class PictureNode(template.Node):
         image = self.image.resolve(context)
         if image is None:
             return ""
-
         try:
             cache_keys = []
             for spec in self.specs:
