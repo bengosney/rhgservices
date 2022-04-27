@@ -1,6 +1,6 @@
 @use "sass:math";
 
-$width: 992px;
+$small_mobile_point: 400px;
 
 .block-InfoPod {
   $icon-size: 64px;
@@ -9,7 +9,7 @@ $width: 992px;
   .flex_block {
     justify-content: space-around;
     flex-wrap: wrap;
-    @media screen and (max-width: $width) {
+    @media screen and (max-width: $mobile_point) {
       flex-direction: column;
     }
   }
@@ -36,11 +36,24 @@ $width: 992px;
       margin-top: 1em;
     }
 
-    @media screen and (max-width: $width) {
+    @media screen and (max-width: $small_mobile_point) {
+      flex-direction: column;
+
+      picture {
+        margin: 0 auto 1em;
+        max-width: 20vw;
+      }
+
+      div, p, h1, h2, h3 {
+        text-align: center;
+      }
+    }
+
+    @media screen and (max-width: $mobile_point) {
       max-width: 100%;
       flex-direction: row;
       picture {
-        padding-right: 4vw;
+        margin-right: 4vw;
       }
       h3 {
         margin-top: 0;
@@ -52,9 +65,19 @@ $width: 992px;
   }
 
   picture {
-    //flex: 1;
     display: block;
     margin: auto;
+
+    box-sizing: content-box;
+    background: palette("accent", "bg");
+    height: auto;
+    width: $icon-size;
+    max-width: 100%;
+    padding: 0.5em;
+    display: block;
+    border-radius: 50%;
+    border: solid 3px palette("accent", "fg");
+    box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
 
     img {
       display: block;
@@ -69,29 +92,16 @@ $width: 992px;
     margin: 0;
     font-size: 0.9em;
     line-height: 1.5em;
-    @media screen and (max-width: $width) {
+    @media screen and (max-width: $mobile_point) {
       text-align: left;
     }
   }
 
   h3 {
     text-align: center;
-    @media screen and (max-width: $width) {
+    @media screen and (max-width: $mobile_point) {
       text-align: left;
     }
-  }
-
-  img {
-    box-sizing: content-box;
-    background: palette("accent", "bg");
-    height: auto;
-    width: calc($icon-size + 1em);
-    max-width: calc($icon-size + 1em);
-    padding: 0.5em;
-    display: block;
-    border-radius: 50%;
-    border: solid 3px palette("accent", "fg");
-    box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
   }
 
   ul {
