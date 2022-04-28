@@ -2,6 +2,7 @@ Django
 boto3
 dj-database-url
 django-csp
+django-health-check
 django-storages
 gunicorn
 honeybadger

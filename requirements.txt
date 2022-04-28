@@ -170,6 +170,7 @@ django==4.0.4 \
     #   -r requirements.in
     #   django-csp
     #   django-filter
+    #   django-health-check
     #   django-storages
     #   django-taggit
     #   django-treebeard
@@ -183,6 +184,10 @@ django-filter==21.1 \
     --hash=sha256:632a251fa8f1aadb4b8cceff932bb52fe2f826dd7dfe7f3eac40e5c463d6836e \
     --hash=sha256:f4a6737a30104c98d2e2a5fb93043f36dd7978e0c7ddc92f5998e85433ea5063
     # via wagtail
+django-health-check==3.16.5 \
+    --hash=sha256:1edfd49293ccebbce29f9da609c407f307aee240ab799ab4201031341ae78c0f \
+    --hash=sha256:8d66781a0ea82b1a8b44878187b38a27370e94f18287312e39be0593e72d8983
+    # via -r requirements.in
 django-modelcluster==5.2 \
     --hash=sha256:767084078b9e172540b271454ecc73cb320927131ca4b2c5f276daf771f9542f \
     --hash=sha256:e541a46a0a899ef4778a4708be22e71cac3efacc09a6ff44bc065c5c9194c054
