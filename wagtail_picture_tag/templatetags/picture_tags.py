@@ -45,7 +45,7 @@ def get_media_query(spec, image):
     elif op in ["min"]:
         mediaquery = f"min-width: {size}px"
 
-    return mediaquery
+    return f"({mediaquery})"
 
 
 def get_avif_rendition(image, imageRendition, filter_spec):
@@ -139,12 +139,12 @@ def get_type(ext):
 def get_source(rendition, **kwargs):
     _, extention = os.path.splitext(rendition.file.name)
 
-    attrs = kwargs | {
+    attrs = {
         "srcset": rendition.url,
         "type": get_type(extention),
         "width": rendition.width,
         "height": rendition.height,
-    }
+    } | kwargs
 
     return f"<source {get_attrs(attrs)} />"
 

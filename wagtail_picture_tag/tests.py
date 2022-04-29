@@ -49,13 +49,13 @@ class PictureTagTests(TestCase):
             width = 100
 
         specs = (
-            ("max-1000x500", "max-width: 100px"),
-            ("height-480", "max-width: 100px"),
-            ("scale-50", "max-width: 100px"),
-            ("original", "max-width: 100px"),
-            ("width-640", "max-width: 640px"),
-            ("fill-200x200", "max-width: 200px"),
-            ("min-500x200", "min-width: 500px"),
+            ("max-1000x500", "(max-width: 100px)"),
+            ("height-480", "(max-width: 100px)"),
+            ("scale-50", "(max-width: 100px)"),
+            ("original", "(max-width: 100px)"),
+            ("width-640", "(max-width: 640px)"),
+            ("fill-200x200", "(max-width: 200px)"),
+            ("min-500x200", "(min-width: 500px)"),
         )
 
         for spec, expected in specs:
