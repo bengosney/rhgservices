@@ -131,16 +131,16 @@ def get_attrs(attrs):
 
 
 def get_type(ext):
-    _type = "jpeg" if ext == "jpg" else ext.replace(".", "")
+    ext = ext.lower().strip(".")
+    _type = "jpeg" if ext == "jpg" else ext
     return f"image/{_type}"
 
 
-def get_source(rendition, spec, **kwargs):
+def get_source(rendition, **kwargs):
     _, extention = os.path.splitext(rendition.file.name)
 
     attrs = kwargs | {
         "srcset": rendition.url,
-        "media": get_media_query(spec, rendition),
         "type": get_type(extention),
         "width": rendition.width,
         "height": rendition.height,
@@ -155,7 +155,6 @@ class PictureNode(template.Node):
         self.specs = specs
         self.formats = formats
         self.loading = loading
-        print(f"LOADING: {loading}")
 
         super().__init__()
 
@@ -189,31 +188,16 @@ class PictureNode(template.Node):
         for spec in sizedSpecs:
             renditions = get_renditions(image, spec, self.formats)
             for rendition in renditions:
-                _, extention = os.path.splitext(rendition.file.name)
-
                 attrs = {
-                    "srcset": rendition.url,
-                    "media": get_media_query(spec, rendition),
-                    "type": get_type(extention),
-                    "width": rendition.width,
-                    "height": rendition.height,
                     "loading": self.loading,
+                    "media": get_media_query(spec, rendition),
                 }
-
-                srcsets.append(get_source(rendition, spec, loading=self.loading, media=get_media_query(spec, rendition)))
+                srcsets.append(get_source(rendition, **attrs))
 
         renditions = get_renditions(image, baseSpec, self.formats)
         for rendition in renditions:
             _, extention = os.path.splitext(rendition.file.name)
-            attrs = {
-                "srcset": rendition.url,
-                "type": get_type(extention),
-                "width": rendition.width,
-                "height": rendition.height,
-                "loading": self.loading,
-            }
-
-            srcsets.append(get_source(rendition, spec, loading=self.loading))
+            srcsets.append(get_source(rendition, loading=self.loading))
 
             if base is None and extention in [".jpg", ".png"]:
                 base = rendition
