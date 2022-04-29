@@ -122,7 +122,6 @@ class PictureTagTests(TestCase):
         match = re.search(rf"images/mock_img_([\w\d]+)\.([\w\d]+)\.{specs[0]}\.format-jpeg", got)
         self.assertIsNotNone(match)
         if match is not None:
-            print(got)
             expected = f"""<picture>
 <source media="max-width: 33px" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[2]}.format-webp.webp" type="image/webp" width="33" height="33" />
 <source media="max-width: 33px" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[2]}.format-avif.avif" type="image/avif" width="33" height="33" />
