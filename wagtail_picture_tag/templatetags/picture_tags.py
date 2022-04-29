@@ -138,13 +138,12 @@ def get_type(ext):
 def get_source(rendition, spec, **kwargs):
     _, extention = os.path.splitext(rendition.file.name)
 
-    attrs = {
+    attrs = kwargs | {
         "srcset": rendition.url,
         "media": get_media_query(spec, rendition),
         "type": get_type(extention),
         "width": rendition.width,
         "height": rendition.height,
-        # 'loading': self.loading,
     }
 
     return f"<source {get_attrs(attrs)} />"
@@ -201,7 +200,7 @@ class PictureNode(template.Node):
                     "loading": self.loading,
                 }
 
-                srcsets.append(f"<source {get_attrs(attrs)} />")
+                srcsets.append(get_source(rendition, spec, loading=self.loading, media=get_media_query(spec, rendition)))
 
         renditions = get_renditions(image, baseSpec, self.formats)
         for rendition in renditions:
@@ -214,7 +213,8 @@ class PictureNode(template.Node):
                 "loading": self.loading,
             }
 
-            srcsets.append(f"<source {get_attrs(attrs)} />")
+            srcsets.append(get_source(rendition, spec, loading=self.loading))
+
             if base is None and extention in [".jpg", ".png"]:
                 base = rendition
 

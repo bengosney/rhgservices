@@ -1,3 +1,6 @@
+# Standard Library
+import re
+
 # Django
 from django.template import Context, Template
 from django.test import TestCase
@@ -6,6 +9,7 @@ from django.test import TestCase
 from wagtail.images.models import Image
 
 # Third Party
+from icecream import ic
 from model_bakery import baker
 
 # Locals
@@ -68,10 +72,6 @@ class PictureTagTests(TestCase):
         height = 100
         width = 100
         spec = f"fill-{width}x{height}"
-        expected = rf"""<picture>
-\s+<source srcset=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-avif\.avif\" type=\"image/avif\" width=\"56\" height=\"56\" loading="lazy" /><source srcset=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-webp\.webp\" type=\"image/webp\" width=\"56\" height=\"56\" loading="lazy" /><source srcset=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-jpeg\.jpg\" type=\"image/jpg\" width=\"56\" height=\"56\" loading="lazy" />
-\s+<img src=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-jpeg\.jpg\" width=\"56\" height=\"56\" alt=\"mock\" loading="lazy" />
-</picture>"""  # noqa
 
         image = baker.make(Image, title="mock", height=height, width=width, _create_files=True)
         context = Context({"image": image})
@@ -79,4 +79,18 @@ class PictureTagTests(TestCase):
 
         got = template.render(context)
 
-        self.assertRegex(got, expected)
+        for match in re.finditer(rf"images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-jpeg\.jpg", got):
+            ic(match.groups())
+
+        hash1 = "bob"
+        hash2 = "bob"
+
+        expected = f"""<picture>
+    <source srcset="/media/images/mock_img_{hash1}.{hash2}.{spec}.format-avif.avif" type="image/avif" width="56" height="56" loading="lazy"/>
+    <source srcset="/media/images/mock_img_{hash1}.{hash2}.{spec}.format-webp.webp" type="image/webp" width="56" height="56" loading="lazy"/>
+    <source srcset="/media/images/mock_img_{hash1}.{hash2}.{spec}.format-jpeg.jpg" type="image/jpg" width="56" height="56" loading="lazy"/>
+    <img src="/media/images/mock_img_{hash1}.{hash2}.{spec}.format-jpeg.jpg" width="56" height="56" alt="mock" loading="lazy"/>
+</picture>"""  # noqa
+
+        # self.assertRegex(got, expected)
+        self.assertHTMLEqual(got, expected)
