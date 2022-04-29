@@ -1,11 +1,35 @@
 # Django
+from django.template import Context, Template
 from django.test import TestCase
 
+# Wagtail
+from wagtail.images.models import Image
+
+# Third Party
+from model_bakery import baker
+
 # Locals
-from .templatetags.picture_tags import get_media_query
+from .templatetags.picture_tags import get_attrs, get_media_query
 
 
 class PictureTagTests(TestCase):
+    def test_get_attrs(self):
+        pairs = [
+            ({"width": 100, "height": 100, "loading": "lazy"}, 'width="100" height="100" loading="lazy"'),
+            ({"width": 100, "height": 100, "loading": "eager"}, 'width="100" height="100"'),
+        ]
+        for attrs, expected in pairs:
+            self.assertEqual(get_attrs(attrs), expected)
+
+    def test_get_attrs_eager(self):
+        attrs = {
+            "width": 100,
+            "height": 100,
+            "loading": "eager",
+        }
+        built_attrs = get_attrs(attrs)
+        self.assertEqual(built_attrs, 'width="100" height="100"')
+
     def test_spec_parse(self):
         class fakeImage:
             width = 100
@@ -22,3 +46,37 @@ class PictureTagTests(TestCase):
 
         for spec, expected in specs:
             self.assertEqual(get_media_query(spec, fakeImage()), expected)
+
+    def test_basic_spec(self):
+        height = 100
+        width = 100
+        spec = f"fill-{width}x{height}"
+        expected = rf"""<picture>
+\s+<source srcset=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-avif\.avif\" type=\"image/avif\" width=\"56\" height=\"56\" /><source srcset=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-webp\.webp\" type=\"image/webp\" width=\"56\" height=\"56\" /><source srcset=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-jpeg\.jpg\" type=\"image/jpg\" width=\"56\" height=\"56\" />
+\s+<img src=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-jpeg\.jpg\" width=\"56\" height=\"56\" alt=\"mock\" />
+</picture>"""  # noqa
+
+        image = baker.make(Image, title="mock", height=height, width=width, _create_files=True)
+        context = Context({"image": image})
+        template = Template(f"{{% load picture_tags %}}{{% picture image {spec} photo %}}")
+
+        got = template.render(context)
+
+        self.assertRegex(got, expected)
+
+    def test_lazy_spec(self):
+        height = 100
+        width = 100
+        spec = f"fill-{width}x{height}"
+        expected = rf"""<picture>
+\s+<source srcset=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-avif\.avif\" type=\"image/avif\" width=\"56\" height=\"56\" loading="lazy" /><source srcset=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-webp\.webp\" type=\"image/webp\" width=\"56\" height=\"56\" loading="lazy" /><source srcset=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-jpeg\.jpg\" type=\"image/jpg\" width=\"56\" height=\"56\" loading="lazy" />
+\s+<img src=\"/media/images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-jpeg\.jpg\" width=\"56\" height=\"56\" alt=\"mock\" loading="lazy" />
+</picture>"""  # noqa
+
+        image = baker.make(Image, title="mock", height=height, width=width, _create_files=True)
+        context = Context({"image": image})
+        template = Template(f"{{% load picture_tags %}}{{% picture image {spec} photo lazy %}}")
+
+        got = template.render(context)
+
+        self.assertRegex(got, expected)
