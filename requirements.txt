@@ -485,6 +485,12 @@ urllib3==1.26.8 \
 wagtail==2.16.2 \
     --hash=sha256:d48ea4d45d09f8482a1b4632e0dca1aad99489cc26386f2af32b306e014832ba \
     --hash=sha256:ee23dc1ba39d4785d20acc95274b29dbcf83f5d9fd670555f541f2a88eec9daa
+    # via
+    #   -r requirements.in
+    #   wagtail-picture-tag
+wagtail-picture-tag==0.1 \
+    --hash=sha256:7e1d3915e76063eba20a50a3fa6ac88b3d016adfc62d24ea7b34f535b36e3f65 \
+    --hash=sha256:d7ebf98679e040ca39c58e23d5e8c1666104cbab04d3d6072e3053986fd177fd
     # via -r requirements.in
 webencodings==0.5.1 \
     --hash=sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78 \
