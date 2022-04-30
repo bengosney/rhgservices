@@ -123,12 +123,12 @@ class PictureTagTests(TestCase):
         self.assertIsNotNone(match)
         if match is not None:
             expected = f"""<picture>
-<source media="max-width: 33px" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[2]}.format-webp.webp" type="image/webp" width="33" height="33" />
-<source media="max-width: 33px" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[2]}.format-avif.avif" type="image/avif" width="33" height="33" />
-<source media="max-width: 33px" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[2]}.format-jpeg.jpg" type="image/jpeg" width="33" height="33" />
-<source media="max-width: 100px" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[1]}.format-avif.avif" type="image/avif" width="56" height="56" />
-<source media="max-width: 100px" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[1]}.format-webp.webp" type="image/webp" width="56" height="56" />
-<source media="max-width: 100px" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[1]}.format-jpeg.jpg" type="image/jpeg" width="56" height="56" />
+<source media="(max-width: 33px)" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[2]}.format-webp.webp" type="image/webp" width="33" height="33" />
+<source media="(max-width: 33px)" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[2]}.format-avif.avif" type="image/avif" width="33" height="33" />
+<source media="(max-width: 33px)" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[2]}.format-jpeg.jpg" type="image/jpeg" width="33" height="33" />
+<source media="(max-width: 100px)" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[1]}.format-avif.avif" type="image/avif" width="56" height="56" />
+<source media="(max-width: 100px)" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[1]}.format-webp.webp" type="image/webp" width="56" height="56" />
+<source media="(max-width: 100px)" srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[1]}.format-jpeg.jpg" type="image/jpeg" width="56" height="56" />
 <source srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[0]}.format-avif.avif" type="image/avif" width="50" height="50" />
 <source srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[0]}.format-webp.webp" type="image/webp" width="50" height="50" />
 <source srcset="/media/images/mock_img_{match[1]}.{match[2]}.{specs[0]}.format-jpeg.jpg" type="image/jpeg" width="50" height="50" />
