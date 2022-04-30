@@ -71,9 +71,10 @@ class PictureTagTests(TestCase):
         template = Template(f"{{% load picture_tags %}}{{% picture image {spec} photo %}}")
 
         got = template.render(context)
-
+        print(got)
         match = re.search(rf"images/mock_img_([\w\d]+)\.([\w\d]+)\.{spec}\.format-jpeg\.jpg", got)
         self.assertIsNotNone(match)
+
         if match is not None:
             expected = f"""<picture>
         <source srcset="/media/images/mock_img_{match[1]}.{match[2]}.{spec}.format-avif.avif" type="image/avif" width="56" height="56" />
