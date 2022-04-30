@@ -45,7 +45,7 @@ def get_media_query(spec, image):
     elif op in ["min"]:
         mediaquery = f"min-width: {size}px"
 
-    return mediaquery
+    return f"({mediaquery})"
 
 
 def get_avif_rendition(image, imageRendition, filter_spec):
@@ -126,6 +126,29 @@ def picture(parser, token):
     return PictureNode(image_expr, filter_specs, list(set(formats)), loading)
 
 
+def get_attrs(attrs):
+    return " ".join(f'{k}="{v}"' for k, v in attrs.items() if v != "eager" or k != "loading")
+
+
+def get_type(ext):
+    ext = ext.lower().strip(".")
+    _type = "jpeg" if ext == "jpg" else ext
+    return f"image/{_type}"
+
+
+def get_source(rendition, **kwargs):
+    _, extention = os.path.splitext(rendition.file.name)
+
+    attrs = {
+        "srcset": rendition.url,
+        "type": get_type(extention),
+        "width": rendition.width,
+        "height": rendition.height,
+    } | kwargs
+
+    return f"<source {get_attrs(attrs)} />"
+
+
 class PictureNode(template.Node):
     def __init__(self, image, specs, formats, loading):
         self.image = image
@@ -136,17 +159,14 @@ class PictureNode(template.Node):
         super().__init__()
 
     def render(self, context):
-        image = self.image.resolve(context)
-        if image is None:
+        if (image := self.image.resolve(context)) is None:
             return ""
 
         try:
             cache_keys = []
             for spec in self.specs:
                 f = Filter(spec=spec)
-                cache_keys.append(f.get_cache_key(image))
-                cache_keys.append(spec)
-
+                cache_keys.extend((f.get_cache_key(image), spec))
             cache_keys.append(image.file_hash)
 
             cache_key = hashlib.sha1("|".join(set(cache_keys)).encode("utf-8")).hexdigest()
@@ -164,59 +184,38 @@ class PictureNode(template.Node):
 
         srcsets = []
 
-        def get_type(ext):
-            _type = "jpeg" if ext == "jpg" else ext.replace(".", "")
-            return f"image/{_type}"
-
         sizedSpecs.sort(key=lambda spec: parse_spec(spec)[1], reverse=True)
         for spec in sizedSpecs:
             renditions = get_renditions(image, spec, self.formats)
             for rendition in renditions:
-                _, extention = os.path.splitext(rendition.file.name)
-                attrs = [
-                    f'srcset="{rendition.url}"',
-                    f'media="({get_media_query(spec, rendition)})"',
-                    f'type="{get_type(extention)}"',
-                    f'width="{rendition.width}"',
-                    f'height="{rendition.height}"',
-                ]
-                if self.loading != "eager":
-                    attrs.append(f'loading="{self.loading}"')
-
-                srcsets.append(f'<source {" ".join(attrs)} />')
+                attrs = {
+                    "loading": self.loading,
+                    "media": get_media_query(spec, rendition),
+                }
+                srcsets.append(get_source(rendition, **attrs))
 
         renditions = get_renditions(image, baseSpec, self.formats)
         for rendition in renditions:
             _, extention = os.path.splitext(rendition.file.name)
-            attrs = [
-                f'srcset="{rendition.url}"',
-                f'type="{get_type(extention)}"',
-                f'width="{rendition.width}"',
-                f'height="{rendition.height}"',
-            ]
-            if self.loading != "eager":
-                attrs.append(f'loading="{self.loading}"')
+            srcsets.append(get_source(rendition, loading=self.loading))
 
-            srcsets.append(f'<source {" ".join(attrs)} />')
             if base is None and extention in [".jpg", ".png"]:
                 base = rendition
 
         if base is None:
             base = renditions.pop()
 
-        attrs = [
-            f'src="{base.url}"',
-            f'width="{base.width}"',
-            f'height="{base.height}"',
-            f'alt="{base.alt}"',
-        ]
-
-        if self.loading != "eager":
-            attrs.append(f'loading="{self.loading}"')
+        attrs = {
+            "src": base.url,
+            "width": base.width,
+            "height": base.height,
+            "alt": base.alt,
+            "loading": self.loading,
+        }
 
         picture = f"""<picture>
     {"".join(srcsets)}
-    <img {" ".join(attrs)} />
+    <img {get_attrs(attrs)} />
 </picture>"""
 
         if cache_key and cache:
