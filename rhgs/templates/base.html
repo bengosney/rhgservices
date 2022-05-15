@@ -25,6 +25,7 @@
         {% endblock %}
 
         {% include "favicon.html" %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js" integrity="sha512-ilxj730331yM7NbrJAICVJcRmPFErDqQhXJcn+PLbkXdE031JJbcK87Wt4VbAK+YY6/67L+N8p7KdzGoaRjsTg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
@@ -32,7 +33,15 @@
 
         <div class="header-wrapper">
             <header class="container">
-                <img src="{% static 'img/logo.png' %}" width="572" height="161" alt="RH Garden Services" class="logo" />
+                <div class="logo">
+                    <div class="logo-animation">
+                        <img src="{% static 'logo/logo-spacer.svg' %}" />
+                        <div class="inner"></div>
+                    </div>
+                    <div class="logo-text">
+                        <img src="{% static 'logo/text.svg' %}" alt="RH Garden Services" />
+                    </div>
+                </div>
             </header>
             {% include "header.html" %}
         </div>
@@ -42,7 +51,21 @@
 
         {% include "footer.html" %}
 
-        {% block extra_js %}
-        {% endblock %}
+        <script>
+            {% block extra_js %}
+            {% endblock %}
+
+            document.addEventListener('readystatechange', () => {
+                if (document.readyState == "complete") {
+                    lottie.loadAnimation({
+                        container: document.querySelector('.logo-animation .inner'),
+                        renderer: 'svg',
+                        loop: false,
+                        autoplay: true,
+                        path: '{% static 'logo/logo.json' %}',
+                    });
+                }
+            });
+        </script>
     </body>
 </html>
