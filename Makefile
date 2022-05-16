@@ -42,16 +42,20 @@ watch-css:
 
 requirements.%.txt: requirements.%.in requirements.txt
 	@echo "Builing $@"
-	@pip-compile --generate-hashes -q -o $@ $<
+	@python -m piptools compile --generate-hashes -q -o $@ $<
 	@touch $@
 
 requirements.txt: requirements.in
 	@echo "Builing $@"
-	@pip-compile --generate-hashes -q $^
+	@python -m piptools compile --generate-hashes -q $^
 
 pip: requirements.txt $(REQS) ## Install development requirements
 	@echo "Installing $^"
-	@pip-sync $^
+	@python -m piptools sync $^
+
+update: requirements.txt $(REQS)
+	@echo "Updating $^"
+	@python -m piptools compile -U $^
 
 install: pip node_modules
 
