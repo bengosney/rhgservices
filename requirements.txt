@@ -171,6 +171,8 @@ django==4.0.4 \
     #   django-csp
     #   django-filter
     #   django-health-check
+    #   django-modelcluster
+    #   django-permissionedforms
     #   django-storages
     #   django-taggit
     #   django-treebeard
@@ -188,9 +190,13 @@ django-health-check==3.16.5 \
     --hash=sha256:1edfd49293ccebbce29f9da609c407f307aee240ab799ab4201031341ae78c0f \
     --hash=sha256:8d66781a0ea82b1a8b44878187b38a27370e94f18287312e39be0593e72d8983
     # via -r requirements.in
-django-modelcluster==5.2 \
-    --hash=sha256:767084078b9e172540b271454ecc73cb320927131ca4b2c5f276daf771f9542f \
-    --hash=sha256:e541a46a0a899ef4778a4708be22e71cac3efacc09a6ff44bc065c5c9194c054
+django-modelcluster==6.0 \
+    --hash=sha256:4ae46f86c43702020f24f212222eef0a2588df937bbb523a5447da247b5fb130 \
+    --hash=sha256:cdcffef5baf5d3759ee04c5b60ffaf1a0c95fc0f265e762f3ddfadde3394e5db
+    # via wagtail
+django-permissionedforms==0.1 \
+    --hash=sha256:4340bb20c4477fffb13b4cc5cccf9f1b1010b64f79956c291c72d2ad2ed243f8 \
+    --hash=sha256:d341a961a27cc77fde8cc42141c6ab55cc1f0cb886963cc2d6967b9674fa47d6
     # via wagtail
 django-storages==1.12.3 \
     --hash=sha256:204a99f218b747c46edbfeeb1310d357f83f90fa6a6024d8d0a3f422570cee84 \
@@ -482,9 +488,9 @@ urllib3==1.26.8 \
     # via
     #   botocore
     #   requests
-wagtail==2.16.2 \
-    --hash=sha256:d48ea4d45d09f8482a1b4632e0dca1aad99489cc26386f2af32b306e014832ba \
-    --hash=sha256:ee23dc1ba39d4785d20acc95274b29dbcf83f5d9fd670555f541f2a88eec9daa
+wagtail==3.0 \
+    --hash=sha256:4a844d2d1cf5cbc9c48344c6ae9cc5c9f0d1134cd45cd2c484afdedc1164043a \
+    --hash=sha256:d54d0742c5cebf92b021c04a6ac93312b8cb5f55e7c10f37199938033bda905d
     # via
     #   -r requirements.in
     #   wagtail-picture-tag
