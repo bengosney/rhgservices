@@ -33,7 +33,8 @@
 
         <div class="header-wrapper">
             <header class="container">
-                <div class="logo">
+                {% get_site_root as site_root %}
+                <a class="logo" href="{% pageurl site_root %}">
                     <div class="logo-animation">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIcAAADICAQAAABo4Do4AAAA/UlEQVR42u3QMQEAAAwCoNm/9A4fQ0AEcowo0KFDhw4dOnTo0KFDhw4dOnTo0KFDBzp06NChQ4cOHTp06NChQ4cOHTp06NCBDh06dOjQoUOHDh06dOjQoUOHDh06dKBDhw4dOnTo0KFDhw4dOnTo0KFDhw4d6NChQ4cOHTp06NChQ4cOHTp06NChQwc6dOjQoUOHDh06dOjQoUOHDh06dOjQgQ4dOnTo0KFDhw4dOnTo0KFDhw4dOtChQ4cOHTp06NChQ4cOHTp06NChQ4cOdOjQoUOHDh06dOjQoUOHDh06dOjQoQMdOnTo0KFDhw4dOnTo0KFDhw4dOnTooB72UQDJtZt4swAAAABJRU5ErkJggg==" width="135" height="200" alt="Spacer" />
                         <div class="inner">
@@ -45,7 +46,7 @@
                     <div class="logo-text">
                         {% include "logo-text.svg" %}
                     </div>
-                </div>
+                </a>
             </header>
             {% include "header.html" %}
         </div>
