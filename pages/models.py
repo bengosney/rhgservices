@@ -24,7 +24,6 @@ class SiteSettings(BaseSetting):
     facebook = models.URLField(help_text="Your Facebook page URL", default="")
     instagram = models.CharField(max_length=255, help_text="Your Instagram username, without the @", default="")
     checkatrade = models.URLField(max_length=255, help_text="Your checkatrade link", default="")
-    
 
 
 class HomePage(Page):
