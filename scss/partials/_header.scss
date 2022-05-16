@@ -21,6 +21,11 @@ header {
     padding: 1em 0;
     box-sizing: border-box;
 
+    max-width: var(--max-width);
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    margin: auto;
+
     .nav-wrapper {
       min-width: 5vw;
     }

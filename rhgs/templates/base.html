@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js" integrity="sha512-ilxj730331yM7NbrJAICVJcRmPFErDqQhXJcn+PLbkXdE031JJbcK87Wt4VbAK+YY6/67L+N8p7KdzGoaRjsTg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <meta charset="utf-8" />
         <title>
             {% block title %}
@@ -17,15 +18,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com/" >
 
-        {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/rhgs.css' %}">
 
         {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
         {% endblock %}
 
         {% include "favicon.html" %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js" integrity="sha512-ilxj730331yM7NbrJAICVJcRmPFErDqQhXJcn+PLbkXdE031JJbcK87Wt4VbAK+YY6/67L+N8p7KdzGoaRjsTg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
@@ -35,11 +33,11 @@
             <header class="container">
                 <div class="logo">
                     <div class="logo-animation">
-                        <img src="{% static 'logo/logo-spacer.svg' %}" />
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIcAAADICAQAAABo4Do4AAAA/UlEQVR42u3QMQEAAAwCoNm/9A4fQ0AEcowo0KFDhw4dOnTo0KFDhw4dOnTo0KFDBzp06NChQ4cOHTp06NChQ4cOHTp06NCBDh06dOjQoUOHDh06dOjQoUOHDh06dKBDhw4dOnTo0KFDhw4dOnTo0KFDhw4d6NChQ4cOHTp06NChQ4cOHTp06NChQwc6dOjQoUOHDh06dOjQoUOHDh06dOjQgQ4dOnTo0KFDhw4dOnTo0KFDhw4dOtChQ4cOHTp06NChQ4cOHTp06NChQ4cOdOjQoUOHDh06dOjQoUOHDh06dOjQoQMdOnTo0KFDhw4dOnTo0KFDhw4dOnTooB72UQDJtZt4swAAAABJRU5ErkJggg==" width="135" height="200" alt="Spacer" />
                         <div class="inner"></div>
                     </div>
                     <div class="logo-text">
-                        <img src="{% static 'logo/text.svg' %}" alt="RH Garden Services" />
+                        {% include "logo-text.svg" %}
                     </div>
                 </div>
             </header>

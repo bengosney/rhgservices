@@ -11,14 +11,13 @@ $mobile_width: 275px;
 
     font-size: min(3vw, 1rem);
     $icon_color: palette(accent, bg);
-    $icon_size: 1em;
-    $icon_gap: math.div($icon_size, 2);
+    $icon_size: .5rem;
+    $icon_gap: $icon_size * 1.1;
     $button_height: ($icon_size * 3) + ($icon_gap * 3);
     $button_width: 10vw;
     background: none;
-    width: $button_width;
     height: $button_height;
-    padding: 0;
+    padding: 0 0 0 1rem;
     border: none;
     display: flex;
     align-items: center;
@@ -39,16 +38,16 @@ $mobile_width: 275px;
     .nav-icon {
       text-indent: -99999px;
       position: relative;
-      width: $icon_size;
+      width: 3rem;
+      max-width: 100%;
       height: $icon_size;
       background-color: $icon_color;
-      border-radius: 50%;
+      border-radius: $icon_size;
 
       &:before,
       &:after {
         content: "";
         position: absolute;
-        width: 100%;
         height: 100%;
         left: 0px;
         background-color: inherit;
@@ -57,10 +56,12 @@ $mobile_width: 275px;
 
       &:before {
         top: -($icon_size + $icon_gap);
+        width: 75%;
       }
 
       &:after {
         top: ($icon_size + $icon_gap);
+        width: 50%;
       }
     }
   }
