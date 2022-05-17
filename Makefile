@@ -1,4 +1,4 @@
-.PHONY := install, help, init, pre-init, css, pip, update, _update
+.PHONY := install, help, init, pre-init, css, pip
 .DEFAULT_GOAL := install
 
 HOOKS=$(.git/hooks/pre-commit)
@@ -53,13 +53,9 @@ pip: requirements.txt $(REQS) ## Install development requirements
 	@echo "Installing $^"
 	@python -m piptools sync $^
 
-_update: requirements.txt $(REQS)
-	@for req in $^; do \
-		echo "Updating $$req"; \
-		python -m piptools compile -U $$req; \
-	done
-
-update: _update pip
+update: requirements.txt $(REQS)
+	@echo "Updating $^"
+	@python -m piptools compile -U $^
 
 install: pip node_modules
 
