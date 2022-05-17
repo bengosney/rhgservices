@@ -179,8 +179,9 @@ BASE_URL = "https://www.rhgservices.co.uk"
 CSRF_TRUSTED_ORIGINS = ["https://www.rhgservices.co.uk"]
 
 CSP_DEFAULT_SRC = "'self'"
+CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com")
 CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "'unsafe-inline'")
 CSP_FONT_SRC = ("'self'", "fonts.gstatic.com")
-CSP_IMG_SRC = ("'self'", "rhgs.s3.amazonaws.com", "cdn.rhgservices.co.uk")
+CSP_IMG_SRC = ("'self'", "data:", "rhgs.s3.amazonaws.com", "cdn.rhgservices.co.uk")
 
 CSP_EXCLUDE_URL_PREFIXES = ("/admin/",)

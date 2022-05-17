@@ -44,10 +44,6 @@ def top_menu(context, parent, calling_page=None):
         menuitem.show_dropdown = has_menu_children(menuitem)
         menuitem.active = calling_page.url_path.startswith(menuitem.url_path) if calling_page else False
 
-    menuitems.insert(0, parent)
-    menuitems[0].show_dropdown = False
-    menuitems[0].active = calling_page.url_path == menuitems[0].url_path if calling_page else False
-
     return {
         "calling_page": calling_page,
         "menuitems": menuitems,
