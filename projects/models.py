@@ -14,6 +14,8 @@ from taggit.models import TaggedItemBase
 
 
 class ProjectListPage(Page):
+    show_in_menus_default = True
+
     body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -46,6 +48,8 @@ class ProjectImage(Orderable):
 
 
 class Project(Page):
+    show_in_menus_default = True
+
     sub_title = models.CharField(max_length=250, blank=True)
     tags = ClusterTaggableManager(through=ProjectTag, blank=True)
     short_description = models.CharField(max_length=150, blank=True)

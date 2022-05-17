@@ -27,6 +27,8 @@ class SiteSettings(BaseSetting):
 
 
 class HomePage(Page):
+    show_in_menus_default = True
+
     banner_image = models.ForeignKey("wagtailimages.Image", null=True, blank=False, on_delete=models.SET_NULL, related_name="+")
     body = StreamField(
         [
@@ -50,6 +52,8 @@ class FormField(AbstractFormField):
 
 
 class InfoPage(Page):
+    show_in_menus_default = True
+
     body = StreamField(
         [
             ("Callout", CallOutBlock()),
@@ -64,6 +68,8 @@ class InfoPage(Page):
 
 
 class FormPage(AbstractEmailForm):
+    show_in_menus_default = True
+
     body = StreamField(
         [
             ("Callout", CallOutBlock()),
