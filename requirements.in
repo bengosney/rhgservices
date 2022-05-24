@@ -6,7 +6,7 @@ django-health-check
 django-storages
 gunicorn
 honeybadger
-opencv-python
+opencv-python-headless
 psycopg2
 psycopg2
 redis
