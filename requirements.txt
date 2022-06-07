@@ -21,13 +21,13 @@ beautifulsoup4==4.9.3 \
     --hash=sha256:84729e322ad1d5b4d25f805bfa05b902dd96450f43842c4e99067d5e1369eb25 \
     --hash=sha256:fff47e031e34ec82bf17e00da8f592fe7de69aeea38be00523c04623c04fb666
     # via wagtail
-boto3==1.24.2 \
-    --hash=sha256:927b5e8e2decad746e6c32bb81f15c2ea9ab4398286134d21f6742493eb893f6 \
-    --hash=sha256:e3c10adc7be890b147568a4162d9cafb876f11f87460c4a0dc90742d6d4ebe7c
+boto3==1.24.4 \
+    --hash=sha256:79b7acf5cf83b34d23a975e400374caaf4711c52266c8717b293f40f3041e0aa \
+    --hash=sha256:8bfb695cbe27d2ee9730ea4e1c894ef1fc255219d3fc7bc804171943ae8d7914
     # via -r requirements.in
-botocore==1.27.2 \
-    --hash=sha256:131f71fe16ef84f9e0e72c54d2e230a6d8e79dd3947f507259a129649649a35d \
-    --hash=sha256:b7cdd4f4a6395a084a381a7d2a25b177e6de5f8a4dfa3c645ec957ba3c83e200
+botocore==1.27.4 \
+    --hash=sha256:54ef4b035c51fe8937a61d3017e30e0a47237916143889ecf4eace481220029a \
+    --hash=sha256:866ac4ad7de326cfb6956462cc224eee1ef1c17987c2313c6fecdbe017e753fc
     # via
     #   boto3
     #   s3transfer
