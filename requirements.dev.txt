@@ -236,9 +236,9 @@ pip-chill==1.0.1 \
     --hash=sha256:5d76ac1b1ddf87efd291268cbeda94d3d4c053dc7de00ea0c7f03fe34ca557bb \
     --hash=sha256:90d9b86c7fc8b8a12fe89c497ed84f76d48a5f54f2b509f663837ffbb7c2bc46
     # via -r requirements.dev.in
-pip-tools==6.7.0 \
-    --hash=sha256:0aeedc28c0316a30c561893a1f41c3611b46ac536bc271082ffdbdbd1d26924c \
-    --hash=sha256:bae093c36dab6460e9b400e6b8e0b544a89d8bee1904e5698a3e645eb4e9dc36
+pip-tools==6.8.0 \
+    --hash=sha256:39e8aee465446e02278d80dbebd4325d1dd8633248f43213c73a25f58e7d8a55 \
+    --hash=sha256:3e5cd4acbf383d19bdfdeab04738b6313ebf4ad22ce49bf529c729061eabfab8
     # via -r requirements.dev.in
 platformdirs==2.5.2 \
     --hash=sha256:027d8e83a2d7de06bbac4e5ef7e023c02b863d7ea5d079477e722bb41ab25788 \
