@@ -227,8 +227,8 @@ gunicorn==20.1.0 \
     --hash=sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e \
     --hash=sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8
     # via -r requirements.in
-honeybadger==0.11.0 \
-    --hash=sha256:cf02a206ed8f27842bbd24c91e3e1773d92cd691ce4a60f7c6dc7ecc9f26593b
+honeybadger==0.12.0 \
+    --hash=sha256:ccd86f50d25f507f799a6787f142cd9aef34f051170e7063d661e0a280fbf9b4
     # via -r requirements.in
 html5lib==1.1 \
     --hash=sha256:0d78f8fde1c230e99fe37986a60526d7049ed4bf8a9fadbad5f00e22e58e041d \
