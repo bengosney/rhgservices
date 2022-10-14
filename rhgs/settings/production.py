@@ -57,6 +57,17 @@ EMAIL_PORT = os.environ.get("SMTP_PORT")
 EMAIL_USE_TLS = True
 
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "default",
+    },
+    "renditions": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "renditions",
+    },
+}
+
 if "REDIS_URL" in os.environ:
     CACHES = {
         "default": {
