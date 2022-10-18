@@ -492,9 +492,9 @@ urllib3==1.26.9 \
     # via
     #   botocore
     #   requests
-wagtail==4.0.2 \
-    --hash=sha256:2572068dcc6a3406c411eb8e81220471e2cb0578b6d86d401850f27c237942fa \
-    --hash=sha256:a106ef4d85aeb9858de5670f6501866be3f6c7e241828925eb1f777bdf4a7e64
+wagtail==4.0.4 \
+    --hash=sha256:43b35e8e29bcc83a3ddf60f08e8c22fea1e819f338bcba73a4b290771233809a \
+    --hash=sha256:8799c7550cc033c8e85aeeaf6f91b5343d7dee72fecd5d4093499af9d3aeaa1d
     # via
     #   -r requirements.in
     #   wagtail-picture-tag
