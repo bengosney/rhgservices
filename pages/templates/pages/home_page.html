@@ -3,8 +3,8 @@
 {% load wagtailcore_tags wagtailimages_tags picture_tags %}
 
 {% block content %}
-<div class="banner_image">
-    {% picture page.banner_image photo fill-1920x500 fill-1600x484 fill-800x400 %}
-</div>
-{% include_block page.body %}
+    <div class="banner_image">
+        {% picture page.banner_image photo fill-1920x500 fill-1600x484 fill-800x400 %}
+    </div>
+    {% include_block page.body %}
 {% endblock %}

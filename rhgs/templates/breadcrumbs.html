@@ -1,15 +1,15 @@
 {% load static wagtailcore_tags %}
 
 <div class="breadcrumbs container">
-{% if self.get_ancestors|length > 1 %}
-    <ul >
-        {% for page in self.get_ancestors %}
-            {% if page.is_root == False %}
-                <li><a aria-label="{{ page.title }}" href="{% pageurl page %}"">{{ page.title }}</a></li>
-            {% endif %}
-        {% endfor %}
+    {% if self.get_ancestors|length > 1 %}
+        <ul >
+            {% for page in self.get_ancestors %}
+                {% if page.is_root == False %}
+                    <li><a aria-label="{{ page.title }}" href="{% pageurl page %}"">{{ page.title }}</a></li>
+                {% endif %}
+            {% endfor %}
 
-        <li class="active">{{ self.title }}</li>
-    </ul>
-{% endif %}
-</div>
+            <li class="active">{{ self.title }}</li>
+                </ul>
+    {% endif %}
+    </div>

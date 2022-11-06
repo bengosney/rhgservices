@@ -3,7 +3,7 @@
 <div class="container">
     <div class="form_builder">
         {% if value.title %}
-        <h2>{{ value.title }}</h2>
+            <h2>{{ value.title }}</h2>
         {% endif %}
         <form action="{% pageurl page %}" method="POST">
             {% csrf_token %}
