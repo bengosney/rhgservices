@@ -5,60 +5,60 @@
 {% block body_class %}template-project{% endblock %}
 
 {% block header %}
-<div class="banner_image">
-    {% picture page.banner_image photo fill-1920x500 fill-1600x484 fill-800x400 %}
+    <div class="banner_image">
+        {% picture page.banner_image photo fill-1920x500 fill-1600x484 fill-800x400 %}
 
-    <div class="header">
-        <div class="container">
-            <h1>{{ page.title }}</h1>
-            <p>{{ page.sub_title }}</p>
+        <div class="header">
+            <div class="container">
+                <h1>{{ page.title }}</h1>
+                <p>{{ page.sub_title }}</p>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
 {% block content %}
-<div class="main-body">
-    <div class="container">
-        <div class="row sm">
-            <div class="col">
-                {% for image in page.images.all %}
-                    <div class="lightbox">
-                        <input type="checkbox" id="light-box-{{ image.id }}" />
-                        <label for="light-box-{{ image.id }}">
-                            {% picture image.image photo lazy max-1980x1080 max-1024x768 max-800x600 %}
-                        </label>
-                    </div>
-                {% endfor %}
-                <div class="slider">
-                    <div class="slider-inner">
-                        <div class="sizer">
-                            {% for image in page.images.all %}
-                                <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
-                                <div class="slide slide-{{ forloop.counter }}">
-                                    <label for="light-box-{{ image.id }}">
-                                        {% if forloop.first %}
-                                            {% picture image.image photo fill-640x427 %}
-                                        {% else %}
-                                            {% picture image.image photo fill-640x427 lazy %}
-                                        {% endif %}
-                                    </label>
-                                </div>
-                            {% endfor %}
-                            {% if page.images.all|length > 1 %}
-                                <div class="slide-nav">
-                                    {% for image in page.images.all %}
-                                        <label class="slide-label slide-label-{{ forloop.counter }}" for="slide-{{ forloop.counter }}">&#8226;</label>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
+    <div class="main-body">
+        <div class="container">
+            <div class="row sm">
+                <div class="col">
+                    {% for image in page.images.all %}
+                        <div class="lightbox">
+                            <input type="checkbox" id="light-box-{{ image.id }}" />
+                            <label for="light-box-{{ image.id }}">
+                                {% picture image.image photo lazy max-1980x1080 max-1024x768 max-800x600 %}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    <div class="slider">
+                        <div class="slider-inner">
+                            <div class="sizer">
+                                {% for image in page.images.all %}
+                                    <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
+                                    <div class="slide slide-{{ forloop.counter }}">
+                                        <label for="light-box-{{ image.id }}">
+                                            {% if forloop.first %}
+                                                {% picture image.image photo fill-640x427 %}
+                                            {% else %}
+                                                {% picture image.image photo fill-640x427 lazy %}
+                                            {% endif %}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                                {% if page.images.all|length > 1 %}
+                                    <div class="slide-nav">
+                                        {% for image in page.images.all %}
+                                            <label class="slide-label slide-label-{{ forloop.counter }}" for="slide-{{ forloop.counter }}">&#8226;</label>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                {{ page.body|richtext }}
+                <div class="col">
+                    {{ page.body|richtext }}
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

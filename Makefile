@@ -53,9 +53,11 @@ pip: requirements.txt $(REQS) ## Install development requirements
 	@echo "Installing $^"
 	@python -m piptools sync $^
 
-update: requirements.txt $(REQS)
+_update: requirements.txt
 	@echo "Updating $^"
 	@python -m piptools compile -U $^
+
+update: _update pip
 
 install: pip node_modules
 
