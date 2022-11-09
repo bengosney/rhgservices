@@ -184,3 +184,5 @@ CSP_FONT_SRC = ("'self'", "fonts.gstatic.com")
 CSP_IMG_SRC = ("'self'", "data:", "rhgs.s3.amazonaws.com", "cdn.rhgservices.co.uk")
 
 CSP_EXCLUDE_URL_PREFIXES = ("/admin/",)
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
