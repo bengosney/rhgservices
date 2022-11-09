@@ -7,7 +7,7 @@ REQS=$(subst in,txt,$(INS))
 
 SCSS_PARTIALS=$(wildcard scss/_*.scss)
 SCSS=$(filter-out scss/_%.scss,$(wildcard scss/*.scss))
-CSS=$(subst scss,css,$(SCSS))
+CSS=rhgs/static/$(subst scss,css,$(SCSS))
 
 HEROKU_APP_NAME=rhgs
 DB_USER=rhgs
@@ -22,10 +22,11 @@ node_modules: package-lock.json ## Install node modules
 	npm install
 	touch $@
 
-static/css/%.css: scss/%.scss $(SCSS_PARTIALS)
+rhgs/static/css/%.css: scss/%.scss $(SCSS_PARTIALS)
 	sass $< $@
 
-css: ##$(CSS)
+#css: $(CSS)
+css: ## Build the css
 	npx gulp css
 
 watch-css:
@@ -42,7 +43,7 @@ watch-css:
 
 requirements.%.txt: requirements.%.in requirements.txt
 	@echo "Builing $@"
-	@python -m piptools compile --generate-hashes -q -o $@ $<
+	@python -m piptools compile -q -o $@ $<
 	@touch $@
 
 requirements.txt: requirements.in
@@ -53,9 +54,9 @@ pip: requirements.txt $(REQS) ## Install development requirements
 	@echo "Installing $^"
 	@python -m piptools sync $^
 
-_update: requirements.txt
+_update: requirements.in
 	@echo "Updating $^"
-	@python -m piptools compile -U $^
+	@python -m piptools compile --upgrade $^
 
 update: _update pip
 
