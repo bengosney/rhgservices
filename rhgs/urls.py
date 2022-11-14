@@ -19,6 +19,7 @@ urlpatterns = [
     path("search/", search_views.search, name="search"),
     path("sitemap.xml", sitemap),
     path("robots.txt", include("robots.urls")),
+    path("health/", include("health_check.urls")),
 ]
 
 
