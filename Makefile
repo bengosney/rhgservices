@@ -9,11 +9,10 @@ SCSS_PARTIALS=$(wildcard scss/_*.scss)
 SCSS=$(filter-out scss/_%.scss,$(wildcard scss/*.scss))
 CSS=rhgs/static/$(subst scss,css,$(SCSS))
 
+BINPATH=$(shell which python | xargs dirname | xargs realpath --relative-to=".")
+DBTOSQLPATH="$(BINPATH)/db-to-sqlite"
+
 HEROKU_APP_NAME=rhgs
-DB_USER=rhgs
-DB_PASS=rhgs
-DB_NAME=rhgs
-DB_CONTAINER_NAME=rhgs-postgres
 
 help: ## Display this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -25,7 +24,6 @@ node_modules: package-lock.json ## Install node modules
 rhgs/static/css/%.css: scss/%.scss $(SCSS_PARTIALS)
 	sass $< $@
 
-#css: $(CSS)
 css: ## Build the css
 	npx gulp css
 
@@ -73,22 +71,20 @@ init: .envrc pre-init install $(HOOKS) ## Initalise a dev enviroment
 	@which direnv > /dev/null || echo "direnv not found but recommended"
 	@echo "Read to dev"
 
-postgres-down:
-	@echo "Stopping any excisting postgres containers"
-	@docker stop $(DB_CONTAINER_NAME) || true
-	@docker rm $(DB_CONTAINER_NAME) || true
-
-postgres: postgres-down
-	docker run --name $(DB_CONTAINER_NAME) -p 5432:5432 -e POSTGRES_PASSWORD=$(DB_PASS) -e POSTGRES_USER=$(DB_USER) -d postgres
-
 latest.dump:
 	@echo "Dumping database"
 	heroku pg:backups:capture --app $(HEROKU_APP_NAME)
 	heroku pg:backups:download --app $(HEROKU_APP_NAME)
 
-restoredb: latest.dump
-	@echo "Restoring database"
-	docker exec -i $(DB_CONTAINER_NAME) /bin/bash -c "pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $(DB_USER) -d $(DB_NAME)" < $?
+restoredb:
+	rm -f db.sqlite3
+	$(MAKE) db.sqlite3
+
+$(DBTOSQLPATH):
+	pip install 'db-to-sqlite[postgresql]'
+
+db.sqlite3: $(DBTOSQLPATH)
+	db-to-sqlite $(shell heroku config | grep DATABASE_URL | tr -s " " | cut -d " " -f 2) $@ --all -p
 
 clean:
 	rm -f latest.dump
