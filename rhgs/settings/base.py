@@ -174,15 +174,14 @@ WAGTAILSEARCH_BACKENDS = {
     }
 }
 
-# Base URL to use when referring to full URLs within the Wagtail admin backend -
-# e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = "https://www.rhgservices.co.uk"
-CSRF_TRUSTED_ORIGINS = ["https://www.rhgservices.co.uk"]
+BASE_URL = os.environ.get("BASE_URL", "http://localhost:8000")
+CSRF_TRUSTED_ORIGINS = [BASE_URL]
+WAGTAILADMIN_BASE_URL = BASE_URL
 
 CSP_DEFAULT_SRC = "'self'"
-CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com")
-CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "'unsafe-inline'")
-CSP_FONT_SRC = ("'self'", "fonts.gstatic.com")
-CSP_IMG_SRC = ("'self'", "data:", "rhgs.s3.amazonaws.com", "cdn.rhgservices.co.uk")
+CSP_SCRIPT_SRC = ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"] + os.environ.get("CSP_SCRIPT_SRC", "").split(",")
+CSP_STYLE_SRC = ["'self'", "fonts.googleapis.com", "'unsafe-inline'"] + os.environ.get("CSP_STYLE_SRC", "").split(",")
+CSP_FONT_SRC = ["'self'", "fonts.gstatic.com"] + os.environ.get("CSP_FONT_SRC", "").split(",")
+CSP_IMG_SRC = ["'self'", "data:"] + os.environ.get("CSP_IMG_SRC", "").split(",")
 
 CSP_EXCLUDE_URL_PREFIXES = ("/admin/",)
