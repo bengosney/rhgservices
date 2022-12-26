@@ -133,7 +133,7 @@ wagtail==4.1.1
     # via
     #   -r requirements.in
     #   wagtail-picture-tag
-wagtail-picture-tag==1.0.0
+wagtail-picture-tag==1.0.1
     # via -r requirements.in
 webencodings==0.5.1
     # via html5lib
