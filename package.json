@@ -12,7 +12,7 @@
   "homepage": "https://github.com/bengosney/rhgservices#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.4",
-    "browser-sync": "^2.27.9",
+    "browser-sync": "^2.27.11",
     "cssnano": "^5.1.4",
     "gulp": "^4.0.2",
     "gulp-avif": "^1.0.1",
