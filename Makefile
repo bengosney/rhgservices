@@ -46,7 +46,7 @@ requirements.%.txt: requirements.%.in requirements.txt
 
 requirements.txt: requirements.in
 	@echo "Builing $@"
-	@python -m piptools compile --generate-hashes -q $^
+	@python -m piptools compile -q $^
 
 pip: requirements.txt $(REQS) ## Install development requirements
 	@echo "Installing $^"
