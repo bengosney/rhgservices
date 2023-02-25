@@ -1,8 +1,12 @@
+# Standard Library
+from textwrap import shorten
+
 # Django
 from django.db import models
 
 # Wagtail
 from wagtail import blocks
+from wagtail.admin.mail import send_mail
 from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
@@ -118,3 +122,14 @@ class FormPage(AbstractEmailForm):
             "Email",
         ),
     ]
+
+    def send_mail(self, form):
+        addresses = [x.strip() for x in self.to_address.split(",")]
+
+        if reply_to := form.cleaned_data.get("email"):
+            reply_to = [r.strip() for r in reply_to.split(",")]
+
+        return send_mail(self.subject, self.render_email(form), addresses, self.from_address, reply_to=reply_to)
+
+    def get_data_fields(self):
+        return [(name, shorten(label, 30, placeholder="...")) for name, label in super().get_data_fields()]
