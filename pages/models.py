@@ -1,15 +1,18 @@
+# Standard Library
+from textwrap import shorten
+
 # Django
 from django.db import models
 
 # Wagtail
-from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
-from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
+from wagtail import blocks
+from wagtail.admin.mail import send_mail
+from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page
 
 # Third Party
 from modelcluster.fields import ParentalKey
@@ -36,14 +39,15 @@ class HomePage(Page):
             ("InfoPod", FlexBlock(InfoPodBlock())),
             ("Paragraph", blocks.RichTextBlock()),
             ("Projects", ProjectsBlock()),
-        ]
+        ],
+        use_json_field=True,
     )
 
     parent_page_types = ["wagtailcore.Page"]
 
     content_panels = Page.content_panels + [
-        ImageChooserPanel("banner_image"),
-        StreamFieldPanel("body"),
+        FieldPanel("banner_image"),
+        FieldPanel("body"),
     ]
 
 
@@ -59,11 +63,12 @@ class InfoPage(Page):
             ("Callout", CallOutBlock()),
             ("InfoPod", blocks.ListBlock(InfoPodBlock())),
             ("Paragraph", blocks.RichTextBlock()),
-        ]
+        ],
+        use_json_field=True,
     )
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
@@ -88,13 +93,14 @@ class FormPage(AbstractEmailForm):
             ),
         ],
         blank=True,
+        use_json_field=True,
     )
     thank_you_text = RichTextField(blank=True)
     submit_text = models.CharField(max_length=255, default="Submit")
 
     content_panels = AbstractEmailForm.content_panels + [
         FormSubmissionsPanel(),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
         InlinePanel("form_fields", label="Form fields"),
         MultiFieldPanel(
             [
@@ -116,3 +122,14 @@ class FormPage(AbstractEmailForm):
             "Email",
         ),
     ]
+
+    def send_mail(self, form):
+        addresses = [x.strip() for x in self.to_address.split(",")]
+
+        if reply_to := form.cleaned_data.get("email"):
+            reply_to = [r.strip() for r in reply_to.split(",")]
+
+        return send_mail(self.subject, self.render_email(form), addresses, self.from_address, reply_to=reply_to)
+
+    def get_data_fields(self):
+        return [(name, shorten(label, 30, placeholder="...")) for name, label in super().get_data_fields()]

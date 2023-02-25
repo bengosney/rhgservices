@@ -1,6 +1,5 @@
 -c requirements.txt
 black
-commitizen
 django-debug-toolbar
 django-debugtools
 django-stubs
@@ -8,7 +7,6 @@ icecream
 model_bakery
 mypy
 packaging
-pip-chill
 pip-tools
 pre-commit
 pytest

@@ -1,13 +1,11 @@
 [project]
-name = "R H Garden Services"
+name = "RHGardenServices"
 version = "4.0.0"
 description = "Corporate website for R H Garden Services"
 authors = [
-    "Ben Gosney <bengosney@googlemail.com>"
+    {name = "Ben Gosney", email = "bengosney@googlemail.com"},
 ]
-python = "^3.10"
-homepage = "https://www.rhgservices.co.uk/"
-repository = "https://github.com/bengosney/rhgservices/"
+requires-python = ">=3.11"
 
 [build-system]
 requires = ["setuptools", "wheel"]
