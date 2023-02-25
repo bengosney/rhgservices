@@ -2,8 +2,8 @@
 
 from django.db import migrations
 import pages.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -21,16 +21,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='formpage',
             name='body',
-            field=wagtail.core.fields.StreamField([('Callout', wagtail.core.blocks.StructBlock([('headline', wagtail.core.blocks.CharBlock()), ('subline', wagtail.core.blocks.CharBlock())])), ('InfoPod', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.CharBlock(help_text='Optional', required=False)), ('page', wagtail.core.blocks.PageChooserBlock(required=False))]))), ('Paragraph', wagtail.core.blocks.RichTextBlock())], blank=True),
+            field=wagtail.fields.StreamField([('Callout', wagtail.blocks.StructBlock([('headline', wagtail.blocks.CharBlock()), ('subline', wagtail.blocks.CharBlock())])), ('InfoPod', wagtail.blocks.ListBlock(wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.CharBlock(help_text='Optional', required=False)), ('page', wagtail.blocks.PageChooserBlock(required=False))]))), ('Paragraph', wagtail.blocks.RichTextBlock())], blank=True),
         ),
         migrations.AlterField(
             model_name='homepage',
             name='body',
-            field=wagtail.core.fields.StreamField([('Callout', wagtail.core.blocks.StructBlock([('headline', wagtail.core.blocks.CharBlock()), ('subline', wagtail.core.blocks.CharBlock())])), ('InfoPod', pages.blocks.FlexBlock(wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.CharBlock(help_text='Optional', required=False)), ('page', wagtail.core.blocks.PageChooserBlock(required=False))]))), ('Paragraph', wagtail.core.blocks.RichTextBlock()), ('Projects', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(max_length=255, required=True)), ('body', wagtail.core.blocks.RichTextBlock(required=False)), ('projects', wagtail.core.blocks.ListBlock(wagtail.core.blocks.PageChooserBlock(page_type=['projects.Project'])))]))]),
+            field=wagtail.fields.StreamField([('Callout', wagtail.blocks.StructBlock([('headline', wagtail.blocks.CharBlock()), ('subline', wagtail.blocks.CharBlock())])), ('InfoPod', pages.blocks.FlexBlock(wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.CharBlock(help_text='Optional', required=False)), ('page', wagtail.blocks.PageChooserBlock(required=False))]))), ('Paragraph', wagtail.blocks.RichTextBlock()), ('Projects', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock(max_length=255, required=True)), ('body', wagtail.blocks.RichTextBlock(required=False)), ('projects', wagtail.blocks.ListBlock(wagtail.blocks.PageChooserBlock(page_type=['projects.Project'])))]))]),
         ),
         migrations.AlterField(
             model_name='infopage',
             name='body',
-            field=wagtail.core.fields.StreamField([('Callout', wagtail.core.blocks.StructBlock([('headline', wagtail.core.blocks.CharBlock()), ('subline', wagtail.core.blocks.CharBlock())])), ('InfoPod', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.CharBlock(help_text='Optional', required=False)), ('page', wagtail.core.blocks.PageChooserBlock(required=False))]))), ('Paragraph', wagtail.core.blocks.RichTextBlock())]),
+            field=wagtail.fields.StreamField([('Callout', wagtail.blocks.StructBlock([('headline', wagtail.blocks.CharBlock()), ('subline', wagtail.blocks.CharBlock())])), ('InfoPod', wagtail.blocks.ListBlock(wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.CharBlock(help_text='Optional', required=False)), ('page', wagtail.blocks.PageChooserBlock(required=False))]))), ('Paragraph', wagtail.blocks.RichTextBlock())]),
         ),
     ]

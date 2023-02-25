@@ -1,8 +1,8 @@
 # Django
 
 # Wagtail
-from wagtail.core.models import Page
-from wagtail.tests.utils import WagtailPageTests
+from wagtail.models import Page
+from wagtail.test.utils import WagtailPageTests
 
 # Locals
 from .models import HomePage

@@ -3,8 +3,8 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import pages.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             name='HomePage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('body', wagtail.core.fields.StreamField([('Callout', pages.blocks.CallOutBlock()), ('InfoPod', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock(help_text='Optional', required=False))])), ('paragraph', wagtail.core.blocks.RichTextBlock())])),
+                ('body', wagtail.fields.StreamField([('Callout', pages.blocks.CallOutBlock()), ('InfoPod', wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.RichTextBlock(help_text='Optional', required=False))])), ('paragraph', wagtail.blocks.RichTextBlock())])),
             ],
             options={
                 'abstract': False,
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             name='InfoPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('body', wagtail.core.fields.StreamField([('Callout', pages.blocks.CallOutBlock()), ('InfoPod', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock(help_text='Optional', required=False))])), ('paragraph', wagtail.core.blocks.RichTextBlock())])),
+                ('body', wagtail.fields.StreamField([('Callout', pages.blocks.CallOutBlock()), ('InfoPod', wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.RichTextBlock(help_text='Optional', required=False))])), ('paragraph', wagtail.blocks.RichTextBlock())])),
             ],
             options={
                 'abstract': False,

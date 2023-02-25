@@ -3,8 +3,8 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import pages.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -24,6 +24,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='homepage',
             name='body',
-            field=wagtail.core.fields.StreamField([('Callout', wagtail.core.blocks.StructBlock([('headline', wagtail.core.blocks.CharBlock()), ('subline', wagtail.core.blocks.CharBlock())])), ('InfoPod', pages.blocks.FlexBlock(wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.CharBlock(help_text='Optional', required=False))]))), ('paragraph', wagtail.core.blocks.RichTextBlock())]),
+            field=wagtail.fields.StreamField([('Callout', wagtail.blocks.StructBlock([('headline', wagtail.blocks.CharBlock()), ('subline', wagtail.blocks.CharBlock())])), ('InfoPod', pages.blocks.FlexBlock(wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.CharBlock(help_text='Optional', required=False))]))), ('paragraph', wagtail.blocks.RichTextBlock())]),
         ),
     ]

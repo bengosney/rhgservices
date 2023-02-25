@@ -2,8 +2,8 @@
 
 from django.db import migrations
 import pages.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='homepage',
             name='body',
-            field=wagtail.core.fields.StreamField([('Callout', pages.blocks.CallOutBlock()), ('InfoPod', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.CharBlock(help_text='Optional', required=False))]))), ('InfoPods', wagtail.core.blocks.StreamBlock([('infopod', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.CharBlock(help_text='Optional', required=False))]))])), ('paragraph', wagtail.core.blocks.RichTextBlock())]),
+            field=wagtail.fields.StreamField([('Callout', pages.blocks.CallOutBlock()), ('InfoPod', wagtail.blocks.ListBlock(wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.CharBlock(help_text='Optional', required=False))]))), ('InfoPods', wagtail.blocks.StreamBlock([('infopod', wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.CharBlock(help_text='Optional', required=False))]))])), ('paragraph', wagtail.blocks.RichTextBlock())]),
         ),
     ]

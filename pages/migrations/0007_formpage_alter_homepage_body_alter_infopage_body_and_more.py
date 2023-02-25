@@ -4,8 +4,8 @@ from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
 import pages.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -24,8 +24,8 @@ class Migration(migrations.Migration):
                 ('to_address', models.CharField(blank=True, help_text='Optional - form submissions will be emailed to these addresses. Separate multiple addresses by comma.', max_length=255, verbose_name='to address')),
                 ('from_address', models.CharField(blank=True, max_length=255, verbose_name='from address')),
                 ('subject', models.CharField(blank=True, max_length=255, verbose_name='subject')),
-                ('intro', wagtail.core.fields.RichTextField(blank=True)),
-                ('thank_you_text', wagtail.core.fields.RichTextField(blank=True)),
+                ('intro', wagtail.fields.RichTextField(blank=True)),
+                ('thank_you_text', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
@@ -35,12 +35,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='homepage',
             name='body',
-            field=wagtail.core.fields.StreamField([('Callout', wagtail.core.blocks.StructBlock([('headline', wagtail.core.blocks.CharBlock()), ('subline', wagtail.core.blocks.CharBlock())])), ('InfoPod', pages.blocks.FlexBlock(wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.CharBlock(help_text='Optional', required=False))]))), ('Paragraph', wagtail.core.blocks.RichTextBlock()), ('Projects', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(max_length=255, required=True)), ('body', wagtail.core.blocks.RichTextBlock(required=False)), ('projects', wagtail.core.blocks.ListBlock(wagtail.core.blocks.PageChooserBlock(page_type=['projects.Project'])))]))]),
+            field=wagtail.fields.StreamField([('Callout', wagtail.blocks.StructBlock([('headline', wagtail.blocks.CharBlock()), ('subline', wagtail.blocks.CharBlock())])), ('InfoPod', pages.blocks.FlexBlock(wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.CharBlock(help_text='Optional', required=False))]))), ('Paragraph', wagtail.blocks.RichTextBlock()), ('Projects', wagtail.blocks.StructBlock([('title', wagtail.blocks.CharBlock(max_length=255, required=True)), ('body', wagtail.blocks.RichTextBlock(required=False)), ('projects', wagtail.blocks.ListBlock(wagtail.blocks.PageChooserBlock(page_type=['projects.Project'])))]))]),
         ),
         migrations.AlterField(
             model_name='infopage',
             name='body',
-            field=wagtail.core.fields.StreamField([('Callout', wagtail.core.blocks.StructBlock([('headline', wagtail.core.blocks.CharBlock()), ('subline', wagtail.core.blocks.CharBlock())])), ('InfoPod', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.core.blocks.CharBlock()), ('paragraph', wagtail.core.blocks.CharBlock(help_text='Optional', required=False))]))), ('Paragraph', wagtail.core.blocks.RichTextBlock())]),
+            field=wagtail.fields.StreamField([('Callout', wagtail.blocks.StructBlock([('headline', wagtail.blocks.CharBlock()), ('subline', wagtail.blocks.CharBlock())])), ('InfoPod', wagtail.blocks.ListBlock(wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('title', wagtail.blocks.CharBlock()), ('paragraph', wagtail.blocks.CharBlock(help_text='Optional', required=False))]))), ('Paragraph', wagtail.blocks.RichTextBlock())]),
         ),
         migrations.CreateModel(
             name='FormField',
