@@ -179,7 +179,12 @@ CSRF_TRUSTED_ORIGINS = [BASE_URL]
 WAGTAILADMIN_BASE_URL = BASE_URL
 
 CSP_DEFAULT_SRC = "'self'"
-CSP_SCRIPT_SRC = ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"] + os.environ.get("CSP_SCRIPT_SRC", "").split(",")
+CSP_SCRIPT_SRC = [
+    "'self'",
+    "'unsafe-inline'",
+    "https://cdnjs.cloudflare.com",
+    "https://unpkg.com/tachyonjs@1.0.1/tachyon.min.js",
+] + os.environ.get("CSP_SCRIPT_SRC", "").split(",")
 CSP_STYLE_SRC = ["'self'", "fonts.googleapis.com", "'unsafe-inline'"] + os.environ.get("CSP_STYLE_SRC", "").split(",")
 CSP_FONT_SRC = ["'self'", "fonts.gstatic.com"] + os.environ.get("CSP_FONT_SRC", "").split(",")
 CSP_IMG_SRC = ["'self'", "data:"] + os.environ.get("CSP_IMG_SRC", "").split(",")
