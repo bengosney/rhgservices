@@ -6,8 +6,6 @@ HOOKS=$(.git/hooks/pre-commit)
 INS=$(wildcard requirements.*.in)
 REQS=$(subst in,txt,$(INS))
 
-SCSS=$(shell find scss/ -name "*.scss")
-
 BINPATH=$(shell which python | xargs dirname | xargs realpath --relative-to=".")
 
 PYTHON_VERSION:=$(shell python --version | cut -d " " -f 2)
@@ -126,9 +124,6 @@ watch: ## Watch and build the css
 
 bs: ## Run browser-sync
 	browser-sync start --proxy localhost:8000 --files "./**/*.css" --files "./**/*.js" --files "./**/*.html"
-
-rhgs/static/css/%.css: scss/%.scss $(SCSS_PARTIALS)
-	sass $< $@
 
 css: ## Build the css
 	npx gulp css
