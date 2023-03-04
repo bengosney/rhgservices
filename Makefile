@@ -123,10 +123,18 @@ watch: ## Watch and build the css
 	done
 
 bs: ## Run browser-sync
-	browser-sync start --proxy localhost:8000 --files "./**/*.css" --files "./**/*.js" --files "./**/*.html"
+	browser-sync start --proxy localhost:8000 --files "./rhgs/**/*.css" --files "./rhgs/**/*.js" --files "./**/*.html"
 
 css: ## Build the css
 	npx gulp css
 
 watch-css:
 	inotifywait -m -r -e modify,create,delete ./scss/ | while read NEWFILE; do $(MAKE) css; done
+
+rhgs/static/js/%.js: js/%.ts
+	npx tsc $^ --outfile $@ && npx esbuild $@ --minify --allow-overwrite --outfile=$@
+
+js: rhgs/static/js/rhgs.js
+
+watch-js:
+	inotifywait -m -r -e modify,create,delete ./js/ | while read NEWFILE; do $(MAKE) js; done

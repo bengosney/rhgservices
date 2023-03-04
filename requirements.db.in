@@ -1,4 +1,4 @@
--c requirements.txt
 -c requirements.dev.txt
+-c requirements.txt
 db-to-sqlite
 psycopg2
