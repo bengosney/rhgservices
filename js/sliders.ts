@@ -2,8 +2,12 @@ const initSlider = (slider: Element, duration: number) => {
     const select = (selector: string) => slider.querySelector<HTMLInputElement>(selector);
     const initTimer = () =>
         setInterval(() => {
-            const n = select("input:checked ~ input") || select("input:first-child");
-            n && (n.checked = true);
+            const next = select("input:checked ~ input") || select("input:first-child");
+            if (next) {
+                next.checked = true;
+            } else {
+                clearInterval(timer);
+            }
         }, duration);
 
     let timer = initTimer();
