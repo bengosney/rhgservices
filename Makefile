@@ -6,8 +6,6 @@ HOOKS=$(.git/hooks/pre-commit)
 INS=$(wildcard requirements.*.in)
 REQS=$(subst in,txt,$(INS))
 
-SCSS=$(shell find scss/ -name "*.scss")
-
 BINPATH=$(shell which python | xargs dirname | xargs realpath --relative-to=".")
 
 PYTHON_VERSION:=$(shell python --version | cut -d " " -f 2)
@@ -125,13 +123,23 @@ watch: ## Watch and build the css
 	done
 
 bs: ## Run browser-sync
-	browser-sync start --proxy localhost:8000 --files "./**/*.css" --files "./**/*.js" --files "./**/*.html"
-
-rhgs/static/css/%.css: scss/%.scss $(SCSS_PARTIALS)
-	sass $< $@
+	browser-sync start --proxy localhost:8000 --files "./rhgs/**/*.css" --files "./rhgs/**/*.js" --files "./**/*.html"
 
 css: ## Build the css
 	npx gulp css
 
 watch-css:
 	inotifywait -m -r -e modify,create,delete ./scss/ | while read NEWFILE; do $(MAKE) css; done
+
+JS_SRC = $(wildcard js/*.ts)
+JS_LIB = $(JS_SRC:js/%.ts=rhgs/static/js/%.js)
+
+rhgs/static/js/: $(JS_LIB)
+rhgs/static/js/%.js: js/%.ts $(JS_SRC)
+	@mkdir -p $(@D)
+	npx parcel build $< --dist-dir $(@D)
+
+js: rhgs/static/js/rhgs.js
+
+watch-js:
+	inotifywait -m -r -e modify,create,delete ./js/ | while read NEWFILE; do $(MAKE) rhgs/static/js/rhgs.js; done

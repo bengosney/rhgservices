@@ -481,3 +481,4 @@ dumps
 .envrc
 .direnv
 /static
+.parcel-cache
