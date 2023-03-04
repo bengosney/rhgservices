@@ -1,1 +1,2 @@
-Array.from(document.getElementsByClassName("slider")).map(function(t){var n=function(e){return t.querySelector(e)},r=function(){return setInterval(function(){var e=n("input:checked ~ input")||n("input:first-child");e&&(e.checked=!0)},2500)},u=r();t.addEventListener("mouseover",function(){return clearInterval(u)},!0),t.addEventListener("mouseout",function(){return u=r()},!0)});
+!function(){var e=(e,t)=>{const n=t=>e.querySelector(t),r=()=>setInterval((()=>{const e=n("input:checked ~ input")||n("input:first-child");e&&(e.checked=!0)}),t);let s=r();e.addEventListener("mouseover",(()=>clearInterval(s)),!0),e.addEventListener("mouseout",(()=>s=r()),!0)};Array.from(document.getElementsByClassName("slider")).map((t=>e(t,2500)))}();
+//# sourceMappingURL=rhgs.js.map

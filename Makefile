@@ -131,10 +131,15 @@ css: ## Build the css
 watch-css:
 	inotifywait -m -r -e modify,create,delete ./scss/ | while read NEWFILE; do $(MAKE) css; done
 
-rhgs/static/js/%.js: js/%.ts
-	npx tsc $^ --outfile $@ && npx esbuild $@ --minify --allow-overwrite --outfile=$@
+JS_SRC = $(wildcard js/*.ts)
+JS_LIB = $(JS_SRC:js/%.ts=rhgs/static/js/%.js)
+
+rhgs/static/js/: $(JS_LIB)
+rhgs/static/js/%.js: js/%.ts $(JS_SRC)
+	@mkdir -p $(@D)
+	npx parcel build $< --dist-dir $(@D)
 
 js: rhgs/static/js/rhgs.js
 
 watch-js:
-	inotifywait -m -r -e modify,create,delete ./js/ | while read NEWFILE; do $(MAKE) js; done
+	inotifywait -m -r -e modify,create,delete ./js/ | while read NEWFILE; do $(MAKE) rhgs/static/js/rhgs.js; done
