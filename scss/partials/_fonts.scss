@@ -12,6 +12,13 @@ body {
 
 p {
   margin-bottom: 1rem;
+
+  font-size: 17.6px;
+  font-size: 1.1rem;
+  font-size: clamp(17.6px, 0.375vw + 16.4px, 20px);
+  font-size: clamp(1.1rem, 0.375vw + 1.025rem, 1.25rem);
+  letter-spacing: 0.005em;
+  line-height: 1.5em;
 }
 
 h1,

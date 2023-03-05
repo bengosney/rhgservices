@@ -6,7 +6,6 @@
     "scripts": {
         "build": "echo \"can't build yet\" && exit 1"
     },
-    "type": "module",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/bengosney/rhgservices.git"
