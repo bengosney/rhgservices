@@ -1,4 +1,5 @@
 # Standard Library
+from pathlib import Path
 from random import randint
 
 # Django
@@ -22,6 +23,7 @@ class LocalimagesConfig(AppConfig):
             try:
                 return wrapped(*args, **kwargs)
             except SourceImageIOError:
+                Path(instance.file.path).parent.mkdir(exist_ok=True)
                 baseURL = f"https://picsum.photos/{randint(6, 12) * 100}/{randint(6, 12) * 100}"
                 img_data = requests.get(baseURL)
                 with open(instance.file.path, "wb") as handler:
