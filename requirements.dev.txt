@@ -375,10 +375,13 @@ wagtail==4.2
     #   -c requirements.txt
     #   -r requirements.txt
     #   wagtail-picture-tag
+    #   wagtail-placeholder-images
 wagtail-picture-tag==1.0.1
     # via
     #   -c requirements.txt
     #   -r requirements.txt
+wagtail-placeholder-images==0.1.1
+    # via -r requirements.dev.in
 webencodings==0.5.1
     # via
     #   -c requirements.txt
@@ -403,6 +406,8 @@ willowavif==0.1.0
     # via
     #   -c requirements.txt
     #   -r requirements.txt
+wrapt==1.15.0
+    # via -r requirements.dev.in
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip

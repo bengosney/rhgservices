@@ -1,5 +1,4 @@
 # Standard Library
-import contextlib
 import os
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -172,23 +171,11 @@ CSP_SCRIPT_SRC = [
     "'self'",
     "'unsafe-inline'",
     "https://cdnjs.cloudflare.com",
-    "https://unpkg.com/tachyonjs@1.0.1/tachyon.min.js",
-] + os.environ.get("CSP_SCRIPT_SRC", "").split(",")
+] + os.environ.get(
+    "CSP_SCRIPT_SRC", ""
+).split(",")
 CSP_STYLE_SRC = ["'self'", "fonts.googleapis.com", "'unsafe-inline'"] + os.environ.get("CSP_STYLE_SRC", "").split(",")
 CSP_FONT_SRC = ["'self'", "fonts.gstatic.com"] + os.environ.get("CSP_FONT_SRC", "").split(",")
 CSP_IMG_SRC = ["'self'", "data:"] + os.environ.get("CSP_IMG_SRC", "").split(",")
 
 CSP_EXCLUDE_URL_PREFIXES = ("/admin/",)
-
-env = os.environ.copy()
-with contextlib.suppress(KeyError):
-    AWS_ACCESS_KEY_ID = env["AWS_ACCESS_KEY_ID"]
-    AWS_SECRET_ACCESS_KEY = env["AWS_SECRET_ACCESS_KEY"]
-    AWS_STORAGE_BUCKET_NAME = env["AWS_STORAGE_BUCKET_NAME"]
-    AWS_QUERYSTRING_AUTH = False
-    AWS_S3_CUSTOM_DOMAIN = env["AWS_S3_CUSTOM_DOMAIN"]
-    AWS_LOCATION = env["AWS_LOCATION"] if "AWS_LOCATION" in env else ""
-    AWS_S3_OBJECT_PARAMETERS = {
-        "CacheControl": f"max-age={86400 * 365}",
-    }
-    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"

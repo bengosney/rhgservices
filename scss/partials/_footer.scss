@@ -1,10 +1,16 @@
 #footer {
   .slogan {
     @include accent_colour();
-    text-align: center;
-    font-size: 2rem;
-    line-height: 1.35em;
-    padding: 3rem 0;
+    padding: 1.5em 0;
+    p {
+      text-align: center;
+      font-size: clamp(1.5rem, 7.5vw, 2rem);
+      line-height: 1.35em;
+
+      & + p {
+        margin-top: 0.5em;
+      }
+    }
     a {
       white-space: nowrap;
     }
@@ -12,8 +18,11 @@
   .footer {
     padding: 1rem 0;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 1rem;
+
+    justify-content: space-between;
   }
 
   .socials {
@@ -31,6 +40,7 @@
   }
 
   .copy {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.25em;
   }
 }

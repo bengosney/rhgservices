@@ -13,3 +13,5 @@ pytest
 pytest-clarity
 pytest-django
 pytest-picked
+wagtail-placeholder-images
+wrapt
