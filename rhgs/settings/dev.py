@@ -15,6 +15,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 INSTALLED_APPS += [  # noqa
     "debug_toolbar",
     "debugtools",
+    "localimages",
 ]
 
 MIDDLEWARE += [  # noqa
