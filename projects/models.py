@@ -53,14 +53,25 @@ class Project(Page):
     tags = ClusterTaggableManager(through=ProjectTag, blank=True)
     short_description = models.CharField(max_length=150, blank=True)
     body = RichTextField(blank=True)
+    hero_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
     def banner_image(self):
+        if self.hero_image:
+            return self.hero_image
+
         return img.image if (img := self.images.first()) else None
 
     content_panels = [
         MultiFieldPanel(
             Page.content_panels
             + [
+                FieldPanel("hero_image"),
                 FieldPanel("sub_title"),
                 FieldPanel("tags"),
             ],
