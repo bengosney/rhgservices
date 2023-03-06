@@ -18,8 +18,11 @@
   .footer {
     padding: 1rem 0;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 1rem;
+
+    justify-content: space-between;
   }
 
   .socials {
@@ -37,6 +40,7 @@
   }
 
   .copy {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.25em;
   }
 }

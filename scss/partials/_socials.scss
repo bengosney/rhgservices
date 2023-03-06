@@ -1,5 +1,7 @@
-.socials {
+.socials,
+.nav-socials {
   display: flex;
+  gap: 0.75em;
 
   a {
     border: none;
@@ -13,10 +15,6 @@
       svg {
         fill: palette(accent, fg);
       }
-    }
-
-    & + a {
-      margin-left: 0.5em;
     }
   }
 }
