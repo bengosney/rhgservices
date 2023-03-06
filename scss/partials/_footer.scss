@@ -1,10 +1,16 @@
 #footer {
   .slogan {
     @include accent_colour();
-    text-align: center;
-    font-size: 2rem;
-    line-height: 1.35em;
-    padding: 3rem 0;
+    padding: 1.5em 0;
+    p {
+      text-align: center;
+      font-size: clamp(1.5rem, 7.5vw, 2rem);
+      line-height: 1.35em;
+
+      & + p {
+        margin-top: 0.5em;
+      }
+    }
     a {
       white-space: nowrap;
     }
