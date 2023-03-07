@@ -3,8 +3,11 @@
 $mobile_width: 275px;
 
 .nav-wrapper {
+  .nav-shroud {
+    display: none;
+  }
   .nav-button {
-    @media screen and (min-width: $mobile_point+1px) {
+    @media screen and (min-width: ($mobile_point + 1px)) {
       display: none;
     }
 
@@ -261,16 +264,21 @@ nav {
         margin: 0;
       }
 
-      &::before {
+      .nav-shroud {
         opacity: 0;
         z-index: 9999;
         content: " ";
         position: fixed;
+        display: block;
         top: 0;
         right: 0;
         bottom: 0;
         left: 100%;
+        width: 100%;
         background: rgba(0, 0, 0, 0.5);
+        &::before {
+          content: none;
+        }
       }
 
       li.socials {
@@ -291,12 +299,13 @@ nav {
       }
 
       input:checked + & {
-        &::before {
+        .nav-shroud {
           animation: fadeIn 0.5s ease-in-out forwards;
         }
 
         ul.nav {
           transform: translateX(0px);
+          box-shadow: 0 0 5vw #000;
         }
       }
 
