@@ -6,29 +6,18 @@
   width: 100%;
   max-width: 575px;
   margin: auto;
+  gap: clamp(0.75rem, 2.5vw, 1.5rem);
+
   @media screen and (max-width: $mobile_point) {
     margin: 0;
   }
 
-  $logo-width: 18%;
-
-  .logo-animation {
-    max-width: $logo-width;
+  .logo-icon {
     flex: 1;
-    position: relative;
-
-    .inner {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
   }
 
   .logo-text {
-    padding-left: 1.25rem;
-    flex: 1;
+    flex: 5.5;
   }
 
   img,
@@ -36,5 +25,6 @@
     max-width: 100%;
     padding: 0;
     margin: 0;
+    display: block;
   }
 }
