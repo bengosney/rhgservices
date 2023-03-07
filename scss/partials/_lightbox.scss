@@ -1,8 +1,32 @@
+#lightbox-close {
+  display: none;
+}
+
+#lightbox-close + .shroud {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(black, 75%);
+  transition: opacity 0.5s;
+
+  animation-name: fade-in;
+  animation-duration: 0.2s;
+}
+
+#lightbox-close:checked + .shroud {
+  display: none;
+  opacity: 0;
+}
+
 .lightbox {
   input {
     display: none;
   }
-  label {
+
+  .wrapper {
     display: none;
     z-index: 10;
     position: fixed;
@@ -10,8 +34,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(black, 75%);
-    transition: opacity 0.5s;
+    //background: rgba(black, 75%);
+    //transition: opacity 0.5s;
 
     align-items: center;
     justify-content: center;
@@ -45,7 +69,7 @@
     }
   }
 
-  input:checked + label {
+  input:checked + .wrapper {
     display: flex;
     animation-name: fade-in;
     animation-duration: 0.2s;
