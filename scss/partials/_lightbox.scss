@@ -26,6 +26,31 @@
     display: none;
   }
 
+  .control {
+    position: absolute;
+    z-index: 12;
+
+    $spaceing: 0.5em;
+    &.next {
+      &:after {
+        content: "\2B9E";
+        left: auto;
+        right: $spaceing;
+      }
+    }
+    &.previous {
+      &:after {
+        content: "\2B9C";
+        right: auto;
+        left: $spaceing;
+      }
+    }
+
+    span {
+      display: none;
+    }
+  }
+
   .wrapper {
     display: none;
     z-index: 10;
@@ -42,7 +67,7 @@
 
     & > * {
       position: relative;
-      &::after {
+      &:after {
         content: "\2715";
         position: absolute;
         top: 1rem;

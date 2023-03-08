@@ -22,22 +22,28 @@
         <div class="container">
             <div class="row sm">
                 <div class="col">
-                    <input type="radio" name="lightbox" id="lightbox-close" checked />
-                    <div class="shroud"></div>
-                    {% for image in page.images.all %}
-                        {% with next_element=page.images.all|next:forloop.counter0 %}
-                            {% with previous_element=page.images.all|previous:forloop.counter0 %}
-                                <div class="lightbox">
-                                    <input type="radio" name="lightbox" id="light-box-{{ image.id }}" />
-                                    <label for="lightbox-close" class="wrapper">
-                                        <label class="previous" for="light-box-{{ previous_element.id }}">Previous Image</label>
-                                        {% picture image.image photo lazy max-1980x1080 max-1024x768 max-800x600 %}
-                                        <label class="next" for="light-box-{{ next_element.id }}">next Image</label>
-                                    </label>
-                                </div>
+                    <div class="lightboxes">
+                        <input type="radio" name="lightbox" id="lightbox-close" checked />
+                        <div class="shroud"></div>
+                        {% for image in page.images.all %}
+                            {% with next_element=page.images.all|next:forloop.counter0 %}
+                                {% with previous_element=page.images.all|previous:forloop.counter0 %}
+                                    <div class="lightbox">
+                                        <input type="radio" name="lightbox" id="light-box-{{ image.id }}" />
+                                        <label for="lightbox-close" class="wrapper">
+                                            <label class="previous control"{% if previous_element %} for="light-box-{{ previous_element.id }}"{% endif %}>
+                                                <span>Previous Image</span>
+                                            </label>
+                                            {% picture image.image photo lazy max-1980x1080 max-1024x768 max-800x600 %}
+                                            <label class="next control"{% if next_element %} for="light-box-{{ next_element.id }}"{% endif %}>
+                                                <span>Next Image</span>
+                                            </label>
+                                        </label>
+                                    </div>
+                                {% endwith %}
                             {% endwith %}
-                        {% endwith %}
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                     <div class="slider">
                         <div class="slider-inner">
                             <div class="sizer">
