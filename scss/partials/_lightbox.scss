@@ -31,11 +31,13 @@
     z-index: 12;
 
     $spaceing: 0.5em;
+
     &.next {
       &:after {
         content: "\2B9E";
         left: auto;
         right: $spaceing;
+        top: -0.5rem;
       }
     }
     &.previous {
@@ -43,6 +45,7 @@
         content: "\2B9C";
         right: auto;
         left: $spaceing;
+        top: -0.5rem;
       }
     }
 
