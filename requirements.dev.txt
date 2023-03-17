@@ -160,7 +160,7 @@ pluggy==1.0.0
     # via pytest
 pprintpp==0.4.0
     # via pytest-clarity
-pre-commit==3.1.1
+pre-commit==3.2.0
     # via -r requirements.dev.in
 pygments==2.14.0
     # via
@@ -249,7 +249,9 @@ willow==1.4.1
     #   -c requirements.txt
     #   wagtail
 wrapt==1.15.0
-    # via -r requirements.dev.in
+    # via
+    #   -c requirements.txt
+    #   -r requirements.dev.in
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
