@@ -8,8 +8,6 @@ anyascii==0.3.1
     # via wagtail
 asgiref==3.6.0
     # via django
-async-timeout==4.0.2
-    # via redis
 beautifulsoup4==4.11.2
     # via wagtail
 boto3==1.26.94
@@ -105,7 +103,7 @@ pytz==2022.7.1
     #   django-modelcluster
     #   djangorestframework
     #   l18n
-redis==4.5.1
+redis==4.5.2
     # via -r requirements.in
 requests==2.28.2
     # via wagtail
