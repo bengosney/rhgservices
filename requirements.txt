@@ -103,7 +103,7 @@ pytz==2022.7.1
     #   django-modelcluster
     #   djangorestframework
     #   l18n
-redis==4.5.2
+redis==4.5.3
     # via -r requirements.in
 requests==2.28.2
     # via wagtail
