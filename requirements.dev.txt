@@ -20,7 +20,7 @@ beautifulsoup4==4.11.2
     # via
     #   -c requirements.txt
     #   wagtail
-black==23.1.0
+black==23.3.0
     # via -r requirements.dev.in
 build==0.10.0
     # via pip-tools
@@ -221,6 +221,7 @@ types-pyyaml==6.0.12.8
     # via django-stubs
 typing-extensions==4.5.0
     # via
+    #   -c requirements.txt
     #   django-stubs
     #   django-stubs-ext
     #   mypy
