@@ -16,7 +16,7 @@ db-to-sqlite==1.5
     # via -r requirements.db.in
 greenlet==2.0.2
     # via sqlalchemy
-psycopg2==2.9.5
+psycopg2==2.9.6
     # via
     #   -c requirements.txt
     #   -r requirements.db.in
@@ -40,4 +40,5 @@ tabulate==0.9.0
 typing-extensions==4.5.0
     # via
     #   -c requirements.dev.txt
+    #   -c requirements.txt
     #   sqlalchemy
