@@ -42,7 +42,7 @@ colorama==0.4.6
     # via icecream
 distlib==0.3.6
     # via virtualenv
-django==4.1.7
+django==4.1.8
     # via
     #   -c requirements.txt
     #   django-debug-toolbar
