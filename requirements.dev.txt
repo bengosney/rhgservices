@@ -70,9 +70,9 @@ django-permissionedforms==0.1
     # via
     #   -c requirements.txt
     #   wagtail
-django-stubs==1.16.0
+django-stubs==4.2.0
     # via -r requirements.dev.in
-django-stubs-ext==0.8.0
+django-stubs-ext==4.2.0
     # via django-stubs
 django-taggit==3.1.0
     # via
@@ -211,8 +211,6 @@ telepath==0.3
     # via
     #   -c requirements.txt
     #   wagtail
-tomli==2.0.1
-    # via django-stubs
 types-pytz==2022.7.1.2
     # via django-stubs
 types-pyyaml==6.0.12.8
