@@ -26,6 +26,8 @@ cffi==1.15.1
     # via milksnake
 charset-normalizer==3.0.1
     # via requests
+defusedxml==0.7.1
+    # via willow
 dj-database-url==2.0.0
     # via -r requirements.in
 django==4.1.8
@@ -64,6 +66,8 @@ draftjs-exporter==2.1.7
     # via wagtail
 et-xmlfile==1.1.0
     # via openpyxl
+filetype==1.2.0
+    # via willow
 gunicorn==20.1.0
     # via -r requirements.in
 honeybadger==0.15.2
@@ -131,7 +135,7 @@ urllib3==1.26.14
     # via
     #   botocore
     #   requests
-wagtail==4.2.2
+wagtail==5.0
     # via
     #   -r requirements.in
     #   wagtail-picture-tag
@@ -143,7 +147,7 @@ wheel==0.40.0
     # via -r requirements.in
 whitenoise[brotli]==6.4.0
     # via -r requirements.in
-willow==1.4.1
+willow==1.5
     # via
     #   wagtail
     #   willowavif
