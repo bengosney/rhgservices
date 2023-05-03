@@ -9,9 +9,12 @@ mypy
 packaging
 pip-tools
 pre-commit
+psycopg2
 pytest
 pytest-clarity
+pytest-cov
 pytest-django
 pytest-picked
+pytest-watch
 wagtail-placeholder-images
 wrapt

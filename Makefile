@@ -13,6 +13,7 @@ PIP_PATH:=$(BINPATH)/pip
 WHEEL_PATH:=$(BINPATH)/wheel
 PIP_SYNC_PATH:=$(BINPATH)/pip-sync
 PRE_COMMIT_PATH:=$(BINPATH)/pre-commit
+DBTOSQLPATH:=$(BINPATH)/db-to-sqlite
 
 help: ## Display this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -109,11 +110,10 @@ upgrade: _upgrade python
 	@python -m pre_commit autoupdate
 	python -m pre_commit run --all
 
-requirements.db.in:
-	echo "-c requirements.txt\n-c $(REQS)\ndb-to-sqlite\npsycopg2" > requirements.db.in
-	$(MAKE) python
+$(DBTOSQLPATH):
+	pip install git+https://github.com/bengosney/db-to-sqlite.git
 
-db.sqlite3:	requirements.db.txt
+db.sqlite3: $(DBTOSQLPATH)
 	db-to-sqlite --all $(shell heroku config | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
 
 watch: ## Watch and build the css
@@ -143,3 +143,6 @@ js: rhgs/static/js/rhgs.js
 
 watch-js:
 	inotifywait -m -r -e modify,create,delete ./js/ | while read NEWFILE; do $(MAKE) rhgs/static/js/rhgs.js; done
+
+cov.xml: $(PYTHON_FILES)
+	python3 -m pytest --cov=. --cov-report xml:$@
