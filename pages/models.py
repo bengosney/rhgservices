@@ -10,7 +10,7 @@ from wagtail.admin.mail import send_mail
 from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 
@@ -22,7 +22,7 @@ from .blocks import CallOutBlock, FlexBlock, FlexStreamBlock, FormBlock, InfoPod
 
 
 @register_setting
-class SiteSettings(BaseSetting):
+class SiteSettings(BaseSiteSetting):
     phone_number = models.CharField(max_length=255, help_text="Phone number to show in the footer", default="")
     facebook = models.URLField(help_text="Your Facebook page URL", default="")
     instagram = models.CharField(max_length=255, help_text="Your Instagram username, without the @", default="")

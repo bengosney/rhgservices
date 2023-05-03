@@ -21,7 +21,14 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 SECRET_KEY = env["SECRET_KEY"]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS = [
@@ -29,8 +36,6 @@ COMPRESS_CSS_FILTERS = [
     "compressor.filters.cssmin.CSSMinFilter",
 ]
 COMPRESS_CSS_HASHING_METHOD = "content"
-
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 
 HONEYBADGER = {"API_KEY": env["HONEYBADGER_API_KEY"]}

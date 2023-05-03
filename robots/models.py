@@ -2,9 +2,9 @@
 from django.db import models
 
 # Wagtail
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
 
 @register_setting
-class Robots(BaseSetting):
+class Robots(BaseSiteSetting):
     contents = models.TextField(blank=True)
