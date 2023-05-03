@@ -91,7 +91,10 @@ body {
 }
 
 a {
-  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition:
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
   color: palette(accent, bg);
   text-decoration: none;
   border-bottom: dotted 1px;
@@ -115,7 +118,9 @@ a {
 }
 
 body.text-3d {
-  text-shadow: 0 1px cyan, 3px 0 1px red;
+  text-shadow:
+    0 1px cyan,
+    3px 0 1px red;
 }
 
 strong,
