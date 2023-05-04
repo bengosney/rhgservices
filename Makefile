@@ -15,6 +15,8 @@ PIP_SYNC_PATH:=$(BINPATH)/pip-sync
 PRE_COMMIT_PATH:=$(BINPATH)/pre-commit
 DBTOSQLPATH:=$(BINPATH)/db-to-sqlite
 
+PYTHON_FILES:=$(wildcard ./**/*.py ./**/tests/*.py)
+
 help: ## Display this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
@@ -148,3 +150,6 @@ watch-js:
 
 cov.xml: $(PYTHON_FILES)
 	python3 -m pytest --cov=. --cov-report xml:$@
+
+coverage: $(PYTHON_FILES)
+	python3 -m pytest --cov=. --cov-report html:$@
