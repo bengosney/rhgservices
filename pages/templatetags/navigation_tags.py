@@ -5,7 +5,6 @@ from django import template
 from wagtail.models import Page, Site
 
 register = template.Library()
-# https://docs.djangoproject.com/en/3.2/howto/custom-template-tags/
 
 
 @register.simple_tag(takes_context=True)
