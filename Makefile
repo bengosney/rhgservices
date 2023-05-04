@@ -97,11 +97,13 @@ python: $(PIP_SYNC_PATH) requirements.txt $(REQS)
 	@echo "Installing $(filter-out $<,$^)"
 	@python -m piptools sync $(filter-out $<,$^)
 
+pip: $(PIP_PATH) ## Update pip
+	@python -m pip install --upgrade pip
+
 install: python node ## Install development requirements (default)
 
-_upgrade: requirements.in
+_upgrade: pip requirements.in
 	@echo "Upgrading pip packages"
-	@python -m pip install --upgrade pip
 	@python -m piptools compile -q --upgrade requirements.in
 
 upgrade: _upgrade python
