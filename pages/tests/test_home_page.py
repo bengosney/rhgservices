@@ -4,8 +4,8 @@
 from wagtail.models import Page
 from wagtail.test.utils import WagtailPageTests
 
-# Locals
-from .models import HomePage
+# First Party
+from pages.models import HomePage
 
 
 class HomePageTests(WagtailPageTests):

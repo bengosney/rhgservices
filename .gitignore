@@ -482,3 +482,4 @@ dumps
 .direnv
 /static
 .parcel-cache
+cov.xml
