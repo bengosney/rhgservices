@@ -15,8 +15,6 @@ def get_site_root(context):
     if site_object := Site.find_for_request(context["request"]):
         return site_object.root_page
 
-    return None
-
 
 def has_menu_children(page):
     # This is used by the top_menu property
