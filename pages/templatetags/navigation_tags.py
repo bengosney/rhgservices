@@ -54,8 +54,7 @@ def top_menu(context, parent, calling_page=None):
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag("tags/top_menu_children.html", takes_context=True)
 def top_menu_children(context, parent, calling_page=None):
-    menuitems_children = parent.get_children()
-    menuitems_children = menuitems_children.live().in_menu()
+    menuitems_children = parent.get_children().live().in_menu()
     for menuitem in menuitems_children:
         menuitem.show_dropdown = has_menu_children(menuitem)
         # We don't directly check if calling_page is None since the template
@@ -63,6 +62,7 @@ def top_menu_children(context, parent, calling_page=None):
         # if the variable passed as calling_page does not exist.
         menuitem.active = calling_page.url_path.startswith(menuitem.url_path) if calling_page else False
         menuitem.children = menuitem.get_children().live().in_menu()
+
     return {
         "parent": parent,
         "calling_page": calling_page,

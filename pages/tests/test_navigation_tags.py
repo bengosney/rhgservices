@@ -3,7 +3,14 @@ from django.test import RequestFactory, TestCase
 
 # First Party
 from pages.models import InfoPage
-from pages.templatetags.navigation_tags import get_site_root, has_children, has_menu_children, is_active, top_menu
+from pages.templatetags.navigation_tags import (
+    get_site_root,
+    has_children,
+    has_menu_children,
+    is_active,
+    top_menu,
+    top_menu_children,
+)
 
 
 class NavigationTagsTests(TestCase):
@@ -50,3 +57,11 @@ class NavigationTagsTests(TestCase):
 
         self.assertEqual(len(result["menuitems"]), 1)
         self.assertEqual(result["menuitems"][0].title, self.info_page.title)
+
+    def test_top_menu_children(self):
+        request = self.factory.get("/")
+        result = top_menu_children({"request": request}, self.root_page)
+
+        self.assertEqual(len(result["menuitems_children"]), 1)
+        self.assertEqual(result["parent"].title, self.root_page.title)
+        self.assertEqual(result["menuitems_children"][0].title, self.info_page.title)
