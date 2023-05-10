@@ -15,8 +15,6 @@ def get_site_root(context):
     if site_object := Site.find_for_request(context["request"]):
         return site_object.root_page
 
-    return None
-
 
 def has_menu_children(page):
     # This is used by the top_menu property
@@ -56,8 +54,7 @@ def top_menu(context, parent, calling_page=None):
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag("tags/top_menu_children.html", takes_context=True)
 def top_menu_children(context, parent, calling_page=None):
-    menuitems_children = parent.get_children()
-    menuitems_children = menuitems_children.live().in_menu()
+    menuitems_children = parent.get_children().live().in_menu()
     for menuitem in menuitems_children:
         menuitem.show_dropdown = has_menu_children(menuitem)
         # We don't directly check if calling_page is None since the template
@@ -65,6 +62,7 @@ def top_menu_children(context, parent, calling_page=None):
         # if the variable passed as calling_page does not exist.
         menuitem.active = calling_page.url_path.startswith(menuitem.url_path) if calling_page else False
         menuitem.children = menuitem.get_children().live().in_menu()
+
     return {
         "parent": parent,
         "calling_page": calling_page,
@@ -76,12 +74,12 @@ def top_menu_children(context, parent, calling_page=None):
 
 @register.inclusion_tag("tags/breadcrumbs.html", takes_context=True)
 def breadcrumbs(context):
-    self = context.get("self")
-    if self is None or self.depth <= 2:
-        # When on the home page, displaying breadcrumbs is irrelevant.
+    current = context.get("self")
+    if current is None or current.depth <= 2:
         ancestors = ()
     else:
-        ancestors = Page.objects.ancestor_of(self, inclusive=True).filter(depth__gt=1)
+        ancestors = Page.objects.ancestor_of(current, inclusive=True).filter(depth__gt=1)
+
     return {
         "ancestors": ancestors,
         "request": context["request"],
