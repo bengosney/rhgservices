@@ -18,14 +18,15 @@ class SocialTagsTestCase(WagtailTestUtils, TestCase):
         self.img = Image.objects.create(title="Test image", file=get_test_image_file_jpeg("test.png"))
 
         self.site = Site.objects.get(hostname="localhost")
-        self.social = Social.objects.create(
+
+    def test_social_tags(self):
+        Social.objects.create(
             site=self.site,
             description="Test description",
             image=self.img,
             json_ld='{ "test": "json-ld", "name": "{{ site.site_name }}" }',
         )
 
-    def test_social_tags(self):
         request = self.factory.get("/")
         request.site = self.site
         response = social_tags(Context({"request": request}))
