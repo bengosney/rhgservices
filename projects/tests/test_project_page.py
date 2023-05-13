@@ -40,7 +40,6 @@ class ProjectPageTestCase(TestCase):
 
 class ProjectPageImagesTestCase(TestCase):
     def setUp(self):
-        self.factory = RequestFactory()
         self.project = Project(title="Project", path="/", depth=1)
         self.project.save()
 

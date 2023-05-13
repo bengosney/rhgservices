@@ -4,6 +4,9 @@ from django import template
 # Wagtail
 from wagtail.models import Site
 
+# Third Party
+from icecream import ic
+
 # Locals
 from ..models import Social
 
@@ -20,7 +23,8 @@ def social_tags(context):
     try:
         jsonld = template.Template(settings.json_ld)
         rendered_jsonld = jsonld.render(context)
-    except Exception:
+    except Exception as err:
+        ic(err)
         rendered_jsonld = ""
 
     return {
