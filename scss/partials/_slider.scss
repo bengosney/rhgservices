@@ -51,6 +51,8 @@
     max-width: 100%;
     height: auto;
     cursor: pointer;
+    border: 0.1em solid palette(accent, bg);
+    box-sizing: border-box;
   }
 
   @for $i from 1 through 30 {
