@@ -35,13 +35,17 @@
     h1 {
       padding-top: 0.5em;
       font-size: clamp(1.7rem, 7vw, 3.052rem);
-      margin-bottom: 0.4em;
+      margin-bottom: 0.2em;
     }
-    p {
+    p,
+    h2 {
       padding-bottom: 1em;
       margin: 0;
       font-size: clamp(1rem, 5vw, 1.5rem);
       line-height: 1.75em;
+      font-weight: 300;
+      font-family: $font_base;
+      letter-spacing: 0.005em;
     }
   }
 }
