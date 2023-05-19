@@ -42,6 +42,9 @@
       display: block;
       padding: 0;
       margin: 0;
+
+      border: 0.1em solid palette(accent, bg);
+      box-sizing: border-box;
     }
   }
 

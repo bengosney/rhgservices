@@ -1,5 +1,6 @@
 {% load static wagtailcore_tags wagtailuserbar navigation_tags social_tags %}
 {% load util_tags %}
+{% wagtail_site as current_site %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
@@ -10,8 +11,7 @@
                     {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
                 {% endblock %}
                 {% block title_suffix %}
-                    {% wagtail_site as current_site %}
-                    {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+                    {% if current_site and current_site.site_name %}&nbsp;- {{ current_site.site_name }}{% endif %}
                 {% endblock %}
             </title>
         {% endcompress %}
@@ -35,7 +35,7 @@
         <div class="header-wrapper">
             <header class="container">
                 {% get_site_root as site_root %}
-                <a class="logo" href="{% pageurl site_root %}">
+                <a class="logo" href="{% pageurl site_root %}"{% if current_site and current_site.site_name %} title="{{ current_site.site_name }}"{% endif %}>
                     <div class="logo-icon">
                         {% include "logo.svg" %}
                     </div>
