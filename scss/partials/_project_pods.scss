@@ -1,13 +1,13 @@
 .project-pods {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  @media screen and (max-width: 992px) {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  flex-wrap: wrap;
+
   gap: 2em;
   padding-bottom: 2em;
 
   .pod {
+    flex-basis: 26rem;
+    flex-grow: 1;
     box-sizing: border-box;
     padding: 0;
     display: flex;
@@ -30,6 +30,10 @@
       padding: 0;
       margin: 0;
       position: relative;
+
+      flex-basis: 200px;
+      flex-grow: 0;
+      flex-shrink: 1;
       img {
         display: block;
         padding: 0;
@@ -52,14 +56,12 @@
     }
 
     .pod-details {
-      @media screen and (max-width: 992px) {
-        min-width: 75%;
-      }
+      flex-shrink: 0.5;
+      flex-basis: 75%;
       padding-left: 1em;
       font-size: 1rem;
       display: flex;
       flex-direction: column;
-      flex: 1;
 
       h2 {
         padding: 0 0 0.75em 0;

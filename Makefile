@@ -120,20 +120,19 @@ $(DBTOSQLPATH):
 db.sqlite3: $(DBTOSQLPATH)
 	db-to-sqlite --all $(shell heroku config | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
 
-watch: ## Watch and build the css
-	@echo "Watching scss"
-	@while inotifywait -qr -e close_write scss/; do \
-		$(MAKE) css; \
-	done
 
 bs: ## Run browser-sync
 	browser-sync start --proxy localhost:8000 --files "./rhgs/**/*.css" --files "./rhgs/**/*.js" --files "./**/*.html"
 
-css: ## Build the css
-	npx gulp css
+SCSS=$(shell find scss/ -name "*.scss")
 
-watch-css:
-	inotifywait -m -r -e modify,create,delete ./scss/ | while read NEWFILE; do $(MAKE) css; done
+rhgs/static/css/%.css: scss/%.scss $(SCSS)
+	npx sass $< $@
+
+rhgs/static/css/%.min.css: rhgs/static/css/%.css
+	npx postcss $^ -o $@
+
+css: rhgs/static/css/rhgs.min.css ## Build the css
 
 JS_SRC = $(wildcard js/*.ts)
 JS_LIB = $(JS_SRC:js/%.ts=rhgs/static/js/%.js)
@@ -145,8 +144,21 @@ rhgs/static/js/%.js: js/%.ts $(JS_SRC)
 
 js: rhgs/static/js/rhgs.js
 
-watch-js:
-	inotifywait -m -r -e modify,create,delete ./js/ | while read NEWFILE; do $(MAKE) rhgs/static/js/rhgs.js; done
+watch-css: ## Watch and build the css
+	@echo "Watching scss"
+	$(MAKE) css
+	@while inotifywait -qr -e close_write scss/; do \
+		$(MAKE) css; \
+	done
+
+watch-js: ## Watch and build the js
+	@echo "Watching js"
+	$(MAKE) js
+	@while inotifywait -qr -e close_write js/; do \
+		$(MAKE) js; \
+	done
+
+assets: js css ## Build assets
 
 cov.xml: $(PYTHON_FILES)
 	python3 -m pytest --cov=. --cov-report xml:$@

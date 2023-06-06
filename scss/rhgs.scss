@@ -39,28 +39,28 @@
   --container-padding: 20px;
 }
 
-@media screen and (min-width: 576px) {
+@media (min-width: $screen-xs) {
   :root {
     --max-width: 540px;
     --container-padding: 0;
   }
 }
-@media screen and (min-width: 768px) {
+@media (min-width: $screen-sm) {
   :root {
     --max-width: 720px;
   }
 }
-@media screen and (min-width: 992px) {
+@media (min-width: $screen-md) {
   :root {
     --max-width: 960px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media (min-width: $screen-lg) {
   :root {
     --max-width: 1140px;
   }
 }
-@media screen and (min-width: 1400px) {
+@media (min-width: $screen-xl) {
   :root {
     --max-width: 1320px;
   }

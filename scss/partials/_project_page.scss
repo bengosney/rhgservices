@@ -46,7 +46,7 @@
     .slide-nav {
       position: absolute;
       bottom: 0em;
-      @media screen and (max-width: $mobile_point) {
+      @include in-size($mobile_sizes) {
         bottom: -2em;
       }
     }
