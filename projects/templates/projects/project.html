@@ -37,9 +37,9 @@
                                     <div class="slide slide-{{ forloop.counter }}">
                                         <label for="light-box-{{ image.id }}">
                                             {% if forloop.first %}
-                                                {% picture image.image photo fill-640x427 %}
+                                                {% picture image.image photo max-640x427 %}
                                             {% else %}
-                                                {% picture image.image photo fill-640x427 lazy %}
+                                                {% picture image.image photo max-640x427 lazy %}
                                             {% endif %}
                                         </label>
                                     </div>
