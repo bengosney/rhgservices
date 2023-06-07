@@ -28,7 +28,7 @@
 
   .header {
     position: absolute;
-    @include in-size((xxs, xs)) {
+    @include in-size((xxs, xs, sm)) {
       position: relative;
     }
     bottom: 0;
@@ -36,14 +36,15 @@
     background: rgba($color: #000000, $alpha: 0.5);
     backdrop-filter: blur(5px);
 
+    padding: 0.75em 0;
+
     h1 {
-      padding-top: 0.5em;
       font-size: clamp(1.7rem, 7vw, 3.052rem);
-      margin-bottom: 0.2em;
+      margin-bottom: 0.3em;
     }
     p,
     h2 {
-      padding-bottom: 1em;
+      //padding-bottom: 1em;
       margin: 0;
       font-size: clamp(1rem, 5vw, 1.5rem);
       line-height: 1.75em;

@@ -1,13 +1,3 @@
 {
-    "tabWidth": 4,
-    "useTabs": false,
-    "printWidth": 120,
-    "overrides": [
-        {
-            "files": "*.scss",
-            "options": {
-                "tabWidth": 2
-            }
-        }
-    ]
+  "printWidth": 121
 }

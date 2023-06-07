@@ -1,7 +1,5 @@
 @use "sass:math";
 
-$small_mobile_point: 400px;
-
 .block-InfoPod {
   $icon-size: 64px;
   @extend .container;
@@ -9,7 +7,7 @@ $small_mobile_point: 400px;
   .flex_block {
     justify-content: space-around;
     flex-wrap: wrap;
-    @media screen and (max-width: $mobile_point) {
+    @include in-size((xxs, xs, sm, md)) {
       flex-direction: column;
     }
   }
@@ -31,12 +29,24 @@ $small_mobile_point: 400px;
     }
 
     a {
-      font-size: 1.1rem;
-      line-height: 1.25em;
       margin-top: 1em;
     }
 
-    @media screen and (max-width: $small_mobile_point) {
+    @include in-size($mobile_sizes) {
+      max-width: 100%;
+      flex-direction: row;
+      picture {
+        margin-right: 4vw;
+      }
+      h3 {
+        margin-top: 0;
+      }
+      div {
+        text-align: left;
+      }
+    }
+
+    @include in-size((xxs)) {
       flex-direction: column;
 
       picture {
@@ -50,20 +60,6 @@ $small_mobile_point: 400px;
       h2,
       h3 {
         text-align: center;
-      }
-    }
-
-    @media screen and (max-width: $mobile_point) {
-      max-width: 100%;
-      flex-direction: row;
-      picture {
-        margin-right: 4vw;
-      }
-      h3 {
-        margin-top: 0;
-      }
-      div {
-        text-align: left;
       }
     }
   }
@@ -94,16 +90,16 @@ $small_mobile_point: 400px;
     text-align: center;
     padding: 0;
     margin: 0;
-    font-size: 0.9em;
+    //font-size: 0.9em;
     line-height: 1.5em;
-    @media screen and (max-width: $mobile_point) {
+    @include in-size($mobile_sizes) {
       text-align: left;
     }
   }
 
   h3 {
     text-align: center;
-    @media screen and (max-width: $mobile_point) {
+    @include in-size($mobile_sizes) {
       text-align: left;
     }
   }

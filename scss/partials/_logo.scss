@@ -8,7 +8,7 @@
   margin: auto;
   gap: clamp(0.75rem, 2.5vw, 1.5rem);
 
-  @media screen and (max-width: $mobile_point) {
+  @include in-size($mobile_sizes) {
     margin: 0;
   }
 

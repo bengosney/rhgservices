@@ -11,9 +11,9 @@
         width: 100%;
         color: palette(fg);
         font-family: $font_base;
-        font-size: $font_size;
+        @include fluid-auto(0.75rem);
         font-weight: 300;
-        line-height: 1.65em;
+        line-height: 1.75em;
       }
 
       select {

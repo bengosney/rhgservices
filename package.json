@@ -1,36 +1,48 @@
 {
-    "name": "rhgservices",
-    "version": "1.0.0",
-    "description": "",
-    "browserslist": "> 0.5%, last 2 versions, not dead",
-    "scripts": {
-        "build": "echo \"can't build yet\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/bengosney/rhgservices.git"
-    },
-    "homepage": "https://github.com/bengosney/rhgservices#readme",
-    "devDependencies": {
-        "autoprefixer": "^10.4.4",
-        "browser-sync": "^2.27.12",
-        "cssnano": "^5.1.4",
-        "esbuild": "^0.17.11",
-        "gulp": "^4.0.2",
-        "gulp-avif": "^1.0.1",
-        "gulp-cli": "^2.3.0",
-        "gulp-debug": "^4.0.0",
-        "gulp-inline-image": "^1.0.0",
-        "gulp-postcss": "^9.0.1",
-        "gulp-rename": "^2.0.0",
-        "gulp-sass": "^5.1.0",
-        "gulp-sourcemaps": "^3.0.0",
-        "parcel": "^2.8.3",
-        "postcss": "^8.4.12",
-        "postcss-combine-media-query": "^1.0.1",
-        "postcss-preset-env": "^7.4.2",
-        "sass": "^1.49.9",
-        "tslib": "^2.5.0",
-        "typescript": "^4.9.5"
-    }
+  "name": "stretch-there-legs",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Ben Gosney",
+  "engines": {
+    "npm": ">=6",
+    "node": ">=14"
+  },
+  "scripts": {
+    "compile": "grunt compile",
+    "start": "grunt dev",
+    "watch": "grunt watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "autoprefixer": "^10.4.12",
+    "babel-core": "*",
+    "babel-preset-es2015": "*",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^6.0.0",
+    "grunt": "^1.5.3",
+    "grunt-babel": "^8.0.0",
+    "grunt-browser-sync": "*",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "*",
+    "grunt-dart-sass": "^2.0.1",
+    "grunt-postcss": "*",
+    "grunt-purifycss": "*",
+    "grunt-real-favicon": "^0.2.4",
+    "grunt-sass": "^3.1.0",
+    "grunt-sass-globbing": "*",
+    "grunt-webfont": "*",
+    "load-grunt-tasks": "^5.1.0",
+    "pixrem": "^5.0.0",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.0.0",
+    "postcss-preset-env": "^7.8.2",
+    "sass": "^1.55.0"
+  },
+  "browserslist": [
+    "last 3 version",
+    "> 0.25%",
+    "not dead"
+  ]
 }

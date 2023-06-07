@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:math";
 
 @function val($map, $keys...) {
   @if nth($keys, 1) == null {
@@ -57,4 +58,25 @@
       }
     }
   }
+}
+
+$base-size: 1.25rem;
+
+@function fluid($min-size, $max-size, $min-breakpoint: 20rem, $max-breakpoint: 60rem, $unit: vw) {
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: $slope * 100;
+  $intercept-rem: $min-size - $slope * $min-breakpoint;
+  $min-size-rem: $min-size;
+  $max-size-rem: $max-size;
+
+  @return clamp(#{$min-size-rem}, #{$slope-to-unit}#{$unit} + #{$intercept-rem}, #{$max-size-rem});
+}
+
+@mixin fluid-type($min-size, $max-size) {
+  font-size: $min-size;
+  font-size: fluid($min-size, $max-size);
+}
+
+@mixin fluid-auto($size) {
+  @include fluid-type($size - (($size - $base-size) * 0.556), $size);
 }
