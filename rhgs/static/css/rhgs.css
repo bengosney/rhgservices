@@ -475,7 +475,6 @@ img.richtext-image.right {
 }
 .breadcrumbs ul li {
   list-style: none;
-  font-size: 0.75em;
 }
 .breadcrumbs ul li + li::before {
   content: "»";
@@ -556,7 +555,8 @@ img.richtext-image.right {
   color: #374244;
 }
 .form_builder .helptext {
-  font-size: 0.9rem;
+  font-size: 1.139rem;
+  font-size: clamp(1.139rem, -0.3475vw + 1.2085rem, 1rem);
   line-height: 1.2em;
 }
 
@@ -806,6 +806,10 @@ nav.main ul li {
   }
   nav.main .socials svg {
     fill: #fff;
+  }
+  nav.main .item > div > a, nav.main .project-pods .pod .item > div > span, .project-pods .pod nav.main .item > div > span {
+    font-size: 1.2722rem;
+    font-size: clamp(1.2722rem, 0.0695vw + 1.2583rem, 1.3rem);
   }
   nav.main a, nav.main .project-pods .pod span, .project-pods .pod nav.main span {
     position: relative;
@@ -1716,7 +1720,8 @@ nav.main ul li {
 }
 #footer .slogan p {
   text-align: center;
-  font-size: clamp(1.5rem, 7.5vw, 2rem);
+  font-size: 1.472rem;
+  font-size: clamp(1.472rem, 0.695vw + 1.333rem, 1.75rem);
   line-height: 1.35em;
 }
 #footer .slogan p + p {
@@ -1734,7 +1739,8 @@ nav.main ul li {
   justify-content: space-between;
 }
 #footer .socials {
-  font-size: 2rem;
+  font-size: 1.583rem;
+  font-size: clamp(1.583rem, 1.0425vw + 1.3745rem, 2rem);
 }
 #footer .socials a svg, #footer .socials .project-pods .pod span svg, .project-pods .pod #footer .socials span svg {
   fill: #8dca31;
@@ -1743,7 +1749,8 @@ nav.main ul li {
   fill: #fff;
 }
 #footer .copy {
-  font-size: 0.9rem;
+  font-size: 0.917rem;
+  font-size: clamp(0.917rem, -1.0425vw + 1.1255rem, 0.5rem);
   line-height: 1.25em;
 }
 
@@ -1811,7 +1818,8 @@ nav.main ul li {
   margin-top: -0.25em;
 }
 .project-pods .pod .pod-details p {
-  font-size: 1em;
+  font-size: 1.139rem;
+  font-size: clamp(1.139rem, -0.3475vw + 1.2085rem, 1rem);
   line-height: 1.5em;
   padding: 0;
   margin: 0;

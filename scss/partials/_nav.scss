@@ -103,6 +103,12 @@ nav {
         }
       }
 
+      .item {
+        & > div > a {
+          @include fluid-auto(1.3rem);
+        }
+      }
+
       a {
         position: relative;
         text-decoration: none;

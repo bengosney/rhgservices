@@ -4,7 +4,8 @@
     padding: 1.5em 0;
     p {
       text-align: center;
-      font-size: clamp(1.5rem, 7.5vw, 2rem);
+      //font-size: clamp(1.5rem, 7.5vw, 2rem);
+      @include fluid-auto(1.75rem);
       line-height: 1.35em;
 
       & + p {
@@ -26,7 +27,7 @@
   }
 
   .socials {
-    font-size: 2rem;
+    @include fluid-auto(2rem);
     a {
       svg {
         fill: palette(accent, bg);
@@ -40,7 +41,7 @@
   }
 
   .copy {
-    font-size: 0.9rem;
+    @include fluid-auto(0.5rem);
     line-height: 1.25em;
   }
 }
