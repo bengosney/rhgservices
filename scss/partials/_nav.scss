@@ -7,7 +7,7 @@ $mobile_width: 275px;
     display: none;
   }
   .nav-button {
-    @include in-size($desktop_sizes) {
+    @media (min-width: $screen_md) {
       display: none;
     }
 
@@ -70,7 +70,7 @@ $mobile_width: 275px;
   input {
     display: none;
   }
-  @include in-size($desktop_sizes) {
+  @media (min-width: $screen_md) {
     label,
     .mobile-title {
       display: none;
@@ -89,7 +89,7 @@ nav {
       }
     }
 
-    @include in-size($desktop_sizes) {
+    @media (min-width: $screen_md) {
       $border-size: 1px;
       border-bottom: 0.5em solid palette(accent, bg);
 
@@ -262,7 +262,7 @@ nav {
         }
       }
     }
-    @include in-size($mobile_sizes) {
+    @media (max-width: $screen_md) {
       ul.nav {
         transform: translateX($mobile_width);
         transition: all 0.5s ease;

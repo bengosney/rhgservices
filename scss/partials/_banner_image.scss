@@ -28,7 +28,7 @@
 
   .header {
     position: absolute;
-    @include in-size((xxs, xs, sm)) {
+    @media (max-width: $screen_sm) {
       position: relative;
     }
     bottom: 0;

@@ -30,36 +30,6 @@
   }
 }
 
-@mixin in-size($sizes) {
-  @each $size in $sizes {
-    @if ($size == "xxs") {
-      @media (max-width: ($screen-xs - 1)) {
-        @content;
-      }
-    }
-    @if ($size == "xs") {
-      @media (min-width: $screen-xs) and (max-width: ($screen-sm - 1)) {
-        @content;
-      }
-    }
-    @if ($size == "sm") {
-      @media (min-width: $screen-sm) and (max-width: ($screen-md - 1)) {
-        @content;
-      }
-    }
-    @if ($size == "md") {
-      @media (min-width: $screen-md) and (max-width: ($screen-lg - 1)) {
-        @content;
-      }
-    }
-    @if ($size == "lg") {
-      @media (min-width: $screen-lg) {
-        @content;
-      }
-    }
-  }
-}
-
 $base-size: 1.25rem;
 
 @function fluid($min-size, $max-size, $min-breakpoint: 20rem, $max-breakpoint: 60rem, $unit: vw) {

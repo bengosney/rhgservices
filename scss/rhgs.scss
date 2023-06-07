@@ -39,28 +39,28 @@
   --container-padding: 20px;
 }
 
-@media (min-width: $screen-xs) {
+@media (min-width: $screen_xs) {
   :root {
     --max-width: 540px;
     --container-padding: 0;
   }
 }
-@media (min-width: $screen-sm) {
+@media (min-width: $screen_sm) {
   :root {
     --max-width: 720px;
   }
 }
-@media (min-width: $screen-md) {
+@media (min-width: $screen_md) {
   :root {
     --max-width: 960px;
   }
 }
-@media (min-width: $screen-lg) {
+@media (min-width: $screen_lg) {
   :root {
     --max-width: 1140px;
   }
 }
-@media (min-width: $screen-xl) {
+@media (min-width: $screen_xl) {
   :root {
     --max-width: 1320px;
   }
@@ -127,7 +127,10 @@ i {
   font-style: italic;
 }
 
-p,
+p {
+  margin-bottom: 1.25em;
+}
+
 ul,
 ol,
 dl,
