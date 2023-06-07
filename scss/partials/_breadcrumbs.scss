@@ -1,5 +1,5 @@
 .breadcrumbs {
-  @include in-size((xxs, xs)) {
+  @media (max-width: $screen_sm) {
     & {
       display: none;
     }

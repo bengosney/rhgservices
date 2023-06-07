@@ -13,16 +13,16 @@ $font-heading: "Poppins", sans-serif;
 
 $font_size: 16pt;
 
-$screen-xs: 576px;
-$screen-sm: 768px;
-$screen-md: 992px;
-$screen-lg: 1200px;
-$screen-xl: 1400px;
+$screen_xs: 576px;
+$screen_sm: 768px;
+$screen_md: 992px;
+$screen_lg: 1200px;
+$screen_xl: 1400px;
 
 $mobile_sizes: (xxs, xs, sm, md);
 $desktop_sizes: (lg, xl);
 
-$mobile_point: $screen-md;
+$mobile_point: $screen_md;
 
 $accent: #8dca31;
 $bg: #374244;

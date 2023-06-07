@@ -7,7 +7,7 @@
   .flex_block {
     justify-content: space-around;
     flex-wrap: wrap;
-    @include in-size((xxs, xs, sm, md)) {
+    @media (max-width: $screen_md) {
       flex-direction: column;
     }
   }
@@ -32,7 +32,7 @@
       margin-top: 1em;
     }
 
-    @include in-size($mobile_sizes) {
+    @media (max-width: $screen_md) {
       max-width: 100%;
       flex-direction: row;
       picture {
@@ -46,7 +46,7 @@
       }
     }
 
-    @include in-size((xxs)) {
+    @media (max-width: $screen_xs) {
       flex-direction: column;
 
       picture {
@@ -92,14 +92,14 @@
     margin: 0;
     //font-size: 0.9em;
     line-height: 1.5em;
-    @include in-size($mobile_sizes) {
+    @media (max-width: $screen_md) {
       text-align: left;
     }
   }
 
   h3 {
     text-align: center;
-    @include in-size($mobile_sizes) {
+    @media (max-width: $screen_md) {
       text-align: left;
     }
   }

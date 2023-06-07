@@ -11,7 +11,7 @@ header {
   }
 }
 
-@include in-size($mobile_sizes) {
+@media (max-width: $screen_md) {
   .header-wrapper {
     display: flex;
     flex-direction: row;

@@ -22,7 +22,7 @@
   }
 }
 
-@include in-size((xxs, xs)) {
+@media (max-width: $screen_xs) {
   .flex_stream {
     flex-direction: column;
     margin-bottom: var(--container-padding);
