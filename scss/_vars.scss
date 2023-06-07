@@ -8,7 +8,9 @@ $font_base:
   apple color emoji,
   segoe ui emoji,
   segoe ui symbol;
-$font_heading: "Poppins", sans-serif;
+$font-body: $font_base;
+$font-heading: "Poppins", sans-serif;
+
 $font_size: 16pt;
 
 $screen-xs: 576px;

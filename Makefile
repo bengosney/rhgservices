@@ -2,6 +2,8 @@
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
+MAKEFLAGS += -j4
+
 HOOKS=$(.git/hooks/pre-commit)
 INS=$(wildcard requirements.*.in)
 REQS=$(subst in,txt,$(INS))
@@ -165,3 +167,9 @@ cov.xml: $(PYTHON_FILES)
 
 coverage: $(PYTHON_FILES)
 	python3 -m pytest --cov=. --cov-report html:$@
+
+_server:
+	python3 ./manage.py migrate
+	python3 ./manage.py runserver
+
+dev: _server watch-js watch-css bs ## Start the dev server, watch the css and js and start browsersync

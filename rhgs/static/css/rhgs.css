@@ -37,11 +37,11 @@ nav.main .block-Paragraph ul.nav,
 }
 
 html {
-  font-size: 100%;
-} /*16px*/
+  font-size: 1em;
+}
+
 body {
   font-family: -apple-system, blinkmacsystemfont, segoe ui, helvetica, arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
-  font-size: 16pt;
   font-weight: 300;
   line-height: 1.65em;
   color: #fff;
@@ -70,23 +70,28 @@ h5 {
 
 h1 {
   margin-top: 0;
-  font-size: 3.052rem;
+  font-size: 2.050088rem;
+  font-size: clamp(2.050088rem, 2.50478vw + 1.549132rem, 3.052rem);
 }
 
 h2 {
-  font-size: 2.441rem;
+  font-size: 1.778804rem;
+  font-size: clamp(1.778804rem, 1.65549vw + 1.447706rem, 2.441rem);
 }
 
 h3 {
-  font-size: 1.953rem;
+  font-size: 1.562132rem;
+  font-size: clamp(1.562132rem, 0.97717vw + 1.366698rem, 1.953rem);
 }
 
 h4 {
-  font-size: 1.563rem;
+  font-size: 1.388972rem;
+  font-size: clamp(1.388972rem, 0.43507vw + 1.301958rem, 1.563rem);
 }
 
 h5 {
   font-size: 1.25rem;
+  font-size: clamp(1.25rem, 0vw + 1.25rem, 1.25rem);
 }
 
 small,
@@ -187,8 +192,6 @@ nav.main .flex_stream ul.nav,
   flex: 1;
 }
 .block-InfoPod .infopod a, .block-InfoPod .infopod .project-pods .pod span, .project-pods .pod .block-InfoPod .infopod span {
-  font-size: 1.1rem;
-  line-height: 1.25em;
   margin-top: 1em;
 }
 @media (max-width: 575px) {
@@ -290,7 +293,6 @@ nav.main .flex_stream ul.nav,
   text-align: center;
   padding: 0;
   margin: 0;
-  font-size: 0.9em;
   line-height: 1.5em;
 }
 @media (max-width: 575px) {
@@ -496,9 +498,10 @@ img.richtext-image.right {
   width: 100%;
   color: #fff;
   font-family: -apple-system, blinkmacsystemfont, segoe ui, helvetica, arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
-  font-size: 16pt;
+  font-size: 1.028rem;
+  font-size: clamp(1.028rem, -0.695vw + 1.167rem, 0.75rem);
   font-weight: 300;
-  line-height: 1.65em;
+  line-height: 1.75em;
 }
 .form_builder form .field-wrapper select option {
   background: #374244;
@@ -1672,6 +1675,7 @@ nav.main ul li {
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  padding: 0.75em 0;
 }
 @media (max-width: 575px) {
   .banner_image .header {
@@ -1689,13 +1693,11 @@ nav.main ul li {
   }
 }
 .banner_image .header h1 {
-  padding-top: 0.5em;
   font-size: clamp(1.7rem, 7vw, 3.052rem);
-  margin-bottom: 0.2em;
+  margin-bottom: 0.3em;
 }
 .banner_image .header p,
 .banner_image .header h2 {
-  padding-bottom: 1em;
   margin: 0;
   font-size: clamp(1rem, 5vw, 1.5rem);
   line-height: 1.75em;
@@ -1752,7 +1754,7 @@ nav.main ul li {
   padding-bottom: 2em;
 }
 .project-pods .pod {
-  flex-basis: 26rem;
+  flex-basis: 27rem;
   flex-grow: 1;
   box-sizing: border-box;
   padding: 0;
@@ -1794,18 +1796,19 @@ nav.main ul li {
   width: 100%;
 }
 .project-pods .pod .pod-details {
-  flex-shrink: 0.5;
+  flex-shrink: 0.1;
   flex-basis: 75%;
   padding-left: 1em;
-  font-size: 1rem;
   display: flex;
   flex-direction: column;
 }
 .project-pods .pod .pod-details h2 {
-  padding: 0 0 0.75em 0;
+  padding: 0 0 0.5em 0;
   margin: 0;
-  line-height: 1em;
-  font-size: 1.5em;
+  font-size: 1.361rem;
+  font-size: clamp(1.361rem, 0.3475vw + 1.2915rem, 1.5rem);
+  line-height: 1.5em;
+  margin-top: -0.25em;
 }
 .project-pods .pod .pod-details p {
   font-size: 1em;
@@ -2059,22 +2062,22 @@ nav.main ul li {
 }
 @media (max-width: 575px) {
   .template-project .slider .slide-nav {
-    bottom: -2em;
+    bottom: -2.5em;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
   .template-project .slider .slide-nav {
-    bottom: -2em;
+    bottom: -2.5em;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .template-project .slider .slide-nav {
-    bottom: -2em;
+    bottom: -2.5em;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .template-project .slider .slide-nav {
-    bottom: -2em;
+    bottom: -2.5em;
   }
 }
 
@@ -2199,10 +2202,6 @@ a:hover, .project-pods .pod span:hover {
 }
 a:hover svg, .project-pods .pod span:hover svg {
   fill: #8dca31;
-}
-
-body.text-3d {
-  text-shadow: 0 1px cyan, 3px 0 1px red;
 }
 
 strong,

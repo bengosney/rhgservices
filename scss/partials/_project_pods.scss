@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .project-pods {
   display: flex;
   flex-wrap: wrap;
@@ -6,7 +8,7 @@
   padding-bottom: 2em;
 
   .pod {
-    flex-basis: 26rem;
+    flex-basis: 27rem;
     flex-grow: 1;
     box-sizing: border-box;
     padding: 0;
@@ -56,18 +58,20 @@
     }
 
     .pod-details {
-      flex-shrink: 0.5;
+      flex-shrink: 0.1;
       flex-basis: 75%;
       padding-left: 1em;
-      font-size: 1rem;
+      //font-size: 1rem;
       display: flex;
       flex-direction: column;
 
       h2 {
-        padding: 0 0 0.75em 0;
+        padding: 0 0 0.5em 0;
         margin: 0;
-        line-height: 1em;
-        font-size: 1.5em;
+        @include fluid-auto(1.5rem);
+        $lineHeight: 1.5em;
+        line-height: $lineHeight;
+        margin-top: -(math.div($lineHeight - 1em, 2));
       }
 
       p {
