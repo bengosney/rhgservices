@@ -168,19 +168,23 @@ nav.main .flex_stream ul.nav,
 .block-InfoPod .infopod a, .block-InfoPod .infopod .project-pods .pod span, .project-pods .pod .block-InfoPod .infopod span {
   margin-top: 1em;
 }
-@media (max-width: 992px) {
+@media (min-width: 577px) and (max-width: 992px) {
   .block-InfoPod .infopod {
-    max-width: 100%;
     flex-direction: row;
   }
   .block-InfoPod .infopod picture {
     margin-right: 4vw;
   }
-  .block-InfoPod .infopod h3 {
-    margin-top: 0;
-  }
   .block-InfoPod .infopod div {
     text-align: left;
+  }
+}
+@media (max-width: 992px) {
+  .block-InfoPod .infopod {
+    max-width: 100%;
+  }
+  .block-InfoPod .infopod h3 {
+    margin-top: 0;
   }
 }
 @media (max-width: 576px) {
