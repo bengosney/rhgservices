@@ -4,7 +4,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  gap: 2em;
+  gap: clamp(2em, 4vw, 5em);
   padding-bottom: 2em;
 
   .pod {
