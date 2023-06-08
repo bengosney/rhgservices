@@ -234,6 +234,8 @@ nav.main .flex_stream ul.nav,
   }
 }
 .block-InfoPod h3 {
+  margin-top: clamp(0.75rem, 1vw, 1.25rem);
+  margin-bottom: clamp(0.75rem, 1vw, 1.25rem);
   text-align: center;
 }
 @media (max-width: 992px) {
