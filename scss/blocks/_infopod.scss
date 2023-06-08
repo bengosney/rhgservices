@@ -32,23 +32,26 @@
       margin-top: 1em;
     }
 
-    @media (max-width: $screen_md) {
-      max-width: 100%;
+    @media (min-width: ($screen_xs + 1)) and (max-width: $screen_md) {
       flex-direction: row;
       picture {
         margin-right: 4vw;
       }
-      h3 {
-        margin-top: 0;
-      }
+
       div {
         text-align: left;
       }
     }
 
+    @media (max-width: $screen_md) {
+      max-width: 100%;
+      h3 {
+        margin-top: 0;
+      }
+    }
+
     @media (max-width: $screen_xs) {
       flex-direction: column;
-
       picture {
         margin: 0 auto 1em;
         max-width: 20vw;

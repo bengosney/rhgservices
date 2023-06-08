@@ -168,19 +168,23 @@ nav.main .flex_stream ul.nav,
 .block-InfoPod .infopod a, .block-InfoPod .infopod .project-pods .pod span, .project-pods .pod .block-InfoPod .infopod span {
   margin-top: 1em;
 }
-@media (max-width: 992px) {
+@media (min-width: 577px) and (max-width: 992px) {
   .block-InfoPod .infopod {
-    max-width: 100%;
     flex-direction: row;
   }
   .block-InfoPod .infopod picture {
     margin-right: 4vw;
   }
-  .block-InfoPod .infopod h3 {
-    margin-top: 0;
-  }
   .block-InfoPod .infopod div {
     text-align: left;
+  }
+}
+@media (max-width: 992px) {
+  .block-InfoPod .infopod {
+    max-width: 100%;
+  }
+  .block-InfoPod .infopod h3 {
+    margin-top: 0;
   }
 }
 @media (max-width: 576px) {
@@ -779,17 +783,17 @@ nav.main ul li {
   nav.main label {
     position: relative;
     font-size: 0.75rem;
-    width: 4em;
+    width: 3.6em;
   }
   nav.main label::before {
     position: absolute;
     content: " ";
     width: 0;
     height: 0;
-    left: 1em;
+    left: 0.9em;
     top: calc(50% - 0.5em);
     border-style: solid;
-    border-width: 1em 1em 0 1em;
+    border-width: 0.9em 0.9em 0 0.9em;
     border-color: #8dca31 transparent transparent transparent;
   }
   nav.main label span {
@@ -845,11 +849,15 @@ nav.main ul li {
   }
   nav.main > ul li a, nav.main > ul li .project-pods .pod span, .project-pods .pod nav.main > ul li span {
     flex: 1;
-    padding: 0.35em 1.1em;
+    padding: 0.75em 1.1em;
     display: block;
     white-space: nowrap;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.15rem;
+    line-height: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   nav.main > ul li.active > div > a, nav.main > ul .project-pods .pod li.active > div > span, .project-pods .pod nav.main > ul li.active > div > span {
     font-weight: 600;
@@ -860,6 +868,7 @@ nav.main ul li {
     background-color: #8dca31;
     padding: 0.5em 1em;
     font-weight: bold;
+    font-size: 1.15rem;
     display: flex;
     align-items: center;
   }
