@@ -234,6 +234,8 @@ nav.main .flex_stream ul.nav,
   }
 }
 .block-InfoPod h3 {
+  margin-top: clamp(0.75rem, 1vw, 1.25rem);
+  margin-bottom: clamp(0.75rem, 1vw, 1.25rem);
   text-align: center;
 }
 @media (max-width: 992px) {
@@ -1011,7 +1013,7 @@ nav.main ul li {
 .project-pods {
   display: flex;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: clamp(2em, 4vw, 5em);
   padding-bottom: 2em;
 }
 .project-pods .pod {
