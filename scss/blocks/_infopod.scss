@@ -16,8 +16,7 @@
     box-sizing: border-box;
     max-width: 30%;
     display: flex;
-    flex-direction: column;
-    padding: 2em math.div($icon-size, 2);
+    padding: 2em 0;
 
     & > div {
       text-align: center;
@@ -32,37 +31,34 @@
       margin-top: 1em;
     }
 
-    @media (min-width: ($screen_xs + 1)) and (max-width: $screen_md) {
-      flex-direction: row;
-      picture {
-        margin-right: 4vw;
+    flex-direction: column;
+    gap: min(4vw, 2em);
+
+    $col_size: 375px;
+
+    @media (max-width: ($col_size - 1)) {
+      max-width: 100%;
+      div,
+      p,
+      h3 {
+        text-align: center;
       }
+    }
+
+    @media (min-width: ($col_size)) and (max-width: $screen_md) {
+      flex-direction: row;
 
       div {
         text-align: left;
       }
-    }
 
-    @media (max-width: $screen_md) {
       max-width: 100%;
-      h3 {
-        margin-top: 0;
-      }
     }
 
     @media (max-width: $screen_xs) {
-      flex-direction: column;
       picture {
-        margin: 0 auto 1em;
+        margin: 0 auto;
         max-width: 20vw;
-      }
-
-      div,
-      p,
-      h1,
-      h2,
-      h3 {
-        text-align: center;
       }
     }
   }
@@ -100,7 +96,7 @@
   }
 
   h3 {
-    margin-top: clamp(0.75rem, 1vw, 1.25rem);
+    margin-top: 0;
     margin-bottom: clamp(0.75rem, 1vw, 1.25rem);
     text-align: center;
     @media (max-width: $screen_md) {

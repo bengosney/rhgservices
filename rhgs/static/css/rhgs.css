@@ -154,8 +154,9 @@ nav.main .flex_stream ul.nav,
   box-sizing: border-box;
   max-width: 30%;
   display: flex;
+  padding: 2em 0;
   flex-direction: column;
-  padding: 2em 32px;
+  gap: min(4vw, 2em);
 }
 .block-InfoPod .infopod > div {
   text-align: center;
@@ -168,39 +169,27 @@ nav.main .flex_stream ul.nav,
 .block-InfoPod .infopod a, .block-InfoPod .infopod .project-pods .pod span, .project-pods .pod .block-InfoPod .infopod span {
   margin-top: 1em;
 }
-@media (min-width: 577px) and (max-width: 992px) {
+@media (max-width: 374px) {
+  .block-InfoPod .infopod {
+    max-width: 100%;
+  }
+  .block-InfoPod .infopod div, .block-InfoPod .infopod p, .block-InfoPod .infopod h3 {
+    text-align: center;
+  }
+}
+@media (min-width: 375px) and (max-width: 992px) {
   .block-InfoPod .infopod {
     flex-direction: row;
-  }
-  .block-InfoPod .infopod picture {
-    margin-right: 4vw;
+    max-width: 100%;
   }
   .block-InfoPod .infopod div {
     text-align: left;
   }
 }
-@media (max-width: 992px) {
-  .block-InfoPod .infopod {
-    max-width: 100%;
-  }
-  .block-InfoPod .infopod h3 {
-    margin-top: 0;
-  }
-}
 @media (max-width: 576px) {
-  .block-InfoPod .infopod {
-    flex-direction: column;
-  }
   .block-InfoPod .infopod picture {
-    margin: 0 auto 1em;
+    margin: 0 auto;
     max-width: 20vw;
-  }
-  .block-InfoPod .infopod div,
-.block-InfoPod .infopod p,
-.block-InfoPod .infopod h1,
-.block-InfoPod .infopod h2,
-.block-InfoPod .infopod h3 {
-    text-align: center;
   }
 }
 .block-InfoPod picture {
@@ -234,7 +223,7 @@ nav.main .flex_stream ul.nav,
   }
 }
 .block-InfoPod h3 {
-  margin-top: clamp(0.75rem, 1vw, 1.25rem);
+  margin-top: 0;
   margin-bottom: clamp(0.75rem, 1vw, 1.25rem);
   text-align: center;
 }
