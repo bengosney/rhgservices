@@ -48,7 +48,7 @@ defusedxml==0.7.1
     #   willow
 distlib==0.3.6
     # via virtualenv
-django==4.2.2
+django==4.2.3
     # via
     #   -c requirements.txt
     #   django-debug-toolbar
