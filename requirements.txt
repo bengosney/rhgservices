@@ -68,7 +68,7 @@ filetype==1.2.0
     # via willow
 gunicorn==20.1.0
     # via -r requirements.in
-honeybadger==0.15.2
+honeybadger==0.16.0
     # via -r requirements.in
 html5lib==1.1
     # via wagtail
