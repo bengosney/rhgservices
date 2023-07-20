@@ -152,6 +152,7 @@ openpyxl==3.1.2
     #   wagtail
 packaging==23.1
     # via
+    #   -c requirements.txt
     #   -r requirements.dev.in
     #   black
     #   build
@@ -178,7 +179,7 @@ psycopg2==2.9.6
     # via
     #   -c requirements.txt
     #   -r requirements.dev.in
-pygments==2.14.0
+pygments==2.15.0
     # via
     #   icecream
     #   rich
