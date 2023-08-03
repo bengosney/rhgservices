@@ -163,7 +163,7 @@ pillow==9.5.0
     # via
     #   -c requirements.txt
     #   wagtail
-pip-tools==7.1.0
+pip-tools==7.2.0
     # via -r requirements.dev.in
 platformdirs==3.0.0
     # via
