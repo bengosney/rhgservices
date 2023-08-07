@@ -6,7 +6,7 @@
 #
 anyascii==0.3.2
     # via wagtail
-asgiref==3.6.0
+asgiref==3.7.2
     # via django
 beautifulsoup4==4.11.2
     # via wagtail
@@ -18,11 +18,11 @@ botocore==1.31.20
     #   s3transfer
 brotli==1.0.9
     # via whitenoise
-certifi==2022.12.7
+certifi==2023.7.22
     # via requests
 cffi==1.15.1
     # via milksnake
-charset-normalizer==3.1.0
+charset-normalizer==3.2.0
     # via requests
 defusedxml==0.7.1
     # via willow
@@ -44,7 +44,7 @@ django==4.2.4
     #   wagtail
 django-csp==3.7
     # via -r requirements.in
-django-filter==22.1
+django-filter==23.2
     # via wagtail
 django-health-check==3.17.0
     # via -r requirements.in
@@ -54,7 +54,7 @@ django-permissionedforms==0.1
     # via wagtail
 django-storages==1.13.2
     # via -r requirements.in
-django-taggit==3.1.0
+django-taggit==4.0.0
     # via wagtail
 django-treebeard==4.7
     # via wagtail
@@ -82,7 +82,7 @@ l18n==2021.3
     # via wagtail
 milksnake==0.1.5
     # via rustface
-numpy==1.24.3
+numpy==1.25.2
     # via opencv-python-headless
 opencv-python-headless==4.8.0.74
     # via -r requirements.in
@@ -90,15 +90,18 @@ openpyxl==3.1.2
     # via wagtail
 packaging==23.1
     # via gunicorn
-pillow==9.5.0
+pillow==10.0.0
     # via
+    #   pillow-heif
     #   wagtail
     #   willowavif
 pillow-avif-plugin==1.3.1
     # via willowavif
+pillow-heif==0.12.0
+    # via willow
 psutil==5.9.5
     # via honeybadger
-psycopg2==2.9.6
+psycopg2==2.9.7
     # via -r requirements.in
 pycparser==2.21
     # via cffi
@@ -111,11 +114,11 @@ pytz==2023.3
     #   l18n
 redis==4.6.0
     # via -r requirements.in
-requests==2.29.0
+requests==2.31.0
     # via wagtail
 rustface==0.1.0
     # via -r requirements.in
-s3transfer==0.6.0
+s3transfer==0.6.1
     # via boto3
 six==1.16.0
     # via
@@ -127,15 +130,15 @@ soupsieve==2.4.1
     # via beautifulsoup4
 sqlparse==0.4.4
     # via django
-telepath==0.3
+telepath==0.3.1
     # via wagtail
-typing-extensions==4.5.0
+typing-extensions==4.7.1
     # via dj-database-url
-urllib3==1.26.15
+urllib3==1.26.16
     # via
     #   botocore
     #   requests
-wagtail==5.0.2
+wagtail==5.1
     # via
     #   -r requirements.in
     #   wagtail-picture-tag
@@ -143,11 +146,11 @@ wagtail-picture-tag==1.0.1
     # via -r requirements.in
 webencodings==0.5.1
     # via html5lib
-wheel==0.41.0
+wheel==0.41.1
     # via -r requirements.in
-whitenoise[brotli]==6.4.0
+whitenoise[brotli]==6.5.0
     # via -r requirements.in
-willow==1.5
+willow[heif]==1.6.1
     # via
     #   wagtail
     #   willowavif
