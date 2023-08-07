@@ -1,3 +1,18 @@
 {
-  "printWidth": 121
+  "printWidth": 121,
+  "tabWidth": 4,
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": "*.json",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
 }

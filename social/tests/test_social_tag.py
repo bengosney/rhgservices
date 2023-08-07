@@ -5,7 +5,7 @@ from django.test import RequestFactory, TestCase
 # Wagtail
 from wagtail.images.tests.utils import Image, get_test_image_file_jpeg
 from wagtail.models import Site
-from wagtail.tests.utils import WagtailTestUtils
+from wagtail.test.utils import WagtailTestUtils
 
 # First Party
 from social.models import Social
