@@ -257,7 +257,7 @@ urllib3==1.26.16
     #   requests
 virtualenv==20.19.0
     # via pre-commit
-wagtail==5.1
+wagtail==5.1.1
     # via
     #   -c requirements.txt
     #   wagtail-placeholder-images
