@@ -138,7 +138,7 @@ urllib3==1.26.16
     # via
     #   botocore
     #   requests
-wagtail==5.1
+wagtail==5.1.1
     # via
     #   -r requirements.in
     #   wagtail-picture-tag
