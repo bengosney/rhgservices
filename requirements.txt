@@ -26,7 +26,7 @@ charset-normalizer==3.2.0
     # via requests
 defusedxml==0.7.1
     # via willow
-dj-database-url==2.0.0
+dj-database-url==2.1.0
     # via -r requirements.in
 django==4.2.4
     # via
