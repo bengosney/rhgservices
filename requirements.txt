@@ -52,7 +52,7 @@ django-modelcluster==6.0
     # via wagtail
 django-permissionedforms==0.1
     # via wagtail
-django-storages==1.13.2
+django-storages==1.14
     # via -r requirements.in
 django-taggit==4.0.0
     # via wagtail
