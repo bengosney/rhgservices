@@ -173,7 +173,9 @@ nav.main .flex_stream ul.nav,
   .block-InfoPod .infopod {
     max-width: 100%;
   }
-  .block-InfoPod .infopod div, .block-InfoPod .infopod p, .block-InfoPod .infopod h3 {
+  .block-InfoPod .infopod div,
+.block-InfoPod .infopod p,
+.block-InfoPod .infopod h3 {
     text-align: center;
   }
 }

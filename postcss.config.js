@@ -9,9 +9,9 @@ module.exports = {
         require("@fullhuman/postcss-purgecss")({
             content: ["./**/*.html"],
             safelist: [
-                /^nav-level-\d$/,
-                /^slide-label-\d$/,
-                /^slide-\d$/,
+                /^nav-level-\d+$/,
+                /^slide-label-\d+$/,
+                /^slide-\d+$/,
                 /^block-/,
                 /^field-/,
                 "richtext-image",
