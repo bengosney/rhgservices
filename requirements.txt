@@ -10,17 +10,17 @@ asgiref==3.7.2
     # via django
 beautifulsoup4==4.11.2
     # via wagtail
-boto3==1.28.56
+boto3==1.28.57
     # via -r requirements.in
-botocore==1.31.56
+botocore==1.31.57
     # via
     #   boto3
     #   s3transfer
-brotli==1.0.9
+brotli==1.1.0
     # via whitenoise
 certifi==2023.7.22
     # via requests
-cffi==1.15.1
+cffi==1.16.0
     # via milksnake
 charset-normalizer==3.2.0
     # via requests
@@ -44,7 +44,7 @@ django==4.2.5
     #   wagtail
 django-csp==3.7
     # via -r requirements.in
-django-filter==23.2
+django-filter==23.3
     # via wagtail
 django-health-check==3.17.0
     # via -r requirements.in
@@ -82,32 +82,32 @@ l18n==2021.3
     # via wagtail
 milksnake==0.1.5
     # via rustface
-numpy==1.25.2
+numpy==1.26.0
     # via opencv-python-headless
-opencv-python-headless==4.8.0.76
+opencv-python-headless==4.8.1.78
     # via -r requirements.in
 openpyxl==3.1.2
     # via wagtail
 packaging==23.1
     # via gunicorn
-pillow==10.0.0
+pillow==10.0.1
     # via
     #   pillow-heif
     #   wagtail
     #   willowavif
 pillow-avif-plugin==1.3.1
     # via willowavif
-pillow-heif==0.12.0
+pillow-heif==0.13.0
     # via willow
 psutil==5.9.5
     # via honeybadger
-psycopg2==2.9.7
+psycopg2==2.9.8
     # via -r requirements.in
 pycparser==2.21
     # via cffi
 python-dateutil==2.8.2
     # via botocore
-pytz==2023.3
+pytz==2023.3.post1
     # via
     #   django-modelcluster
     #   djangorestframework
@@ -126,19 +126,19 @@ six==1.16.0
     #   html5lib
     #   l18n
     #   python-dateutil
-soupsieve==2.4.1
+soupsieve==2.5
     # via beautifulsoup4
 sqlparse==0.4.4
     # via django
 telepath==0.3.1
     # via wagtail
-typing-extensions==4.7.1
+typing-extensions==4.8.0
     # via dj-database-url
 urllib3==1.26.16
     # via
     #   botocore
     #   requests
-wagtail==5.1.1
+wagtail==5.1.2
     # via
     #   -r requirements.in
     #   wagtail-picture-tag
@@ -150,7 +150,7 @@ wheel==0.41.2
     # via -r requirements.in
 whitenoise[brotli]==6.5.0
     # via -r requirements.in
-willow[heif]==1.6.1
+willow[heif]==1.6.2
     # via
     #   wagtail
     #   willowavif
