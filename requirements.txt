@@ -101,7 +101,7 @@ pillow-heif==0.13.0
     # via willow
 psutil==5.9.5
     # via honeybadger
-psycopg2==2.9.8
+psycopg2==2.9.9
     # via -r requirements.in
 pycparser==2.21
     # via cffi

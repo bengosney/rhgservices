@@ -180,7 +180,7 @@ pprintpp==0.4.0
     # via pytest-clarity
 pre-commit==3.4.0
     # via -r requirements.dev.in
-psycopg2==2.9.8
+psycopg2==2.9.9
     # via
     #   -c requirements.txt
     #   -r requirements.dev.in
