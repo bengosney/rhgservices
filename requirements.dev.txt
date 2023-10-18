@@ -136,7 +136,7 @@ mdurl==0.1.2
     # via markdown-it-py
 model-bakery==1.16.0
     # via -r requirements.dev.in
-mypy==1.6.0
+mypy==1.6.1
     # via
     #   -r requirements.dev.in
     #   django-stubs
