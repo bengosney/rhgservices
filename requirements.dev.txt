@@ -78,7 +78,7 @@ django-permissionedforms==0.1
     # via
     #   -c requirements.txt
     #   wagtail
-django-stubs==4.2.5
+django-stubs==4.2.6
     # via -r requirements.dev.in
 django-stubs-ext==4.2.5
     # via django-stubs
@@ -137,9 +137,7 @@ mdurl==0.1.2
 model-bakery==1.16.0
     # via -r requirements.dev.in
 mypy==1.6.1
-    # via
-    #   -r requirements.dev.in
-    #   django-stubs
+    # via -r requirements.dev.in
 mypy-extensions==1.0.0
     # via
     #   black
