@@ -146,7 +146,7 @@ wagtail-picture-tag==2.0.0
     # via -r requirements.in
 webencodings==0.5.1
     # via html5lib
-wheel==0.41.2
+wheel==0.41.3
     # via -r requirements.in
 whitenoise[brotli]==6.5.0
     # via -r requirements.in
