@@ -41,14 +41,16 @@ colorama==0.4.6
     #   icecream
     #   pytest-watch
 coverage[toml]==7.3.1
-    # via pytest-cov
+    # via
+    #   coverage
+    #   pytest-cov
 defusedxml==0.7.1
     # via
     #   -c requirements.txt
     #   willow
 distlib==0.3.7
     # via virtualenv
-django==4.2.6
+django==4.2.7
     # via
     #   -c requirements.txt
     #   django-debug-toolbar
@@ -275,6 +277,7 @@ willow[heif]==1.6.2
     # via
     #   -c requirements.txt
     #   wagtail
+    #   willow
 wrapt==1.15.0
     # via
     #   -c requirements.txt
