@@ -1091,7 +1091,7 @@ nav.main ul li {
   overflow: hidden;
   z-index: 1;
 }
-.slider .slide label {
+.slider .slide label, .slider .slide img, .slider .slide picture {
   cursor: zoom-in;
 }
 .slider input {
