@@ -45,6 +45,16 @@
 
       border: 0.1em solid palette(accent, bg);
       box-sizing: border-box;
+
+      background: palette(bg, base);
+      background: linear-gradient(
+        45deg,
+        palette(bg, base) 0%,
+        lighten(palette(bg, base), 15%) 50%,
+        darken(palette(bg, base), 25%) 100%
+      );
+      background-size: 400% 400%;
+      animation: gradient 5s ease infinite;
     }
   }
 
@@ -61,5 +71,17 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
