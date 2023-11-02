@@ -16,7 +16,9 @@
     overflow: hidden;
     z-index: $zindex_base;
 
-    label {
+    label,
+    img,
+    picture {
       cursor: zoom-in;
     }
   }
