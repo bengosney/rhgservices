@@ -1,9 +1,10 @@
 .lightbox {
+  $transitionTime: 0.5s;
   input {
     display: none;
   }
   label {
-    display: none;
+    display: flex;
     z-index: 10;
     position: fixed;
     top: 0;
@@ -11,7 +12,13 @@
     right: 0;
     bottom: 0;
     background: rgba(black, 75%);
-    transition: opacity 0.5s;
+
+    opacity: 0;
+    left: 100%;
+    pointer-events: none;
+    transition:
+      left 0s ease-in-out calc($transitionTime / 2),
+      opacity calc($transitionTime / 2) ease-in-out;
 
     align-items: center;
     justify-content: center;
@@ -59,18 +66,12 @@
   }
 
   input:checked + label {
-    display: flex;
-    animation-name: fade-in;
-    animation-duration: 0.2s;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
+    left: 0%;
     opacity: 1;
+    transition:
+      left 0s ease-in-out,
+      opacity $transitionTime ease-in-out;
+    pointer-events: auto;
   }
 }
 
