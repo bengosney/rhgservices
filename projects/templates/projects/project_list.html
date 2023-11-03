@@ -25,4 +25,7 @@
             </a>
         {% endwith %}
     {% endfor %}
+    {% if not projects.count|divisibleby:"2" %}
+        <hr class="pod" />
+    {% endif %}
 </div>
