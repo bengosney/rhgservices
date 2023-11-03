@@ -12,8 +12,6 @@ psycopg2
 redis
 rustface
 wagtail
-wagtail-picture-tag
 wheel
 whitenoise
 whitenoise[brotli]
-willowavif

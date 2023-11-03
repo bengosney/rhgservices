@@ -107,6 +107,7 @@ pip: $(PIP_PATH) ## Update pip
 install: python node ## Install development requirements (default)
 
 _upgrade: pip requirements.in
+	@python -m pip install --upgrade pip
 	@echo "Upgrading pip packages"
 	@python -m piptools compile -q --upgrade requirements.in
 

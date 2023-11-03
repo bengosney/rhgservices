@@ -1,11 +1,11 @@
-{% load wagtailcore_tags wagtailimages_tags picture_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="project-pods container">
     {% for project in projects %}
         {% with project=project.specific %}
             <a aria-label="{{ project.title }} details" href="{% pageurl project %}" class="pod">
                 <div class="pod-img">
-                    {% picture project.banner_image photo fill-200x200 lazy %}
+                    {% picture project.banner_image format-{avif,webp,jpeg} fill-200x200 %}
                 </div>
                 <div class="pod-details">
                     <h2>
