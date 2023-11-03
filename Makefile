@@ -122,6 +122,7 @@ $(DBTOSQLPATH):
 
 db.sqlite3: $(DBTOSQLPATH)
 	db-to-sqlite --all $(shell heroku config | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
+	@python manage.py clear_renditions
 
 
 bs: ## Run browser-sync
