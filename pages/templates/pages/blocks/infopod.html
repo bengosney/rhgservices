@@ -1,9 +1,9 @@
-{% load wagtailcore_tags wagtailimages_tags picture_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 
 <div class="infopod">
     <div class="icon">
-        {% picture value.image fill-64x64 transparent %}
+        {% picture value.image format-{webp,png} fill-64x64 %}
     </div>
     <div>
         <h3>{{ value.title }}</h3>

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags picture_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% wagtail_site as current_site %}
 
@@ -17,7 +17,7 @@
 
 {% block content %}
     <div class="banner_image">
-        {% picture page.banner_image photo fill-1920x700 fill-1600x484 fill-800x600 %}
+        {% picture page.banner_image format-{avif,webp,jpeg} fill-{1920x700,1600x484,800x600} %}
         <div class="header">
             <div class="container">
                 <h1>{{ site.site_name }}</h1>

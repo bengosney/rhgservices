@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags picture_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-project{% endblock %}
 
 {% block header %}
     <div class="banner_image">
-        {% picture page.banner_image photo fill-1920x500 fill-1600x484 fill-800x400 fill-640x400 %}
+        {% picture page.banner_image format-{avif,webp,jpeg} fill-{1920x500,1600x484,800x400,640x400} %}
 
         <div class="header">
             <div class="container">
@@ -25,7 +25,7 @@
                         <div class="lightbox">
                             <input type="checkbox" id="light-box-{{ image.id }}" />
                             <label for="light-box-{{ image.id }}">
-                                {% picture image.image photo lazy max-1980x1080 max-1024x768 max-800x600 %}
+                                {% picture image.image format-{avif,webp,jpeg} max-{1980x1080,1024x768,800x600} %}
                             </label>
                         </div>
                     {% endfor %}
@@ -36,11 +36,7 @@
                                     <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
                                     <div class="slide slide-{{ forloop.counter }}">
                                         <label for="light-box-{{ image.id }}">
-                                            {% if forloop.first %}
-                                                {% picture image.image photo max-640x427 %}
-                                            {% else %}
-                                                {% picture image.image photo max-640x427 lazy %}
-                                            {% endif %}
+                                            {% picture image.image format-{avif,webp,jpeg} max-640x427 %}
                                         </label>
                                     </div>
                                 {% endfor %}

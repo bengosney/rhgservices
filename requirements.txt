@@ -22,7 +22,7 @@ certifi==2023.7.22
     # via requests
 cffi==1.16.0
     # via milksnake
-charset-normalizer==3.2.0
+charset-normalizer==3.3.2
     # via requests
 defusedxml==0.7.1
     # via willow
@@ -80,26 +80,23 @@ jmespath==1.0.1
     #   botocore
 l18n==2021.3
     # via wagtail
-milksnake==0.1.5
+milksnake==0.1.6
     # via rustface
-numpy==1.26.0
+numpy==1.26.1
     # via opencv-python-headless
 opencv-python-headless==4.8.1.78
     # via -r requirements.in
 openpyxl==3.1.2
     # via wagtail
-packaging==23.1
+packaging==23.2
     # via gunicorn
-pillow==10.0.1
+pillow==10.1.0
     # via
     #   pillow-heif
     #   wagtail
-    #   willowavif
-pillow-avif-plugin==1.3.1
-    # via willowavif
-pillow-heif==0.13.0
+pillow-heif==0.13.1
     # via willow
-psutil==5.9.5
+psutil==5.9.6
     # via honeybadger
 psycopg2==2.9.9
     # via -r requirements.in
@@ -134,28 +131,19 @@ telepath==0.3.1
     # via wagtail
 typing-extensions==4.8.0
     # via dj-database-url
-urllib3==1.26.16
+urllib3==2.0.7
     # via
     #   botocore
     #   requests
 wagtail==5.2
-    # via
-    #   -r requirements.in
-    #   wagtail-picture-tag
-wagtail-picture-tag==2.0.1
     # via -r requirements.in
 webencodings==0.5.1
     # via html5lib
 wheel==0.41.3
     # via -r requirements.in
-whitenoise[brotli]==6.5.0
+whitenoise[brotli]==6.6.0
     # via -r requirements.in
 willow[heif]==1.6.2
     # via
     #   wagtail
     #   willow
-    #   willowavif
-willowavif==0.1.3
-    # via -r requirements.in
-wrapt==1.15.0
-    # via willowavif
