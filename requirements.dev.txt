@@ -7,55 +7,30 @@
 anyascii==0.3.2
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 asgiref==3.7.2
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   django
 asttokens==2.4.0
     # via icecream
 beautifulsoup4==4.11.2
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 black==23.10.1
     # via -r requirements.dev.in
-boto3==1.28.77
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-botocore==1.31.77
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   boto3
-    #   s3transfer
-brotli==1.1.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   whitenoise
 build==1.0.3
     # via pip-tools
 certifi==2023.7.22
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   requests
-cffi==1.16.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   milksnake
 cfgv==3.4.0
     # via pre-commit
 charset-normalizer==3.3.2
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   requests
 click==8.1.7
     # via
@@ -72,26 +47,16 @@ coverage[toml]==7.3.1
 defusedxml==0.7.1
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   willow
 distlib==0.3.7
     # via virtualenv
-dj-database-url==2.1.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
 django==4.2.7
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
-    #   dj-database-url
-    #   django-csp
     #   django-debug-toolbar
     #   django-filter
-    #   django-health-check
     #   django-modelcluster
     #   django-permissionedforms
-    #   django-storages
     #   django-stubs
     #   django-stubs-ext
     #   django-taggit
@@ -99,10 +64,6 @@ django==4.2.7
     #   djangorestframework
     #   model-bakery
     #   wagtail
-django-csp==3.7
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
 django-debug-toolbar==4.2.0
     # via -r requirements.dev.in
 django-debugtools==2.0
@@ -110,26 +71,15 @@ django-debugtools==2.0
 django-filter==23.3
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
-django-health-check==3.17.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
 django-modelcluster==6.1
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 django-permissionedforms==0.1
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
-django-storages==1.14.2
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
 django-stubs==4.2.6
     # via -r requirements.dev.in
 django-stubs-ext==4.2.5
@@ -137,29 +87,24 @@ django-stubs-ext==4.2.5
 django-taggit==4.0.0
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 django-treebeard==4.7
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 djangorestframework==3.14.0
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 docopt==0.6.2
     # via pytest-watch
 draftjs-exporter==2.1.7
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 et-xmlfile==1.1.0
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   openpyxl
 executing==1.2.0
     # via icecream
@@ -168,20 +113,10 @@ filelock==3.12.4
 filetype==1.2.0
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   willow
-gunicorn==21.2.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-honeybadger==0.17.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
 html5lib==1.1
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 icecream==2.1.3
     # via -r requirements.dev.in
@@ -190,30 +125,17 @@ identify==2.5.29
 idna==3.4
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   requests
 iniconfig==2.0.0
     # via pytest
-jmespath==1.0.1
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   boto3
-    #   botocore
 l18n==2021.3
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 markdown-it-py==3.0.0
     # via rich
 mdurl==0.1.2
     # via markdown-it-py
-milksnake==0.1.6
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   rustface
 model-bakery==1.17.0
     # via -r requirements.dev.in
 mypy==1.6.1
@@ -224,41 +146,27 @@ mypy-extensions==1.0.0
     #   mypy
 nodeenv==1.8.0
     # via pre-commit
-numpy==1.26.1
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   opencv-python-headless
-opencv-python-headless==4.8.1.78
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
 openpyxl==3.1.2
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 packaging==23.2
     # via
     #   -c requirements.txt
     #   -r requirements.dev.in
-    #   -r requirements.txt
     #   black
     #   build
-    #   gunicorn
     #   pytest
 pathspec==0.11.2
     # via black
 pillow==10.1.0
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   pillow-heif
     #   wagtail
 pillow-heif==0.13.1
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   willow
 pip-tools==7.3.0
     # via -r requirements.dev.in
@@ -272,21 +180,10 @@ pprintpp==0.4.0
     # via pytest-clarity
 pre-commit==3.5.0
     # via -r requirements.dev.in
-psutil==5.9.6
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   honeybadger
 psycopg2==2.9.9
     # via
     #   -c requirements.txt
     #   -r requirements.dev.in
-    #   -r requirements.txt
-pycparser==2.21
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   cffi
 pygments==2.16.1
     # via
     #   icecream
@@ -311,64 +208,38 @@ pytest-picked==0.5.0
     # via -r requirements.dev.in
 pytest-watch==4.2.0
     # via -r requirements.dev.in
-python-dateutil==2.8.2
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   botocore
 pytz==2023.3.post1
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   django-modelcluster
     #   djangorestframework
     #   l18n
 pyyaml==6.0.1
     # via pre-commit
-redis==5.0.1
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
 requests==2.31.0
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 rich==13.5.3
     # via pytest-clarity
-rustface==0.1.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-s3transfer==0.7.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   boto3
 six==1.16.0
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   asttokens
-    #   honeybadger
     #   html5lib
     #   l18n
-    #   python-dateutil
 soupsieve==2.5
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   beautifulsoup4
 sqlparse==0.4.4
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   django
     #   django-debug-toolbar
 telepath==0.3.1
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
 types-pytz==2023.3.1.1
     # via django-stubs
@@ -377,23 +248,18 @@ types-pyyaml==6.0.12.12
 typing-extensions==4.8.0
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
-    #   dj-database-url
     #   django-stubs
     #   django-stubs-ext
     #   mypy
 urllib3==2.0.7
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
-    #   botocore
     #   requests
 virtualenv==20.24.5
     # via pre-commit
 wagtail==5.2
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail-placeholder-images
 wagtail-placeholder-images==0.1.1
     # via -r requirements.dev.in
@@ -402,22 +268,14 @@ watchdog==3.0.0
 webencodings==0.5.1
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   html5lib
 wheel==0.41.3
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   pip-tools
-whitenoise[brotli]==6.6.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements.txt
-    #   whitenoise
 willow[heif]==1.6.2
     # via
     #   -c requirements.txt
-    #   -r requirements.txt
     #   wagtail
     #   willow
 wrapt==1.15.0
