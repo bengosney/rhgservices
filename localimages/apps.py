@@ -34,7 +34,6 @@ class LocalImagesConfig(AppConfig):
             try:
                 return wrapped(*args, **kwargs)
             except SourceImageIOError:
-                print("---=== (( *** )) ===---")
                 fill_image_with_stock(instance.file.path)
 
                 return wrapped(*args, **kwargs)
