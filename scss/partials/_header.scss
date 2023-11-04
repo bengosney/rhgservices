@@ -1,5 +1,5 @@
 header {
-  padding: 2vw 0;
+  padding: clamp(1rem, min(2vw, 4vh), 2rem) 0;
   display: flex;
   width: 100%;
 
