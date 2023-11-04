@@ -1,19 +1,19 @@
 const initSlider = (slider: Element, duration: number) => {
+    let mouseOver: boolean = false;
     const select = (selector: string) => slider.querySelector<HTMLInputElement>(selector);
+    const lightboxSelector = ".lightbox input:checked";
     const initTimer = () =>
         setInterval(() => {
             const next = select("input:checked ~ input") || select("input:first-child");
-            if (next) {
+            if (document.querySelectorAll(lightboxSelector).length == 0 && !mouseOver && next) {
                 next.checked = true;
-            } else {
-                clearInterval(timer);
             }
         }, duration);
 
-    let timer = initTimer();
+    slider.addEventListener("mouseover", () => (mouseOver = true), true);
+    slider.addEventListener("mouseout", () => (mouseOver = false), true);
 
-    slider.addEventListener("mouseover", () => clearInterval(timer), true);
-    slider.addEventListener("mouseout", () => (timer = initTimer()), true);
+    return initTimer();
 };
 
 export default initSlider;
