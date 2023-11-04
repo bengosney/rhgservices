@@ -4,9 +4,9 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 575px;
+  max-width: clamp($logo-base-width, 65vh, $logo-max-width);
   margin: auto;
-  gap: clamp(0.75rem, 2.5vw, 1.5rem);
+  gap: clamp(0.5rem, 1.25vw, 1.25rem);
 
   @media (max-width: $screen_md) {
     margin: 0;

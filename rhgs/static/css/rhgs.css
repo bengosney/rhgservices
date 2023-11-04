@@ -468,7 +468,7 @@ img.richtext-image.right {
 }
 
 header {
-  padding: 2vw 0;
+  padding: clamp(1rem, min(2vw, 4vh), 2rem) 0;
   display: flex;
   width: 100%;
 }
@@ -944,7 +944,7 @@ nav.main ul li {
   }
 }
 .banner_image .header h1 {
-  font-size: clamp(1.7rem, 7vw, 3.052rem);
+  font-size: clamp(1.7rem, 6vw, 3.052rem);
   margin-bottom: 0.3em;
 }
 .banner_image .header p,
@@ -1363,9 +1363,9 @@ nav.main ul li {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 575px;
+  max-width: clamp(375px, 65vh, 575px);
   margin: auto;
-  gap: clamp(0.75rem, 2.5vw, 1.5rem);
+  gap: clamp(0.5rem, 1.25vw, 1.25rem);
 }
 @media (max-width: 992px) {
   .logo {
