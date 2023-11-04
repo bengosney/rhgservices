@@ -4,22 +4,24 @@
     {% for project in projects %}
         {% with project=project.specific %}
             <a aria-label="{{ project.title }} details" href="{% pageurl project %}" class="pod">
-                <div class="pod-img">
-                    {% picture project.banner_image format-{avif,webp,jpeg} fill-200x200 %}
-                </div>
-                <div class="pod-details">
-                    <h2>
-                        {{ project.title }}
-                    </h2>
-                    <p>
-                        {% if project.short_description|length > 0 %}
-                            {{ project.short_description }}
-                        {% else %}
-                            {{ project.body | striptags | truncatechars:150 }}
-                        {% endif %}
-                    </p>
-                    <div>
-                        <span>Read more</span>
+                <h2>
+                    {{ project.title }}
+                </h2>
+                <div class="pod-inner">
+                    <div class="pod-img">
+                        {% picture project.banner_image format-{avif,webp,jpeg} fill-200x200 %}
+                    </div>
+                    <div class="pod-details">
+                        <p>
+                            {% if project.short_description|length > 0 %}
+                                {{ project.short_description }}
+                            {% else %}
+                                {{ project.body | striptags | truncatechars:150 }}
+                            {% endif %}
+                        </p>
+                        <div>
+                            <span>Read more</span>
+                        </div>
                     </div>
                 </div>
             </a>
