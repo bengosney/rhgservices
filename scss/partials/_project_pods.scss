@@ -12,14 +12,31 @@
     flex-grow: 1;
     box-sizing: border-box;
     padding: 0;
-    display: flex;
     color: palette(fg);
     border-bottom: none;
 
     &:hover {
-      span {
-        border-bottom: dotted 1px transparent;
+      h2 {
+        text-decoration-color: rgba(255, 255, 255, 1);
       }
+
+      .pod-img {
+        picture {
+          &:after {
+            box-shadow: inset 0 0 75px rgba(0, 0, 0, 0.75);
+          }
+        }
+      }
+    }
+
+    img {
+      &:after {
+        transition: all 0.2s ease;
+      }
+    }
+
+    .pod-inner {
+      display: flex;
     }
 
     span {
@@ -46,6 +63,7 @@
         position: relative;
         display: block;
         &:after {
+          transition: all 0.5s ease;
           box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.75);
           content: " ";
           display: block;
@@ -57,21 +75,25 @@
       }
     }
 
+    h2 {
+      padding: 0 0 0.5em 0;
+      margin: 0;
+      @include fluid-auto(1.5rem);
+      $lineHeight: 1.5em;
+      line-height: $lineHeight;
+      margin-top: -(math.div($lineHeight - 1em, 2));
+      flex-basis: 100%;
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, 0);
+      transition: all 0.2s ease-in-out;
+    }
+
     .pod-details {
       flex-shrink: 0.1;
       flex-basis: 75%;
       padding-left: 1em;
       display: flex;
       flex-direction: column;
-
-      h2 {
-        padding: 0 0 0.5em 0;
-        margin: 0;
-        @include fluid-auto(1.5rem);
-        $lineHeight: 1.5em;
-        line-height: $lineHeight;
-        margin-top: -(math.div($lineHeight - 1em, 2));
-      }
 
       p {
         @include fluid-auto(1rem);

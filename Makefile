@@ -126,7 +126,7 @@ db.sqlite3: $(DBTOSQLPATH)
 
 
 bs: ## Run browser-sync
-	browser-sync start --proxy localhost:8000 --files "./rhgs/**/*.css" --files "./rhgs/**/*.js" --files "./**/*.html"
+	browser-sync start --proxy localhost:8000 --files "./rhgs/static/css/*.css" --files "./rhgs/static/js/*.js" --files "./**/*.html"
 
 SCSS=$(shell find scss/ -name "*.scss")
 
