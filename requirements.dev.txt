@@ -278,7 +278,7 @@ willow[heif]==1.6.2
     #   -c requirements.txt
     #   wagtail
     #   willow
-wrapt==1.15.0
+wrapt==1.16.0
     # via -r requirements.dev.in
 
 # The following packages are considered to be unsafe in a requirements file:
