@@ -135,7 +135,7 @@ urllib3==2.0.7
     # via
     #   botocore
     #   requests
-wagtail==5.2
+wagtail==5.2.1
     # via -r requirements.in
 webencodings==0.5.1
     # via html5lib
