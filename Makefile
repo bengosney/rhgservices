@@ -175,3 +175,7 @@ _server:
 	python3 ./manage.py runserver
 
 dev: _server watch-js watch-css bs ## Start the dev server, watch the css and js and start browsersync
+
+infrastructure:
+	git clone https://github.com/bengosney/tofu-wagtail.git $@
+	cd $@ && $(MAKE) init
