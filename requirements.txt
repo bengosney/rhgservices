@@ -84,7 +84,7 @@ milksnake==0.1.6
     # via rustface
 numpy==1.26.1
     # via opencv-python-headless
-opencv-python-headless==4.8.1.78
+opencv-python-headless==4.9.0.80
     # via -r requirements.in
 openpyxl==3.1.2
     # via wagtail
