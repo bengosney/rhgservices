@@ -62,6 +62,7 @@ django==5.0.2
     #   django-taggit
     #   django-treebeard
     #   djangorestframework
+    #   laces
     #   model-bakery
     #   wagtail
 django-debug-toolbar==4.3.0
@@ -72,7 +73,7 @@ django-filter==23.3
     # via
     #   -c requirements.txt
     #   wagtail
-django-modelcluster==6.1
+django-modelcluster==6.2.1
     # via
     #   -c requirements.txt
     #   wagtail
@@ -129,6 +130,10 @@ idna==3.4
 iniconfig==2.0.0
     # via pytest
 l18n==2021.3
+    # via
+    #   -c requirements.txt
+    #   wagtail
+laces==0.1.0
     # via
     #   -c requirements.txt
     #   wagtail
@@ -257,7 +262,7 @@ urllib3==2.0.7
     #   requests
 virtualenv==20.24.5
     # via pre-commit
-wagtail==5.2.3
+wagtail==6.0
     # via
     #   -c requirements.txt
     #   wagtail-placeholder-images
