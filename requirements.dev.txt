@@ -173,7 +173,7 @@ pillow-heif==0.13.1
     # via
     #   -c requirements.txt
     #   willow
-pip-tools==7.3.0
+pip-tools==7.4.0
     # via -r requirements.dev.in
 platformdirs==3.10.0
     # via
@@ -194,7 +194,9 @@ pygments==2.16.1
     #   icecream
     #   rich
 pyproject-hooks==1.0.0
-    # via build
+    # via
+    #   build
+    #   pip-tools
 pytest==8.0.0
     # via
     #   -r requirements.dev.in
