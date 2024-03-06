@@ -173,7 +173,7 @@ pillow-heif==0.13.1
     # via
     #   -c requirements.txt
     #   willow
-pip-tools==7.4.0
+pip-tools==7.4.1
     # via -r requirements.dev.in
 platformdirs==3.10.0
     # via
