@@ -143,7 +143,7 @@ mdurl==0.1.2
     # via markdown-it-py
 model-bakery==1.17.0
     # via -r requirements.dev.in
-mypy==1.8.0
+mypy==1.9.0
     # via -r requirements.dev.in
 mypy-extensions==1.0.0
     # via
