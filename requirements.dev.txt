@@ -12,6 +12,7 @@ asgiref==3.7.2
     # via
     #   -c requirements.txt
     #   django
+    #   django-stubs
 asttokens==2.4.0
     # via icecream
 beautifulsoup4==4.11.2
@@ -79,9 +80,9 @@ django-permissionedforms==0.1
     # via
     #   -c requirements.txt
     #   wagtail
-django-stubs==4.2.7
+django-stubs==5.0.0
     # via -r requirements.dev.in
-django-stubs-ext==4.2.7
+django-stubs-ext==5.0.0
     # via django-stubs
 django-taggit==4.0.0
     # via
@@ -246,8 +247,6 @@ telepath==0.3.1
     # via
     #   -c requirements.txt
     #   wagtail
-types-pytz==2023.3.1.1
-    # via django-stubs
 types-pyyaml==6.0.12.12
     # via django-stubs
 typing-extensions==4.8.0
