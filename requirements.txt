@@ -47,7 +47,7 @@ django-csp==3.8
     # via -r requirements.in
 django-filter==23.3
     # via wagtail
-django-health-check==3.18.2
+django-health-check==3.18.3
     # via -r requirements.in
 django-modelcluster==6.2.1
     # via wagtail
