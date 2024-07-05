@@ -64,7 +64,7 @@ django==5.0.6
     #   laces
     #   model-bakery
     #   wagtail
-django-debug-toolbar==4.4.3
+django-debug-toolbar==4.4.5
     # via -r requirements.dev.in
 django-debugtools==2.0
     # via -r requirements.dev.in
