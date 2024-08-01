@@ -84,7 +84,7 @@ django-stubs==5.0.0
     # via -r requirements.dev.in
 django-stubs-ext==5.0.0
     # via django-stubs
-django-taggit==4.0.0
+django-taggit==5.0.1
     # via
     #   -c requirements.txt
     #   wagtail
@@ -255,7 +255,7 @@ urllib3==2.0.7
     #   requests
 virtualenv==20.24.5
     # via pre-commit
-wagtail==6.1.3
+wagtail==6.2
     # via
     #   -c requirements.txt
     #   wagtail-placeholder-images
