@@ -55,7 +55,7 @@ django-permissionedforms==0.1
     # via wagtail
 django-storages==1.14.4
     # via -r requirements.in
-django-taggit==4.0.0
+django-taggit==5.0.1
     # via wagtail
 django-treebeard==4.7
     # via wagtail
@@ -134,7 +134,7 @@ urllib3==2.0.7
     # via
     #   botocore
     #   requests
-wagtail==6.1.3
+wagtail==6.2
     # via -r requirements.in
 wheel==0.43.0
     # via -r requirements.in
