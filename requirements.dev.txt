@@ -263,7 +263,7 @@ wagtail-placeholder-images==0.1.1
     # via -r requirements.dev.in
 watchdog==3.0.0
     # via pytest-watch
-wheel==0.43.0
+wheel==0.44.0
     # via
     #   -c requirements.txt
     #   pip-tools
