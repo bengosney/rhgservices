@@ -8,7 +8,7 @@ anyascii==0.3.2
     # via
     #   -c requirements.txt
     #   wagtail
-asgiref==3.7.2
+asgiref==3.8.1
     # via
     #   -c requirements.txt
     #   django
@@ -49,7 +49,7 @@ defusedxml==0.7.1
     #   willow
 distlib==0.3.7
     # via virtualenv
-django==5.0.8
+django==5.1
     # via
     #   -c requirements.txt
     #   django-debug-toolbar
