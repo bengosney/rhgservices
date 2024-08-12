@@ -67,7 +67,7 @@ et-xmlfile==1.1.0
     # via openpyxl
 filetype==1.2.0
     # via willow
-gunicorn==22.0.0
+gunicorn==23.0.0
     # via -r requirements.in
 honeybadger==0.20.2
     # via -r requirements.in
