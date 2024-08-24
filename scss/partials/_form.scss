@@ -1,77 +1,77 @@
 .form_builder {
-  form {
-    .field-wrapper {
-      label {
-        display: block;
-      }
+    form {
+        .field-wrapper {
+            label {
+                display: block;
+            }
 
-      input,
-      textarea,
-      select {
-        width: 100%;
-        color: palette(fg);
-        font-family: $font_base;
-        @include fluid-auto(0.75rem);
-        font-weight: 300;
-        line-height: 1.75em;
-      }
+            input,
+            textarea,
+            select {
+                width: 100%;
+                color: palette(fg);
+                font-family: $font_base;
+                @include fluid-auto(0.75rem);
+                font-weight: 300;
+                line-height: 1.75em;
+            }
 
-      select {
-        option {
-          background: palette(bg, base);
-          &:hover {
-            background-color: palette(accent, bg);
-          }
+            select {
+                option {
+                    background: palette(bg, base);
+                    &:hover {
+                        background-color: palette(accent, bg);
+                    }
+                }
+            }
+
+            margin: 0 0 1rem;
+            padding: 0;
+
+            &.field-checkbox {
+                display: flex;
+                flex-direction: row;
+                input,
+                label {
+                    width: auto;
+                    display: inline-block;
+                    line-height: 1.5em;
+                }
+                label {
+                    flex: 1;
+                }
+                input {
+                    height: 1.5em;
+                    margin: 0 0.5em 0 0;
+                }
+            }
         }
-      }
 
-      margin: 0 0 1rem;
-      padding: 0;
-
-      &.field-checkbox {
-        display: flex;
-        flex-direction: row;
         input,
-        label {
-          width: auto;
-          display: inline-block;
-          line-height: 1.5em;
+        textarea,
+        select {
+            background: none;
+            border: 1px solid palette(accent, bg);
+            padding: 0.25em 0.5em;
+            box-sizing: border-box;
+
+            &:focus {
+                outline: none;
+            }
         }
-        label {
-          flex: 1;
+
+        button,
+        input[type="button"],
+        input[type="submit"] {
+            @include accent_colour();
+            font-weight: bold;
         }
-        input {
-          height: 1.5em;
-          margin: 0 0.5em 0 0;
-        }
-      }
     }
 
-    input,
-    textarea,
-    select {
-      background: none;
-      border: 1px solid palette(accent, bg);
-      padding: 0.25em 0.5em;
-      box-sizing: border-box;
+    padding-bottom: 2rem;
 
-      &:focus {
-        outline: none;
-      }
+    .helptext {
+        @include fluid-auto(1rem);
+        line-height: 1.2em;
     }
-
-    button,
-    input[type="button"],
-    input[type="submit"] {
-      @include accent_colour();
-      font-weight: bold;
-    }
-  }
-
-  padding-bottom: 2rem;
-
-  .helptext {
-    @include fluid-auto(1rem);
-    line-height: 1.2em;
-  }
 }
