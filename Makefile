@@ -5,15 +5,14 @@
 MAKEFLAGS += -j4
 
 HOOKS=$(.git/hooks/pre-commit)
-INS=$(wildcard requirements.*.in)
-REQS=$(subst in,txt,$(INS))
+REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]')
 
 BINPATH=$(shell which python | xargs dirname | xargs realpath --relative-to=".")
 
 PYTHON_VERSION:=$(shell python --version | cut -d " " -f 2)
 PIP_PATH:=$(BINPATH)/pip
 WHEEL_PATH:=$(BINPATH)/wheel
-PIP_SYNC_PATH:=$(BINPATH)/pip-sync
+UV_PATH:=$(BINPATH)/uv
 PRE_COMMIT_PATH:=$(BINPATH)/pre-commit
 DBTOSQLPATH:=$(BINPATH)/db-to-sqlite
 
@@ -33,19 +32,13 @@ help: ## Display this help
 	python -m pip install pre-commit
 	pre-commit autoupdate
 
-requirements.%.in:
-	echo "-c requirements.txt" > $@
-
-requirements.in:
-	@touch $@
-
-requirements.%.txt: $(PIP_SYNC_PATH) requirements.%.in requirements.txt
+requirements.%.txt: $(UV_PATH) pyproject.toml
 	@echo "Builing $@"
-	@python -m piptools compile -q -o $@ $(filter-out $<,$^)
+	python -m uv pip compile --generate-hashes --extra $* $(filter-out $<,$^) > $@
 
-requirements.txt: $(PIP_SYNC_PATH) requirements.in
+requirements.txt: $(UV_PATH) pyproject.toml
 	@echo "Builing $@"
-	@python -m piptools compile -q $(filter-out $<,$^)
+	python -m uv pip compile --generate-hashes $(filter-out $<,$^) > $@
 
 .direnv: .envrc
 	python -m pip install --upgrade pip
@@ -78,7 +71,11 @@ $(PRE_COMMIT_PATH): $(PIP_PATH) $(WHEEL_PATH)
 	python -m pip install pre-commit
 	@touch $@
 
-init: .direnv $(PIP_SYNC_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
+$(UV_PATH): $(PIP_PATH) $(WHEEL_PATH)
+	python -m pip install uv
+	@touch $@
+
+init: .direnv $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
 
 clean: ## Remove all build files
 	find . -name '*.pyc' -delete
@@ -97,21 +94,16 @@ node_modules: package.json package-lock.json
 
 node: node_modules
 
-python: $(PIP_SYNC_PATH) requirements.txt $(REQS)
+python: $(UV_PATH) requirements.txt $(REQS)
 	@echo "Installing $(filter-out $<,$^)"
-	@python -m piptools sync $(filter-out $<,$^)
+	@python -m uv pip sync $(filter-out $<,$^)
 
 pip: $(PIP_PATH) ## Update pip
 	@python -m pip install --upgrade pip
 
 install: python node ## Install development requirements (default)
 
-_upgrade: pip requirements.in
-	@python -m pip install --upgrade pip
-	@echo "Upgrading pip packages"
-	@python -m piptools compile -q --upgrade requirements.in
-
-upgrade: _upgrade python
+upgrade: python
 	@echo "Updateing module paths"
 	wagtail updatemodulepaths --ignore-dir .direnv
 	@python -m pre_commit autoupdate
