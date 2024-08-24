@@ -1,56 +1,56 @@
 .banner_image {
-  picture {
-    display: block;
-    height: 100%;
-    width: 100%;
+    picture {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: relative;
+
+        &::after {
+            box-shadow: inset 0 0 min(10vw, 150px) #000;
+            content: " ";
+            display: block;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+    }
+
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        position: relative;
+    }
+
     position: relative;
 
-    &::after {
-      box-shadow: inset 0 0 min(10vw, 150px) #000;
-      content: " ";
-      display: block;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      width: 100%;
+    .header {
+        position: absolute;
+        @media (max-width: $screen_sm) {
+            position: relative;
+        }
+        bottom: 0;
+        width: 100%;
+        background: rgba($color: #000000, $alpha: 0.5);
+        backdrop-filter: blur(5px);
+
+        padding: 0.75em 0;
+
+        h1 {
+            font-size: clamp(1.7rem, 6vw, 3.052rem);
+            margin-bottom: 0.3em;
+        }
+        p,
+        h2 {
+            //padding-bottom: 1em;
+            margin: 0;
+            font-size: clamp(1rem, 5vw, 1.5rem);
+            line-height: 1.75em;
+            font-weight: 300;
+            font-family: $font_base;
+            letter-spacing: 0.005em;
+        }
     }
-  }
-
-  img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    position: relative;
-  }
-
-  position: relative;
-
-  .header {
-    position: absolute;
-    @media (max-width: $screen_sm) {
-      position: relative;
-    }
-    bottom: 0;
-    width: 100%;
-    background: rgba($color: #000000, $alpha: 0.5);
-    backdrop-filter: blur(5px);
-
-    padding: 0.75em 0;
-
-    h1 {
-      font-size: clamp(1.7rem, 6vw, 3.052rem);
-      margin-bottom: 0.3em;
-    }
-    p,
-    h2 {
-      //padding-bottom: 1em;
-      margin: 0;
-      font-size: clamp(1rem, 5vw, 1.5rem);
-      line-height: 1.75em;
-      font-weight: 300;
-      font-family: $font_base;
-      letter-spacing: 0.005em;
-    }
-  }
 }

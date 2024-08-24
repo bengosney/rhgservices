@@ -1,29 +1,29 @@
 .breadcrumbs {
-  @media (max-width: $screen_sm) {
-    & {
-      display: none;
-    }
-  }
-
-  ul {
-    li {
-      margin: 0;
-      padding: 0;
-    }
-
-    display: flex;
-    margin: 1rem 0;
-    padding: 0;
-
-    li {
-      list-style: none;
-
-      & + li {
-        &::before {
-          content: "\00BB";
-          padding: 0 0.5em;
+    @media (max-width: $screen_sm) {
+        & {
+            display: none;
         }
-      }
     }
-  }
+
+    ul {
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        display: flex;
+        margin: 1rem 0;
+        padding: 0;
+
+        li {
+            list-style: none;
+
+            & + li {
+                &::before {
+                    content: "\00BB";
+                    padding: 0 0.5em;
+                }
+            }
+        }
+    }
 }

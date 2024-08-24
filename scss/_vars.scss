@@ -1,13 +1,13 @@
 $font_base:
-  -apple-system,
-  blinkmacsystemfont,
-  segoe ui,
-  helvetica,
-  arial,
-  sans-serif,
-  apple color emoji,
-  segoe ui emoji,
-  segoe ui symbol;
+    -apple-system,
+    blinkmacsystemfont,
+    segoe ui,
+    helvetica,
+    arial,
+    sans-serif,
+    apple color emoji,
+    segoe ui emoji,
+    segoe ui symbol;
 $font-body: $font_base;
 $font-heading: "Poppins", sans-serif;
 
@@ -28,21 +28,21 @@ $accent: #8dca31;
 $bg: #374244;
 
 $palette: (
-  bg: (
-    base: $bg,
-    darker: darken($bg, 10%),
-    lighter: lighten($bg, 10%),
-  ),
-  fg: #fff,
-  fg-bold: #fff,
-  fg-light: #f7f7f7,
-  border: #e0e0e0,
-  accent: (
-    bg: $accent,
-    fg: #374244,
-    darker: darken($accent, 10%),
-    lighter: lighten($accent, 10%),
-  ),
+    bg: (
+        base: $bg,
+        darker: darken($bg, 10%),
+        lighter: lighten($bg, 10%),
+    ),
+    fg: #fff,
+    fg-bold: #fff,
+    fg-light: #f7f7f7,
+    border: #e0e0e0,
+    accent: (
+        bg: $accent,
+        fg: #374244,
+        darker: darken($accent, 10%),
+        lighter: lighten($accent, 10%),
+    ),
 );
 
 $logo-base-width: 375px;

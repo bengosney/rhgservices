@@ -3,479 +3,479 @@
 $mobile_width: 275px;
 
 .nav-wrapper {
-  .nav-shroud {
-    display: none;
-  }
-  .nav-button {
+    .nav-shroud {
+        display: none;
+    }
+    .nav-button {
+        @media (min-width: $screen_md) {
+            display: none;
+        }
+
+        font-size: min(3vw, 1rem);
+        $icon_color: palette(accent, bg);
+        $icon_size: 0.5rem;
+        $icon_gap: $icon_size * 1.1;
+        $button_height: ($icon_size * 3) + ($icon_gap * 3);
+        $button_width: 10vw;
+        background: none;
+        height: $button_height;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+        top: 0em;
+        left: 0em;
+
+        &:focus {
+            background: none;
+        }
+
+        .nav-icon {
+            display: inline-block;
+        }
+
+        .nav-icon {
+            text-indent: -99999px;
+            position: relative;
+            width: 3rem;
+            max-width: 100%;
+            height: $icon_size;
+            background-color: $icon_color;
+            border-radius: $icon_size;
+
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                height: 100%;
+                left: 0px;
+                background-color: inherit;
+                border-radius: inherit;
+            }
+
+            &:before {
+                top: -($icon_size + $icon_gap);
+                width: 75%;
+            }
+
+            &:after {
+                top: ($icon_size + $icon_gap);
+                width: 50%;
+            }
+        }
+    }
+
+    input {
+        display: none;
+    }
     @media (min-width: $screen_md) {
-      display: none;
+        label,
+        .mobile-title {
+            display: none;
+        }
     }
-
-    font-size: min(3vw, 1rem);
-    $icon_color: palette(accent, bg);
-    $icon_size: 0.5rem;
-    $icon_gap: $icon_size * 1.1;
-    $button_height: ($icon_size * 3) + ($icon_gap * 3);
-    $button_width: 10vw;
-    background: none;
-    height: $button_height;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
-    top: 0em;
-    left: 0em;
-
-    &:focus {
-      background: none;
-    }
-
-    .nav-icon {
-      display: inline-block;
-    }
-
-    .nav-icon {
-      text-indent: -99999px;
-      position: relative;
-      width: 3rem;
-      max-width: 100%;
-      height: $icon_size;
-      background-color: $icon_color;
-      border-radius: $icon_size;
-
-      &:before,
-      &:after {
-        content: "";
-        position: absolute;
-        height: 100%;
-        left: 0px;
-        background-color: inherit;
-        border-radius: inherit;
-      }
-
-      &:before {
-        top: -($icon_size + $icon_gap);
-        width: 75%;
-      }
-
-      &:after {
-        top: ($icon_size + $icon_gap);
-        width: 50%;
-      }
-    }
-  }
-
-  input {
-    display: none;
-  }
-  @media (min-width: $screen_md) {
-    label,
-    .mobile-title {
-      display: none;
-    }
-  }
 }
 
 nav {
-  &.main {
-    ul {
-      &.nav {
-        @extend .container;
-      }
-      li {
-        list-style: none;
-      }
-    }
-
-    @media (min-width: $screen_md) {
-      $border-size: 1px;
-      border-bottom: 0.5em solid palette(accent, bg);
-
-      .socials {
-        div {
-          text-align: right;
-          white-space: nowrap;
+    &.main {
+        ul {
+            &.nav {
+                @extend .container;
+            }
+            li {
+                list-style: none;
+            }
         }
-        svg {
-          fill: palette(fg);
-        }
-      }
 
-      .item {
-        & > div > a {
-          @include fluid-auto(1.3rem);
-        }
-      }
+        @media (min-width: $screen_md) {
+            $border-size: 1px;
+            border-bottom: 0.5em solid palette(accent, bg);
 
-      a {
-        position: relative;
-        text-decoration: none;
-        border: none;
-        color: palette(fg);
-        font-weight: 300;
-        display: inline-block;
-      }
-
-      .active {
-        > a {
-          font-weight: 600;
-          color: palette(fg);
-          &::before {
-            position: absolute;
-            bottom: -0.9em;
-            left: calc(50% - 0.5em);
-            content: " ";
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 0.5em 0.5em 0.5em;
-            border-color: transparent transparent palette(accent, bg) transparent;
-          }
-        }
-      }
-
-      ul {
-        padding: 0 0 0.5em 0;
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
-        li {
-          display: block;
-          padding: 0;
-          list-style: none;
-          position: relative;
-          $line-height: 1.5em;
-          line-height: $line-height;
-
-          margin: 0 1em;
-          &:nth-child(2) {
-            margin-left: 0;
-          }
-          &:last-child {
-            margin-right: 0;
-          }
-
-          &.has-submenu {
-            & > div {
-              padding-right: 1.5em;
-              &::after {
-                display: inline;
-                content: " ";
-                position: absolute;
-                right: 0;
-                $arrow-size: 0.5em;
-                top: math.div($line-height - $arrow-size, 2);
-                width: 0;
-                height: 0;
-                border-style: solid;
-                border-width: $arrow-size $arrow-size 0 $arrow-size;
-                border-color: palette(accent, bg) transparent transparent transparent;
-              }
+            .socials {
+                div {
+                    text-align: right;
+                    white-space: nowrap;
+                }
+                svg {
+                    fill: palette(fg);
+                }
             }
 
-            &:hover {
-              > ul {
-                display: block;
-              }
+            .item {
+                & > div > a {
+                    @include fluid-auto(1.3rem);
+                }
+            }
+
+            a {
+                position: relative;
+                text-decoration: none;
+                border: none;
+                color: palette(fg);
+                font-weight: 300;
+                display: inline-block;
+            }
+
+            .active {
+                > a {
+                    font-weight: 600;
+                    color: palette(fg);
+                    &::before {
+                        position: absolute;
+                        bottom: -0.9em;
+                        left: calc(50% - 0.5em);
+                        content: " ";
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 0 0.5em 0.5em 0.5em;
+                        border-color: transparent transparent palette(accent, bg) transparent;
+                    }
+                }
             }
 
             ul {
-              min-width: 100%;
-              font-size: 1rem;
-              display: none;
-              position: absolute;
-              z-index: 9999;
-              background: palette(bg, base);
-              border: $border-size solid palette(accent, bg);
-              padding: 0;
-              margin: 0;
-              box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+                padding: 0 0 0.5em 0;
+                margin: 0;
+                display: flex;
+                justify-content: space-between;
+                li {
+                    display: block;
+                    padding: 0;
+                    list-style: none;
+                    position: relative;
+                    $line-height: 1.5em;
+                    line-height: $line-height;
 
-              ul {
-                left: calc(100% - $border-size);
-                top: -1px;
-              }
+                    margin: 0 1em;
+                    &:nth-child(2) {
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
 
-              .active {
-                > div > a {
-                  @include accent_colour();
-                  &::before {
-                    content: none;
-                  }
+                    &.has-submenu {
+                        & > div {
+                            padding-right: 1.5em;
+                            &::after {
+                                display: inline;
+                                content: " ";
+                                position: absolute;
+                                right: 0;
+                                $arrow-size: 0.5em;
+                                top: math.div($line-height - $arrow-size, 2);
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: $arrow-size $arrow-size 0 $arrow-size;
+                                border-color: palette(accent, bg) transparent transparent transparent;
+                            }
+                        }
+
+                        &:hover {
+                            > ul {
+                                display: block;
+                            }
+                        }
+
+                        ul {
+                            min-width: 100%;
+                            font-size: 1rem;
+                            display: none;
+                            position: absolute;
+                            z-index: 9999;
+                            background: palette(bg, base);
+                            border: $border-size solid palette(accent, bg);
+                            padding: 0;
+                            margin: 0;
+                            box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+
+                            ul {
+                                left: calc(100% - $border-size);
+                                top: -1px;
+                            }
+
+                            .active {
+                                > div > a {
+                                    @include accent_colour();
+                                    &::before {
+                                        content: none;
+                                    }
+                                }
+                            }
+
+                            li {
+                                padding: 0;
+                                margin: 0;
+
+                                &.has-submenu {
+                                    &::after {
+                                        display: inline;
+                                        content: " ";
+                                        position: absolute;
+                                        right: 0.5em;
+                                        top: calc(50% - 0.5em);
+                                        width: 0;
+                                        height: 0;
+                                        border-style: solid;
+                                        border-width: 0.5em 0 0.5em 0.5em;
+                                        border-color: transparent transparent transparent palette(accent, bg);
+                                    }
+
+                                    > div {
+                                        &::after {
+                                            content: none;
+                                        }
+                                    }
+
+                                    &.active {
+                                        background: palette(accent, bg);
+                                        &::after {
+                                            border-color: transparent transparent transparent palette(bg, base);
+                                        }
+                                    }
+                                }
+
+                                transition: background 0.2s ease-in-out;
+                                &:hover {
+                                    background: palette(accent, bg);
+                                    > div > a {
+                                        color: palette(accent, fg);
+                                    }
+                                }
+
+                                a {
+                                    padding: 0.35em 1.1em;
+                                    display: block;
+                                    white-space: nowrap;
+
+                                    &::before {
+                                        position: relative;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-
-              li {
+            }
+        }
+        @media (max-width: $screen_md) {
+            ul.nav {
+                transform: translateX($mobile_width);
+                transition: all 0.5s ease;
                 padding: 0;
                 margin: 0;
+            }
 
-                &.has-submenu {
-                  &::after {
-                    display: inline;
-                    content: " ";
-                    position: absolute;
-                    right: 0.5em;
-                    top: calc(50% - 0.5em);
-                    width: 0;
-                    height: 0;
-                    border-style: solid;
-                    border-width: 0.5em 0 0.5em 0.5em;
-                    border-color: transparent transparent transparent palette(accent, bg);
-                  }
-
-                  > div {
-                    &::after {
-                      content: none;
-                    }
-                  }
-
-                  &.active {
-                    background: palette(accent, bg);
-                    &::after {
-                      border-color: transparent transparent transparent palette(bg, base);
-                    }
-                  }
+            .nav-shroud {
+                opacity: 0;
+                z-index: 9999;
+                content: " ";
+                position: fixed;
+                display: block;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 100%;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                transition:
+                    left 0s ease-in-out 0.2s,
+                    opacity 0.2s ease-in-out;
+                &::before {
+                    content: none;
                 }
+            }
 
-                transition: background 0.2s ease-in-out;
-                &:hover {
-                  background: palette(accent, bg);
-                  > div > a {
-                    color: palette(accent, fg);
-                  }
-                }
-
+            li.socials {
+                display: block;
+                width: 100%;
+                $font_size: 1.25em;
+                $total_height: 2.75em;
                 a {
-                  padding: 0.35em 1.1em;
-                  display: block;
-                  white-space: nowrap;
-
-                  &::before {
-                    position: relative;
-                  }
+                    padding: math.div($total_height - $font_size, 2) 0;
+                    font-size: $font_size;
+                    line-height: 1em;
+                    text-align: center;
                 }
-              }
-            }
-          }
-        }
-      }
-    }
-    @media (max-width: $screen_md) {
-      ul.nav {
-        transform: translateX($mobile_width);
-        transition: all 0.5s ease;
-        padding: 0;
-        margin: 0;
-      }
 
-      .nav-shroud {
-        opacity: 0;
-        z-index: 9999;
-        content: " ";
-        position: fixed;
-        display: block;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 100%;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        transition:
-          left 0s ease-in-out 0.2s,
-          opacity 0.2s ease-in-out;
-        &::before {
-          content: none;
-        }
-      }
-
-      li.socials {
-        display: block;
-        width: 100%;
-        $font_size: 1.25em;
-        $total_height: 2.75em;
-        a {
-          padding: math.div($total_height - $font_size, 2) 0;
-          font-size: $font_size;
-          line-height: 1em;
-          text-align: center;
-        }
-
-        svg {
-          fill: palette(fg);
-        }
-      }
-
-      input:checked + & {
-        .nav-shroud {
-          transition:
-            left 0s ease-in-out,
-            opacity 0.2s ease-in-out;
-          left: 0%;
-          opacity: 1;
-        }
-
-        ul.nav {
-          transform: translateX(0px);
-          box-shadow: 0 0 5vw #000;
-        }
-      }
-
-      a {
-        text-decoration: none;
-        border-bottom: none;
-      }
-
-      label {
-        position: relative;
-        font-size: 0.75rem;
-        $size: 0.9em;
-        $width: $size * 4;
-        width: $width;
-        &::before {
-          position: absolute;
-          content: " ";
-          width: 0;
-          height: 0;
-          left: math.div($width - ($size * 2), 2);
-          top: calc(50% - 0.5em);
-          border-style: solid;
-          border-width: $size $size 0 $size;
-          border-color: palette(accent, bg) transparent transparent transparent;
-        }
-
-        span {
-          display: none;
-        }
-      }
-
-      ul {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        position: static;
-        padding: 0;
-        margin: 0;
-
-        ul {
-          display: none;
-        }
-
-        input:checked + ul {
-          display: flex;
-        }
-      }
-
-      & > ul {
-        box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-        background: palette(bg, base);
-        position: fixed;
-        overflow-y: auto;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: $mobile_width;
-        z-index: 10003;
-        height: 100%;
-
-        ul {
-          background: lighten(palette(bg, base), 10%);
-          ul {
-            background: lighten(palette(bg, base), 20%);
-            ul {
-              background: lighten(palette(bg, base), 30%);
-              ul {
-                background: lighten(palette(bg, base), 40%);
-                ul {
-                  background: lighten(palette(bg, base), 50%);
+                svg {
+                    fill: palette(fg);
                 }
-              }
             }
-          }
-        }
 
-        li {
-          padding: 0;
+            input:checked + & {
+                .nav-shroud {
+                    transition:
+                        left 0s ease-in-out,
+                        opacity 0.2s ease-in-out;
+                    left: 0%;
+                    opacity: 1;
+                }
 
-          div {
-            border-bottom: 1px solid palette(accent, bg);
-            display: flex;
-          }
-
-          a {
-            flex: 1;
-            padding: 0.75em 1.1em;
-            display: block;
-            white-space: nowrap;
-            color: palette(fg);
-
-            font-size: 1.15rem;
-            line-height: 1em;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          }
-
-          &.active {
-            > div > a {
-              font-weight: 600;
-              text-decoration: underline;
+                ul.nav {
+                    transform: translateX(0px);
+                    box-shadow: 0 0 5vw #000;
+                }
             }
-          }
-        }
-        &.nav {
-          .mobile-title {
-            @include accent_colour();
-            padding: 0.5em 1em;
-            font-weight: bold;
-            font-size: 1.15rem;
-            display: flex;
-            align-items: center;
-            span {
-              flex: 1;
-              display: inline;
-              line-height: 1em;
-              padding: 0;
-              margin: 0;
+
+            a {
+                text-decoration: none;
+                border-bottom: none;
             }
 
             label {
-              overflow: hidden;
-              position: relative;
-              border: none;
-              padding: 0;
-              width: 2em;
-              height: 2em;
-              background: transparent;
-              color: palette(accent, fg);
-              font: inherit;
-              text-indent: 100%;
-              cursor: pointer;
-              display: block;
-
-              &:before,
-              &:after {
-                $width: 0.25em;
-                border: none;
-                position: absolute;
-                top: 15%;
-                left: calc(50% - math.div($width, 2));
+                position: relative;
+                font-size: 0.75rem;
+                $size: 0.9em;
+                $width: $size * 4;
                 width: $width;
-                height: 70%;
-                transform: rotate(45deg);
-                background: currentColor;
-                content: "";
-              }
+                &::before {
+                    position: absolute;
+                    content: " ";
+                    width: 0;
+                    height: 0;
+                    left: math.div($width - ($size * 2), 2);
+                    top: calc(50% - 0.5em);
+                    border-style: solid;
+                    border-width: $size $size 0 $size;
+                    border-color: palette(accent, bg) transparent transparent transparent;
+                }
 
-              &:after {
-                transform: rotate(-45deg);
-              }
+                span {
+                    display: none;
+                }
             }
-          }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                position: static;
+                padding: 0;
+                margin: 0;
+
+                ul {
+                    display: none;
+                }
+
+                input:checked + ul {
+                    display: flex;
+                }
+            }
+
+            & > ul {
+                box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+                background: palette(bg, base);
+                position: fixed;
+                overflow-y: auto;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: $mobile_width;
+                z-index: 10003;
+                height: 100%;
+
+                ul {
+                    background: lighten(palette(bg, base), 10%);
+                    ul {
+                        background: lighten(palette(bg, base), 20%);
+                        ul {
+                            background: lighten(palette(bg, base), 30%);
+                            ul {
+                                background: lighten(palette(bg, base), 40%);
+                                ul {
+                                    background: lighten(palette(bg, base), 50%);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                li {
+                    padding: 0;
+
+                    div {
+                        border-bottom: 1px solid palette(accent, bg);
+                        display: flex;
+                    }
+
+                    a {
+                        flex: 1;
+                        padding: 0.75em 1.1em;
+                        display: block;
+                        white-space: nowrap;
+                        color: palette(fg);
+
+                        font-size: 1.15rem;
+                        line-height: 1em;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    &.active {
+                        > div > a {
+                            font-weight: 600;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+                &.nav {
+                    .mobile-title {
+                        @include accent_colour();
+                        padding: 0.5em 1em;
+                        font-weight: bold;
+                        font-size: 1.15rem;
+                        display: flex;
+                        align-items: center;
+                        span {
+                            flex: 1;
+                            display: inline;
+                            line-height: 1em;
+                            padding: 0;
+                            margin: 0;
+                        }
+
+                        label {
+                            overflow: hidden;
+                            position: relative;
+                            border: none;
+                            padding: 0;
+                            width: 2em;
+                            height: 2em;
+                            background: transparent;
+                            color: palette(accent, fg);
+                            font: inherit;
+                            text-indent: 100%;
+                            cursor: pointer;
+                            display: block;
+
+                            &:before,
+                            &:after {
+                                $width: 0.25em;
+                                border: none;
+                                position: absolute;
+                                top: 15%;
+                                left: calc(50% - math.div($width, 2));
+                                width: $width;
+                                height: 70%;
+                                transform: rotate(45deg);
+                                background: currentColor;
+                                content: "";
+                            }
+
+                            &:after {
+                                transform: rotate(-45deg);
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }

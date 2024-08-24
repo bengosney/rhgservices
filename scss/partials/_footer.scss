@@ -1,47 +1,47 @@
 #footer {
-  .slogan {
-    @include accent_colour();
-    padding: 1.5em 0;
-    p {
-      text-align: center;
-      //font-size: clamp(1.5rem, 7.5vw, 2rem);
-      @include fluid-auto(1.75rem);
-      line-height: 1.35em;
+    .slogan {
+        @include accent_colour();
+        padding: 1.5em 0;
+        p {
+            text-align: center;
+            //font-size: clamp(1.5rem, 7.5vw, 2rem);
+            @include fluid-auto(1.75rem);
+            line-height: 1.35em;
 
-      & + p {
-        margin-top: 0.5em;
-      }
-    }
-    a {
-      white-space: nowrap;
-    }
-  }
-  .footer {
-    padding: 1rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-
-    justify-content: space-between;
-  }
-
-  .socials {
-    @include fluid-auto(2rem);
-    a {
-      svg {
-        fill: palette(accent, bg);
-      }
-      &:hover {
-        svg {
-          fill: palette(fg);
+            & + p {
+                margin-top: 0.5em;
+            }
         }
-      }
+        a {
+            white-space: nowrap;
+        }
     }
-  }
+    .footer {
+        padding: 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
 
-  .copy {
-    @include fluid-auto(0.5rem);
-    line-height: 1.25em;
-  }
+        justify-content: space-between;
+    }
+
+    .socials {
+        @include fluid-auto(2rem);
+        a {
+            svg {
+                fill: palette(accent, bg);
+            }
+            &:hover {
+                svg {
+                    fill: palette(fg);
+                }
+            }
+        }
+    }
+
+    .copy {
+        @include fluid-auto(0.5rem);
+        line-height: 1.25em;
+    }
 }

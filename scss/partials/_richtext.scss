@@ -1,13 +1,13 @@
 img {
-  &.richtext-image {
-    &.left {
-      float: left;
-      margin: 1em 1em 1em 0;
-    }
+    &.richtext-image {
+        &.left {
+            float: left;
+            margin: 1em 1em 1em 0;
+        }
 
-    &.right {
-      float: right;
-      margin: 1em 0 1em 1em;
+        &.right {
+            float: right;
+            margin: 1em 0 1em 1em;
+        }
     }
-  }
 }

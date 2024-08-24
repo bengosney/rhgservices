@@ -1,20 +1,20 @@
 .socials,
 .nav-socials {
-  display: flex;
-  gap: 0.75em;
+    display: flex;
+    gap: 0.75em;
 
-  a {
-    border: none;
-    svg {
-      width: auto;
-      height: 1em;
-      fill: palette(accent, bg);
-    }
+    a {
+        border: none;
+        svg {
+            width: auto;
+            height: 1em;
+            fill: palette(accent, bg);
+        }
 
-    &:hover {
-      svg {
-        fill: palette(accent, fg);
-      }
+        &:hover {
+            svg {
+                fill: palette(accent, fg);
+            }
+        }
     }
-  }
 }

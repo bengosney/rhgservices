@@ -1,121 +1,121 @@
 @use "sass:math";
 
 .block-InfoPod {
-  $icon-size: 64px;
-  @extend .container;
+    $icon-size: 64px;
+    @extend .container;
 
-  .flex_block {
-    justify-content: space-around;
-    flex-wrap: wrap;
-    @media (max-width: $screen_md) {
-      flex-direction: column;
+    .flex_block {
+        justify-content: space-around;
+        flex-wrap: wrap;
+        @media (max-width: $screen_md) {
+            flex-direction: column;
+        }
     }
-  }
 
-  .infopod {
-    box-sizing: border-box;
-    max-width: 30%;
-    display: flex;
-    padding: 2em 0;
+    .infopod {
+        box-sizing: border-box;
+        max-width: 30%;
+        display: flex;
+        padding: 2em 0;
 
-    & > div {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      & + div {
+        & > div {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            & + div {
+                flex: 1;
+            }
+        }
+
+        a {
+            margin-top: 1em;
+        }
+
+        flex-direction: column;
+        gap: min(4vw, 2em);
+
+        $col_size: 375px;
+
+        @media (max-width: ($col_size - 1)) {
+            max-width: 100%;
+            div,
+            p,
+            h3 {
+                text-align: center;
+            }
+        }
+
+        @media (min-width: ($col_size)) and (max-width: $screen_md) {
+            flex-direction: row;
+
+            div {
+                text-align: left;
+            }
+
+            max-width: 100%;
+        }
+
+        @media (max-width: $screen_xs) {
+            picture {
+                margin: 0 auto;
+                max-width: 20vw;
+            }
+        }
+    }
+
+    picture {
+        display: block;
+        margin: auto;
+
+        box-sizing: content-box;
+        background: palette("accent", "bg");
+        height: auto;
+        width: $icon-size;
+        max-width: 100%;
+        padding: 0.5em;
+        display: block;
+        border-radius: 50%;
+        border: solid 3px palette("accent", "fg");
+        box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+
+        img {
+            display: block;
+            margin: auto;
+        }
+    }
+
+    p {
         flex: 1;
-      }
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        line-height: 1.5em;
+        @media (max-width: $screen_md) {
+            text-align: left;
+        }
+    }
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: clamp(0.75rem, 1vw, 1.25rem);
+        text-align: center;
+        @media (max-width: $screen_md) {
+            text-align: left;
+        }
+    }
+
+    ul {
+        display: flex;
+        padding: 0;
+        margin: 0;
+
+        li {
+            flex: 1;
+        }
     }
 
     a {
-      margin-top: 1em;
-    }
-
-    flex-direction: column;
-    gap: min(4vw, 2em);
-
-    $col_size: 375px;
-
-    @media (max-width: ($col_size - 1)) {
-      max-width: 100%;
-      div,
-      p,
-      h3 {
-        text-align: center;
-      }
-    }
-
-    @media (min-width: ($col_size)) and (max-width: $screen_md) {
-      flex-direction: row;
-
-      div {
-        text-align: left;
-      }
-
-      max-width: 100%;
-    }
-
-    @media (max-width: $screen_xs) {
-      picture {
+        display: inline-block;
         margin: 0 auto;
-        max-width: 20vw;
-      }
     }
-  }
-
-  picture {
-    display: block;
-    margin: auto;
-
-    box-sizing: content-box;
-    background: palette("accent", "bg");
-    height: auto;
-    width: $icon-size;
-    max-width: 100%;
-    padding: 0.5em;
-    display: block;
-    border-radius: 50%;
-    border: solid 3px palette("accent", "fg");
-    box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-
-    img {
-      display: block;
-      margin: auto;
-    }
-  }
-
-  p {
-    flex: 1;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    line-height: 1.5em;
-    @media (max-width: $screen_md) {
-      text-align: left;
-    }
-  }
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: clamp(0.75rem, 1vw, 1.25rem);
-    text-align: center;
-    @media (max-width: $screen_md) {
-      text-align: left;
-    }
-  }
-
-  ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-
-    li {
-      flex: 1;
-    }
-  }
-
-  a {
-    display: inline-block;
-    margin: 0 auto;
-  }
 }
