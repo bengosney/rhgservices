@@ -5,7 +5,7 @@ description = "Corporate website for R H Garden Services"
 authors = [
     {name = "Ben Gosney", email = "bengosney@googlemail.com"},
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 
 [build-system]
 requires = ["setuptools", "wheel"]
@@ -13,7 +13,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.black]
 line-length = 128
-target-version = ['py310']
+target-version = ['py312']
 
 [tool.pycln]
 all = true
