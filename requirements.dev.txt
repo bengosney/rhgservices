@@ -465,9 +465,9 @@ django-stubs==5.0.4 \
     --hash=sha256:78e3764488fdfd2695f12502136548ec22f8d4b1780541a835042b8238d11514 \
     --hash=sha256:c2502f5ecbae50c68f9a86d52b5b2447d8648fd205036dad0ccb41e19a445927
     # via rhgardenservices (pyproject.toml)
-django-stubs-ext==5.0.4 \
-    --hash=sha256:85da065224204774208be29c7d02b4482d5a69218a728465c2fbe41725fdc819 \
-    --hash=sha256:910cbaff3d1e8e806a5c27d5ddd4088535aae8371ea921b7fd680fdfa5f14e30
+django-stubs-ext==5.1.0 \
+    --hash=sha256:a455fc222c90b30b29ad8c53319559f5b54a99b4197205ddbb385aede03b395d \
+    --hash=sha256:ed7d51c0b731651879fc75f331fb0806d98b67bfab464e96e2724db6b46ef926
     # via django-stubs
 django-taggit==5.0.1 \
     --hash=sha256:a0ca8a28b03c4b26c2630fd762cb76ec39b5e41abf727a7b66f897a625c5e647 \
