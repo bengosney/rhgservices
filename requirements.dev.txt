@@ -1054,9 +1054,9 @@ virtualenv==20.26.5 \
     --hash=sha256:4f3ac17b81fba3ce3bd6f4ead2749a72da5929c01774948e243db9ba41df4ff6 \
     --hash=sha256:ce489cac131aa58f4b25e321d6d186171f78e6cb13fafbf32a840cee67733ff4
     # via pre-commit
-wagtail==6.2.1 \
-    --hash=sha256:0f136ef23b157997a44fa46543a320a31437350951cf13add8ea8b69cc5e8385 \
-    --hash=sha256:31d073ea8acdc973ef45c5719977a1bb122ad0fc3f01348f37e922128200b42a
+wagtail==6.2.2 \
+    --hash=sha256:506ac2b59dae85069ae754b45bc13b91cbd86e92d4f5d663658773b0ed7a16b9 \
+    --hash=sha256:d0382603aef5d7e4a46529aa125857774a317c2870c9b6836767932969829429
     # via
     #   rhgardenservices (pyproject.toml)
     #   wagtail-placeholder-images
