@@ -646,9 +646,9 @@ rustface==0.1.0 \
     --hash=sha256:942ab9ce2d79cbb318e83dfc6ed0fe5ad984edb157da996bd9cfbda924278da2 \
     --hash=sha256:99ce3cfe484950547d3e4870e46447c9e981704d75197f0e12bbc3c383c0129d
     # via rhgardenservices (pyproject.toml)
-s3transfer==0.10.2 \
-    --hash=sha256:0711534e9356d3cc692fdde846b4a1e4b0cb6519971860796e6bc4c7aea00ef6 \
-    --hash=sha256:eca1c20de70a39daee580aef4986996620f365c4e0fda6a86100231d62f1bf69
+s3transfer==0.10.3 \
+    --hash=sha256:263ed587a5803c6c708d3ce44dc4dfedaab4c1a32e8329bab818933d79ddcf5d \
+    --hash=sha256:4f50ed74ab84d474ce614475e0b8d5047ff080810aac5d01ea25231cfc944b0c
     # via boto3
 six==1.16.0 \
     --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
