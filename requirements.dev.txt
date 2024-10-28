@@ -1050,9 +1050,9 @@ urllib3==2.2.3 \
     # via
     #   botocore
     #   requests
-virtualenv==20.27.0 \
-    --hash=sha256:2ca56a68ed615b8fe4326d11a0dca5dfbe8fd68510fb6c6349163bed3c15f2b2 \
-    --hash=sha256:44a72c29cceb0ee08f300b314848c86e57bf8d1f13107a5e671fb9274138d655
+virtualenv==20.27.1 \
+    --hash=sha256:142c6be10212543b32c6c45d3d3893dff89112cc588b7d0879ae5a1ec03a47ba \
+    --hash=sha256:f11f1b8a29525562925f745563bfd48b189450f61fb34c4f9cc79dd5aa32a1f4
     # via pre-commit
 wagtail==6.2.2 \
     --hash=sha256:506ac2b59dae85069ae754b45bc13b91cbd86e92d4f5d663658773b0ed7a16b9 \
