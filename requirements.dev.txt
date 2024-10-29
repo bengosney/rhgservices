@@ -42,9 +42,9 @@ black==24.10.0 \
     --hash=sha256:f9da3333530dbcecc1be13e69c250ed8dfa67f43c4005fb537bb426e19200d50 \
     --hash=sha256:fe4d6476887de70546212c99ac9bd803d90b42fc4767f058a0baa895013fbb3e
     # via rhgardenservices (pyproject.toml)
-boto3==1.35.50 \
-    --hash=sha256:14724b905fd13f26d9d8f7cdcea0fa65a9acad79f60f41f7662667f4e233d97c \
-    --hash=sha256:4f15d1ccb481d66f6925b8c91c970ce41b956b6ecf7c479f23e2159531b37eec
+boto3==1.35.51 \
+    --hash=sha256:a57c6c7012ecb40c43e565a6f7a891f39efa990ff933eab63cd456f7501c2731 \
+    --hash=sha256:c922f6a18958af9d8af0489d6d8503b517029d8159b26aa4859a8294561c72e9
     # via rhgardenservices (pyproject.toml)
 botocore==1.35.51 \
     --hash=sha256:4d65b00111bd12b98e9f920ecab602cf619cc6a6d0be6e5dd53f517e4b92901c \
