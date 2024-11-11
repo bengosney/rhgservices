@@ -1093,9 +1093,9 @@ watchdog==6.0.0 \
     --hash=sha256:e7631a77ffb1f7d2eefa4445ebbee491c720a5661ddf6df3498ebecae5ed375c \
     --hash=sha256:ef810fbf7b781a5a593894e4f439773830bdecb885e6880d957d5b9382a960d2
     # via pytest-watch
-wheel==0.44.0 \
-    --hash=sha256:2376a90c98cc337d18623527a97c31797bd02bad0033d41547043a1cbfbe448f \
-    --hash=sha256:a29c3f2817e95ab89aa4660681ad547c0e9547f20e75b0562fe7723c9a2a9d49
+wheel==0.45.0 \
+    --hash=sha256:52f0baa5e6522155090a09c6bd95718cc46956d1b51d537ea5454249edb671c7 \
+    --hash=sha256:a57353941a3183b3d5365346b567a260a0602a0f8a635926a7dede41b94c674a
     # via
     #   rhgardenservices (pyproject.toml)
     #   pip-tools
