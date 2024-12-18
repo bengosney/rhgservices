@@ -454,9 +454,9 @@ django-health-check==3.18.3 \
     --hash=sha256:18b75daca4551c69a43f804f9e41e23f5f5fb9efd06cf6a313b3d5031bb87bd0 \
     --hash=sha256:f5f58762b80bdf7b12fad724761993d6e83540f97e2c95c42978f187e452fa07
     # via rhgardenservices (pyproject.toml)
-django-modelcluster==6.3 \
-    --hash=sha256:0caed8a0e889f3abb92f144670878a466ef954ffa6c4c7b9c80e6426b720a49d \
-    --hash=sha256:a8783d6565a0663f41cd6003ea361c3a5711e8a2a326160f1ec1eceb3e973d4f
+django-modelcluster==6.4 \
+    --hash=sha256:0102d00e6b884721ba21e32edb716548e0dead7880e130aa2e04854bd384a42f \
+    --hash=sha256:839b0ddb4a1a6f5fc7d9f2f029614a84350b41315bdb80a9c8b755baaa2297f2
     # via wagtail
 django-permissionedforms==0.1 \
     --hash=sha256:4340bb20c4477fffb13b4cc5cccf9f1b1010b64f79956c291c72d2ad2ed243f8 \
