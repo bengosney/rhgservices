@@ -12,9 +12,9 @@ beautifulsoup4==4.12.3 \
     --hash=sha256:74e3d1928edc070d21748185c46e3fb33490f22f52a3addee9aee0f4f7781051 \
     --hash=sha256:b80878c9f40111313e55da8ba20bdba06d8fa3969fc68304167741bbf9e082ed
     # via wagtail
-boto3==1.35.85 \
-    --hash=sha256:6257cad97d92c2b5597aec6e5484b9cfed8c0c785297942ed37cfaf2dd0ec23c \
-    --hash=sha256:f22678bdbdc91ca6022a45696284d236e1fbafa84ca3a69d108d4a155cdd823e
+boto3==1.35.87 \
+    --hash=sha256:341c58602889078a4a25dc4331b832b5b600a33acd73471d2532c6f01b16fbb4 \
+    --hash=sha256:588ab05e2771c50fca5c242be14e7a25200ffd3dd95c45950ce40993473864c7
     # via rhgardenservices (pyproject.toml)
 botocore==1.35.87 \
     --hash=sha256:3062d073ce4170a994099270f469864169dc1a1b8b3d4a21c14ce0ae995e0f89 \
