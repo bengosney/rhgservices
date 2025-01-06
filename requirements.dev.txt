@@ -545,9 +545,9 @@ milksnake==0.1.6 \
     --hash=sha256:0198f8932b4e136c29c0d0d490ff1bac03f82c3a7b2ee6f666e3683b64314fd9 \
     --hash=sha256:31e3eafaf2a48e177bb4b2dacef2c7ae8c5b2147a19c6d626209b819490e6f1d
     # via rustface
-model-bakery==1.20.0 \
-    --hash=sha256:875326466f5982ee8f0281abdfa774d78893d5473562575dfd5a9304ac7c5b8c \
-    --hash=sha256:ec9dc846b9a00b20f92df38fac310263323ab61b59b6eeebf77a4aefb0412724
+model-bakery==1.20.1 \
+    --hash=sha256:6b9dcdcdbbc65f6c1e0c61ebea173777020ddcdce52f3e21362ba7f6000f90fe \
+    --hash=sha256:eb3b4301e6a5620dac9a16d5d586796869bda05b958a95239fbccf69e79c3831
     # via rhgardenservices (pyproject.toml)
 mypy==1.14.1 \
     --hash=sha256:07ba89fdcc9451f2ebb02853deb6aaaa3d2239a236669a63ab3801bbf923ef5c \
