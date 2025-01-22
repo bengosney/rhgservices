@@ -1,4 +1,4 @@
-.PHONY: help clean test install all init dev css watch
+.PHONY: help clean test install all init dev css watch DBTOSQLPATH assets js node
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
@@ -81,10 +81,7 @@ init: .direnv $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Init
 clean: ## Remove all build files
 	find . -name '*.pyc' -delete
 	find . -type d -name '__pycache__' -delete
-	rm -rf .pytest_cache
-	rm -f .testmondata
-	rm -rf .mypy_cache
-	rm -rf .hypothesis
+	rm -rf .pytest_cache .testmondata .mypy_cache .hypothesis
 
 package-lock.json: package.json
 	npm install
