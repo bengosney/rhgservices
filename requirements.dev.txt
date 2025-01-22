@@ -42,13 +42,13 @@ black==24.10.0 \
     --hash=sha256:f9da3333530dbcecc1be13e69c250ed8dfa67f43c4005fb537bb426e19200d50 \
     --hash=sha256:fe4d6476887de70546212c99ac9bd803d90b42fc4767f058a0baa895013fbb3e
     # via rhgardenservices (pyproject.toml)
-boto3==1.36.3 \
-    --hash=sha256:53a5307f6a3526ee2f8590e3c45efa504a3ea4532c1bfe4926c0c19bf188d141 \
-    --hash=sha256:f9843a5d06f501d66ada06f5a5417f671823af2cf319e36ceefa1bafaaaaa953
+boto3==1.36.4 \
+    --hash=sha256:9f8f699e75ec63fcc98c4dd7290997c7c06c68d3ac8161ad4735fe71f5fe945c \
+    --hash=sha256:eeceeb74ef8b65634d358c27aa074917f4449dc828f79301f1075232618eb502
     # via rhgardenservices (pyproject.toml)
-botocore==1.36.3 \
-    --hash=sha256:536ab828e6f90dbb000e3702ac45fd76642113ae2db1b7b1373ad24104e89255 \
-    --hash=sha256:775b835e979da5c96548ed1a0b798101a145aec3cd46541d62e27dda5a94d7f8
+botocore==1.36.4 \
+    --hash=sha256:3f183aa7bb0c1ba02171143a05f28a4438abdf89dd6b8c0a7727040375a90520 \
+    --hash=sha256:ef54f5e3316040b6ff775941e6ed052c3230dda0079d17d9f9e3c757375f2027
     # via
     #   boto3
     #   s3transfer
@@ -1023,6 +1023,26 @@ rich==13.9.4 \
     --hash=sha256:439594978a49a09530cff7ebc4b5c7103ef57baf48d5ea3184f21d9a2befa098 \
     --hash=sha256:6049d5e6ec054bf2779ab3358186963bac2ea89175919d699e378b99738c2a90
     # via pytest-clarity
+ruff==0.9.2 \
+    --hash=sha256:1a605fdcf6e8b2d39f9436d343d1f0ff70c365a1e681546de0104bef81ce88df \
+    --hash=sha256:3292c5a22ea9a5f9a185e2d131dc7f98f8534a32fb6d2ee7b9944569239c648d \
+    --hash=sha256:492a5e44ad9b22a0ea98cf72e40305cbdaf27fac0d927f8bc9e1df316dcc96eb \
+    --hash=sha256:71cbe22e178c5da20e1514e1e01029c73dc09288a8028a5d3446e6bba87a5145 \
+    --hash=sha256:80605a039ba1454d002b32139e4970becf84b5fee3a3c3bf1c2af6f61a784347 \
+    --hash=sha256:82b35259b0cbf8daa22a498018e300b9bb0174c2bbb7bcba593935158a78054d \
+    --hash=sha256:8b6a9701d1e371bf41dca22015c3f89769da7576884d2add7317ec1ec8cb9c3c \
+    --hash=sha256:8efd9da7a1ee314b910da155ca7e8953094a7c10d0c0a39bfde3fcfd2a015684 \
+    --hash=sha256:9cc53e68b3c5ae41e8faf83a3b89f4a5d7b2cb666dff4b366bb86ed2a85b481f \
+    --hash=sha256:a1b63fa24149918f8b37cef2ee6fff81f24f0d74b6f0bdc37bc3e1f2143e41c6 \
+    --hash=sha256:af1e9e9fe7b1f767264d26b1075ac4ad831c7db976911fa362d09b2d0356426a \
+    --hash=sha256:b338edc4610142355ccf6b87bd356729b62bf1bc152a2fad5b0c7dc04af77bfe \
+    --hash=sha256:b5eceb334d55fae5f316f783437392642ae18e16dcf4f1858d55d3c2a0f8f5d0 \
+    --hash=sha256:b9aab82bb20afd5f596527045c01e6ae25a718ff1784cb92947bff1f83068b00 \
+    --hash=sha256:c547f7f256aa366834829a08375c297fa63386cbe5f1459efaf174086b564247 \
+    --hash=sha256:c5e1d6abc798419cf46eed03f54f2e0c3adb1ad4b801119dedf23fcaf69b55b5 \
+    --hash=sha256:d18bba3d3353ed916e882521bc3e0af403949dbada344c20c16ea78f47af965e \
+    --hash=sha256:fbd337bac1cfa96be615f6efcd4bc4d077edbc127ef30e2b8ba2a27e18c054d4
+    # via rhgardenservices (pyproject.toml)
 rustface==0.1.0 \
     --hash=sha256:0c9c3defcf021a8968d9e6709f437985f3de1de51b8c643edfcb3f52ec27dc0d \
     --hash=sha256:75db6edc990d91450d4c0f85622c5cc10042e32f442ef0ba76a314fc593a1b23 \

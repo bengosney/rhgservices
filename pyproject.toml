@@ -35,7 +35,6 @@ dependencies = [
 ]
 
 optional-dependencies.dev = [
-  "black",
   "django-debug-toolbar",
   "django-debugtools",
   "django-stubs",
@@ -43,7 +42,6 @@ optional-dependencies.dev = [
   "model-bakery",
   "mypy",
   "packaging",
-  "pip-tools",
   "pre-commit",
   "psycopg2",
   "pytest",
@@ -52,6 +50,7 @@ optional-dependencies.dev = [
   "pytest-django",
   "pytest-picked",
   "pytest-watch",
+  "ruff",
   "wagtail-placeholder-images",
   "wrapt",
 ]
