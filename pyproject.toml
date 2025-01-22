@@ -69,9 +69,12 @@ lint.select = [ "C90", "DJ", "E", "ERA", "F", "FURB", "I", "N", "PERF", "PL", "R
 lint.isort.section-order = [
   "future",
   "standard-library",
-  "third-party",
   "django",
   "wagtail",
+  "third-party",
   "first-party",
   "local-folder",
 ]
+
+lint.isort.sections.django = [ "django" ]
+lint.isort.sections.wagtail = [ "wagtail" ]
