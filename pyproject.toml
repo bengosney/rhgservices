@@ -10,7 +10,11 @@ authors = [
   { name = "Ben Gosney", email = "bengosney@googlemail.com" },
 ]
 requires-python = ">=3.12"
-classifiers = [ "Programming Language :: Python :: 3 :: Only", "Programming Language :: Python :: 3.12" ]
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
 dependencies = [
   "boto3",
   "dj-database-url",
@@ -31,7 +35,6 @@ dependencies = [
 ]
 
 optional-dependencies.dev = [
-  "black",
   "django-debug-toolbar",
   "django-debugtools",
   "django-stubs",
@@ -39,7 +42,6 @@ optional-dependencies.dev = [
   "model-bakery",
   "mypy",
   "packaging",
-  "pip-tools",
   "pre-commit",
   "psycopg2",
   "pytest",
@@ -48,13 +50,32 @@ optional-dependencies.dev = [
   "pytest-django",
   "pytest-picked",
   "pytest-watch",
+  "ruff",
   "wagtail-placeholder-images",
   "wrapt",
 ]
 
-[tool.black]
-line-length = 128
-target-version = [ 'py312' ]
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+exclude = [ "migrations" ]
 
-[tool.pycln]
-all = true
+format.indent-style = "space"
+format.quote-style = "double"
+format.docstring-code-format = true
+
+lint.select = [ "C90", "DJ", "E", "ERA", "F", "FURB", "I", "N", "PERF", "PL", "RUF", "TRY", "UP" ]
+lint.ignore = [ "RUF012" ]
+
+lint.isort.section-order = [
+  "future",
+  "standard-library",
+  "django",
+  "wagtail",
+  "third-party",
+  "first-party",
+  "local-folder",
+]
+
+lint.isort.sections.django = [ "django" ]
+lint.isort.sections.wagtail = [ "wagtail" ]

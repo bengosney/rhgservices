@@ -1,4 +1,4 @@
-.PHONY: help clean test install all init dev css watch
+.PHONY: help clean test install all init dev css watch DBTOSQLPATH assets js node
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
@@ -9,6 +9,7 @@ REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in 
 
 BINPATH=$(shell which python | xargs dirname | xargs realpath --relative-to=".")
 
+SYSTEM_PYTHON_VERSION:=$(shell ls /usr/bin/python* | grep -Eo '[0-9]+\.[0-9]+' | sort -V | tail -n 1)
 PYTHON_VERSION:=$(shell python --version | cut -d " " -f 2)
 PIP_PATH:=$(BINPATH)/pip
 WHEEL_PATH:=$(BINPATH)/wheel
@@ -50,7 +51,7 @@ requirements.txt: $(UV_PATH) pyproject.toml
 
 .envrc:
 	@echo "Setting up .envrc then stopping"
-	@echo "layout python python3.10" > $@
+	@echo "layout python python$(SYSTEM_PYTHON_VERSION)" > $@
 	@touch -d '+1 minute' $@
 	@false
 
@@ -80,10 +81,7 @@ init: .direnv $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Init
 clean: ## Remove all build files
 	find . -name '*.pyc' -delete
 	find . -type d -name '__pycache__' -delete
-	rm -rf .pytest_cache
-	rm -f .testmondata
-	rm -rf .mypy_cache
-	rm -rf .hypothesis
+	rm -rf .pytest_cache .testmondata .mypy_cache .hypothesis
 
 package-lock.json: package.json
 	npm install

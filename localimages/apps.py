@@ -14,8 +14,8 @@ import wrapt
 
 def fill_image_with_stock(path):
     Path(path).parent.mkdir(exist_ok=True)
-    baseURL = f"https://picsum.photos/{randint(6, 12) * 100}/{randint(6, 12) * 100}"
-    img_data = requests.get(baseURL)
+    base_url = f"https://picsum.photos/{randint(6, 12) * 100}/{randint(6, 12) * 100}"
+    img_data = requests.get(base_url)
     with open(path, "wb") as handler:
         handler.write(img_data.content)
 

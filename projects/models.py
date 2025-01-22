@@ -1,4 +1,5 @@
 # Django
+# Third Party
 from django.db import models
 
 # Wagtail
@@ -6,7 +7,6 @@ from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Orderable, Page
 
-# Third Party
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
@@ -17,9 +17,7 @@ class ProjectListPage(Page):
 
     body = RichTextField(blank=True)
 
-    content_panels = Page.content_panels + [
-        FieldPanel("body"),
-    ]
+    content_panels = [*Page.content_panels, FieldPanel("body")]
 
     def get_context(self, request):
         context = super().get_context(request)
@@ -69,12 +67,7 @@ class Project(Page):
 
     content_panels = [
         MultiFieldPanel(
-            Page.content_panels
-            + [
-                FieldPanel("hero_image"),
-                FieldPanel("sub_title"),
-                FieldPanel("tags"),
-            ],
+            [*Page.content_panels, FieldPanel("hero_image"), FieldPanel("sub_title"), FieldPanel("tags")],
             heading="Project Information",
         ),
         InlinePanel("images", label="Images"),

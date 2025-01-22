@@ -10,10 +10,10 @@
     {% else %}
         {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
     {% endif %}
-{% endblock %}
+{% endblock title %}
 
 {% block title_suffix %}
-{% endblock %}
+{% endblock title_suffix %}
 
 {% block content %}
     <div class="banner_image">
@@ -26,4 +26,4 @@
         </div>
     </div>
     {% include_block page.body %}
-{% endblock %}
+{% endblock content %}

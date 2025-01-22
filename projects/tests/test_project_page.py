@@ -1,11 +1,11 @@
 # Django
+# Third Party
 from django.test import RequestFactory, TestCase
 
 # Wagtail
 from wagtail.images.tests.utils import Image, get_test_image_file_jpeg
 from wagtail.models import Page
 
-# Third Party
 from model_bakery import baker
 
 # First Party

@@ -72,10 +72,13 @@ def top_menu_children(context, parent, calling_page=None):
     }
 
 
+MIN_DEPTH = 2
+
+
 @register.inclusion_tag("tags/breadcrumbs.html", takes_context=True)
 def breadcrumbs(context):
     current = context.get("self")
-    if current is None or current.depth <= 2:
+    if current is None or current.depth <= MIN_DEPTH:
         ancestors = ()
     else:
         ancestors = Page.objects.ancestor_of(current, inclusive=True).filter(depth__gt=1)

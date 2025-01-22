@@ -1,10 +1,10 @@
 # Django
+# Third Party
 from django.test import RequestFactory, TestCase
 
 # Wagtail
 from wagtail.models import Page
 
-# Third Party
 from icecream import ic
 
 # First Party

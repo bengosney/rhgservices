@@ -1,5 +1,5 @@
 # Locals
-from .base import *  # noqa
+from rhgs.settings.base import *  # noqa
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,6 +44,6 @@ CSP_IMG_SRC = None
 
 try:
     # Locals
-    from .local import *  # noqa
+    from rhgs.settings.local import *  # noqa
 except ImportError:
     pass

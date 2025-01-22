@@ -18,7 +18,7 @@ from wagtail.models import Page
 from modelcluster.fields import ParentalKey
 
 # Locals
-from .blocks import CallOutBlock, FlexBlock, FlexStreamBlock, FormBlock, InfoPodBlock, MapBlock, ProjectsBlock
+from pages.blocks import CallOutBlock, FlexBlock, FlexStreamBlock, FormBlock, InfoPodBlock, MapBlock, ProjectsBlock
 
 
 @register_setting
@@ -32,7 +32,9 @@ class SiteSettings(BaseSiteSetting):
 class HomePage(Page):
     show_in_menus_default = True
 
-    banner_image = models.ForeignKey("wagtailimages.Image", null=True, blank=False, on_delete=models.SET_NULL, related_name="+")
+    banner_image = models.ForeignKey(
+        "wagtailimages.Image", null=True, blank=False, on_delete=models.SET_NULL, related_name="+"
+    )
     body = StreamField(
         [
             ("Callout", CallOutBlock()),
@@ -45,10 +47,7 @@ class HomePage(Page):
 
     parent_page_types = ["wagtailcore.Page"]
 
-    content_panels = Page.content_panels + [
-        FieldPanel("banner_image"),
-        FieldPanel("body"),
-    ]
+    content_panels = [*Page.content_panels, FieldPanel("banner_image"), FieldPanel("body")]
 
 
 class FormField(AbstractFormField):
@@ -67,9 +66,7 @@ class InfoPage(Page):
         use_json_field=True,
     )
 
-    content_panels = Page.content_panels + [
-        FieldPanel("body"),
-    ]
+    content_panels = [*Page.content_panels, FieldPanel("body")]
 
 
 class FormPage(AbstractEmailForm):
@@ -98,24 +95,16 @@ class FormPage(AbstractEmailForm):
     thank_you_text = RichTextField(blank=True)
     submit_text = models.CharField(max_length=255, default="Submit")
 
-    content_panels = AbstractEmailForm.content_panels + [
+    content_panels = [
+        *AbstractEmailForm.content_panels,
         FormSubmissionsPanel(),
         FieldPanel("body"),
         InlinePanel("form_fields", label="Form fields"),
-        MultiFieldPanel(
-            [
-                FieldPanel("submit_text"),
-                FieldPanel("thank_you_text"),
-            ],
-            "Submit",
-        ),
+        MultiFieldPanel([FieldPanel("submit_text"), FieldPanel("thank_you_text")], "Submit"),
         MultiFieldPanel(
             [
                 FieldRowPanel(
-                    [
-                        FieldPanel("from_address", classname="col6"),
-                        FieldPanel("to_address", classname="col6"),
-                    ]
+                    [FieldPanel("from_address", classname="col6"), FieldPanel("to_address", classname="col6")]
                 ),
                 FieldPanel("subject"),
             ],
