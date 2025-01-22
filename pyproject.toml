@@ -52,9 +52,23 @@ optional-dependencies.dev = [
   "wrapt",
 ]
 
-[tool.black]
-line-length = 128
-target-version = [ 'py312' ]
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+exclude = [ "migrations" ]
 
-[tool.pycln]
-all = true
+format.indent-style = "space"
+format.quote-style = "double"
+format.docstring-code-format = true
+
+lint.select = [ "C90", "DJ", "E", "ERA", "F", "FURB", "I", "N", "PERF", "PL", "RUF", "TRY", "UP" ]
+
+lint.isort.section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "django",
+  "wagtail",
+  "first-party",
+  "local-folder",
+]
