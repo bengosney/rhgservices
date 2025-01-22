@@ -18,9 +18,10 @@ class NoFreeFileError(Exception):
 def cant_mkdtemp():
     try:
         tempfile.mkdtemp(dir=settings.MEDIA_ROOT)
-        return False
     except Exception:
         return True
+    else:
+        return False
 
 
 class LocalImagesTestCase(TestCase):
