@@ -1,8 +1,6 @@
-# Django
-from django.apps import AppConfig
-
 # Third Party
 import rustface.willow
+from django.apps import AppConfig
 from willow.registry import registry
 
 

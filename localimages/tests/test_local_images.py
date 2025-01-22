@@ -28,8 +28,7 @@ class LocalImagesTestCase(TestCase):
             filePath = path.join(self.tmpDir, f"no-{i}-img.jpg")
             if not path.exists(filePath):
                 return filePath
-        else:
-            raise Exception("No free file found")
+        raise Exception("No free file found")
 
     @skipIf(cant_mkdtemp(), "Can't make a temp file")
     def test_fill_stock_image(self):

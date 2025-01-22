@@ -4,6 +4,9 @@ from textwrap import shorten
 # Django
 from django.db import models
 
+# Third Party
+from modelcluster.fields import ParentalKey
+
 # Wagtail
 from wagtail import blocks
 from wagtail.admin.mail import send_mail
@@ -14,11 +17,8 @@ from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 
-# Third Party
-from modelcluster.fields import ParentalKey
-
 # Locals
-from .blocks import CallOutBlock, FlexBlock, FlexStreamBlock, FormBlock, InfoPodBlock, MapBlock, ProjectsBlock
+from pages.blocks import CallOutBlock, FlexBlock, FlexStreamBlock, FormBlock, InfoPodBlock, MapBlock, ProjectsBlock
 
 
 @register_setting
@@ -32,7 +32,9 @@ class SiteSettings(BaseSiteSetting):
 class HomePage(Page):
     show_in_menus_default = True
 
-    banner_image = models.ForeignKey("wagtailimages.Image", null=True, blank=False, on_delete=models.SET_NULL, related_name="+")
+    banner_image = models.ForeignKey(
+        "wagtailimages.Image", null=True, blank=False, on_delete=models.SET_NULL, related_name="+"
+    )
     body = StreamField(
         [
             ("Callout", CallOutBlock()),

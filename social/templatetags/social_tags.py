@@ -5,7 +5,7 @@ from django import template
 from wagtail.models import Site
 
 # Locals
-from ..models import Social
+from social.models import Social
 
 register = template.Library()
 

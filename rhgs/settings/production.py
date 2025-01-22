@@ -5,7 +5,7 @@ import os
 import dj_database_url
 
 # Locals
-from .base import *  # noqa
+from rhgs.settings.base import *  # noqa
 
 DEBUG = False
 
@@ -90,6 +90,6 @@ if "REDIS_URL" in os.environ:
 
 try:
     # Locals
-    from .local import *  # noqa
+    from rhgs.settings.local import *  # noqa
 except ImportError:
     pass

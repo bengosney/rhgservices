@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 
 # Locals
-from .models import Robots
+from robots.models import Robots
 
 
 def robots(request):
