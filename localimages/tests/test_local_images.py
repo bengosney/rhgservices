@@ -11,6 +11,10 @@ from django.test import TestCase
 from localimages.apps import fill_image_with_stock
 
 
+class NoFreeFileError(Exception):
+    pass
+
+
 def cant_mkdtemp():
     try:
         tempfile.mkdtemp(dir=settings.MEDIA_ROOT)
@@ -28,7 +32,7 @@ class LocalImagesTestCase(TestCase):
             file_path = path.join(self.tmp_dir, f"no-{i}-img.jpg")
             if not path.exists(file_path):
                 return file_path
-        raise Exception("No free file found")
+        raise NoFreeFileError()
 
     @skipIf(cant_mkdtemp(), "Can't make a temp file")
     def test_fill_stock_image(self):
