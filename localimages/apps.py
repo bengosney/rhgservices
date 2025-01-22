@@ -3,13 +3,13 @@ import os
 from pathlib import Path
 from random import randint
 
-# Third Party
-import requests
-import wrapt
-
 # Django
 from django.apps import AppConfig
 from django.conf import settings
+
+# Third Party
+import requests
+import wrapt
 
 
 def fill_image_with_stock(path):
