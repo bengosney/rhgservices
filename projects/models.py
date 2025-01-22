@@ -17,9 +17,7 @@ class ProjectListPage(Page):
 
     body = RichTextField(blank=True)
 
-    content_panels = Page.content_panels + [
-        FieldPanel("body"),
-    ]
+    content_panels = [*Page.content_panels, FieldPanel("body")]
 
     def get_context(self, request):
         context = super().get_context(request)
@@ -69,12 +67,7 @@ class Project(Page):
 
     content_panels = [
         MultiFieldPanel(
-            Page.content_panels
-            + [
-                FieldPanel("hero_image"),
-                FieldPanel("sub_title"),
-                FieldPanel("tags"),
-            ],
+            [*Page.content_panels, FieldPanel("hero_image"), FieldPanel("sub_title"), FieldPanel("tags")],
             heading="Project Information",
         ),
         InlinePanel("images", label="Images"),

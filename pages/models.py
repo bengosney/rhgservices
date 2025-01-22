@@ -47,10 +47,7 @@ class HomePage(Page):
 
     parent_page_types = ["wagtailcore.Page"]
 
-    content_panels = Page.content_panels + [
-        FieldPanel("banner_image"),
-        FieldPanel("body"),
-    ]
+    content_panels = [*Page.content_panels, FieldPanel("banner_image"), FieldPanel("body")]
 
 
 class FormField(AbstractFormField):
@@ -69,9 +66,7 @@ class InfoPage(Page):
         use_json_field=True,
     )
 
-    content_panels = Page.content_panels + [
-        FieldPanel("body"),
-    ]
+    content_panels = [*Page.content_panels, FieldPanel("body")]
 
 
 class FormPage(AbstractEmailForm):
@@ -100,24 +95,16 @@ class FormPage(AbstractEmailForm):
     thank_you_text = RichTextField(blank=True)
     submit_text = models.CharField(max_length=255, default="Submit")
 
-    content_panels = AbstractEmailForm.content_panels + [
+    content_panels = [
+        *AbstractEmailForm.content_panels,
         FormSubmissionsPanel(),
         FieldPanel("body"),
         InlinePanel("form_fields", label="Form fields"),
-        MultiFieldPanel(
-            [
-                FieldPanel("submit_text"),
-                FieldPanel("thank_you_text"),
-            ],
-            "Submit",
-        ),
+        MultiFieldPanel([FieldPanel("submit_text"), FieldPanel("thank_you_text")], "Submit"),
         MultiFieldPanel(
             [
                 FieldRowPanel(
-                    [
-                        FieldPanel("from_address", classname="col6"),
-                        FieldPanel("to_address", classname="col6"),
-                    ]
+                    [FieldPanel("from_address", classname="col6"), FieldPanel("to_address", classname="col6")]
                 ),
                 FieldPanel("subject"),
             ],
