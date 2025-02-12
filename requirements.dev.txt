@@ -516,8 +516,8 @@ gunicorn==23.0.0 \
     --hash=sha256:ec400d38950de4dfd418cff8328b2c8faed0edb0d517d3394e457c317908ca4d \
     --hash=sha256:f014447a0101dc57e294f6c18ca6b40227a4c90e9bdb586042628030cba004ec
     # via rhgardenservices (pyproject.toml)
-honeybadger==0.20.3 \
-    --hash=sha256:15aa5e89752e6d6294167605f663200a7acf88b386eef00b61abde5599f5487b
+honeybadger==0.21 \
+    --hash=sha256:2ca415e85109e7182e6ca71508550707d099c65f0faf2cd52f5e9ccaf7ed2139
     # via rhgardenservices (pyproject.toml)
 icecream==2.1.4 \
     --hash=sha256:58755e58397d5350a76f25976dee7b607f5febb3c6e1cddfe6b1951896e91573 \
