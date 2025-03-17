@@ -1,4 +1,4 @@
-.PHONY: help clean test install all init dev css watch DBTOSQLPATH assets js node
+.PHONY: help clean test install all init dev css watch DBTOSQLPATH assets js node cog COGABLE
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
@@ -15,7 +15,9 @@ WHEEL_PATH:=$(BINPATH)/wheel
 UV_PATH:=$(BINPATH)/uv
 PRE_COMMIT_PATH:=$(BINPATH)/pre-commit
 DBTOSQLPATH:=$(BINPATH)/db-to-sqlite
+COG_PATH:=$(BINPATH)/cog
 
+COGABLE:=$(shell git ls-files | xargs grep -l "\[\[\[cog")
 PYTHON_FILES:=$(wildcard ./**/*.py ./**/tests/*.py)
 
 help: ## Display this help
@@ -75,6 +77,10 @@ $(UV_PATH): $(PIP_PATH) $(WHEEL_PATH)
 	python -m pip install uv
 	@touch $@
 
+$(COG_PATH): $(PIP_PATH) $(WHEEL_PATH)
+	python -m pip install cogapp
+	@touch $@
+
 init: .direnv $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
 
 clean: ## Remove all build files
@@ -105,6 +111,9 @@ upgrade: python
 	wagtail updatemodulepaths --ignore-dir .direnv
 	@python -m pre_commit autoupdate
 	python -m pre_commit run --all
+
+cog: $(COG_PATH) $(COGABLE)
+	@cog -rc $(filter-out $<,$^)
 
 $(DBTOSQLPATH):
 	pip install git+https://github.com/bengosney/db-to-sqlite.git
