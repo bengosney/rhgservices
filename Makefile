@@ -109,8 +109,8 @@ install: python node ## Install development requirements (default)
 upgrade: python
 	@echo "Updateing module paths"
 	wagtail updatemodulepaths --ignore-dir .direnv
-	@python -m pre_commit autoupdate
-	python -m pre_commit run --all
+	@python -m pre_commit autoupdate || true
+	python -m pre_commit run --all-files
 
 cog: $(COG_PATH) $(COGABLE)
 	@cog -rc $(filter-out $<,$^)
