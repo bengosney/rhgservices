@@ -1,4 +1,4 @@
-.PHONY: help clean test install all init dev css watch DBTOSQLPATH assets js node
+.PHONY: help clean test install all init dev css watch DBTOSQLPATH assets js node cog COGABLE
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
@@ -9,14 +9,15 @@ REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in 
 
 BINPATH=$(shell which python | xargs dirname | xargs realpath --relative-to=".")
 
-SYSTEM_PYTHON_VERSION:=$(shell ls /usr/bin/python* | grep -Eo '[0-9]+\.[0-9]+' | sort -V | tail -n 1)
-PYTHON_VERSION:=$(shell python --version | cut -d " " -f 2)
+PYTHON_VERSION:=$(shell cat .python-version)
 PIP_PATH:=$(BINPATH)/pip
 WHEEL_PATH:=$(BINPATH)/wheel
 UV_PATH:=$(BINPATH)/uv
 PRE_COMMIT_PATH:=$(BINPATH)/pre-commit
 DBTOSQLPATH:=$(BINPATH)/db-to-sqlite
+COG_PATH:=$(BINPATH)/cog
 
+COGABLE:=$(shell git ls-files | xargs grep -l "\[\[\[cog")
 PYTHON_FILES:=$(wildcard ./**/*.py ./**/tests/*.py)
 
 help: ## Display this help
@@ -49,9 +50,9 @@ requirements.txt: $(UV_PATH) pyproject.toml
 .git/hooks/pre-commit: $(PRE_COMMIT_PATH) .pre-commit-config.yaml
 	pre-commit install
 
-.envrc:
+.envrc: .python-version
 	@echo "Setting up .envrc then stopping"
-	@echo "layout python python$(SYSTEM_PYTHON_VERSION)" > $@
+	@echo "layout python python$(PYTHON_VERSION)" > $@
 	@touch -d '+1 minute' $@
 	@false
 
@@ -74,6 +75,10 @@ $(PRE_COMMIT_PATH): $(PIP_PATH) $(WHEEL_PATH)
 
 $(UV_PATH): $(PIP_PATH) $(WHEEL_PATH)
 	python -m pip install uv
+	@touch $@
+
+$(COG_PATH): $(PIP_PATH) $(WHEEL_PATH)
+	python -m pip install cogapp
 	@touch $@
 
 init: .direnv $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
@@ -106,6 +111,9 @@ upgrade: python
 	wagtail updatemodulepaths --ignore-dir .direnv
 	@python -m pre_commit autoupdate
 	python -m pre_commit run --all
+
+cog: $(COG_PATH) $(COGABLE)
+	@cog -rc $(filter-out $<,$^)
 
 $(DBTOSQLPATH):
 	pip install git+https://github.com/bengosney/db-to-sqlite.git
