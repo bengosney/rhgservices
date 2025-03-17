@@ -9,11 +9,23 @@ description = "Corporate website for R H Garden Services"
 authors = [
   { name = "Ben Gosney", email = "bengosney@googlemail.com" },
 ]
+# [[[cog
+# import cog
+# with open(".python-version") as f:
+#   version = ".".join(f.read().strip().split('.')[0:2])
+# cog.outl(f"requires-python = \">={version}\"")
+# ]]]
 requires-python = ">=3.12"
+# [[[end]]] (checksum: 0a1587785b702881c6947362613f6c33)
+
 classifiers = [
+  # [[[cog
+  # cog.outl(f"\"Programming Language :: Python :: {version.split('.')[0]} :: Only\",")
+  # cog.outl(f"\"Programming Language :: Python :: {version}\",")
+  # ]]]
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
+  # [[[end]]] (checksum: ca1b4f691958143c0dacd7a9d8a4d714)
 ]
 dependencies = [
   "boto3",
@@ -35,6 +47,7 @@ dependencies = [
 ]
 
 optional-dependencies.dev = [
+  "cogapp",
   "django-debug-toolbar",
   "django-debugtools",
   "django-stubs",
@@ -56,7 +69,11 @@ optional-dependencies.dev = [
 ]
 
 [tool.ruff]
+# [[[cog
+# cog.outl(f"target-version = \"py{version.replace('.','')}\"")
+# ]]]
 target-version = "py312"
+# [[[end]]] (checksum: e89eb45abbff2022d1127cd34cf5f6e8)
 line-length = 120
 exclude = [ "migrations" ]
 
@@ -79,3 +96,10 @@ lint.isort.section-order = [
 
 lint.isort.sections.django = [ "django" ]
 lint.isort.sections.wagtail = [ "wagtail" ]
+
+[tool.pyproject-fmt]
+# [[[cog
+# cog.outl(f"max_supported_python = \"{version}\"")
+# ]]]
+max_supported_python = "3.12"
+# [[[end]]] (checksum: 2d1182430042e0eaffbc54257f726ad2)

@@ -5,7 +5,13 @@ orbs:
 jobs:
   test:
     docker:
+    # [[[cog
+    # import cog
+    # with open(".python-version") as f:
+    #   cog.out(f"- image: cimg/python:{f.read().strip()}")
+    # ]]]
     - image: cimg/python:3.12.5
+    # [[[end]]] (checksum: fc0a16aa4f24e437fe39c7afd2bab265)
     steps:
     - checkout
     - restore_cache:
