@@ -19,8 +19,8 @@ repos:
     # with open(".python-version") as f:
     #   cog.out(f"args: [--py{"".join(f.read().strip().split('.')[0:2])}-plus]")
     # ]]]
-    args: [--py312-plus]
-    # [[[end]]] (checksum: 6abd9be6b206690dc3793c8471859030)
+    args: [--py313-plus]
+    # [[[end]]] (checksum: 6cea9636c70796bb80ba2c43f851874c)
 - repo: https://github.com/MarcoGorelli/absolufy-imports
   rev: v0.3.1
   hooks:
