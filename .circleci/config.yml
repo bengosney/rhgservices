@@ -27,6 +27,9 @@ jobs:
     - run:
         name: Run tests
         command: python -m pytest
+    - run:
+        name: Django system check
+        command: python manage.py check
 
 workflows:
   tests:
