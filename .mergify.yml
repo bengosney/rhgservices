@@ -1,4 +1,12 @@
 pull_request_rules:
+- name: Merge Updates
+  conditions:
+  - and:
+    - author~=^github-actions
+    - title~=^Updates
+  actions:
+    merge:
+      method: merge
 - name: Merge Mine
   conditions:
   - and:
