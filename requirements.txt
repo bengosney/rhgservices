@@ -351,9 +351,9 @@ django-filter==25.1 \
     --hash=sha256:1ec9eef48fa8da1c0ac9b411744b16c3f4c31176c867886e4c48da369c407153 \
     --hash=sha256:4fa48677cf5857b9b1347fed23e355ea792464e0fe07244d1fdfb8a806215b80
     # via wagtail
-django-health-check==3.19.0 \
-    --hash=sha256:1a995ed4fa08a776beedff65f8f1ec0c22fb6764493f33fb1307fe4c6f23b8c3 \
-    --hash=sha256:30b58d761f40fef47971b8dc145df15bdb71339108034860bbf1d505387aa1ec
+django-health-check==3.19.1 \
+    --hash=sha256:558aa260102ae5c53a2925692e1b08fc1a9b181db3675b00a8e320e088a669db \
+    --hash=sha256:f1e287190a15d5c2f53db67877a4360ed0256bf5f3d6773f0fe4903d052a6c14
     # via rhgardenservices (pyproject.toml)
 django-modelcluster==6.4 \
     --hash=sha256:0102d00e6b884721ba21e32edb716548e0dead7880e130aa2e04854bd384a42f \
@@ -665,9 +665,9 @@ redis==6.2.0 \
     --hash=sha256:c8ddf316ee0aab65f04a11229e94a64b2618451dab7a67cb2f77eb799d872d5e \
     --hash=sha256:e821f129b75dde6cb99dd35e5c76e8c49512a5a0d8dfdc560b2fbd44b85ca977
     # via rhgardenservices (pyproject.toml)
-requests==2.32.3 \
-    --hash=sha256:55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760 \
-    --hash=sha256:70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6
+requests==2.32.4 \
+    --hash=sha256:27babd3cda2a6d50b30443204ee89830707d396671944c998b5975b031ac2b2c \
+    --hash=sha256:27d0316682c8a29834d3264820024b62a36942083d52caf2f14c0591336d3422
     # via wagtail
 rustface==0.1.0 \
     --hash=sha256:0c9c3defcf021a8968d9e6709f437985f3de1de51b8c643edfcb3f52ec27dc0d \
