@@ -12,13 +12,13 @@ beautifulsoup4==4.13.4 \
     --hash=sha256:9bbbb14bfde9d79f38b8cd5f8c7c85f4b8f2523190ebed90e950a8dea4cb1c4b \
     --hash=sha256:dbb3c4e1ceae6aefebdaf2423247260cd062430a410e38c66f2baa50a8437195
     # via wagtail
-boto3==1.38.33 \
-    --hash=sha256:25d0717489c658f7ae6c3c7f0f7e1b4d611b30b2f08f0fcef6455ac6864a8768 \
-    --hash=sha256:6467909c1ae01ff67981f021bb2568592211765ec8a9a1d2c4529191e46c3541
+boto3==1.38.34 \
+    --hash=sha256:25e76b9fec8db8e21adaf84df0de5c58fa779be121bc327e07e920c7c0870394 \
+    --hash=sha256:7d9409be63a11c1684427a9b06d6820ec72785cb275b56affe437f3709a80eb3
     # via rhgardenservices (pyproject.toml)
-botocore==1.38.33 \
-    --hash=sha256:ad25233e93dcebe95809b1f9393c1f11a639696327793d166295fb78dd7bc597 \
-    --hash=sha256:dbe8fea9d0426c644c89ef2018ead886ccbcc22901a02b377b4e65ce1cb69a2b
+botocore==1.38.34 \
+    --hash=sha256:95ff2c4819498e94b321c9b5ac65d02267df93ff7ce7617323b19f19ea7cb545 \
+    --hash=sha256:a105f4d941f329aa72c43ddf42371ec4bee50ab3619fc1ef35d0005520219612
     # via
     #   boto3
     #   s3transfer
@@ -351,9 +351,9 @@ django-filter==25.1 \
     --hash=sha256:1ec9eef48fa8da1c0ac9b411744b16c3f4c31176c867886e4c48da369c407153 \
     --hash=sha256:4fa48677cf5857b9b1347fed23e355ea792464e0fe07244d1fdfb8a806215b80
     # via wagtail
-django-health-check==3.19.1 \
-    --hash=sha256:558aa260102ae5c53a2925692e1b08fc1a9b181db3675b00a8e320e088a669db \
-    --hash=sha256:f1e287190a15d5c2f53db67877a4360ed0256bf5f3d6773f0fe4903d052a6c14
+django-health-check==3.19.2 \
+    --hash=sha256:126560fee249b1e6f976b19af170dceb7abef6d023a9d02387a11eeb15bb4f77 \
+    --hash=sha256:44533d0d18958fc4a3544df880086dcaba824a0ac11c707d3cb286013af7e5d1
     # via rhgardenservices (pyproject.toml)
 django-modelcluster==6.4 \
     --hash=sha256:0102d00e6b884721ba21e32edb716548e0dead7880e130aa2e04854bd384a42f \
