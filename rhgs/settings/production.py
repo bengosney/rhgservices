@@ -1,19 +1,19 @@
 # Standard Library
 import os
+import urllib.parse as urlparse
 
 # Third Party
 import dj_database_url
 
 # Locals
 from rhgs.settings.base import *  # noqa
-from rhgs.settings.base import DATABASES, MIDDLEWARE
+from rhgs.settings.base import BASE_URL, DATABASES, MIDDLEWARE
 
 DEBUG = False
 
 env = os.environ.copy()
 
-# It's a GOOD idea to lock this down.
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [urlparse.urlparse(BASE_URL).netloc]
 
 DATABASES["default"] = dj_database_url.config()  # type: ignore
 DATABASES["default"].update(
