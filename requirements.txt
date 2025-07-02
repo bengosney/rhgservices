@@ -12,13 +12,13 @@ beautifulsoup4==4.13.4 \
     --hash=sha256:9bbbb14bfde9d79f38b8cd5f8c7c85f4b8f2523190ebed90e950a8dea4cb1c4b \
     --hash=sha256:dbb3c4e1ceae6aefebdaf2423247260cd062430a410e38c66f2baa50a8437195
     # via wagtail
-boto3==1.39.0 \
-    --hash=sha256:52a9f07fb9fa60ec6a2be07cd1586a97d8adae2be750121d4c032349cd113221 \
-    --hash=sha256:6257f6f7bb87b66342564eab579ce1f0f63a4c1a6f701492f959e59bd7af68e5
+boto3==1.39.1 \
+    --hash=sha256:3f89d6f05ab7d3a6f6807b45e9456a1a0db53bb47b1758cf5e0a3479cdd6d734 \
+    --hash=sha256:beb945ec1ab4bb48d39640ce7d3054b7e4ab2020ef3259034c039195ae04b2f7
     # via rhgardenservices (pyproject.toml)
-botocore==1.39.0 \
-    --hash=sha256:2b8701e529a80241b989d83262a629d0d91fbd7a06ded63ecc1c9d529a383d57 \
-    --hash=sha256:d8e72850d3450aeca355b654efb32c8370bf824c1945a61cad2395dc2688581e
+botocore==1.39.1 \
+    --hash=sha256:912d518ac3096460e54d2cf80899943a521a586fd5c075568e807f3c35623318 \
+    --hash=sha256:ac829b46b30bd837392c9792cdf63b44d290a4691c028b5e66ab471ced1b8305
     # via
     #   boto3
     #   s3transfer
@@ -320,13 +320,13 @@ defusedxml==0.7.1 \
     --hash=sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69 \
     --hash=sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61
     # via willow
-dj-database-url==3.0.0 \
-    --hash=sha256:749a7a42d88d6c741c1d2f4ab24c2ae0d5cd12f00f2d1d55ff9f5fadabe8a2c3 \
-    --hash=sha256:cbb84b2e3f372460b1e43692bf9fdc0c32e78930ee101db470cba56105fca1e5
+dj-database-url==3.0.1 \
+    --hash=sha256:43950018e1eeea486bf11136384aec0fe55b29fe6fd8a44553231b85661d9383 \
+    --hash=sha256:8994961efb888fc6bf8c41550870c91f6f7691ca751888ebaa71442b7f84eff8
     # via rhgardenservices (pyproject.toml)
-django==5.2.3 \
-    --hash=sha256:335213277666ab2c5cac44a792a6d2f3d58eb79a80c14b6b160cd4afc3b75684 \
-    --hash=sha256:c517a6334e0fd940066aa9467b29401b93c37cec2e61365d663b80922542069d
+django==5.2.4 \
+    --hash=sha256:60c35bd96201b10c6e7a78121bd0da51084733efa303cc19ead021ab179cef5e \
+    --hash=sha256:a1228c384f8fa13eebc015196db7b3e08722c5058d4758d20cb287503a540d8f
     # via
     #   rhgardenservices (pyproject.toml)
     #   dj-database-url
@@ -770,7 +770,6 @@ typing-extensions==4.14.0 \
     --hash=sha256:a1514509136dd0b477638fc68d6a91497af5076466ad0fa6c338e44e359944af
     # via
     #   beautifulsoup4
-    #   dj-database-url
     #   django-stubs-ext
     #   django-tasks
     #   psycopg
