@@ -375,9 +375,9 @@ django-taggit==6.1.0 \
     --hash=sha256:ab776264bbc76cb3d7e49e1bf9054962457831bd21c3a42db9138b41956e4cf0 \
     --hash=sha256:c4d1199e6df34125dd36db5eb0efe545b254dec3980ce5dd80e6bab3e78757c3
     # via wagtail
-django-tasks==0.7.0 \
-    --hash=sha256:499f80d1a051566443cfa88a300d8b03435af7fc5708cad4d8da6d285614f739 \
-    --hash=sha256:8a8d64f2dc6e29ac2f45092d90e2dd82dc1dca100dfe3a4f2ce1209db99f3527
+django-tasks==0.8.1 \
+    --hash=sha256:32673a9f56108ac1ea4664dc62580e5fc3536dd40858b38fd3b6a099913244b7 \
+    --hash=sha256:5323f3858f7ea99d899a772b832098d8d694444b291c24f1e0ed5446272b880b
     # via wagtail
 django-treebeard==4.7.1 \
     --hash=sha256:846e462904b437155f76e04907ba4e48480716855f88b898df4122bdcfbd6e98 \
@@ -811,9 +811,9 @@ urllib3==2.5.0 \
     # via
     #   botocore
     #   requests
-wagtail==7.0.2 \
-    --hash=sha256:053c8dfa3d41979eb8bb5d76e82b1b251926fa263766744f33e452b00e82fe68 \
-    --hash=sha256:3bf1c9edd5ea9cdf191a83709bfbdaf071186fc11323adf7194e4fa62d52ddec
+wagtail==7.1 \
+    --hash=sha256:ddffde38873044bf98e2ce77bd7ad728a29633775efb1be7a68a636698a8381e \
+    --hash=sha256:e1de2af82b62cbf4d3b77a93c55779bc67ad7b3179b6b4f824ec4f214d570c01
     # via rhgardenservices (pyproject.toml)
 wheel==0.45.1 \
     --hash=sha256:661e1abd9198507b1409a20c02106d9670b2576e916d58f520316666abca6729 \
