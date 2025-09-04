@@ -12,13 +12,13 @@ beautifulsoup4==4.13.5 \
     --hash=sha256:5e70131382930e7c3de33450a2f54a63d5e4b19386eab43a5b34d594268f3695 \
     --hash=sha256:642085eaa22233aceadff9c69651bc51e8bf3f874fb6d7104ece2beb24b47c4a
     # via wagtail
-boto3==1.40.22 \
-    --hash=sha256:9972752b50fd376576a6e04a7d6afc69762a368f29b85314598edb62c1894663 \
-    --hash=sha256:ecc468266a018f77869fd9cc3564500c3c1b658eb6d8e20351ec88cc06258dbf
+boto3==1.40.23 \
+    --hash=sha256:9826fb6abcdda2f016a939b81e94d1a9e1147ae897a523f366cf5a1558936356 \
+    --hash=sha256:ca5e2f767a7b759b0bb5c7e5c665effa1512799e763823e68d04e7c10b1399d5
     # via rhgardenservices (pyproject.toml)
-botocore==1.40.22 \
-    --hash=sha256:df50788fc71250dd884a4e2b60931103416bfba5baa85d2e150b8434ded7e61e \
-    --hash=sha256:eb800ece2cd67777ebb09a67a0d1628db3aea4f2ccbf1d8bf7dbf8504d1f3b71
+botocore==1.40.23 \
+    --hash=sha256:487cced8f9346f7d1038e9158c56b6ecf6d839dd43e345bc730053c8cf321ed3 \
+    --hash=sha256:de07cceaf9b142c183e165d303a0eee289c34d63f63e6b7a640406d6bacfb646
     # via
     #   boto3
     #   s3transfer
