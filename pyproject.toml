@@ -15,8 +15,8 @@ authors = [
 #   version = ".".join(f.read().strip().split('.')[0:2])
 # cog.outl(f"requires-python = \">={version}\"")
 # ]]]
-requires-python = ">=3.13"
-# [[[end]]] (checksum: cd7dfc1c72006b07656d9d1f6147982b)
+requires-python = ">=3.14"
+# [[[end]]] (sum: Vc9kRGWPzK) (sum: Vc9kRGWPzK)
 
 classifiers = [
   # [[[cog
@@ -24,8 +24,8 @@ classifiers = [
   # cog.outl(f"\"Programming Language :: Python :: {version}\",")
   # ]]]
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.13",
-  # [[[end]]] (checksum: f9312ce79962799e985b47095be03edb)
+  "Programming Language :: Python :: 3.14",
+  # [[[end]]] (sum: 7gn4d5+oKr) (sum: 7gn4d5+oKr)
 ]
 dependencies = [
   "boto3",
@@ -71,8 +71,8 @@ optional-dependencies.dev = [
 # [[[cog
 # cog.outl(f"target-version = \"py{version.replace('.','')}\"")
 # ]]]
-target-version = "py313"
-# [[[end]]] (checksum: 7ee9b2bab8765cca66d8030a46d4a46e)
+target-version = "py314"
+# [[[end]]] (sum: 0xk3kDfGuA) (sum: 0xk3kDfGuA)
 line-length = 120
 exclude = [ "migrations" ]
 
@@ -100,5 +100,5 @@ lint.isort.sections.wagtail = [ "wagtail" ]
 # [[[cog
 # cog.outl(f"max_supported_python = \"{version}\"")
 # ]]]
-max_supported_python = "3.13"
-# [[[end]]] (checksum: 8ab5a3d77f6dd162c46326ad48631ab2)
+max_supported_python = "3.14"
+# [[[end]]] (sum: SnZxKjKo5y) (sum: SnZxKjKo5y)
