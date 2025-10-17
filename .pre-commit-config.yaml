@@ -1,17 +1,12 @@
 exclude: migrations/.*\.py|Procfile|[aw]sgi\.py|node_modules|.git|\.polar|inputs/.*
 repos:
-- repo: https://github.com/nialov/cog
-  rev: 6d73562c5cb38753bd94414a6e7612b263bc278d
-  hooks:
-  - id: cog
-    files: (.python-version|.circleci/config.yml|.pre-commit-config.yaml|pyproject.toml)
 - repo: https://github.com/adamchainz/django-upgrade
-  rev: 1.24.0
+  rev: 1.29.0
   hooks:
   - id: django-upgrade
     args: [--target-version, '5.2']
 - repo: https://github.com/asottile/pyupgrade
-  rev: v3.19.1
+  rev: v3.21.0
   hooks:
   - id: pyupgrade
     # [[[cog
@@ -19,14 +14,14 @@ repos:
     # with open(".python-version") as f:
     #   cog.out(f"args: [--py{"".join(f.read().strip().split('.')[0:2])}-plus]")
     # ]]]
-    args: [--py313-plus]
-    # [[[end]]] (checksum: 6cea9636c70796bb80ba2c43f851874c)
+    args: [--py314-plus]
+    # [[[end]]] (sum: 9K8JcXf/QB)
 - repo: https://github.com/MarcoGorelli/absolufy-imports
   rev: v0.3.1
   hooks:
   - id: absolufy-imports
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v5.0.0
+  rev: v6.0.0
   hooks:
   - id: trailing-whitespace
   - id: end-of-file-fixer
@@ -42,13 +37,13 @@ repos:
   - id: mixed-line-ending
     args: [--fix, lf]
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.11.6
+  rev: v0.14.0
   hooks:
   - id: ruff
     args: [--fix]
   - id: ruff-format
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v2.14.0
+  rev: v2.15.0
   hooks:
   - id: pretty-format-yaml
     args: [--autofix]
@@ -63,15 +58,15 @@ repos:
     types_or: [css, javascript]
     exclude: .min.
 - repo: https://github.com/adamchainz/djade-pre-commit
-  rev: 1.4.0
+  rev: 1.6.0
   hooks:
   - id: djade
     args: [--target-version, '5.1']
 - repo: https://github.com/rtts/djhtml
-  rev: 3.0.7
+  rev: 3.0.10
   hooks:
   - id: djhtml
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: v2.5.1
+  rev: v2.11.0
   hooks:
   - id: pyproject-fmt

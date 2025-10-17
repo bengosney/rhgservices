@@ -10,8 +10,8 @@ jobs:
     # with open(".python-version") as f:
     #   cog.out(f"- image: cimg/python:{f.read().strip()}")
     # ]]]
-    - image: cimg/python:3.13
-    # [[[end]]] (checksum: 96d6336abf295352f87a27601b1ebe2d)
+    - image: cimg/python:3.14
+    # [[[end]]] (sum: YXFHBBZ2No) (sum: YXFHBBZ2No)
     steps:
     - checkout
     - restore_cache:
