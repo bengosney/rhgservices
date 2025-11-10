@@ -389,9 +389,9 @@ django-taggit==6.1.0 \
     --hash=sha256:ab776264bbc76cb3d7e49e1bf9054962457831bd21c3a42db9138b41956e4cf0 \
     --hash=sha256:c4d1199e6df34125dd36db5eb0efe545b254dec3980ce5dd80e6bab3e78757c3
     # via wagtail
-django-tasks==0.8.1 \
-    --hash=sha256:32673a9f56108ac1ea4664dc62580e5fc3536dd40858b38fd3b6a099913244b7 \
-    --hash=sha256:5323f3858f7ea99d899a772b832098d8d694444b291c24f1e0ed5446272b880b
+django-tasks==0.9.0 \
+    --hash=sha256:971b3829efeee68147f7deced8d21b907131b11ec7953af83eb94b11f128a24d \
+    --hash=sha256:fddc344934a605d9eafa08ac8ba32c0cde9da23ef534e03a41f09fa0417b535a
     # via
     #   modelsearch
     #   wagtail
@@ -440,9 +440,9 @@ milksnake==0.1.6 \
     --hash=sha256:0198f8932b4e136c29c0d0d490ff1bac03f82c3a7b2ee6f666e3683b64314fd9 \
     --hash=sha256:31e3eafaf2a48e177bb4b2dacef2c7ae8c5b2147a19c6d626209b819490e6f1d
     # via rustface
-modelsearch==1.1 \
-    --hash=sha256:a915a331a2ef7e1c94e769e2cd403cd7df4afe5078fd3796682f090541b7992e \
-    --hash=sha256:bdccbe9c80b7ac37aecc998ca13f7b05915acca1a2405d73755245df03a37a36
+modelsearch==1.1.1 \
+    --hash=sha256:25f329c4d93572729c931f65c46cedb5cfc32d368690ebdabc223aa6205251d6 \
+    --hash=sha256:d2580790af76c3a6404f651c9d8ca8695b284551583bb8ca6ddeb17eca0cfb52
     # via wagtail
 numpy==2.2.6 \
     --hash=sha256:038613e9fb8c72b0a41f025a7e4c3f0b7a1b5d768ece4796b674c8f3fe13efff \
