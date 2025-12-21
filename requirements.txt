@@ -365,9 +365,9 @@ django-filter==25.2 \
     --hash=sha256:760e984a931f4468d096f5541787efb8998c61217b73006163bf2f9523fe8f23 \
     --hash=sha256:9c0f8609057309bba611062fe1b720b4a873652541192d232dd28970383633e3
     # via wagtail
-django-health-check==3.20.4 \
-    --hash=sha256:8e6dc747357c59803241711912d6c913986cbf7d01a5952dcae89904f1dfcaf2 \
-    --hash=sha256:aea57b41605fdc3297297ac2ed94da90cbe969678ae3a50dd9b1726e69594336
+django-health-check==3.20.7 \
+    --hash=sha256:21488972bf96dea9c12117206ad27a68ff9d418675c45d6688671a950e6aae1d \
+    --hash=sha256:4ee43b96cd60f77aae1ba97841b403b02c625e74d50135a9d7164c777125e0f3
     # via rhgardenservices (pyproject.toml)
 django-modelcluster==6.4.1 \
     --hash=sha256:ccc190cd9e22c24900ea2410bff64d444d48f43f0f4aedeed0f6cd94e2536698 \
