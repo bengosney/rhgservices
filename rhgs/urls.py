@@ -9,13 +9,15 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 
+from health_check.views import HealthCheckView
+
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("sitemap.xml", sitemap),
     path("robots.txt", include("robots.urls")),
-    path("health/", include("health_check.urls")),
+    path("health/", HealthCheckView.as_view()),
 ]
 
 
