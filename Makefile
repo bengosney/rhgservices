@@ -1,4 +1,4 @@
-.PHONY: help clean test install all init dev css watch DBTOSQLPATH assets js node cog COGABLE
+.PHONY: help clean test install all init dev css watch assets js node cog
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
@@ -15,6 +15,7 @@ WHEEL_PATH:=$(BINPATH)/wheel
 UV_PATH:=$(BINPATH)/uv
 PRE_COMMIT_PATH:=$(BINPATH)/pre-commit
 DBTOSQLPATH:=$(BINPATH)/db-to-sqlite
+PSYCOPGPATH:="./.direnv/lib/python-$(PYTHON_VERSION)/site-packages/psycopg"
 COG_PATH:=$(BINPATH)/cog
 
 COGABLE:=$(shell git ls-files | xargs grep -l "\[\[\[cog")
@@ -115,11 +116,14 @@ upgrade: python
 cog: $(COG_PATH) $(COGABLE)
 	@cog -rc $(filter-out $<,$^)
 
-$(DBTOSQLPATH):
-	pip install git+https://github.com/bengosney/db-to-sqlite.git
+$(PSYCOPGPATH):
+	@python -m pip install psycopg2
+
+$(DBTOSQLPATH): $(PSYCOPGPATH)
+	@python -m pip install git+https://github.com/bengosney/db-to-sqlite.git
 
 db.sqlite3: $(DBTOSQLPATH)
-	db-to-sqlite --all $(shell heroku config | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
+	db-to-sqlite --all $(shell heroku config --app $(HEROKU_APP) | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
 	@python manage.py clear_renditions
 
 
