@@ -16,10 +16,12 @@ INSTALLED_APPS += [  # noqa
     "debug_toolbar",
     "debugtools",
     "localimages",
+    "django_browser_reload",
 ]
 
 MIDDLEWARE += [  # noqa
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 INTERNAL_IPS = [
