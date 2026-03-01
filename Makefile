@@ -12,10 +12,8 @@ BINPATH=$(shell which python | xargs dirname | xargs realpath --relative-to=".")
 PYTHON_VERSION:=$(shell cat .python-version)
 PIP_PATH:=$(BINPATH)/pip
 WHEEL_PATH:=$(BINPATH)/wheel
-UV_PATH:=$(BINPATH)/uv
+UV_PATH:=~/.cargo/bin/uv
 PRE_COMMIT_PATH:=$(BINPATH)/pre-commit
-DBTOSQLPATH:=$(BINPATH)/db-to-sqlite
-PSYCOPGPATH:="./.direnv/lib/python-$(PYTHON_VERSION)/site-packages/psycopg"
 COG_PATH:=$(BINPATH)/cog
 
 COGABLE:=$(shell git ls-files | xargs grep -l "\[\[\[cog")
@@ -116,16 +114,11 @@ upgrade: python
 cog: $(COG_PATH) $(COGABLE)
 	@cog -rc $(filter-out $<,$^)
 
-$(PSYCOPGPATH):
-	@python -m pip install psycopg2
-
-$(DBTOSQLPATH): $(PSYCOPGPATH)
-	@python -m pip install git+https://github.com/bengosney/db-to-sqlite.git
-
-db.sqlite3: $(DBTOSQLPATH)
-	db-to-sqlite --all $(shell heroku config --app $(HEROKU_APP) | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
+db.sqlite3: ## Import database from heroku
+	@echo "Importing database"
+	@$(UV_PATH) tool run --from "db-to-sqlite[postgresql]" db-to-sqlite --all $(shell heroku config --app $(HEROKU_APP) | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
+	@echo "Clearing image renditions"
 	@python manage.py clear_renditions
-
 
 bs: ## Run browser-sync
 	browser-sync start --proxy localhost:8000 --files "./rhgs/static/css/*.css" --files "./rhgs/static/js/*.js" --files "./**/*.html"
