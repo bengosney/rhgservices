@@ -23,12 +23,10 @@
             <div class="row md">
                 <div class="col">
                     {% for image in page.images.all %}
-                        <div class="lightbox">
-                            <input type="checkbox" id="light-box-{{ image.id }}" />
-                            <label for="light-box-{{ image.id }}">
-                                {% picture image.image format-{avif,webp,jpeg} max-{1980x1080,1024x768,800x600} %}
-                            </label>
-                        </div>
+                        <dialog class="lightbox" id="image-dialog-{{ image.id }}" closedby="any">
+                            {% picture image.image format-{avif,webp,jpeg} max-{1980x1080,1024x768,800x600} %}
+                            <button commandfor="image-dialog-{{ image.id }}" command="close">&#x2715;</button>
+                        </dialog>
                     {% endfor %}
                     <div class="slider">
                         <div class="slider-inner">
@@ -36,9 +34,9 @@
                                 {% for image in page.images.all %}
                                     <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
                                     <div class="slide slide-{{ forloop.counter }}">
-                                        <label for="light-box-{{ image.id }}">
+                                        <button command="show-modal" commandfor="image-dialog-{{ image.id }}">
                                             {% picture image.image format-{avif,webp,jpeg} max-640x427 %}
-                                        </label>
+                                        </button>
                                     </div>
                                 {% endfor %}
                                 {% if page.images.all|length > 1 %}

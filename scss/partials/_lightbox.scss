@@ -1,90 +1,51 @@
-.lightbox {
-    $transitionTime: 0.5s;
-    input {
-        display: none;
-    }
-    label {
-        display: flex;
-        z-index: 10;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(black, 75%);
-        backdrop-filter: blur(0px);
+dialog.lightbox:has(img) {
+  img {
+    box-shadow: 0px 0px 2rem 0.33rem rgba(black, 100%);
+    max-width: calc(100vw - 3.5rem);
+    max-height: calc(100vh - 3.5rem);
+    min-width: 10rem;
+    min-height: 10rem;
+    height: auto;
+    width: auto;
+    display: block;
+    padding: 0;
+    margin: 0;
+    background: palette(bg, base);
+    background: linear-gradient(
+      45deg,
+      palette(bg, base) 0%,
+      lighten(palette(bg, base), 15%) 50%,
+      darken(palette(bg, base), 25%) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+  }
 
-        opacity: 0;
-        left: 100%;
-        pointer-events: none;
-        transition:
-            left 0s ease-in-out calc($transitionTime / 2),
-            opacity calc($transitionTime / 2) ease-in-out;
-
-        align-items: center;
-        justify-content: center;
-
-        & > * {
-            position: relative;
-            &::after {
-                content: "\2715";
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                color: palette(fg);
-                line-height: 1em;
-                font-size: 2rem;
-                text-shadow: 0px 0px 0.2em black;
-                cursor: pointer;
-            }
-        }
-
-        img {
-            box-shadow: 0px 0px 2rem 0.33rem rgba(black, 100%);
-            max-width: calc(100vw - 2.5rem);
-            max-height: calc(100vh - 2.5rem);
-            min-width: 10rem;
-            min-height: 10rem;
-            height: auto;
-            width: auto;
-            display: block;
-            padding: 0;
-            margin: 0;
-
-            border: 0.1em solid palette(accent, bg);
-            box-sizing: border-box;
-
-            background: palette(bg, base);
-            background: linear-gradient(
-                45deg,
-                palette(bg, base) 0%,
-                lighten(palette(bg, base), 15%) 50%,
-                darken(palette(bg, base), 25%) 100%
-            );
-            background-size: 400% 400%;
-            animation: gradient 5s ease infinite;
-        }
-    }
-
-    input:checked + label {
-        left: 0%;
-        opacity: 1;
-        transition:
-            left 0s ease-in-out,
-            opacity $transitionTime ease-in-out;
-        pointer-events: auto;
-        backdrop-filter: blur(5px);
-    }
+  button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: palette(fg);
+    line-height: 1em;
+    font-size: 2rem;
+    text-shadow: 0px 0px 0.2em black;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0 0.15em;
+    margin: 0;
+  }
 }
 
+
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
