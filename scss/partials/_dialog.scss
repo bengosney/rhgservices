@@ -1,0 +1,55 @@
+dialog:has(img) {
+  box-shadow: 0px 0px 2rem 0.33rem rgba(black, 100%);
+  animation: fade-out 0.25s ease-out;
+
+  padding: 0;
+  border: none;
+  outline: 0.1em solid palette(accent, bg);
+  box-sizing: border-box;
+}
+
+dialog:open {
+  animation: fade-in 0.7s ease-out;
+}
+
+dialog:open::backdrop {
+  background: rgba(black, 50%);
+  backdrop-filter: blur(5px);
+  animation: backdrop-fade-in 0.5s ease-out forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    display: block;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes backdrop-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
