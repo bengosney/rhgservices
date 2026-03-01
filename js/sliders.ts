@@ -1,7 +1,7 @@
 const initSlider = (slider: Element, duration: number) => {
     let mouseOver: boolean = false;
     const select = (selector: string) => slider.querySelector<HTMLInputElement>(selector);
-    const lightboxSelector = ".lightbox input:checked";
+    const lightboxSelector = "dialog[open].lightbox";
     const initTimer = () =>
         setInterval(() => {
             const next = select("input:checked ~ input") || select("input:first-child");
