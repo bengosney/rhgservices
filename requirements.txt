@@ -12,13 +12,13 @@ beautifulsoup4==4.14.3 \
     --hash=sha256:0918bfe44902e6ad8d57732ba310582e98da931428d231a5ecb9e7c703a735bb \
     --hash=sha256:6292b1c5186d356bba669ef9f7f051757099565ad9ada5dd630bd9de5fa7fb86
     # via wagtail
-boto3==1.42.60 \
-    --hash=sha256:3d549d15c821dcc871a0821319049e7d493ae3317121eb01e4b1f5230c19d5d4 \
-    --hash=sha256:c0cc3d93cd76c99461f6e109e04bb020defe3ffcd04c6163c72836dff5591614
+boto3==1.42.61 \
+    --hash=sha256:117ebfc597c95bfb64c6d37ba77bd1c2a97a1885c1dcac2a8be1a14e2139a76d \
+    --hash=sha256:156efcc298a33206be6dfd220815c64aa8b09424017534cabe717636961fc306
     # via rhgardenservices (pyproject.toml)
-botocore==1.42.60 \
-    --hash=sha256:d8b4aab06cc134e21d294c068cb94e0eeb59bacd27c836fb6b882b61433df2f4 \
-    --hash=sha256:de9278810fb2e92a9ffe3dc8ffa68f1066e6d2caf19da9460760743b39ca5215
+botocore==1.42.61 \
+    --hash=sha256:476059beb3f462042742950cf195d26bc313461a77189c16e37e205b0a924b26 \
+    --hash=sha256:702d6011ace2b5b652a0dbb45053d4d9f79da2c5b184463042434e1754bdd601
     # via
     #   boto3
     #   s3transfer
@@ -365,9 +365,9 @@ django-filter==25.2 \
     --hash=sha256:760e984a931f4468d096f5541787efb8998c61217b73006163bf2f9523fe8f23 \
     --hash=sha256:9c0f8609057309bba611062fe1b720b4a873652541192d232dd28970383633e3
     # via wagtail
-django-health-check==4.1.1 \
-    --hash=sha256:3986ff3877199e2ed12f27114af88b82c5f17dfce933bb873d73642248358d22 \
-    --hash=sha256:f354971e7057001b31501e34aade605184d93c2cfed41bc5346597e3377c0872
+django-health-check==4.1.2 \
+    --hash=sha256:78c2523ed500e78e55061813abf21a9d8dddded0c74e46a1335c99c87c85ecce \
+    --hash=sha256:e4a9e5996ec40c5ade665363c468228682c42937d5b4a05606dc13621ab74fb9
     # via rhgardenservices (pyproject.toml)
 django-modelcluster==6.4.1 \
     --hash=sha256:ccc190cd9e22c24900ea2410bff64d444d48f43f0f4aedeed0f6cd94e2536698 \
@@ -423,8 +423,8 @@ gunicorn==25.1.0 \
     --hash=sha256:1426611d959fa77e7de89f8c0f32eed6aa03ee735f98c01efba3e281b1c47616 \
     --hash=sha256:d0b1236ccf27f72cfe14bce7caadf467186f19e865094ca84221424e839b8b8b
     # via rhgardenservices (pyproject.toml)
-honeybadger==1.1.2 \
-    --hash=sha256:57cca8667c108c69476ebe76d2192e27e3aa30c01aa79fae0975629af5d8cd39
+honeybadger==1.1.3 \
+    --hash=sha256:3bcb5f88717d7b4167bfbddb6e9cba1dfe7c72c29cb7d60b631025ff4e0b49ea
     # via rhgardenservices (pyproject.toml)
 idna==3.11 \
     --hash=sha256:771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea \
