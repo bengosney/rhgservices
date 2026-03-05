@@ -5,10 +5,11 @@
 MAKEFLAGS += -j4
 
 HOOKS=$(.git/hooks/pre-commit)
-REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]')
+REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]' 2>/dev/null)
 
-BINPATH=$(shell which python | xargs dirname | xargs realpath --relative-to=".")
+BINPATH=$(shell which python 2>/dev/null | xargs -r dirname | xargs -r realpath --relative-to=".")
 
+VENV_PATH:=.venv
 PYTHON_VERSION:=$(shell cat .python-version)
 PIP_PATH:=$(BINPATH)/pip
 WHEEL_PATH:=$(BINPATH)/wheel
@@ -35,11 +36,11 @@ help: ## Display this help
 
 requirements.%.txt: $(UV_PATH) pyproject.toml
 	@echo "Builing $@"
-	python -m uv pip compile --generate-hashes --extra $* $(filter-out $<,$^) > $@
+	uv pip compile --generate-hashes --extra $* $(filter-out $<,$^) > $@
 
 requirements.txt: $(UV_PATH) pyproject.toml
 	@echo "Builing $@"
-	python -m uv pip compile --generate-hashes $(filter-out $<,$^) > $@
+	uv pip compile --generate-hashes $(filter-out $<,$^) > $@
 
 .direnv: .envrc
 	python -m pip install --upgrade pip
@@ -49,15 +50,21 @@ requirements.txt: $(UV_PATH) pyproject.toml
 .git/hooks/pre-commit: $(PRE_COMMIT_PATH) .pre-commit-config.yaml
 	pre-commit install
 
-.envrc: .python-version
+.envrc:
 	@echo "Setting up .envrc then stopping"
-	@echo "layout python python$(PYTHON_VERSION)" > $@
+	@echo 'if [ ! -d .venv ]; then' > $@
+	@echo '    make .venv' >> $@
+	@echo 'fi' >> $@
+	@echo '' >> $@
+	@echo 'PATH_add ".venv/bin"' >> $@
+	@echo 'export VIRTUAL_ENV="$$PWD/.venv"' >> $@
+	@echo 'export VIRTUAL_ENV_PROMPT="$$(basename $$PWD)"' >> $@
+	@echo 'watch_file .venv' >> $@
 	@touch -d '+1 minute' $@
 	@false
 
-$(PIP_PATH):
-	@python -m ensurepip
-	@python -m pip install --upgrade pip
+$(VENV_PATH): | $(UV_PATH) .envrc
+	$(UV_PATH) venv --managed-python --python $(PYTHON_VERSION)
 	@touch $@
 
 $(WHEEL_PATH): $(PIP_PATH)
@@ -70,10 +77,6 @@ $(PIP_SYNC_PATH): $(PIP_PATH) $(WHEEL_PATH)
 
 $(PRE_COMMIT_PATH): $(PIP_PATH) $(WHEEL_PATH)
 	python -m pip install pre-commit
-	@touch $@
-
-$(UV_PATH): $(PIP_PATH) $(WHEEL_PATH)
-	python -m pip install uv
 	@touch $@
 
 $(COG_PATH): $(PIP_PATH) $(WHEEL_PATH)
@@ -98,7 +101,7 @@ node: node_modules
 
 python: $(UV_PATH) requirements.txt $(REQS)
 	@echo "Installing $(filter-out $<,$^)"
-	@python -m uv pip sync $(filter-out $<,$^)
+	@uv pip sync $(filter-out $<,$^)
 
 pip: $(PIP_PATH) ## Update pip
 	@python -m pip install --upgrade pip
