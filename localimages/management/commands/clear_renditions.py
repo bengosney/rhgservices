@@ -10,4 +10,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         Rendition.objects.all().delete()
-        self.stdout.write(self.style.SUCCESS("Removed all image renditions"))
+        self.stdout.write(self.style.SUCCESS("Removed all image renditions."))

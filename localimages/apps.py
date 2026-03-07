@@ -1,41 +1,16 @@
-# Standard Library
-import os
-from pathlib import Path
-from random import randint
-
-# Django
 from django.apps import AppConfig
 from django.conf import settings
 
-# Third Party
-import requests
-import wrapt
-
-
-def fill_image_with_stock(path):
-    Path(path).parent.mkdir(exist_ok=True)
-    base_url = f"https://picsum.photos/{randint(6, 12) * 100}/{randint(6, 12) * 100}"
-    img_data = requests.get(base_url)
-    with open(path, "wb") as handler:
-        handler.write(img_data.content)
-
 
 class LocalImagesConfig(AppConfig):
-    default_auto_field = "django.db.models.BigAutoField"
     name = "localimages"
-    path = os.path.join(settings.BASE_DIR, "localimages")
 
-    def ready(self) -> None:
-        # Wagtail
-        from wagtail.images.models import AbstractImage, SourceImageIOError
+    def ready(self):
+        if not settings.DEBUG:
+            return
 
-        @wrapt.patch_function_wrapper(AbstractImage, "generate_rendition_file")
-        def fake_image(wrapped, instance, args, kwargs):
-            try:
-                return wrapped(*args, **kwargs)
-            except SourceImageIOError:
-                fill_image_with_stock(instance.file.path)
+        from wagtail.images.models import Image  # noqa: PLC0415
 
-                return wrapped(*args, **kwargs)
+        from localimages.storage import DevImageStorage  # noqa: PLC0415
 
-        return super().ready()
+        Image._meta.get_field("file").storage = DevImageStorage()
