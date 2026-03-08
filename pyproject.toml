@@ -17,7 +17,6 @@ authors = [
 # ]]]
 requires-python = ">=3.14"
 # [[[end]]] (sum: Vc9kRGWPzK) (sum: Vc9kRGWPzK)
-
 classifiers = [
   # [[[cog
   # cog.outl(f"\"Programming Language :: Python :: {version.split('.')[0]} :: Only\",")
@@ -45,13 +44,13 @@ dependencies = [
   "whitenoise",
   "whitenoise[brotli]",
 ]
-
 optional-dependencies.dev = [
   "cogapp",
   "django-browser-reload",
   "django-debug-toolbar",
   "django-debugtools",
   "django-stubs",
+  "django-watchfiles",
   "icecream",
   "model-bakery",
   "mypy",
@@ -76,14 +75,11 @@ target-version = "py314"
 # [[[end]]] (sum: 0xk3kDfGuA) (sum: 0xk3kDfGuA)
 line-length = 120
 exclude = [ "migrations" ]
-
 format.indent-style = "space"
 format.quote-style = "double"
 format.docstring-code-format = true
-
 lint.select = [ "C90", "DJ", "E", "ERA", "F", "FURB", "I", "N", "PERF", "PL", "RUF", "TRY", "UP" ]
 lint.ignore = [ "RUF012" ]
-
 lint.isort.section-order = [
   "future",
   "standard-library",
@@ -93,7 +89,6 @@ lint.isort.section-order = [
   "first-party",
   "local-folder",
 ]
-
 lint.isort.sections.django = [ "django" ]
 lint.isort.sections.wagtail = [ "wagtail" ]
 

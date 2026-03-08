@@ -17,6 +17,7 @@ INSTALLED_APPS += [  # noqa
     "debugtools",
     "localimages",
     "django_browser_reload",
+    "django_watchfiles",
 ]
 
 MIDDLEWARE += [  # noqa
