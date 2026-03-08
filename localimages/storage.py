@@ -17,7 +17,8 @@ class DevImageStorage(FileSystemStorage):
     MAX_PICSUM_ID = 1084
 
     def _generate_placeholder(self, id):
-        url = f"https://picsum.photos/id/{id}/1600/900"
+        width, height = (1600, 900) if id % 2 == 0 else (900, 1600)
+        url = f"https://picsum.photos/id/{id}/{width}/{height}"
 
         try:
             response = requests.get(url, timeout=5)
