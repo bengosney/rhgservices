@@ -1,0 +1,54 @@
+.carousel {
+  margin-bottom: 4rem;
+
+  $marker_size: 1rem;
+
+  .track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+
+    scroll-marker-group: after;
+    anchor-name: --carousel;
+
+    &::scroll-marker-group {
+      position: absolute;
+      position-anchor: --carousel;
+      top: calc(anchor(bottom) - ($marker_size * 2.25));
+      justify-self: anchor-center;
+      display: flex;
+      justify-content: center;
+      gap: calc($marker_size * .75);
+      z-index: 10;
+    }
+
+    .slide {
+      min-width: 100%;
+      max-width: 100%;
+      display: grid;
+      place-items: center;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+
+      &::scroll-marker {
+        width: $marker_size;
+        height: $marker_size;
+        text-indent: calc($marker_size + 1rem);
+        overflow: hidden;
+        display: block;
+        background: palette(fg);
+        border-radius: 50%;
+        box-shadow: 0px 0px 1rem black;
+
+        content: attr(data-slide-name);
+
+        &:target-current {
+          background: palette(accent, bg);
+        }
+      }
+    }
+  }
+}

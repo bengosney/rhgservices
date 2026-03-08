@@ -28,25 +28,16 @@
                             <button commandfor="image-dialog-{{ image.id }}" command="close">&#x2715;</button>
                         </dialog>
                     {% endfor %}
-                    <div class="slider">
-                        <div class="slider-inner">
-                            <div class="sizer">
-                                {% for image in page.images.all %}
-                                    <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
-                                    <div class="slide slide-{{ forloop.counter }}">
-                                        <button command="show-modal" commandfor="image-dialog-{{ image.id }}">
-                                            {% picture image.image format-{avif,webp,jpeg} max-640x427 %}
-                                        </button>
-                                    </div>
-                                {% endfor %}
-                                {% if page.images.all|length > 1 %}
-                                    <div class="slide-nav">
-                                        {% for image in page.images.all %}
-                                            <label class="slide-label slide-label-{{ forloop.counter }}" for="slide-{{ forloop.counter }}">&#8226;</label>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            </div>
+
+                    <div class="carousel">
+                        <div class="track">
+                            {% for image in page.images.all %}
+                                <div class="slide" data-slide-name="{{ image.image.title }}">
+                                    <button command="show-modal" commandfor="image-dialog-{{ image.id }}">
+                                        {% picture image.image format-{avif,webp,jpeg} max-640x427 %}
+                                    </button>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
