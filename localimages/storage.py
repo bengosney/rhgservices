@@ -14,8 +14,10 @@ class DevImageStorage(FileSystemStorage):
     Allows Wagtail to generate renditions normally.
     """
 
-    def _generate_placeholder(self):
-        url = "https://picsum.photos/1600/900"
+    MAX_PICSUM_ID = 1084
+
+    def _generate_placeholder(self, id):
+        url = f"https://picsum.photos/id/{id}/1600/900"
 
         try:
             response = requests.get(url, timeout=5)
@@ -29,10 +31,14 @@ class DevImageStorage(FileSystemStorage):
 
             return ContentFile(buf.getvalue())
 
+    def str_to_id(self, name: str) -> int:
+        return sum([ord(c) for c in name]) % self.MAX_PICSUM_ID
+
     def open(self, name, mode="rb"):
         path = os.path.join(self.location, name)
 
         if not os.path.exists(path):
-            return self._generate_placeholder()
+            id = self.str_to_id(path)
+            return self._generate_placeholder(id)
 
         return super().open(name, mode)
