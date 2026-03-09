@@ -10,6 +10,7 @@
     gap: 1rem;
     scrollbar-width: none;
     scroll-behavior: smooth;
+    scroll-snap-stop: always;
 
     scroll-marker-group: after;
     anchor-name: --carousel;
@@ -22,7 +23,6 @@
       display: flex;
       justify-content: center;
       gap: calc($marker_size * .75);
-      z-index: 10;
     }
 
     .slide {
@@ -48,6 +48,11 @@
         &:target-current {
           background: palette(accent, bg);
         }
+      }
+
+      img {
+        box-sizing: border-box;
+        border: 1px solid palette(accent, bg);
       }
     }
   }
