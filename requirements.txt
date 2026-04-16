@@ -439,8 +439,8 @@ gunicorn==25.3.0 \
     --hash=sha256:cacea387dab08cd6776501621c295a904fe8e3b7aae9a1a3cbb26f4e7ed54660 \
     --hash=sha256:f74e1b2f9f76f6cd1ca01198968bd2dd65830edc24b6e8e4d78de8320e2fe889
     # via rhgardenservices (pyproject.toml)
-honeybadger==1.2.1 \
-    --hash=sha256:8ca8cbfddb8fb446969d27667d8221df6d861627cd628a0fb77474e2755e7ea1
+honeybadger==1.2.2 \
+    --hash=sha256:3e276b1824741b347b28a412caad77564dc884c04286f9813b41e2e303f7ac6b
     # via rhgardenservices (pyproject.toml)
 idna==3.11 \
     --hash=sha256:771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea \
@@ -460,9 +460,9 @@ milksnake==0.1.6 \
     --hash=sha256:0198f8932b4e136c29c0d0d490ff1bac03f82c3a7b2ee6f666e3683b64314fd9 \
     --hash=sha256:31e3eafaf2a48e177bb4b2dacef2c7ae8c5b2147a19c6d626209b819490e6f1d
     # via rustface
-modelsearch==1.2 \
-    --hash=sha256:b4421c134175224e67f1aae9b4f26265347dfa617c2d433520cf379ca37c71f2 \
-    --hash=sha256:c150eb8bc0317fd5e656eb54f3b6809da313588a9998796a4e59a1cfed273ee7
+modelsearch==1.2.1 \
+    --hash=sha256:6576cb66162b8b1f80806116c2530b4b6409c50a55727735e3175556409c0355 \
+    --hash=sha256:8732cb84f424a592ea9fa44763650285af5ecf6475aa742125e7e368083d6505
     # via wagtail
 numpy==2.4.4 \
     --hash=sha256:07077278157d02f65c43b1b26a3886bce886f95d20aabd11f87932750dfb14ed \
