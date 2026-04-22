@@ -5,9 +5,9 @@
 MAKEFLAGS += -j4
 
 HOOKS=$(.git/hooks/pre-commit)
-REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]')
+REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]' || false)
 
-BINPATH=$(shell which python | xargs dirname | xargs realpath --relative-to=".")
+BINPATH=.venv
 
 PYTHON_VERSION:=$(shell cat .python-version)
 PIP_PATH:=$(BINPATH)/pip
@@ -35,23 +35,32 @@ help: ## Display this help
 
 requirements.%.txt: $(UV_PATH) pyproject.toml
 	@echo "Builing $@"
-	python -m uv pip compile --generate-hashes --extra $* $(filter-out $<,$^) > $@
+	$(UV_PATH) pip compile --generate-hashes --extra $* $(filter-out $<,$^) > $@
 
 requirements.txt: $(UV_PATH) pyproject.toml
 	@echo "Builing $@"
-	python -m uv pip compile --generate-hashes $(filter-out $<,$^) > $@
+	$(UV_PATH) pip compile --generate-hashes $(filter-out $<,$^) > $@
 
-.direnv: .envrc
-	python -m pip install --upgrade pip
-	python -m pip install wheel pip-tools
-	@touch $@ $^
+$(UV_PATH):
+	@echo "Error: uv is not installed. Install it from https://github.com/astral-sh/uv" && false
+
+.venv: | $(UV_PATH) .envrc
+	$(UV_PATH) venv --managed-python --python $(PYTHON_VERSION)
+	@touch $@
 
 .git/hooks/pre-commit: $(PRE_COMMIT_PATH) .pre-commit-config.yaml
 	pre-commit install
 
-.envrc: .python-version
+.envrc:
 	@echo "Setting up .envrc then stopping"
-	@echo "layout python python$(PYTHON_VERSION)" > $@
+	@echo 'if [ ! -d .venv ]; then' > $@
+	@echo '    make .venv' >> $@
+	@echo 'fi' >> $@
+	@echo '' >> $@
+	@echo 'PATH_add ".venv/bin"' >> $@
+	@echo 'export VIRTUAL_ENV="$$PWD/.venv"' >> $@
+	@echo 'export VIRTUAL_ENV_PROMPT="$$(basename $$PWD)"' >> $@
+	@echo 'watch_file .venv' >> $@
 	@touch -d '+1 minute' $@
 	@false
 
@@ -70,10 +79,6 @@ $(PIP_SYNC_PATH): $(PIP_PATH) $(WHEEL_PATH)
 
 $(PRE_COMMIT_PATH): $(PIP_PATH) $(WHEEL_PATH)
 	python -m pip install pre-commit
-	@touch $@
-
-$(UV_PATH): $(PIP_PATH) $(WHEEL_PATH)
-	python -m pip install uv
 	@touch $@
 
 $(COG_PATH): $(PIP_PATH) $(WHEEL_PATH)
@@ -98,7 +103,7 @@ node: node_modules
 
 python: $(UV_PATH) requirements.txt $(REQS)
 	@echo "Installing $(filter-out $<,$^)"
-	@python -m uv pip sync $(filter-out $<,$^)
+	@$(UV_PATH) pip sync $(filter-out $<,$^)
 
 pip: $(PIP_PATH) ## Update pip
 	@python -m pip install --upgrade pip
