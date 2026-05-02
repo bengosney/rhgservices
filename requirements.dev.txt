@@ -569,9 +569,9 @@ django-treebeard==4.8.0 \
     --hash=sha256:61b8076b576107da21f6f6040774c0d17025200c2efdb70dd1f14b18c9206c3a \
     --hash=sha256:ecaa7a0bbfa86a48fc91ff335513e83c841cdfe1add6229d04ac7096198d5d51
     # via wagtail
-djangorestframework==3.16.1 \
-    --hash=sha256:166809528b1aced0a17dc66c24492af18049f2c9420dbd0be29422029cfc3ff7 \
-    --hash=sha256:33a59f47fb9c85ede792cbf88bde71893bcda0667bc573f784649521f1102cec
+djangorestframework==3.17.1 \
+    --hash=sha256:a6def5f447fe78ff853bff1d47a3c59bf38f5434b031780b351b0c73a62db1a5 \
+    --hash=sha256:c3c74dd3e83a5a3efc37b3c18d92bd6f86a6791c7b7d4dff62bb068500e76457
     # via wagtail
 dnspython==2.8.0 \
     --hash=sha256:01d9bbc4a2d76bf0db7c1f729812ded6d912bd318d3b1cf81d30c0f845dbf3af \
