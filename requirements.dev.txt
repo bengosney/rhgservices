@@ -485,9 +485,9 @@ dj-database-url==3.1.2 \
     --hash=sha256:544e015fee3efa5127a1eb1cca465f4ace578265b3671fe61d0ed7dbafb5ec8a \
     --hash=sha256:63c20e4bbaa51690dfd4c8d189521f6bf6bc9da9fcdb23d95d2ee8ee87f9ec62
     # via rhgardenservices (pyproject.toml)
-django==6.0.2 \
-    --hash=sha256:3046a53b0e40d4b676c3b774c73411d7184ae2745fe8ce5e45c0f33d3ddb71a7 \
-    --hash=sha256:610dd3b13d15ec3f1e1d257caedd751db8033c5ad8ea0e2d1219a8acf446ecc6
+django==6.0.4 \
+    --hash=sha256:14359c809fc16e8f81fd2b59d7d348e4d2d799da6840b10522b6edf7b8afc1da \
+    --hash=sha256:8cfa2572b3f2768b2e84983cf3c4811877a01edb64e817986ec5d60751c113ac
     # via
     #   rhgardenservices (pyproject.toml)
     #   dj-database-url
