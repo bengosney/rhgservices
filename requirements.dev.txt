@@ -517,9 +517,9 @@ django-csp==4.0 \
     --hash=sha256:b27010bb702eb20a3dad329178df2b61a2b82d338b70fbdc13c3a3bd28712833 \
     --hash=sha256:d5a0a05463a6b75a4f1fc1828c58c89af8db9364d09fc6e12f122b4d7f3d00dc
     # via rhgardenservices (pyproject.toml)
-django-debug-toolbar==6.2.0 \
-    --hash=sha256:1575461954e6befa720e999dec13fe4f1cc8baf40b6c3ac2aec5f340c0f9c85f \
-    --hash=sha256:dc1c174d8fb0ea01435e02d9ceef735cf62daf37c1a6a5692d33b4127327679b
+django-debug-toolbar==6.3.0 \
+    --hash=sha256:a199ce3d0f884739a9096835ad417479fede05f3b3c4824bc8b354721ba8f629 \
+    --hash=sha256:f830a86fe02e17f625a22cfbed24a5bd1500762e201ec959c50efb0f9327282b
     # via rhgardenservices (pyproject.toml)
 django-debugtools==2.0 \
     --hash=sha256:085f7bc62a3a5c81c7a0d8643dbc7dfd991cfdffabe7a6d6fbecad0e346608ff \
