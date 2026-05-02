@@ -609,9 +609,9 @@ gunicorn==25.3.0 \
 honeybadger==1.2.2 \
     --hash=sha256:3e276b1824741b347b28a412caad77564dc884c04286f9813b41e2e303f7ac6b
     # via rhgardenservices (pyproject.toml)
-icecream==2.1.10 \
-    --hash=sha256:15900126ba7dbe1f83819583cbe5ff79a2943224600878d89307e4633b32e528 \
-    --hash=sha256:6b0ae3e899de12954cd26d8611dcff86518ff19f40deef333427da2ccf4036b2
+icecream==2.2.0 \
+    --hash=sha256:9d7f244187f00a13f4ac77d176990e187e9c279d6cac4f7548e338291ad97343 \
+    --hash=sha256:f8df7343b3e787023eec22f42fbe4722df2f93099d394fd820b91e16b2e6cb56
     # via rhgardenservices (pyproject.toml)
 identify==2.6.19 \
     --hash=sha256:20e6a87f786f768c092a721ad107fc9df0eb89347be9396cadf3f4abbd1fb78a \
