@@ -14,7 +14,7 @@ PIP_PATH:=$(BINPATH)/pip
 WHEEL_PATH:=$(BINPATH)/wheel
 UV_PATH:=~/.cargo/bin/uv
 PRE_COMMIT_PATH:=$(BINPATH)/pre-commit
-COG_PATH:=$(BINPATH)/cog
+COG_CMD:=$(UV_PATH) tool run --from cogapp cog
 
 COGABLE:=$(shell git ls-files | xargs grep -l "\[\[\[cog")
 PYTHON_FILES:=$(wildcard ./**/*.py ./**/tests/*.py)
@@ -81,9 +81,6 @@ $(PRE_COMMIT_PATH): $(PIP_PATH) $(WHEEL_PATH)
 	python -m pip install pre-commit
 	@touch $@
 
-$(COG_PATH): $(PIP_PATH) $(WHEEL_PATH)
-	python -m pip install cogapp
-	@touch $@
 
 init: .envrc $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
 
@@ -116,8 +113,8 @@ upgrade: python
 	@python -m pre_commit autoupdate || true
 	python -m pre_commit run --all-files
 
-cog: $(COG_PATH) $(COGABLE)
-	@cog -rc $(filter-out $<,$^)
+cog: $(UV_PATH) $(COGABLE)
+	@$(COG_CMD) -rc $(filter-out $<,$^)
 
 db.sqlite3: ## Import database from heroku
 	@echo "Importing database"
