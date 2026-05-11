@@ -85,7 +85,7 @@ $(COG_PATH): $(PIP_PATH) $(WHEEL_PATH)
 	python -m pip install cogapp
 	@touch $@
 
-init: .direnv $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
+init: .envrc $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
 
 clean: ## Remove all build files
 	find . -name '*.pyc' -delete
