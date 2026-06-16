@@ -16,9 +16,9 @@ boto3==1.43.30 \
     --hash=sha256:6b1ee360f363a457f67a8f5702f522043d8a32d67a97c362ad12075d8b5b531e \
     --hash=sha256:89e982463d94773136ccf69be77cccd54ff1ce351a6aadd1d3437fcb693681b5
     # via rhgardenservices (pyproject.toml)
-botocore==1.43.30 \
-    --hash=sha256:19ed560cb35ae43bf010d37da429a553c07063bf7efea0f2cb53be8a78d3e3d5 \
-    --hash=sha256:26b1dded84d89b396180916f56900bd2ab1c0d545a66d1d2c3eeb40f772935b2
+botocore==1.43.31 \
+    --hash=sha256:4c51c63f39515fc1a2b8e3e2c29e452009c988ba55ad489251658fdd3aedad6e \
+    --hash=sha256:c249625faaa353c5b4004043706a394a4f3bcd3643e242f6b01fff6dc70e988b
     # via
     #   boto3
     #   s3transfer
