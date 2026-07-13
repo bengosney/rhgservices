@@ -526,9 +526,9 @@ django-debugtools==2.0 \
     --hash=sha256:085f7bc62a3a5c81c7a0d8643dbc7dfd991cfdffabe7a6d6fbecad0e346608ff \
     --hash=sha256:e9b3de4ee0aa1b2b9290bf8a09e1cd52baacfc7a8214abe15e8bfb80f2c2f497
     # via rhgardenservices (pyproject.toml)
-django-filter==25.2 \
-    --hash=sha256:760e984a931f4468d096f5541787efb8998c61217b73006163bf2f9523fe8f23 \
-    --hash=sha256:9c0f8609057309bba611062fe1b720b4a873652541192d232dd28970383633e3
+django-filter==26.1 \
+    --hash=sha256:66ea04031b068c77c86e1ac26ced7a3f8f13ce797f5795751707e3deefc58054 \
+    --hash=sha256:7d98ef2899218e6242619b532cb1b95af14e09dfcf74844aecb550ad27b59ff2
     # via wagtail
 django-health-check==4.4.3 \
     --hash=sha256:a99fe9f13da26cf055d81e90f237ef3ad40a31f365b280812a590707854b8d2b \
