@@ -1,26 +1,22 @@
-.PHONY: help clean test install all init dev css watch assets js node cog
+.PHONY: help clean install init python pip upgrade node cog css js assets watch-css watch-js dev bs _server infrastructure
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
-MAKEFLAGS += -j4
-
-HOOKS=$(.git/hooks/pre-commit)
-REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]' || false)
+REQS:=$(shell python3 -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]')
 
 BINPATH=.venv
 
 PYTHON_VERSION:=$(shell cat .python-version)
 PIP_PATH:=$(BINPATH)/pip
-WHEEL_PATH:=$(BINPATH)/wheel
-UV_PATH:=~/.cargo/bin/uv
+UV_PATH:=$(shell command -v uv 2>/dev/null || echo "$$HOME/.local/bin/uv")
 COG_CMD:=$(UV_PATH) tool run --from cogapp cog
 PREK_CMD:=$(UV_PATH) tool run prek
 
 COGABLE:=$(shell git ls-files | xargs grep -l "\[\[\[cog")
-PYTHON_FILES:=$(wildcard ./**/*.py ./**/tests/*.py)
+PYTHON_FILES:=$(shell git ls-files '*.py')
 
 help: ## Display this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z0-9_.-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .gitignore:
 	curl -q "https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,direnv" > $@
@@ -33,11 +29,11 @@ help: ## Display this help
 	$(PREK_CMD) autoupdate
 
 requirements.%.txt: $(UV_PATH) pyproject.toml
-	@echo "Builing $@"
+	@echo "Building $@"
 	$(UV_PATH) pip compile --generate-hashes --extra $* $(filter-out $<,$^) > $@
 
 requirements.txt: $(UV_PATH) pyproject.toml
-	@echo "Builing $@"
+	@echo "Building $@"
 	$(UV_PATH) pip compile --generate-hashes $(filter-out $<,$^) > $@
 
 $(UV_PATH):
@@ -68,15 +64,7 @@ $(PIP_PATH):
 	@python -m pip install --upgrade pip
 	@touch $@
 
-$(WHEEL_PATH): $(PIP_PATH)
-	python -m pip install wheel
-	@touch $@
-
-$(PIP_SYNC_PATH): $(PIP_PATH) $(WHEEL_PATH)
-	python -m pip install pip-tools
-	@touch $@
-
-init: .envrc $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
+init: .envrc $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initialise an environment
 
 clean: ## Remove all build files
 	find . -name '*.pyc' -delete
@@ -102,7 +90,7 @@ pip: $(PIP_PATH) ## Update pip
 install: python node ## Install development requirements (default)
 
 upgrade: python
-	@echo "Updateing module paths"
+	@echo "Updating module paths"
 	wagtail updatemodulepaths --ignore-dir .direnv
 	@$(PREK_CMD) autoupdate || true
 	$(PREK_CMD) run --all-files
@@ -110,6 +98,7 @@ upgrade: python
 cog: $(UV_PATH) $(COGABLE)
 	@$(COG_CMD) -rc $(filter-out $<,$^)
 
+# Requires HEROKU_APP to be set, e.g. `make db.sqlite3 HEROKU_APP=my-app`
 db.sqlite3: ## Import database from heroku
 	@echo "Importing database"
 	@$(UV_PATH) tool run --from "db-to-sqlite[postgresql]" db-to-sqlite --all $(shell heroku config --app $(HEROKU_APP) | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
