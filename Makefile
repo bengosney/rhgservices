@@ -2,20 +2,18 @@
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
-MAKEFLAGS += -j4
-
-REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]' || false)
+REQS:=$(shell python3 -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]')
 
 BINPATH=.venv
 
 PYTHON_VERSION:=$(shell cat .python-version)
 PIP_PATH:=$(BINPATH)/pip
-UV_PATH:=~/.cargo/bin/uv
+UV_PATH:=$(shell command -v uv 2>/dev/null || echo "$$HOME/.local/bin/uv")
 COG_CMD:=$(UV_PATH) tool run --from cogapp cog
 PREK_CMD:=$(UV_PATH) tool run prek
 
 COGABLE:=$(shell git ls-files | xargs grep -l "\[\[\[cog")
-PYTHON_FILES:=$(wildcard ./**/*.py ./**/tests/*.py)
+PYTHON_FILES:=$(shell git ls-files '*.py')
 
 help: ## Display this help
 	@grep -E '^[a-zA-Z0-9_.-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
