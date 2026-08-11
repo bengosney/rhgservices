@@ -13,8 +13,8 @@ PYTHON_VERSION:=$(shell cat .python-version)
 PIP_PATH:=$(BINPATH)/pip
 WHEEL_PATH:=$(BINPATH)/wheel
 UV_PATH:=~/.cargo/bin/uv
-PRE_COMMIT_PATH:=$(BINPATH)/pre-commit
 COG_CMD:=$(UV_PATH) tool run --from cogapp cog
+PREK_CMD:=$(UV_PATH) tool run prek
 
 COGABLE:=$(shell git ls-files | xargs grep -l "\[\[\[cog")
 PYTHON_FILES:=$(wildcard ./**/*.py ./**/tests/*.py)
@@ -30,8 +30,7 @@ help: ## Display this help
 
 .pre-commit-config.yaml:
 	curl https://gist.githubusercontent.com/bengosney/4b1f1ab7012380f7e9b9d1d668626143/raw/060fd68f4c7dec75e8481e5f5a4232296282779d/.pre-commit-config.yaml > $@
-	python -m pip install pre-commit
-	pre-commit autoupdate
+	$(PREK_CMD) autoupdate
 
 requirements.%.txt: $(UV_PATH) pyproject.toml
 	@echo "Builing $@"
@@ -48,8 +47,8 @@ $(UV_PATH):
 	$(UV_PATH) venv --managed-python --python $(PYTHON_VERSION)
 	@touch $@
 
-.git/hooks/pre-commit: $(PRE_COMMIT_PATH) .pre-commit-config.yaml
-	pre-commit install
+.git/hooks/pre-commit: $(UV_PATH) .pre-commit-config.yaml
+	$(PREK_CMD) install
 
 .envrc:
 	@echo "Setting up .envrc then stopping"
@@ -76,11 +75,6 @@ $(WHEEL_PATH): $(PIP_PATH)
 $(PIP_SYNC_PATH): $(PIP_PATH) $(WHEEL_PATH)
 	python -m pip install pip-tools
 	@touch $@
-
-$(PRE_COMMIT_PATH): $(PIP_PATH) $(WHEEL_PATH)
-	python -m pip install pre-commit
-	@touch $@
-
 
 init: .envrc $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
 
@@ -110,8 +104,8 @@ install: python node ## Install development requirements (default)
 upgrade: python
 	@echo "Updateing module paths"
 	wagtail updatemodulepaths --ignore-dir .direnv
-	@python -m pre_commit autoupdate || true
-	python -m pre_commit run --all-files
+	@$(PREK_CMD) autoupdate || true
+	$(PREK_CMD) run --all-files
 
 cog: $(UV_PATH) $(COGABLE)
 	@$(COG_CMD) -rc $(filter-out $<,$^)
