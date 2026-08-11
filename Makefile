@@ -1,17 +1,15 @@
-.PHONY: help clean test install all init dev css watch assets js node cog
+.PHONY: help clean install init python pip upgrade node cog css js assets watch-css watch-js dev bs _server infrastructure
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
 MAKEFLAGS += -j4
 
-HOOKS=$(.git/hooks/pre-commit)
 REQS=$(shell python -c 'import tomllib;[print(f"requirements.{k}.txt") for k in tomllib.load(open("pyproject.toml", "rb"))["project"]["optional-dependencies"].keys()]' || false)
 
 BINPATH=.venv
 
 PYTHON_VERSION:=$(shell cat .python-version)
 PIP_PATH:=$(BINPATH)/pip
-WHEEL_PATH:=$(BINPATH)/wheel
 UV_PATH:=~/.cargo/bin/uv
 COG_CMD:=$(UV_PATH) tool run --from cogapp cog
 PREK_CMD:=$(UV_PATH) tool run prek
@@ -20,7 +18,7 @@ COGABLE:=$(shell git ls-files | xargs grep -l "\[\[\[cog")
 PYTHON_FILES:=$(wildcard ./**/*.py ./**/tests/*.py)
 
 help: ## Display this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z0-9_.-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .gitignore:
 	curl -q "https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,direnv" > $@
@@ -66,14 +64,6 @@ $(UV_PATH):
 $(PIP_PATH):
 	@python -m ensurepip
 	@python -m pip install --upgrade pip
-	@touch $@
-
-$(WHEEL_PATH): $(PIP_PATH)
-	python -m pip install wheel
-	@touch $@
-
-$(PIP_SYNC_PATH): $(PIP_PATH) $(WHEEL_PATH)
-	python -m pip install pip-tools
 	@touch $@
 
 init: .envrc $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
