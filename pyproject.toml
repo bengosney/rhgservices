@@ -54,7 +54,6 @@ optional-dependencies.dev = [
   "model-bakery",
   "mypy",
   "packaging",
-  "pre-commit",
   "pytest",
   "pytest-clarity",
   "pytest-cov",
