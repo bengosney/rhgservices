@@ -1,7 +1,7 @@
 exclude: migrations/.*\.py|Procfile|[aw]sgi\.py|node_modules|.git|\.polar|inputs/.*
 repos:
 - repo: https://github.com/adamchainz/django-upgrade
-  rev: 1.30.0
+  rev: 1.31.1
   hooks:
   - id: django-upgrade
     # [[[cog
@@ -10,8 +10,8 @@ repos:
     #   m = re.search(r"^django==(\d+\.\d+)", f.read(), re.MULTILINE)
     #   cog.out(f"args: [--target-version, '{m.group(1)}']")
     # ]]]
-    args: [--target-version, '6.0']
-    # [[[end]]] (sum: aqDRvLvt17)
+    args: [--target-version, '6.1']
+    # [[[end]]] (sum: rN4gY3ELWD)
 - repo: https://github.com/asottile/pyupgrade
   rev: v3.21.2
   hooks:
@@ -44,7 +44,7 @@ repos:
   - id: mixed-line-ending
     args: [--fix, lf]
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.15.12
+  rev: v0.16.2
   hooks:
   - id: ruff
     args: [--fix]
@@ -70,13 +70,13 @@ repos:
     #   m = re.search(r"^django==(\d+\.\d+)", f.read(), re.MULTILINE)
     #   cog.out(f"args: [--target-version, '{m.group(1)}']")
     # ]]]
-    args: [--target-version, '6.0']
-    # [[[end]]] (sum: aqDRvLvt17)
+    args: [--target-version, '6.1']
+    # [[[end]]] (sum: rN4gY3ELWD)
 - repo: https://github.com/rtts/djhtml
   rev: 3.0.11
   hooks:
   - id: djhtml
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: v2.21.2
+  rev: v2.27.0
   hooks:
   - id: pyproject-fmt
