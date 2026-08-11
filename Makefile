@@ -29,11 +29,11 @@ help: ## Display this help
 	$(PREK_CMD) autoupdate
 
 requirements.%.txt: $(UV_PATH) pyproject.toml
-	@echo "Builing $@"
+	@echo "Building $@"
 	$(UV_PATH) pip compile --generate-hashes --extra $* $(filter-out $<,$^) > $@
 
 requirements.txt: $(UV_PATH) pyproject.toml
-	@echo "Builing $@"
+	@echo "Building $@"
 	$(UV_PATH) pip compile --generate-hashes $(filter-out $<,$^) > $@
 
 $(UV_PATH):
@@ -64,7 +64,7 @@ $(PIP_PATH):
 	@python -m pip install --upgrade pip
 	@touch $@
 
-init: .envrc $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initalise a enviroment
+init: .envrc $(UV_PATH) .git .git/hooks/pre-commit requirements.dev.txt ## Initialise an environment
 
 clean: ## Remove all build files
 	find . -name '*.pyc' -delete
@@ -90,7 +90,7 @@ pip: $(PIP_PATH) ## Update pip
 install: python node ## Install development requirements (default)
 
 upgrade: python
-	@echo "Updateing module paths"
+	@echo "Updating module paths"
 	wagtail updatemodulepaths --ignore-dir .direnv
 	@$(PREK_CMD) autoupdate || true
 	$(PREK_CMD) run --all-files
@@ -98,6 +98,7 @@ upgrade: python
 cog: $(UV_PATH) $(COGABLE)
 	@$(COG_CMD) -rc $(filter-out $<,$^)
 
+# Requires HEROKU_APP to be set, e.g. `make db.sqlite3 HEROKU_APP=my-app`
 db.sqlite3: ## Import database from heroku
 	@echo "Importing database"
 	@$(UV_PATH) tool run --from "db-to-sqlite[postgresql]" db-to-sqlite --all $(shell heroku config --app $(HEROKU_APP) | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
