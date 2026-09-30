@@ -27,15 +27,13 @@ class LocalImagesConfig(AppConfig):
 
     def ready(self) -> None:
         # Wagtail
-        from wagtail.images.models import AbstractImage, SourceImageIOError
+        from wagtail.images.models import AbstractImage  # noqa: PLC0415
 
-        @wrapt.patch_function_wrapper(AbstractImage, "generate_rendition_file")
+        @wrapt.patch_function_wrapper(AbstractImage, "open_file")
         def fake_image(wrapped, instance, args, kwargs):
-            try:
-                return wrapped(*args, **kwargs)
-            except SourceImageIOError:
+            if not os.path.exists(instance.file.path):
                 fill_image_with_stock(instance.file.path)
 
-                return wrapped(*args, **kwargs)
+            return wrapped(*args, **kwargs)
 
         return super().ready()
