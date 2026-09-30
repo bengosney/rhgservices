@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.postgres",
     "robots",
     "social",
+    "django_css_modules",
 ]
 
 MIDDLEWARE = [
@@ -181,3 +182,5 @@ CSP_FONT_SRC = ["'self'", "fonts.gstatic.com", *os.environ.get("CSP_FONT_SRC", "
 CSP_IMG_SRC = ["'self'", "data:", *os.environ.get("CSP_IMG_SRC", "").split(",")]
 
 CSP_EXCLUDE_URL_PREFIXES = ("/admin/",)
+
+CSS_MODULES = {"dirs": [os.path.join(BASE_DIR, "assets")]}
