@@ -101,7 +101,7 @@ cog: $(UV_PATH) $(COGABLE)
 # Requires HEROKU_APP to be set, e.g. `make db.sqlite3 HEROKU_APP=my-app`
 db.sqlite3: ## Import database from heroku
 	@echo "Importing database"
-	@$(UV_PATH) tool run --from "db-to-sqlite[postgresql]" db-to-sqlite --all $(shell heroku config --app $(HEROKU_APP) | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
+	@$(UV_PATH) tool run --from "db-to-sqlite[postgresql]" --with "psycopg[binary]" db-to-sqlite --all $(shell heroku config --app $(HEROKU_APP) | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@ || (rm -f $@ && false)
 	@echo "Clearing image renditions"
 	@python manage.py clear_renditions
 
