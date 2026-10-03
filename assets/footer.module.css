@@ -1,47 +1,50 @@
-#footer {
+.footer {
     .slogan {
-        @include accent_colour();
+        color: var(--accent-fg);
+        background-color: var(--accent);
         padding: 1.5em 0;
+
         p {
             text-align: center;
-            //font-size: clamp(1.5rem, 7.5vw, 2rem);
-            @include fluid-auto(1.75rem);
+            font-size: clamp(1.472rem, 0.695vw + 1.333rem, 1.75rem);
             line-height: 1.35em;
 
             & + p {
                 margin-top: 0.5em;
             }
         }
+
         a {
+            color: var(--accent-fg);
             white-space: nowrap;
         }
     }
-    .footer {
+
+    .bar {
         padding: 1rem 0;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         gap: 1rem;
-
         justify-content: space-between;
     }
 
     .socials {
-        @include fluid-auto(2rem);
+        font-size: clamp(1.583rem, 1.0425vw + 1.3745rem, 2rem);
+
         a {
             svg {
-                fill: palette(accent, bg);
+                fill: var(--accent);
             }
-            &:hover {
-                svg {
-                    fill: palette(fg);
-                }
+
+            &:hover svg {
+                fill: var(--fg);
             }
         }
     }
 
     .copy {
-        @include fluid-auto(0.5rem);
+        font-size: clamp(0.917rem, -1.0425vw + 1.1255rem, 0.5rem);
         line-height: 1.25em;
     }
 }

@@ -1,10 +1,11 @@
-{% load navigation_tags wagtailcore_tags %}
+{% load cssmodules navigation_tags wagtailcore_tags %}
+{% cssmodule "nav.module.css" as nav %}
 {% get_site_root as site_root %}
 
 {% for menuitem in menuitems %}
-    <li class="item {{ menuitem.title|lower|cut:" " }}{% if menuitem.active %} active{% endif %}{% if menuitem.show_dropdown %} has-submenu{% endif %}">
+    <li class="{{ nav.item }}{% if menuitem.active %} {{ nav.active }}{% endif %}{% if menuitem.show_dropdown %} {{ nav.hasSubmenu }}{% endif %}">
         <div>
-            <a href="{% pageurl menuitem %}" class="top-level" aria-label="{{ menuitem.title }}">{{ menuitem.title }}</a>
+            <a href="{% pageurl menuitem %}" aria-label="{{ menuitem.title }}">{{ menuitem.title }}</a>
             {% if menuitem.show_dropdown %}
                 <label for="nav-{{ menuitem.title|lower|cut:" " }}"><span>open</span></label>
             {% endif %}

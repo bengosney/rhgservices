@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load cssmodules wagtailcore_tags wagtailimages_tags %}
 
 {% wagtail_site as current_site %}
 
@@ -16,10 +16,12 @@
 {% endblock title_suffix %}
 
 {% block content %}
-    <div class="banner_image">
+    {% cssmodule "layout.module.css" as layout %}
+    {% cssmodule "banner.module.css" as banner %}
+    <div class="{{ banner.banner }}">
         {% picture page.banner_image format-{avif,webp,jpeg} fill-{1920x700,1600x484,800x600} %}
-        <div class="header">
-            <div class="container">
+        <div class="{{ banner.header }}">
+            <div class="{{ layout.container }}">
                 <h1>{{ site.site_name }}</h1>
                 <h2>Design, build and year round Maintenance</h2>
             </div>

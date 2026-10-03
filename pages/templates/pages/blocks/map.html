@@ -1,10 +1,13 @@
-<div class="container">
+{% load cssmodules %}
+{% cssmodule "layout.module.css" as layout %}
+{% cssmodule "map.module.css" as maps %}
+<div class="{{ layout.container }}">
     {% if value.title %}
         <h2>{{ value.title }}</h2>
     {% endif %}
-    <div class="map-container">
-        <div class="map-inner">
-            <div id="map-{{ self.hash }}" class="map"></div>
+    <div class="{{ maps.container }}">
+        <div class="{{ maps.inner }}">
+            <div id="map-{{ self.hash }}" class="{{ maps.map }}"></div>
         </div>
     </div>
     <script>

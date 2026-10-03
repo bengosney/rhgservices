@@ -1,19 +1,23 @@
-<div id="footer">
-    <div class="slogan">
-        <p class="container">
+{% load cssmodules %}
+{% cssmodule "layout.module.css" as layout %}
+{% cssmodule "footer.module.css" as footer %}
+{% cssmodule "socials.module.css" as socials %}
+<div class="{{ footer.footer }}">
+    <div class="{{ footer.slogan }}">
+        <p class="{{ layout.container }}">
             Are you ready to take your garden to the next&nbsp;level?
         </p>
-        <p class="container">
+        <p class="{{ layout.container }}">
             Call us on <a aria-label="Phone number" href="tel:{{ settings.pages.SiteSettings.phone_number }}">{{ settings.pages.SiteSettings.phone_number }}</a>
         </p>
     </div>
 
-    <div class="container">
-        <div class="footer">
-            <div class="socials">
+    <div class="{{ layout.container }}">
+        <div class="{{ footer.bar }}">
+            <div {% class socials.socials footer.socials %}>
                 {% include "socials.html" %}
             </div>
-            <div class="copy">
+            <div class="{{ footer.copy }}">
                 © R H Garden Design. All rights reserved
             </div>
         </div>

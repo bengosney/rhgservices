@@ -1,6 +1,7 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load cssmodules %}
+{% cssmodule "layout.module.css" as layout %}
 
-<div class="callout container">
+<div class="{{ layout.container }}">
     <h2>{{ value.headline }}</h2>
     <hr />
     <p>{{ value.subline }}</p>

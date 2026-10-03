@@ -1,8 +1,9 @@
-{% load navigation_tags wagtailcore_tags %}
+{% load cssmodules navigation_tags wagtailcore_tags %}
+{% cssmodule "nav.module.css" as nav %}
 
-<ul class="dropdown-menu" role="menu">
+<ul role="menu">
     {% for child in menuitems_children %}
-        <li class="sub-item{% if child.active %} active{% endif %}{% if child.show_dropdown %} has-submenu{% endif %}">
+        <li{% if child.active or child.show_dropdown %} class="{% if child.active %}{{ nav.active }} {% endif %}{% if child.show_dropdown %}{{ nav.hasSubmenu }}{% endif %}"{% endif %}>
             <div>
                 <a href="{% pageurl child %}" role="menuitem" aria-label="{{ child.title }}">{{ child.title }}</a>
                 {% if child.show_dropdown %}

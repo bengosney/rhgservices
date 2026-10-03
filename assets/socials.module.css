@@ -1,20 +1,18 @@
-.socials,
-.nav-socials {
+.socials {
     display: flex;
     gap: 0.75em;
 
     a {
         border: none;
+
         svg {
             width: auto;
             height: 1em;
-            fill: palette(accent, bg);
+            fill: var(--accent);
         }
 
-        &:hover {
-            svg {
-                fill: palette(accent, fg);
-            }
+        &:hover svg {
+            fill: var(--accent-fg);
         }
     }
 }
