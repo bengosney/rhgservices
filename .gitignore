@@ -484,3 +484,4 @@ dumps
 .parcel-cache
 cov.xml
 infrastructure
+.css_modules_build

@@ -1,7 +1,9 @@
-{% load wagtailcore_tags %}
+{% load cssmodules wagtailcore_tags %}
+{% cssmodule "layout.module.css" as layout %}
+{% cssmodule "form.module.css" as forms %}
 
-<div class="container">
-    <div class="form_builder">
+<div class="{{ layout.container }}">
+    <div class="{{ forms.formBuilder }}">
         {% if value.title %}
             <h2>{{ value.title }}</h2>
         {% endif %}
@@ -9,7 +11,7 @@
             {% csrf_token %}
             {{ form.non_field_errors }}
             {% for field in form %}
-                <div class="field-wrapper field-{{ field.field.widget.input_type }} {{ field.id_for_label }}">
+                <div class="{{ forms.field }}{% if field.field.widget.input_type == 'checkbox' %} {{ forms.checkbox }}{% endif %}">
                     {{ field.errors }}
                     {% if field.field.widget.input_type == 'checkbox' %}
                         {{ field }}
@@ -21,7 +23,7 @@
                 </div>
             {% endfor %}
 
-            <div class="field-wrapper field-{{ field.field.widget.input_type }} submit-button">
+            <div class="{{ forms.field }}">
                 <input type="submit" value="{{ page.submit_text }}" />
             </div>
         </form>

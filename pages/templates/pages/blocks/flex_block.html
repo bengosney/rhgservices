@@ -1,6 +1,7 @@
-{% load wagtailcore_tags %}
+{% load cssmodules wagtailcore_tags %}
+{% cssmodule "layout.module.css" as layout %}
 
-<div class="flex_block">
+<div class="{{ layout.flexBlock }}">
     {% for child in value %}
         {% include_block child %}
     {% endfor %}

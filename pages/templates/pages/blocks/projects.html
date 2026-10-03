@@ -1,7 +1,8 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load cssmodules %}
+{% cssmodule "layout.module.css" as layout %}
 
 
-<div class="container">
+<div class="{{ layout.container }}">
     <h2>{{ value.title }}</h2>
     {% if value.body %}
         <p>{{ value.body }}</p>

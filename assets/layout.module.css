@@ -1,0 +1,81 @@
+.container,
+:global(.block-Paragraph),
+:global(.block-InfoPod) {
+    max-width: var(--max-width);
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.row {
+    display: flex;
+    margin-left: -1rem;
+    margin-right: -1rem;
+
+    .col {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .row.stackMd {
+        flex-direction: column;
+
+        .col {
+            margin-top: 1rem;
+        }
+    }
+}
+
+.flexBlock,
+.flexStream {
+    display: flex;
+
+    .container {
+        flex: 1;
+        box-sizing: border-box;
+        max-width: none;
+        margin: 2em;
+        width: 100%;
+    }
+}
+
+.flexStream > .container {
+    &:first-child {
+        margin-left: 0;
+    }
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .flexStream {
+        flex-direction: column;
+        margin-bottom: var(--container-padding);
+
+        & > .container {
+            margin: 0;
+            width: 100%;
+        }
+    }
+}
+
+:global(.block-InfoPod) .flexBlock {
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    @media (max-width: 992px) {
+        flex-direction: column;
+    }
+}

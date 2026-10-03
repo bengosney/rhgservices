@@ -1,4 +1,4 @@
-.PHONY: help clean install init python pip upgrade node cog css js assets watch-css watch-js dev bs _server infrastructure
+.PHONY: help clean install init python pip upgrade node cog js assets watch-js dev bs _server infrastructure
 .DEFAULT_GOAL := install
 .PRECIOUS: requirements.%.in
 
@@ -101,22 +101,12 @@ cog: $(UV_PATH) $(COGABLE)
 # Requires HEROKU_APP to be set, e.g. `make db.sqlite3 HEROKU_APP=my-app`
 db.sqlite3: ## Import database from heroku
 	@echo "Importing database"
-	@$(UV_PATH) tool run --from "db-to-sqlite[postgresql]" db-to-sqlite --all $(shell heroku config --app $(HEROKU_APP) | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@
+	@$(UV_PATH) tool run --from "db-to-sqlite[postgresql]" --with "psycopg[binary]" db-to-sqlite --all $(shell heroku config --app $(HEROKU_APP) | grep DATABASE_URL | tr -s " " | cut -f 2 -d " ") $@ || (rm -f $@ && false)
 	@echo "Clearing image renditions"
 	@python manage.py clear_renditions
 
 bs: ## Run browser-sync
-	browser-sync start --proxy localhost:8000 --files "./rhgs/static/css/*.css" --files "./rhgs/static/js/*.js" --files "./**/*.html"
-
-SCSS=$(shell find scss/ -name "*.scss")
-
-rhgs/static/css/%.css: scss/%.scss $(SCSS)
-	npx sass $< $@
-
-rhgs/static/css/%.min.css: rhgs/static/css/%.css
-	npx postcss $^ -o $@
-
-css: rhgs/static/css/rhgs.min.css ## Build the css
+	browser-sync start --proxy localhost:8000 --files "./assets/**/*.css" --files "./rhgs/static/js/*.js" --files "./**/*.html"
 
 JS_SRC = $(wildcard js/*.ts)
 JS_LIB = $(JS_SRC:js/%.ts=rhgs/static/js/%.js)
@@ -128,13 +118,6 @@ rhgs/static/js/%.js: js/%.ts $(JS_SRC)
 
 js: rhgs/static/js/rhgs.js
 
-watch-css: ## Watch and build the css
-	@echo "Watching scss"
-	$(MAKE) css
-	@while inotifywait -qr -e close_write scss/; do \
-		$(MAKE) css; \
-	done
-
 watch-js: ## Watch and build the js
 	@echo "Watching js"
 	$(MAKE) js
@@ -142,7 +125,7 @@ watch-js: ## Watch and build the js
 		$(MAKE) js; \
 	done
 
-assets: js css ## Build assets
+assets: js ## Build assets
 
 cov.xml: $(PYTHON_FILES)
 	python3 -m pytest --cov=. --cov-report xml:$@
@@ -154,7 +137,7 @@ _server:
 	python3 ./manage.py migrate
 	python3 ./manage.py runserver
 
-dev: _server watch-js watch-css bs ## Start the dev server, watch the css and js and start browsersync
+dev: _server watch-js bs ## Start the dev server, watch the js and start browsersync
 
 infrastructure:
 	git clone https://github.com/bengosney/tofu-wagtail.git $@

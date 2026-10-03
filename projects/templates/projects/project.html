@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load cssmodules wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-project{% endblock %}
 
 {% block header %}
-    <div class="banner_image">
+    {% cssmodule "layout.module.css" as layout %}
+    {% cssmodule "banner.module.css" as banner %}
+    <div class="{{ banner.banner }}">
         {% picture page.banner_image format-{avif,webp,jpeg} fill-{1920x500,1600x484,800x400,640x400} %}
 
-        <div class="header">
-            <div class="container">
+        <div class="{{ banner.header }}">
+            <div class="{{ layout.container }}">
                 <h1>{{ page.title }}</h1>
                 {% if page.sub_title %}<h2>{{ page.sub_title }}</h2>{% endif %}
             </div>
@@ -18,31 +20,33 @@
 {% endblock header %}
 
 {% block content %}
-    <div class="main-body">
-        <div class="container">
-            <div class="row md">
-                <div class="col">
+    {% cssmodule "layout.module.css" as layout %}
+    {% cssmodule "project.module.css" as project %}
+    <div>
+        <div class="{{ layout.container }}">
+            <div {% class layout.row layout.stackMd %}>
+                <div class="{{ layout.col }}">
                     {% for image in page.images.all %}
-                        <dialog class="lightbox" id="image-dialog-{{ image.id }}" closedby="any">
+                        <dialog class="{{ project.lightbox }}" id="image-dialog-{{ image.id }}" closedby="any">
                             {% picture image.image format-{avif,webp,jpeg} max-{1980x1080,1024x768,800x600} %}
                             <button commandfor="image-dialog-{{ image.id }}" command="close">&#x2715;</button>
                         </dialog>
                     {% endfor %}
-                    <div class="slider">
-                        <div class="slider-inner">
-                            <div class="sizer">
+                    <div class="{{ project.slider }}" data-slider>
+                        <div>
+                            <div class="{{ project.sizer }}">
                                 {% for image in page.images.all %}
                                     <input type="radio" name="slider" id="slide-{{ forloop.counter }}" {% if forloop.first %}checked{% endif %} />
-                                    <div class="slide slide-{{ forloop.counter }}">
+                                    <div class="{{ project.slide }}">
                                         <button command="show-modal" commandfor="image-dialog-{{ image.id }}">
                                             {% picture image.image format-{avif,webp,jpeg} max-640x427 %}
                                         </button>
                                     </div>
                                 {% endfor %}
                                 {% if page.images.all|length > 1 %}
-                                    <div class="slide-nav">
+                                    <div class="{{ project.nav }}">
                                         {% for image in page.images.all %}
-                                            <label class="slide-label slide-label-{{ forloop.counter }}" for="slide-{{ forloop.counter }}">&#8226;</label>
+                                            <label for="slide-{{ forloop.counter }}">&#8226;</label>
                                         {% endfor %}
                                     </div>
                                 {% endif %}
@@ -50,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="{{ layout.col }}">
                     {{ page.body|richtext }}
                 </div>
             </div>

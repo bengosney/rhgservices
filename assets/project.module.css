@@ -1,0 +1,236 @@
+.slider {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-width: 640px;
+    padding-bottom: 1em;
+    margin: auto;
+
+    .sizer {
+        width: 100%;
+        position: relative;
+        padding: 0;
+        height: 100%;
+        aspect-ratio: 640 / 427;
+
+        picture {
+            width: 100%;
+            height: 100%;
+            max-width: 640px;
+            max-height: 427px;
+            aspect-ratio: 640 / 427;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+                display: block;
+                box-sizing: border-box;
+            }
+        }
+    }
+
+    .slide {
+        display: block;
+        transition: 0.2s all linear;
+        opacity: 0;
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    button {
+        padding: 0;
+        margin: 0;
+        background: none;
+        border: none;
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        &:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 2px;
+        }
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+    }
+
+    input {
+        display: none;
+    }
+
+    input:checked + .slide {
+        opacity: 1;
+        z-index: 2;
+    }
+
+    .nav {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.25rem;
+
+        @media (max-width: 992px) {
+            bottom: -2.5em;
+        }
+
+        label {
+            position: relative;
+            z-index: 3;
+            line-height: 1em;
+            display: inline-block;
+            color: var(--fg);
+            font-size: min(4rem, max(3vw, 2.5rem));
+            text-shadow: 0 0 1rem black;
+            cursor: pointer;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+        border: 0.1em solid var(--accent);
+        box-sizing: border-box;
+    }
+
+    input:nth-of-type(1):checked ~ .nav label:nth-of-type(1),
+    input:nth-of-type(2):checked ~ .nav label:nth-of-type(2),
+    input:nth-of-type(3):checked ~ .nav label:nth-of-type(3),
+    input:nth-of-type(4):checked ~ .nav label:nth-of-type(4),
+    input:nth-of-type(5):checked ~ .nav label:nth-of-type(5),
+    input:nth-of-type(6):checked ~ .nav label:nth-of-type(6),
+    input:nth-of-type(7):checked ~ .nav label:nth-of-type(7),
+    input:nth-of-type(8):checked ~ .nav label:nth-of-type(8),
+    input:nth-of-type(9):checked ~ .nav label:nth-of-type(9),
+    input:nth-of-type(10):checked ~ .nav label:nth-of-type(10),
+    input:nth-of-type(11):checked ~ .nav label:nth-of-type(11),
+    input:nth-of-type(12):checked ~ .nav label:nth-of-type(12),
+    input:nth-of-type(13):checked ~ .nav label:nth-of-type(13),
+    input:nth-of-type(14):checked ~ .nav label:nth-of-type(14),
+    input:nth-of-type(15):checked ~ .nav label:nth-of-type(15),
+    input:nth-of-type(16):checked ~ .nav label:nth-of-type(16),
+    input:nth-of-type(17):checked ~ .nav label:nth-of-type(17),
+    input:nth-of-type(18):checked ~ .nav label:nth-of-type(18),
+    input:nth-of-type(19):checked ~ .nav label:nth-of-type(19),
+    input:nth-of-type(20):checked ~ .nav label:nth-of-type(20),
+    input:nth-of-type(21):checked ~ .nav label:nth-of-type(21),
+    input:nth-of-type(22):checked ~ .nav label:nth-of-type(22),
+    input:nth-of-type(23):checked ~ .nav label:nth-of-type(23),
+    input:nth-of-type(24):checked ~ .nav label:nth-of-type(24),
+    input:nth-of-type(25):checked ~ .nav label:nth-of-type(25),
+    input:nth-of-type(26):checked ~ .nav label:nth-of-type(26),
+    input:nth-of-type(27):checked ~ .nav label:nth-of-type(27),
+    input:nth-of-type(28):checked ~ .nav label:nth-of-type(28),
+    input:nth-of-type(29):checked ~ .nav label:nth-of-type(29),
+    input:nth-of-type(30):checked ~ .nav label:nth-of-type(30) {
+        color: var(--accent);
+    }
+}
+
+dialog.lightbox {
+    box-shadow: 0 0 2rem 0.33rem #000;
+    animation: fade-out 0.25s ease-out;
+    padding: 0;
+    border: none;
+    outline: 0.1em solid var(--accent);
+    box-sizing: border-box;
+
+    &:open {
+        animation: fade-in 0.7s ease-out;
+    }
+
+    &:open::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        animation: backdrop-fade-in 0.5s ease-out forwards;
+    }
+
+    img {
+        max-width: calc(100vw - 3.5rem);
+        max-height: calc(100vh - 3.5rem);
+        min-width: 10rem;
+        min-height: 10rem;
+        height: auto;
+        width: auto;
+        display: block;
+        padding: 0;
+        margin: 0;
+        background: linear-gradient(45deg, var(--bg) 0%, #596b6e 50%, #000 100%);
+        background-size: 400% 400%;
+        animation: gradient 5s ease infinite;
+    }
+
+    button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: var(--fg);
+        line-height: 1em;
+        font-size: 2rem;
+        text-shadow: 0 0 0.2em black;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0 0.15em;
+        margin: 0;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+        display: none;
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+        display: block;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        display: block;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes backdrop-fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

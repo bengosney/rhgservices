@@ -1,6 +1,11 @@
-.form_builder {
+.formBuilder {
+    padding-bottom: 2rem;
+
     form {
-        .field-wrapper {
+        .field {
+            margin: 0 0 1rem;
+            padding: 0;
+
             label {
                 display: block;
             }
@@ -9,37 +14,36 @@
             textarea,
             select {
                 width: 100%;
-                color: palette(fg);
-                font-family: $font_base;
-                @include fluid-auto(0.75rem);
+                color: var(--fg);
+                font-family: var(--font-base);
+                font-size: clamp(1.028rem, -0.695vw + 1.167rem, 0.75rem);
                 font-weight: 300;
                 line-height: 1.75em;
             }
 
-            select {
-                option {
-                    background: palette(bg, base);
-                    &:hover {
-                        background-color: palette(accent, bg);
-                    }
+            select option {
+                background: var(--bg);
+
+                &:hover {
+                    background-color: var(--accent);
                 }
             }
 
-            margin: 0 0 1rem;
-            padding: 0;
-
-            &.field-checkbox {
+            &.checkbox {
                 display: flex;
                 flex-direction: row;
+
                 input,
                 label {
                     width: auto;
                     display: inline-block;
                     line-height: 1.5em;
                 }
+
                 label {
                     flex: 1;
                 }
+
                 input {
                     height: 1.5em;
                     margin: 0 0.5em 0 0;
@@ -51,7 +55,7 @@
         textarea,
         select {
             background: none;
-            border: 1px solid palette(accent, bg);
+            border: 1px solid var(--accent);
             padding: 0.25em 0.5em;
             box-sizing: border-box;
 
@@ -63,15 +67,14 @@
         button,
         input[type="button"],
         input[type="submit"] {
-            @include accent_colour();
+            color: var(--accent-fg);
+            background-color: var(--accent);
             font-weight: bold;
         }
     }
 
-    padding-bottom: 2rem;
-
-    .helptext {
-        @include fluid-auto(1rem);
+    :global(.helptext) {
+        font-size: clamp(1.139rem, -0.3475vw + 1.2085rem, 1rem);
         line-height: 1.2em;
     }
 }

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.postgres",
     "robots",
     "social",
+    "django_css_modules",
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,7 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "django_css_modules.finders.CssModulesFinder",
 ]
 
 STATICFILES_DIRS = [
@@ -181,3 +183,9 @@ CSP_FONT_SRC = ["'self'", "fonts.gstatic.com", *os.environ.get("CSP_FONT_SRC", "
 CSP_IMG_SRC = ["'self'", "data:", *os.environ.get("CSP_IMG_SRC", "").split(",")]
 
 CSP_EXCLUDE_URL_PREFIXES = ("/admin/",)
+
+CSS_MODULES = {
+    "dirs": [os.path.join(BASE_DIR, "assets")],
+    "output_root": os.path.join(BASE_DIR, ".css_modules_build"),
+    "targets": ["last 3 versions", "> 0.25%", "not dead"],
+}

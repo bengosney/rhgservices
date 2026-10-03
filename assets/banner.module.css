@@ -1,4 +1,6 @@
-.banner_image {
+.banner {
+    position: relative;
+
     picture {
         display: block;
         height: 100%;
@@ -24,32 +26,30 @@
         position: relative;
     }
 
-    position: relative;
-
     .header {
         position: absolute;
-        @media (max-width: $screen_sm) {
-            position: relative;
-        }
         bottom: 0;
         width: 100%;
-        background: rgba($color: #000000, $alpha: 0.5);
+        background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(5px);
-
         padding: 0.75em 0;
+
+        @media (max-width: 768px) {
+            position: relative;
+        }
 
         h1 {
             font-size: clamp(1.7rem, 6vw, 3.052rem);
             margin-bottom: 0.3em;
         }
+
         p,
         h2 {
-            //padding-bottom: 1em;
             margin: 0;
             font-size: clamp(1rem, 5vw, 1.5rem);
             line-height: 1.75em;
             font-weight: 300;
-            font-family: $font_base;
+            font-family: var(--font-base);
             letter-spacing: 0.005em;
         }
     }

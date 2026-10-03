@@ -1,2 +1,2 @@
 import initSlider from "./sliders";
-Array.from(document.getElementsByClassName("slider")).map((e) => initSlider(e, 2500));
+Array.from(document.querySelectorAll("[data-slider]")).map((e) => initSlider(e, 2500));

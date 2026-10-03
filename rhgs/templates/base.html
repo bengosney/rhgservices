@@ -1,5 +1,7 @@
-{% load navigation_tags social_tags static util_tags wagtailcore_tags wagtailuserbar %}
+{% load cssmodules navigation_tags social_tags static util_tags wagtailcore_tags wagtailuserbar %}
 {% wagtail_site as current_site %}
+{% cssmodule "layout.module.css" as layout %}
+{% cssmodule "header.module.css" as header %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,9 +18,11 @@
         {% endcompress %}
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com/" >
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
 
-        <link rel="stylesheet" type="text/css" href="{% static 'css/rhgs.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% cssmodules_bundle_url %}">
 
         {% block extra_css %}
         {% endblock extra_css %}
@@ -31,14 +35,14 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
-        <div class="header-wrapper">
-            <header class="container">
+        <div class="{{ header.wrapper }}">
+            <header {% class layout.container header.header %}>
                 {% get_site_root as site_root %}
-                <a class="logo" href="{% pageurl site_root %}"{% if current_site and current_site.site_name %} title="{{ current_site.site_name }}"{% endif %}>
-                    <div class="logo-icon">
+                <a class="{{ header.logo }}" href="{% pageurl site_root %}"{% if current_site and current_site.site_name %} title="{{ current_site.site_name }}"{% endif %}>
+                    <div class="{{ header.icon }}">
                         {% include "logo.svg" %}
                     </div>
-                    <div class="logo-text">
+                    <div class="{{ header.text }}">
                         {% include "logo-text.svg" %}
                     </div>
                 </a>

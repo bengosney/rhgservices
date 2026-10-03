@@ -1,17 +1,19 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load cssmodules wagtailcore_tags wagtailimages_tags %}
+{% cssmodule "layout.module.css" as layout %}
+{% cssmodule "projects.module.css" as projects_css %}
 
-<div class="project-pods container">
+<div {% class projects_css.pods layout.container %}>
     {% for project in projects %}
         {% with project=project.specific %}
-            <a aria-label="{{ project.title }} details" href="{% pageurl project %}" class="pod">
+            <a aria-label="{{ project.title }} details" href="{% pageurl project %}" class="{{ projects_css.pod }}">
                 <h2>
                     {{ project.title }}
                 </h2>
-                <div class="pod-inner">
-                    <div class="pod-img">
+                <div class="{{ projects_css.inner }}">
+                    <div class="{{ projects_css.image }}">
                         {% picture project.banner_image format-{avif,webp,jpeg} fill-200x200 %}
                     </div>
-                    <div class="pod-details">
+                    <div class="{{ projects_css.details }}">
                         <p>
                             {% if project.short_description|length > 0 %}
                                 {{ project.short_description }}
@@ -20,7 +22,7 @@
                             {% endif %}
                         </p>
                         <div>
-                            <span>Read more</span>
+                            <span class="{{ projects_css.more }}">Read more</span>
                         </div>
                     </div>
                 </div>
@@ -28,6 +30,6 @@
         {% endwith %}
     {% endfor %}
     {% if not projects.count|divisibleby:"2" %}
-        <hr class="pod" />
+        <hr class="{{ projects_css.pod }}" />
     {% endif %}
 </div>
