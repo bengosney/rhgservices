@@ -452,9 +452,9 @@ django-css-modules==0.0.1 \
     --hash=sha256:98dfc51faef272c0277fa567b59e28b6e85e8cd80d5d7b3f0ae5be216665b0b4 \
     --hash=sha256:f810fe7f3bd1ff4aae335f58c29e2c502ae1069abad99cbcd174bfbbcf61aae8
     # via rhgardenservices (pyproject.toml)
-django-filter==26.1 \
-    --hash=sha256:66ea04031b068c77c86e1ac26ced7a3f8f13ce797f5795751707e3deefc58054 \
-    --hash=sha256:7d98ef2899218e6242619b532cb1b95af14e09dfcf74844aecb550ad27b59ff2
+django-filter==26.2 \
+    --hash=sha256:df8f737841d6359df00b84dda9b5ab59067fe60292091f1bdae1e3e6281cedb0 \
+    --hash=sha256:fd5cc83995fbe9f5f07fb5dcda16fde0f04de1ecf8ef82628b6c0ec921b751af
     # via wagtail
 django-health-check==4.8.0 \
     --hash=sha256:3f7e8fd0e85ebb2a62bdaf96bd0e990f93b4c6bbaca68778df79b2cf1810884b \
