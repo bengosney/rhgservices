@@ -725,9 +725,9 @@ dnspython==2.9.0 \
 docopt==0.6.2 \
     --hash=sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491
     # via pytest-watch
-draftjs-exporter==7.1.0 \
-    --hash=sha256:4a9397751aae7e66b25cba538a4a0421801c5dcfee2e75e9f664bd9cb37e90fd \
-    --hash=sha256:ad27634d514f8bcfb828b19cfc84a8fee7cb1f0fd706d249f70633436272d687
+draftjs-exporter==7.2.0 \
+    --hash=sha256:18adc0f8ae33d6dd0311354a7253ed5850237072920549acfa8cb0e64e4b328f \
+    --hash=sha256:b6033f5eeb7f81af918a91ca2ffe35fdd0bdab055e3374384d25193e4bbab147
     # via wagtail
 et-xmlfile==2.0.0 \
     --hash=sha256:7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa \
