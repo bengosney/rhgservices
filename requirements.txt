@@ -1087,9 +1087,9 @@ urllib3==2.8.0 \
     # via
     #   botocore
     #   requests
-wagtail==8.0 \
-    --hash=sha256:34dde727917ace7e4ab182054f78f01c2cc24d85ccc402932d3d5c6315a7cd00 \
-    --hash=sha256:8fb2aa39bb8ff9e7709ba848a1bba2fea332ce32368c7ba4820008c0cfcc0019
+wagtail==8.0.1 \
+    --hash=sha256:1e6ad5c7891a54efce1400e168298b5a2cc343b642cee89c31bf5ec30c98b26c \
+    --hash=sha256:819865a10bce86b16288cfaefa4195b90ffb5e7ac494fb18659e7be099ef386f
     # via rhgardenservices (pyproject.toml)
 wheel==0.48.0 \
     --hash=sha256:3217dcc807155e45db462d7ef2431f5ddda0d7273b700d05a67b271ceb1287ab \
