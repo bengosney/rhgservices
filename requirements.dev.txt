@@ -751,9 +751,9 @@ django-tasks==0.12.0 \
     # via
     #   modelsearch
     #   wagtail
-django-treebeard==5.3.1 \
-    --hash=sha256:0f93f55fcb8b4acb09b6cfc2e93a9451b33db1ff14a22e2563f5bb555fcb9c4b \
-    --hash=sha256:9c3828f5c3130c57fb5c34412ba8ac9b6cefffe98757a284feb02e55776d1d25
+django-treebeard==7.0.3 \
+    --hash=sha256:7f1ddcad9cc4ee214c708d9496d574d9d92c155e59c1f335807ef5b0a83aad55 \
+    --hash=sha256:eb25678a4e79bdcc315c3cf2158c33a8ade5f51cf4df220909abc603bbd62681
     # via wagtail
 djangorestframework==3.18.3 \
     --hash=sha256:446a9b352e7eff630421ab3f2328bd2401b109a9470afa4a31189994911ed030 \
