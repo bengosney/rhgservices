@@ -506,9 +506,9 @@ django-filter==26.2 \
     --hash=sha256:df8f737841d6359df00b84dda9b5ab59067fe60292091f1bdae1e3e6281cedb0 \
     --hash=sha256:fd5cc83995fbe9f5f07fb5dcda16fde0f04de1ecf8ef82628b6c0ec921b751af
     # via wagtail
-django-health-check==4.11.3 \
-    --hash=sha256:1db570806afb98160fd1b0be6286c4b90074696198649393677f0892377499dd \
-    --hash=sha256:f218c22f7f5e902546f0104cf7fdc1b66a19b876b35f2696f966be8fc695ac51
+django-health-check==4.11.4 \
+    --hash=sha256:00a0c3f4f91739fa7a929732e76feb3a6902bfb117bfc178e4935520eae1a694 \
+    --hash=sha256:47eb41f72edd307c1b6d70b71e10930ffb7ffcb5bbdc208a4dff86e7abfc674d
     # via rhgardenservices (pyproject.toml)
 django-modelcluster==6.5 \
     --hash=sha256:459cbf0fb3bbc8c15ea9a2a062abc0d1ef935a38e04aa8ac3cb241c826bbc6dd \
@@ -1174,9 +1174,9 @@ urllib3==2.8.0 \
     # via
     #   botocore
     #   requests
-wagtail==8.0.1 \
-    --hash=sha256:1e6ad5c7891a54efce1400e168298b5a2cc343b642cee89c31bf5ec30c98b26c \
-    --hash=sha256:819865a10bce86b16288cfaefa4195b90ffb5e7ac494fb18659e7be099ef386f
+wagtail==8.1 \
+    --hash=sha256:5c1abb0e11efc31454db0b5312d6786b5d8fdfbef5c815b7d8bacb2ad6bd486c \
+    --hash=sha256:dd7c988377ec6b8fcbd9ea8b5e36d34d800706bb70f927711ff4575619752d42
     # via rhgardenservices (pyproject.toml)
 wheel==0.48.0 \
     --hash=sha256:3217dcc807155e45db462d7ef2431f5ddda0d7273b700d05a67b271ceb1287ab \
