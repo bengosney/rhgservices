@@ -1655,9 +1655,9 @@ urllib3==2.8.0 \
     # via
     #   botocore
     #   requests
-wagtail==8.0.1 \
-    --hash=sha256:1e6ad5c7891a54efce1400e168298b5a2cc343b642cee89c31bf5ec30c98b26c \
-    --hash=sha256:819865a10bce86b16288cfaefa4195b90ffb5e7ac494fb18659e7be099ef386f
+wagtail==8.1 \
+    --hash=sha256:5c1abb0e11efc31454db0b5312d6786b5d8fdfbef5c815b7d8bacb2ad6bd486c \
+    --hash=sha256:dd7c988377ec6b8fcbd9ea8b5e36d34d800706bb70f927711ff4575619752d42
     # via
     #   rhgardenservices (pyproject.toml)
     #   wagtail-placeholder-images
