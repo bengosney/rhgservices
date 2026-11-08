@@ -514,9 +514,9 @@ django-modelcluster==6.5 \
     --hash=sha256:459cbf0fb3bbc8c15ea9a2a062abc0d1ef935a38e04aa8ac3cb241c826bbc6dd \
     --hash=sha256:469b380a294027d5211d0e5d5746e0381f445b058d2229977a58fe0f1c58a596
     # via wagtail
-django-ninja==1.7.3 \
-    --hash=sha256:5e3c2dcead83a2512ea772dbc435ca51632cf46bf3be1523bac41e5bb394891c \
-    --hash=sha256:8a73ecccaa86639202427e81667b8fca6dfc250d2b6e5108369688029a4cb593
+django-ninja==1.8.0 \
+    --hash=sha256:0f043a1aebd2c45e2a124a83e5bd0961491b18cdf81ea57c6abd80607b2c6ef8 \
+    --hash=sha256:132f37a36ac5ec9569fdc141da6984c1806bdd08af36f855980fab6cdcb10038
     # via wagtail
 django-permissionedforms==0.1 \
     --hash=sha256:4340bb20c4477fffb13b4cc5cccf9f1b1010b64f79956c291c72d2ad2ed243f8 \
