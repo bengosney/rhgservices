@@ -20,13 +20,13 @@ beautifulsoup4==4.15.0 \
     --hash=sha256:288e3ca7d54b06f2ac191970bc275c1939cb46d450b255bf6718b04aa37ab4f7 \
     --hash=sha256:d6f88de62e1d4e38ecb1077eb9724cd0eff29d2a08ca16a401e9b9e93f117cf9
     # via wagtail
-boto3==1.44.7 \
-    --hash=sha256:15fac273416d37cd5e3f0c02b33fd8d7f27d3e64c5f64b911f8b953772302609 \
-    --hash=sha256:cc19922a2db90ac98f259b5290e08fcf7143a314eb6b2e430afec26a5d1f4e10
+boto3==1.44.8 \
+    --hash=sha256:099caf21553bbbfef118904aa02fadb8776a534704cf00bede0ed9f29a4da88e \
+    --hash=sha256:32f646d28ea25820ec210cfa48e2409bf06a4a529c8b243013fd045716e99826
     # via rhgardenservices (pyproject.toml)
-botocore==1.44.7 \
-    --hash=sha256:3cbf1d9f50b5f1f95b715e570bc03b8c7c94b86777f96dd647321134f57290b2 \
-    --hash=sha256:56ec7cf3a7c0012c7e105c8f498c67077afa722df916dbdbe667b584fe7e5f99
+botocore==1.44.8 \
+    --hash=sha256:76342a76c338701db80dcb8afe1c9bd079283d6fffbb9d881442abb02a215043 \
+    --hash=sha256:945b783c1a1259e2a8b078f3f3dd40fae32ea84ab01d3a9953af6b378da7108a
     # via
     #   boto3
     #   s3transfer
@@ -175,9 +175,9 @@ brotli==1.2.1 \
     --hash=sha256:fb6a4d400aa531c73a718b337116fad77ba8dc6df34fa615c808bfc55ffb19ca \
     --hash=sha256:ff02e697d947f518e9e99f2b25698045a5ddffa95049c4d95b5a8cf3618d9008
     # via whitenoise
-certifi==2026.10.23 \
-    --hash=sha256:a9895e6e2758b371e0545e321a3a8fd1fcfd9829ada8824a936dfb16aaaf36cd \
-    --hash=sha256:e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1
+certifi==2026.11.20 \
+    --hash=sha256:7422df25243767b9877031a2248cb14d09ddac9beee846f4cef3d5c9191d488f \
+    --hash=sha256:af1cb240a8133f105aa52684a3a3258339d7f2fd0bd4e2812698ff5cf5588c4e
     # via
     #   httpcore
     #   httpx
@@ -1136,9 +1136,9 @@ six==1.17.0 \
     # via
     #   honeybadger
     #   python-dateutil
-soupsieve==4.1.2 \
-    --hash=sha256:96b4115212a3abee1f572d62da706cca090b088cb5effa278db5702122e63a2c \
-    --hash=sha256:c6539a2638f26991463527337e39d630e3cbb86d024f52282a510535b8a7e09f
+soupsieve==4.1.3 \
+    --hash=sha256:13f70186c8f40bf8d0ff7bbab09a18fb149600b465269207b5e5b588f55fda08 \
+    --hash=sha256:7a390d1a57d1ab7bb228531e9b8a750a5ebf87db774e0ef6faeeac057d22a5bf
     # via beautifulsoup4
 sqlparse==0.6.1 \
     --hash=sha256:3be5a72d04c873d690d7c6dedd33d6fae2ef82759881ceec02fc2efd0cba564f \
